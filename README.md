@@ -7,11 +7,15 @@ If, on the other hand, you just want to connect to Flight Simulator and read som
 * Supports registering and requesting simple simulation variables.
 * Does not require a Windows message pump.
 
+# Getting started
+* Download the Flight Simulator SDK and take a look at the Simvars sample project.
+
 # Usage
 
 1) Create a .NET Framework Console project
 2) Add a reference to the CTrue.FsConnect package.
-3) See example below:
+3) Set up Flight Simulator to receive remote TCP connections, see the SimConnect.xml file, and configure the example accordingly.
+4) See example below:
 
 ```csharp
 using System;
