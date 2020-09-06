@@ -17,6 +17,7 @@ namespace CTrue.FsConnect
         
         private EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
         private Thread _simConnectReceiveThread = null;
+        private bool _connected;
 
         #region Simconnect structures
 
@@ -28,7 +29,18 @@ namespace CTrue.FsConnect
         #endregion
 
         /// <inheritdoc />
-        public bool Connected { get; private set; }
+        public bool Connected
+        {
+            get => _connected;
+            private set
+            {
+                if(_connected != value)
+                {
+                    _connected = value;
+                    ConnectionChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
 
         /// <inheritdoc />
         public event EventHandler ConnectionChanged;
@@ -36,51 +48,64 @@ namespace CTrue.FsConnect
         /// <inheritdoc />
         public event EventHandler<FsDataReceivedEventArgs> FsDataReceived;
 
+        /// <inheritdoc />
+        public event EventHandler<FsErrorEventArgs> FsError;
+
         public FsConnect()
         {
         }
 
+        /// <inheritdoc />
         public void Connect(string hostName, uint port)
         {
+            CreateSimConnectConfigFile(hostName, port);
+
             try
             {
-                CreateSimConnectConfigFile(hostName, port);
-
                 _simConnect = new SimConnect("FsConnect", IntPtr.Zero, 0, _simConnectEventHandle, 0);
-
-                _simConnectReceiveThread = new Thread(new ThreadStart(SimConnect_MessageReceiveThreadHandler));
-                _simConnectReceiveThread.IsBackground = true;
-                _simConnectReceiveThread.Start();
-
-                _simConnect.OnRecvOpen += new SimConnect.RecvOpenEventHandler(SimConnect_OnRecvOpen);
-                _simConnect.OnRecvQuit += new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
-
-                _simConnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
-                _simConnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
             }
             catch (Exception e)
             {
-                Debug.Assert(false, e.Message);
+                _simConnect = null;
+                throw new Exception("Could not connect to Flight Simulator: " + e.Message, e);
             }
+
+            _simConnectReceiveThread = new Thread(new ThreadStart(SimConnect_MessageReceiveThreadHandler));
+            _simConnectReceiveThread.IsBackground = true;
+            _simConnectReceiveThread.Start();
+
+            _simConnect.OnRecvOpen += new SimConnect.RecvOpenEventHandler(SimConnect_OnRecvOpen);
+            _simConnect.OnRecvQuit += new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
+
+            _simConnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
+            _simConnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
         }
 
+        /// <inheritdoc />
         public void Disconnect()
         {
-            if (_simConnect != null)
+            if (!Connected) return;
+
+            try
             {
                 _simConnectReceiveThread.Abort();
                 _simConnectReceiveThread.Join();
-                _simConnectReceiveThread = null;
 
                 _simConnect.OnRecvOpen -= new SimConnect.RecvOpenEventHandler(SimConnect_OnRecvOpen);
                 _simConnect.OnRecvQuit -= new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
                 _simConnect.OnRecvException -= new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
                 _simConnect.OnRecvSimobjectDataBytype -= new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
+                
                 _simConnect.Dispose();
+            }
+            catch (Exception e)
+            {
+            }
+            finally
+            {
+                _simConnectReceiveThread = null;
                 _simConnect = null;
-
                 Connected = false;
-                ConnectionChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -104,7 +129,6 @@ namespace CTrue.FsConnect
         private void SimConnect_OnRecvOpen(SimConnect sender, SIMCONNECT_RECV_OPEN data)
         {
             Connected = true;
-            ConnectionChanged?.Invoke(this, EventArgs.Empty);
         }
 
         private void SimConnect_OnRecvQuit(SimConnect sender, SIMCONNECT_RECV data)
@@ -115,9 +139,14 @@ namespace CTrue.FsConnect
         private void SimConnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
         {
             SIMCONNECT_EXCEPTION eException = (SIMCONNECT_EXCEPTION)data.dwException;
-            Console.WriteLine("SimConnect_OnRecvException: " + eException.ToString());
 
-            //lErrorMessages.Add("SimConnect : " + eException.ToString());
+            FsError?.Invoke(this, new FsErrorEventArgs()
+            {
+                Exception = data.dwException,
+                ExceptionDescription = eException.ToString(),
+                SendID = data.dwSendID,
+                Index = data.dwIndex
+            });
         }
 
         private void SimConnect_OnRecvSimobjectDataBytype(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA_BYTYPE data)
@@ -137,28 +166,32 @@ namespace CTrue.FsConnect
 
                 try
                 {
-                    Console.WriteLine("Receiving message from Flight Simulator");
-
                     _simConnect?.ReceiveMessage();
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("An error occurred while receiving message: " + e);
                 }
             }
         }
 
         private void CreateSimConnectConfigFile(string hostName, uint port)
         {
-            StringBuilder sb = new StringBuilder();
+            try
+            {
+                StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("[SimConnect]");
-            sb.AppendLine("Protocol=IPv4");
-            sb.AppendLine($"Address={hostName}");
-            sb.AppendLine($"Port={port}");
+                sb.AppendLine("[SimConnect]");
+                sb.AppendLine("Protocol=IPv4");
+                sb.AppendLine($"Address={hostName}");
+                sb.AppendLine($"Port={port}");
 
-            string fileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SimConnect.cfg");
-            File.WriteAllText(fileName, sb.ToString());
+                string fileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SimConnect.cfg");
+                File.WriteAllText(fileName, sb.ToString());
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Could not create SimConnect.cfg file: " + e.Message, e);
+            }
         }
     }
 }

@@ -11,6 +11,7 @@ namespace CTrue.FsConnect.TestConsole
         public double Latitude;
         public double Longitude;
         public double AltitudeAboveGround;
+        public double Altitude;
         public double Heading;
     };
 }

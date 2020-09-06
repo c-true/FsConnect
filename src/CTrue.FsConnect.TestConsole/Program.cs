@@ -27,8 +27,16 @@ namespace CTrue.FsConnect.TestConsole
             {
                 FsConnect fsConnect = new FsConnect();
 
-                Console.WriteLine("Connecting to Flight Simulator");
-                fsConnect.Connect(commandLineOptions.Hostname, commandLineOptions.Port);
+                Console.WriteLine($"Connecting to Flight Simulator on {commandLineOptions.Hostname}:{commandLineOptions.Port}");
+                try
+                {
+                    fsConnect.Connect(commandLineOptions.Hostname, commandLineOptions.Port);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    return;
+                }
             
                 fsConnect.FsDataReceived += HandleReceivedFsData;
 
@@ -58,18 +66,14 @@ namespace CTrue.FsConnect.TestConsole
 
         private static void InitializeDataDefinitions(FsConnect fsConnect)
         {
-            List<Tuple<string, string, SIMCONNECT_DATATYPE>>
-                definition = new List<Tuple<string, string, SIMCONNECT_DATATYPE>>();
+            List<Tuple<string, string, SIMCONNECT_DATATYPE>> definition = new List<Tuple<string, string, SIMCONNECT_DATATYPE>>();
 
             definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Title", null, SIMCONNECT_DATATYPE.STRING256));
-            definition.Add(
-                new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(
-                new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(
-                new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Alt Above Ground", "feet", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Heading Degrees Gyro", "degrees",
-                SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Alt Above Ground", "feet", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("PLANE ALTITUDE", "feet", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Heading Degrees Gyro", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
 
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
         }
@@ -82,7 +86,7 @@ namespace CTrue.FsConnect.TestConsole
                 {
                     PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
 
-                    Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.AltitudeAboveGround:F1} {r.Heading}");
+                    Console.WriteLine($"Pos: ({r.Latitude:F4}, {r.Longitude:F4}), Alt: {r.Altitude:F0} ft, Hdg: {r.Heading:F1} deg");
                 }
             }
             catch (Exception ex)

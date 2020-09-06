@@ -20,6 +20,11 @@ namespace CTrue.FsConnect
         event EventHandler<FsDataReceivedEventArgs> FsDataReceived;
 
         /// <summary>
+        /// The <see cref="FsError"/> event is raised when an error has been raised by SimConnect.
+        /// </summary>
+        event EventHandler<FsErrorEventArgs> FsError;
+
+        /// <summary>
         /// Gets a boolean value indication whether a connection to Flight Simulator is established.
         /// </summary>
         bool Connected { get; }
