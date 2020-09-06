@@ -12,7 +12,7 @@ If, on the other hand, you just want to connect to Flight Simulator and read som
 
 # Usage
 
-1) Create a .NET Framework Console project
+1) Create a .NET Framework Console project that target x64.
 2) Add a reference to the CTrue.FsConnect package.
 3) Set up Flight Simulator to receive remote TCP connections, see the SimConnect.xml file, and configure the example accordingly.
 4) See example below:
