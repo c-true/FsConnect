@@ -51,18 +51,16 @@ namespace CTrue.FsConnect
         /// <inheritdoc />
         public event EventHandler<FsErrorEventArgs> FsError;
 
-        public FsConnect()
-        {
-        }
-
         /// <inheritdoc />
-        public void Connect(string hostName, uint port)
+        public void Connect(string applicationName, string hostName, uint port)
         {
+            if (applicationName == null) throw new ArgumentNullException(nameof(applicationName));
+
             CreateSimConnectConfigFile(hostName, port);
 
             try
             {
-                _simConnect = new SimConnect("FsConnect", IntPtr.Zero, 0, _simConnectEventHandle, 0);
+                _simConnect = new SimConnect(applicationName, IntPtr.Zero, 0, _simConnectEventHandle, 0);
             }
             catch (Exception e)
             {
@@ -110,20 +108,36 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void RegisterDataDefinition<T>(Enum id, List<Tuple<string, string, SIMCONNECT_DATATYPE>> definition) where T : struct
+        public void RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct
         {
             foreach (var item in definition)
             {
-                _simConnect.AddToDataDefinition(id, item.Item1, item.Item2, item.Item3, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+                _simConnect.AddToDataDefinition(id, item.Name, item.Unit, item.DataType, 0.0f, SimConnect.SIMCONNECT_UNUSED);
             }
 
             _simConnect.RegisterDataDefineStruct<T>(id);
         }
 
+        /// <inheritdoc />
         public void RequestData(Enum requestId)
         {
-            if (_simConnect != null)
-                _simConnect.RequestDataOnSimObjectType( requestId, DEFINITIONS.Struct1, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+            _simConnect?.RequestDataOnSimObjectType( requestId, DEFINITIONS.Struct1, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+        }
+
+        /// <inheritdoc />
+        public void UpdateData<T>(Enum id, T data)
+        {
+            _simConnect?.SetDataOnSimObject(id, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="text"></param>
+        /// <param name="duration"></param>
+        public void SetText(string text, int duration)
+        {
+            _simConnect.Text(SIMCONNECT_TEXT_TYPE.PRINT_BLACK, duration, DEFINITIONS.Struct1, text);
         }
 
         private void SimConnect_OnRecvOpen(SimConnect sender, SIMCONNECT_RECV_OPEN data)
@@ -193,5 +207,34 @@ namespace CTrue.FsConnect
                 throw new Exception("Could not create SimConnect.cfg file: " + e.Message, e);
             }
         }
+
+        // To detect redundant calls
+        private bool _disposed = false;
+
+        /// <summary>
+        /// Disconnects and disposes the client.
+        /// </summary>
+        public void Dispose() => Dispose(true);
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed)
+            {
+                return;
+            }
+
+            if (disposing)
+            {
+                // Dispose managed state (managed objects).
+                _simConnect?.Dispose();
+            }
+
+            _disposed = true;
+        }
+
     }
 }

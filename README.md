@@ -2,10 +2,14 @@
 A simple easy-to-use wrapper for the Flight Simulator 2020 SimConnect library. A simple solution to simple problems, if you already are fluent in SimConnect, this won't impress you much.
 If, on the other hand, you just want to connect to Flight Simulator and read some information this may give you a quicker start.
 
+FsConnect uses the _Microsoft.FlightSimulator.SimConnect_ .NET Framework library and the underlying native x64 _simconnect.dll_ library. 
+These files are distributed via the Flight Simulator 2020 SDK, currently version 0.5.1, but are included for easy use.
+
 ## Current features
 * Supports TCP connection, without use of SimConnect.cfg file
 * Supports registering and requesting simple simulation variables.
 * Does not require a Windows message pump.
+* NuGet package handles deployment of native binaries, just add reference to package.
 
 # Getting started
 * Download the Flight Simulator SDK and take a look at the Simvars sample project.
@@ -50,13 +54,13 @@ namespace FsConnectTest
             fsConnect.Connect("localhost", 500);
             fsConnect.FsDataReceived += HandleReceivedFsData;
 
-            List<Tuple<string, string, SIMCONNECT_DATATYPE>> definition = new List<Tuple<string, string, SIMCONNECT_DATATYPE>>();
+            List<SimProperty> definition = new List<SimProperty>();
 
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Title", null, SIMCONNECT_DATATYPE.STRING256));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Alt Above Ground", "feet", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Heading Degrees Gyro", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
+            definition.Add(new SimProperty("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty("Plane Alt Above Ground", "feet", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty("Plane Heading Degrees Gyro", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
 
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
 

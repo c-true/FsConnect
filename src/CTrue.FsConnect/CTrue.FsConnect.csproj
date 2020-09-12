@@ -13,8 +13,16 @@ Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
     <PackageTags>msfs flight-simulator simconnect</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>

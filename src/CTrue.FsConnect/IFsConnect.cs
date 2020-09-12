@@ -7,7 +7,10 @@ namespace CTrue.FsConnect
     /// <summary>
     /// A wrapper / helper class for connection to Flight Simulator.
     /// </summary>
-    public interface IFsConnect
+    /// <remarks>
+    /// This wrapper supports TCP IPv4 only, for the moment.
+    /// </remarks>
+    public interface IFsConnect : IDisposable
     {
         /// <summary>
         /// The <see cref="ConnectionChanged"/> event is raised when the connection status to Flight Simulator has changed.
@@ -32,13 +35,14 @@ namespace CTrue.FsConnect
         /// <summary>
         /// Connects to Flight Simulator on the specified host name and TCP port.
         /// </summary>
+        /// <param name="applicationName"></param>
         /// <param name="hostName"></param>
         /// <param name="port"></param>
         /// <remarks>
         /// A SimConnect.cfg file will be generated containing TCP connection information.
-        /// Flight Simulator must be configured for remote TCP connections.
+        /// Flight Simulator must be configured for remote TCP connections by editing the SimConnect.xml file that are part of the installation.
         /// </remarks>
-        void Connect(string hostName, uint port);
+        void Connect(string applicationName, string hostName, uint port);
 
         /// <summary>
         /// Disconnects from Flight Simulator.
@@ -56,6 +60,21 @@ namespace CTrue.FsConnect
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
         /// </remarks>
-        void RegisterDataDefinition<T>(Enum id, List<Tuple<string, string, SIMCONNECT_DATATYPE>> definition) where T : struct;
+        void RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct;
+
+        /// <summary>
+        /// Displays a text in Flight Simulator.
+        /// </summary>
+        /// <param name="text">The text to display.</param>
+        /// <param name="duration">Duration to display text, in seconds.</param>
+        void SetText(string text, int duration);
+
+        /// <summary>
+        /// Updated data.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="data"></param>
+        /// <typeparam name="T"></typeparam>
+        void UpdateData<T>(Enum id, T data);
     }
 }
