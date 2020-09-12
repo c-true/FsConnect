@@ -64,6 +64,7 @@ namespace CTrue.FsConnect.TestConsole
                 _keyHandlers.Add(ConsoleKey.F, DecreaseAltitude);
 
                 Console.WriteLine("Press any key to request data from Flight Simulator or ESC to quit.");
+                Console.WriteLine("Press WASD keys to move, Q and E to rotate, R and F to change altitude.");
                 ConsoleKeyInfo cki = Console.ReadKey(true);
 
                 _fsConnect.SetText("Test Console connected", 2);
@@ -151,12 +152,6 @@ namespace CTrue.FsConnect.TestConsole
         private static void PollFlightSimulator()
         {
             _fsConnect.RequestData(Requests.PlaneInfo);
-        }
-
-        private static void UpdateFlightSimulator()
-        {
-            _planeInfoResponse.Latitude += _deltaLatitude;
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
         }
 
         private static void InitializeDataDefinitions(FsConnect fsConnect)

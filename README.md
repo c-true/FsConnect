@@ -51,15 +51,18 @@ namespace FsConnectTest
         public static void Main()
         {
             FsConnect fsConnect = new FsConnect();
-            fsConnect.Connect("localhost", 500);
+            fsConnect.Connect("TestApp", "localhost", 500);
             fsConnect.FsDataReceived += HandleReceivedFsData;
 
             List<SimProperty> definition = new List<SimProperty>();
 
+            // Consult the SDK for valid sim variable names, units and whether they can be written to.
             definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
             definition.Add(new SimProperty("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("Plane Alt Above Ground", "feet", SIMCONNECT_DATATYPE.FLOAT64));
+            
+            // Can also use predefined enums for sim variables and units (incomplete)
+            definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty("Plane Heading Degrees Gyro", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
 
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
