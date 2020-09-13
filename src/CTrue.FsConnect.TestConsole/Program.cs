@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
 using CommandLine;
 using CommandLine.Text;
 using Microsoft.FlightSimulator.SimConnect;
@@ -11,6 +12,15 @@ namespace CTrue.FsConnect.TestConsole
     /// </summary>
     class Program
     {
+        private static FsConnect _fsConnect;
+        private static Dictionary<ConsoleKey, Action> _keyHandlers = new Dictionary<ConsoleKey, Action>();
+        private static PlaneInfoResponse _planeInfoResponse;
+
+        private static double _deltaLatitude = 0.001;
+        private static double _deltaLongitude = 0.001;
+        private static double _deltaAltitude = 1000;
+        private static double _deltaHeading = 10;
+
         static void Main(string[] args)
         {
             CommandLine.Parser parser = new CommandLine.Parser(with => with.HelpWriter = null);
@@ -25,12 +35,12 @@ namespace CTrue.FsConnect.TestConsole
         {
             try
             {
-                FsConnect fsConnect = new FsConnect();
+                _fsConnect = new FsConnect();
 
                 Console.WriteLine($"Connecting to Flight Simulator on {commandLineOptions.Hostname}:{commandLineOptions.Port}");
                 try
                 {
-                    fsConnect.Connect(commandLineOptions.Hostname, commandLineOptions.Port);
+                    _fsConnect.Connect("FsConnectTestConsole", commandLineOptions.Hostname, commandLineOptions.Port);
                 }
                 catch (Exception e)
                 {
@@ -38,24 +48,51 @@ namespace CTrue.FsConnect.TestConsole
                     return;
                 }
             
-                fsConnect.FsDataReceived += HandleReceivedFsData;
-
+                _fsConnect.FsDataReceived += HandleReceivedFsData;
+                
                 Console.WriteLine("Initializing data definitions");
-                InitializeDataDefinitions(fsConnect);
+                InitializeDataDefinitions(_fsConnect);
 
-                Console.WriteLine("Press any key to request data from Flight Simulator or Q to quit.");
+                _keyHandlers.Add(ConsoleKey.P, PollFlightSimulator);
+                _keyHandlers.Add(ConsoleKey.W, MoveForward);
+                _keyHandlers.Add(ConsoleKey.S, MoveBackward);
+                _keyHandlers.Add(ConsoleKey.A, MoveLeft);
+                _keyHandlers.Add(ConsoleKey.D, MoveRight);
+                _keyHandlers.Add(ConsoleKey.Q, RotateLeft);
+                _keyHandlers.Add(ConsoleKey.E, RotateRight);
+                _keyHandlers.Add(ConsoleKey.R, IncreaseAltitude);
+                _keyHandlers.Add(ConsoleKey.F, DecreaseAltitude);
+
+                Console.WriteLine("Press any key to request data from Flight Simulator or ESC to quit.");
+                Console.WriteLine("Press WASD keys to move, Q and E to rotate, R and F to change altitude.");
                 ConsoleKeyInfo cki = Console.ReadKey(true);
 
-                while (cki.Key != ConsoleKey.Q)
+                _fsConnect.SetText("Test Console connected", 2);
+
+                _fsConnect.RequestData(Requests.PlaneInfo);
+
+                while (cki.Key != ConsoleKey.Escape)
                 {
-                    fsConnect.RequestData(Requests.PlaneInfo);
-                    
+                    if(_keyHandlers.ContainsKey(cki.Key))
+                    {
+                        _keyHandlers[cki.Key].Invoke();
+                    }
+                    else
+                    {
+                        PollFlightSimulator();
+                    }
+
                     cki = Console.ReadKey(true);
                 }
 
+                Console.ReadKey(true);
+
                 Console.WriteLine("Disconnecting from Flight Simulator");
-                fsConnect.Disconnect();
-                
+                _fsConnect.SetText("Test Console disconnecting", 1);
+                _fsConnect.Disconnect();
+                _fsConnect.Dispose();
+                _fsConnect = null;
+
                 Console.WriteLine("Done");
             }
             catch (Exception e)
@@ -64,18 +101,71 @@ namespace CTrue.FsConnect.TestConsole
             }
         }
 
+        private static void IncreaseAltitude()
+        {
+            _planeInfoResponse.Altitude += _deltaAltitude;
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void DecreaseAltitude()
+        {
+            _planeInfoResponse.Altitude -= _deltaAltitude;
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void RotateRight()
+        {
+            _planeInfoResponse.Heading += FsUtils.Deg2Rad(_deltaHeading);
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void RotateLeft()
+        {
+            _planeInfoResponse.Heading -= FsUtils.Deg2Rad(_deltaHeading);
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void MoveRight()
+        {
+            _planeInfoResponse.Longitude += _deltaLongitude;
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void MoveLeft()
+        {
+            _planeInfoResponse.Longitude -= _deltaLongitude;
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void MoveBackward()
+        {
+            _planeInfoResponse.Latitude -= _deltaLatitude;
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void MoveForward()
+        {
+            _planeInfoResponse.Latitude += _deltaLatitude;
+            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+        }
+
+        private static void PollFlightSimulator()
+        {
+            _fsConnect.RequestData(Requests.PlaneInfo);
+        }
+
         private static void InitializeDataDefinitions(FsConnect fsConnect)
         {
-            List<Tuple<string, string, SIMCONNECT_DATATYPE>> definition = new List<Tuple<string, string, SIMCONNECT_DATATYPE>>();
+            List<SimProperty> definition = new List<SimProperty>();
 
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Title", null, SIMCONNECT_DATATYPE.STRING256));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Alt Above Ground", "feet", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("PLANE ALTITUDE", "feet", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new Tuple<string, string, SIMCONNECT_DATATYPE>("Plane Heading Degrees Gyro", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
+            definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneAltitudeAboveGround, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
 
-            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
+            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
         }
 
         private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
@@ -84,9 +174,9 @@ namespace CTrue.FsConnect.TestConsole
             {
                 if(e.RequestId == (uint)Requests.PlaneInfo)
                 {
-                    PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
+                    _planeInfoResponse = (PlaneInfoResponse)e.Data;
 
-                    Console.WriteLine($"Pos: ({r.Latitude:F4}, {r.Longitude:F4}), Alt: {r.Altitude:F0} ft, Hdg: {r.Heading:F1} deg");
+                    Console.WriteLine($"Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg");
                 }
             }
             catch (Exception ex)
