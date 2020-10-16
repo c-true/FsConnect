@@ -3,12 +3,12 @@ A simple easy-to-use wrapper for the Flight Simulator 2020 SimConnect library. A
 If, on the other hand, you just want to connect to Flight Simulator and read some information this may give you a quicker start.
 
 FsConnect uses the _Microsoft.FlightSimulator.SimConnect_ .NET Framework library and the underlying native x64 _simconnect.dll_ library. 
-These files are distributed via the Flight Simulator 2020 SDK, currently version 0.5.1, but are included for easy use.
+These files are distributed via the Flight Simulator 2020 SDK, currently version 0.6.1, but are included for easy use.
 
 At the moment this project is intended as an easier to use wrapper than the current SimConnect for simple projects, creating a simpler C# programming model and reducing the need for repeated boiler plate code. Expect breaking changes.
 
 ## Current features
-* Supports TCP connection, without use of SimConnect.cfg file
+* Supports connections from API, without direct use of SimConnect.cfg file
 * Supports registering and requesting simple simulation variables.
 * Supports updating simulation variables.
 * Does not require a Windows message pump.
@@ -59,6 +59,11 @@ namespace FsConnectTest
         public static void Main()
         {
             FsConnect fsConnect = new FsConnect();
+            
+            // Specify where the SimConnect.cfg should be written to
+            fsConnect.SimConnectFileLocation = SimConnectFileLocation.MyDocuments;
+            
+            // Creates a SimConnect.cfg and connect to Flight Simulator using this configuration.
             fsConnect.Connect("TestApp", "localhost", 500);
             fsConnect.FsDataReceived += HandleReceivedFsData;
 

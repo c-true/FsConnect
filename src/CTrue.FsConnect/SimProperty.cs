@@ -42,7 +42,7 @@ namespace CTrue.FsConnect
         /// <summary>
         /// Creates an initialized instance using enums for known values.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="simVar"></param>
         /// <param name="unit"></param>
         /// <param name="dataType"></param>
         public SimProperty(FsSimVar simVar, FsUnit unit, SIMCONNECT_DATATYPE dataType)
