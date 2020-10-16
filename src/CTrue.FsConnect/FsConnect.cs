@@ -14,7 +14,7 @@ namespace CTrue.FsConnect
     public class FsConnect : IFsConnect
     {
         private SimConnect _simConnect = null;
-        
+
         private EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
         private Thread _simConnectReceiveThread = null;
         private bool _connected;
@@ -34,13 +34,16 @@ namespace CTrue.FsConnect
             get => _connected;
             private set
             {
-                if(_connected != value)
+                if (_connected != value)
                 {
                     _connected = value;
                     ConnectionChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
         }
+
+        /// <inheritdoc />
+        public SimConnectFileLocation SimConnectFileLocation { get; set; } = SimConnectFileLocation.MyDocuments;
 
         /// <inheritdoc />
         public event EventHandler ConnectionChanged;
@@ -52,12 +55,8 @@ namespace CTrue.FsConnect
         public event EventHandler<FsErrorEventArgs> FsError;
 
         /// <inheritdoc />
-        public void Connect(string applicationName, string hostName, uint port)
+        public void Connect(string applicationName)
         {
-            if (applicationName == null) throw new ArgumentNullException(nameof(applicationName));
-
-            CreateSimConnectConfigFile(hostName, port);
-
             try
             {
                 _simConnect = new SimConnect(applicationName, IntPtr.Zero, 0, _simConnectEventHandle, 0);
@@ -77,6 +76,16 @@ namespace CTrue.FsConnect
 
             _simConnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
             _simConnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
+        }
+
+        /// <inheritdoc />
+        public void Connect(string applicationName, string hostName, uint port, SimConnectProtocol protocol)
+        {
+            if (applicationName == null) throw new ArgumentNullException(nameof(applicationName));
+
+            CreateSimConnectConfigFile(hostName, port, protocol);
+
+            Connect(applicationName);
         }
 
         /// <inheritdoc />
@@ -188,18 +197,40 @@ namespace CTrue.FsConnect
             }
         }
 
-        private void CreateSimConnectConfigFile(string hostName, uint port)
+        private void CreateSimConnectConfigFile(string hostName, uint port, SimConnectProtocol protocol)
         {
             try
             {
                 StringBuilder sb = new StringBuilder();
 
+                string protocolString = "Ipv4";
+
+                switch (protocol)
+                {
+                    case SimConnectProtocol.Pipe:
+                        protocolString = "Pipe";
+                        break;
+                    case SimConnectProtocol.Ipv4:
+                        protocolString = "Ipv4";
+                        break;
+                    case SimConnectProtocol.Ipv6:
+                        protocolString = "Ipv6";
+                        break;
+                }
+
                 sb.AppendLine("[SimConnect]");
-                sb.AppendLine("Protocol=IPv4");
+                sb.AppendLine("Protocol=" + protocolString);
                 sb.AppendLine($"Address={hostName}");
                 sb.AppendLine($"Port={port}");
 
-                string fileName = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "SimConnect.cfg");
+                string directory = "";
+                if (SimConnectFileLocation == SimConnectFileLocation.Local)
+                    directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+                else
+                    directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+                string fileName = Path.Combine(directory, "SimConnect.cfg");
+
                 File.WriteAllText(fileName, sb.ToString());
             }
             catch (Exception e)

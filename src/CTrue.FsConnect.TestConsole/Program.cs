@@ -40,7 +40,7 @@ namespace CTrue.FsConnect.TestConsole
                 Console.WriteLine($"Connecting to Flight Simulator on {commandLineOptions.Hostname}:{commandLineOptions.Port}");
                 try
                 {
-                    _fsConnect.Connect("FsConnectTestConsole", commandLineOptions.Hostname, commandLineOptions.Port);
+                    _fsConnect.Connect("FsConnectTestConsole", commandLineOptions.Hostname, commandLineOptions.Port, SimConnectProtocol.Ipv4);
                 }
                 catch (Exception e)
                 {

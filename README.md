@@ -59,6 +59,11 @@ namespace FsConnectTest
         public static void Main()
         {
             FsConnect fsConnect = new FsConnect();
+            
+            // Specify where the SimConnect.cfg should be written to
+            fsConnect.SimConnectFileLocation = SimConnectFileLocation.MyDocuments;
+            
+            // Creates a SimConnect.cfg and connect to Flight Simulator using this configuration.
             fsConnect.Connect("TestApp", "localhost", 500);
             fsConnect.FsDataReceived += HandleReceivedFsData;
 

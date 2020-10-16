@@ -33,17 +33,29 @@ namespace CTrue.FsConnect
         bool Connected { get; }
 
         /// <summary>
+        /// Gets or sets where to write the SimConnect.cfg file, that specifies how to connect to Flight Simulator.
+        /// </summary>
+        SimConnectFileLocation SimConnectFileLocation { get; set; }
+
+        /// <summary>
+        /// Connects to Flight Simulator using an existing SimConnect.cfg.
+        /// </summary>
+        /// <param name="applicationName">A name identifying this client to Flight Simulator.</param>
+        void Connect(string applicationName);
+
+        /// <summary>
         /// Connects to Flight Simulator on the specified host name and TCP port.
         /// </summary>
-        /// <param name="applicationName"></param>
-        /// <param name="hostName"></param>
-        /// <param name="port"></param>
+        /// <param name="applicationName">A name identifying this client to Flight Simulator.</param>
+        /// <param name="hostName">A hostname or IP address.</param>
+        /// <param name="port">A TCP or pipe port number.</param>
+        /// <param name="protocol">The protocol to use to connect to Flight Simulator.</param>
         /// <remarks>
-        /// A SimConnect.cfg file will be generated containing TCP connection information.
-        /// Flight Simulator must be configured for remote TCP connections by editing the SimConnect.xml file that are part of the installation.
+        /// A SimConnect.cfg file will be generated containing connection information.
+        /// Flight Simulator must be configured for remote connections by editing the SimConnect.xml file that are part of the installation.
         /// </remarks>
-        void Connect(string applicationName, string hostName, uint port);
-
+        void Connect(string applicationName, string hostName, uint port, SimConnectProtocol protocol);
+        
         /// <summary>
         /// Disconnects from Flight Simulator.
         /// </summary>

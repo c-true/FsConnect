@@ -6,7 +6,7 @@
     <Product>Flight Simulator Connect</Product>
     <Copyright />
     <Description>An easy to use wrapper for SimConnect, for connection to Flight Simulator 2020.
-Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0.5.1 release.</Description>
+Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0.6.0 release.</Description>
     <Authors>C-True</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
@@ -15,8 +15,7 @@ Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0
     <PackageTags>msfs flight-simulator simconnect</PackageTags>
     <Version>1.0.2</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageReleaseNotes>Simplified registering data definitions.
-Added support for updating data structures.</PackageReleaseNotes>
+    <PackageReleaseNotes>Verified that dependencies are the same for the SDK 0.6.0 release.</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
