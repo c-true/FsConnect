@@ -55,11 +55,11 @@ namespace CTrue.FsConnect
         public event EventHandler<FsErrorEventArgs> FsError;
 
         /// <inheritdoc />
-        public void Connect(string applicationName)
+        public void Connect(string applicationName, uint configIndex = 0)
         {
             try
             {
-                _simConnect = new SimConnect(applicationName, IntPtr.Zero, 0, _simConnectEventHandle, 0);
+                _simConnect = new SimConnect(applicationName, IntPtr.Zero, 0, _simConnectEventHandle, configIndex);
             }
             catch (Exception e)
             {

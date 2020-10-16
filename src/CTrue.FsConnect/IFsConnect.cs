@@ -5,10 +5,10 @@ using Microsoft.FlightSimulator.SimConnect;
 namespace CTrue.FsConnect
 {
     /// <summary>
-    /// A wrapper / helper class for connection to Flight Simulator.
+    /// A wrapper / helper class for connection to Microsoft Flight Simulator.
     /// </summary>
     /// <remarks>
-    /// This wrapper supports TCP IPv4 only, for the moment.
+    /// The <see cref="IFsConnect"/> wraps the SimConnect.dll and managed 
     /// </remarks>
     public interface IFsConnect : IDisposable
     {
@@ -41,10 +41,11 @@ namespace CTrue.FsConnect
         /// Connects to Flight Simulator using an existing SimConnect.cfg.
         /// </summary>
         /// <param name="applicationName">A name identifying this client to Flight Simulator.</param>
-        void Connect(string applicationName);
+        /// <param name="configIndex">The index to a specified configuration in the SimConnect.cfg file. Default is index 0.</param>
+        void Connect(string applicationName, uint configIndex = 0);
 
         /// <summary>
-        /// Connects to Flight Simulator on the specified host name and TCP port.
+        /// Connects to Flight Simulator on the specified host name and port.
         /// </summary>
         /// <param name="applicationName">A name identifying this client to Flight Simulator.</param>
         /// <param name="hostName">A hostname or IP address.</param>
