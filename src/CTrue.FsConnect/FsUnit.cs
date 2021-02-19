@@ -9,7 +9,8 @@ namespace CTrue.FsConnect
         Radians,
         Feet,
         Meter,
-        MeterPerSecond
+        MeterPerSecond,
+        Knot
     }
 
     public static class UnitFactory
@@ -24,6 +25,7 @@ namespace CTrue.FsConnect
             _enumToCodeDictionary.Add(FsUnit.Feet, "feet");
             _enumToCodeDictionary.Add(FsUnit.Meter, "meter");
             _enumToCodeDictionary.Add(FsUnit.MeterPerSecond, "meter per second");
+            _enumToCodeDictionary.Add(FsUnit.Knot, "knot");
         }
 
         /// <summary>

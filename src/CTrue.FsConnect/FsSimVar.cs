@@ -10,7 +10,8 @@ namespace CTrue.FsConnect
         PlaneAltitudeAboveGround,
         PlaneAltitude,
         PlaneHeadingDegreesTrue,
-        GpsGroundSpeed
+        GpsGroundSpeed,
+        AirspeedTrue
     }
 
     public static class FsSimVarFactory
@@ -26,6 +27,7 @@ namespace CTrue.FsConnect
             _enumToCodeDictionary.Add(FsSimVar.PlaneAltitude, "PLANE ALTITUDE");
             _enumToCodeDictionary.Add(FsSimVar.PlaneHeadingDegreesTrue, "PLANE HEADING DEGREES TRUE");
             _enumToCodeDictionary.Add(FsSimVar.GpsGroundSpeed, "GPS GROUND SPEED");
+            _enumToCodeDictionary.Add(FsSimVar.AirspeedTrue, "AIRSPEED TRUE");
         }
 
         /// <summary>
