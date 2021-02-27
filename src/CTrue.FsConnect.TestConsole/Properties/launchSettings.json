@@ -2,15 +2,7 @@
   "profiles": {
     "FsConnectTestConsole": {
       "commandName": "Project",
-      "commandLineArgs": "-h 127.0.0.1 -p 500"
-    },
-    "FsConnectTestConsole1": {
-      "commandName": "Project",
-      "commandLineArgs": "-i 0"
-    },
-    "FsConnectTestConsole2": {
-      "commandName": "Project",
-      "commandLineArgs": ""
+      "commandLineArgs": "-h localhost -p 500"
     }
   }
 }
