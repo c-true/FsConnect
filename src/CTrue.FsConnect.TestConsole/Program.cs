@@ -187,7 +187,7 @@ namespace CTrue.FsConnect.TestConsole
                 {
                     _planeInfoResponse = (PlaneInfoResponse)e.Data;
 
-                    Console.WriteLine($"Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg");
+                    Console.WriteLine($"Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg, Speed: {_planeInfoResponse.Speed:F0} kt");
                 }
             }
             catch (Exception ex)

@@ -20,6 +20,8 @@ namespace FsConnectTest
         public double Longitude;
         public double Altitude;
         public double Heading;
+        public double SpeedMpS;
+        public double SpeedKnots;
     }
 
     public class FsConnectTestConsole
@@ -61,6 +63,8 @@ namespace FsConnectTest
             // Can also use predefined enums for sim variables and units (incomplete)
             definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.MeterPerSecond, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
 
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
 
@@ -74,7 +78,7 @@ namespace FsConnectTest
             if (e.RequestId == (uint)Requests.PlaneInfo)
             {
                 PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
-                Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.Altitude:F1}ft {r.Heading:F1}deg");
+                Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.Altitude:F1}ft {r.Heading:F1}deg {r.SpeedMpS:F0}m/s {r.SpeedKnots:F0}kt");
             }
         }
     }
