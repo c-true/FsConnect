@@ -48,7 +48,7 @@ namespace CTrue.FsConnect
         public SimProperty(FsSimVar simVar, FsUnit unit, SIMCONNECT_DATATYPE dataType)
         {
             Name = FsSimVarFactory.GetSimVarCode(simVar);
-            Unit = UnitFactory.GetUnitCode(unit);
+            Unit = UnitFactory.GetUnitName(unit);
             DataType = dataType;
         }
     }

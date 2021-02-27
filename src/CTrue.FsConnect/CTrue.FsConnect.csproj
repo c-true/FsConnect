@@ -13,12 +13,13 @@ Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
     <PackageTags>msfs flight-simulator simconnect</PackageTags>
-    <Version>1.0.4</Version>
+    <Version>1.1.1</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReleaseNotes>Default location for writing SimConnect.cfg file changed to Local, to avoid intefering with other SimConnect using applications/mods.
-Verified that dependencies are the same for the SDK 0.10.0 release.</PackageReleaseNotes>
-    <AssemblyVersion>1.0.4.0</AssemblyVersion>
-    <FileVersion>1.0.4.0</FileVersion>
+Verified that dependencies are the same for the SDK 0.10.0 release.
+Support for all SimVars and units as enums, as documented by the SimVars example.</PackageReleaseNotes>
+    <AssemblyVersion>1.1.1.0</AssemblyVersion>
+    <FileVersion>1.1.1.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
