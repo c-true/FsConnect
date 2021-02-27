@@ -172,8 +172,9 @@ namespace CTrue.FsConnect.TestConsole
             definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.PlaneAltitudeAboveGround, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty("PLANE ALTITUDE", "Feet", SIMCONNECT_DATATYPE.FLOAT64)); // Example using known/new values
             definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
 
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
         }
@@ -186,7 +187,7 @@ namespace CTrue.FsConnect.TestConsole
                 {
                     _planeInfoResponse = (PlaneInfoResponse)e.Data;
 
-                    Console.WriteLine($"Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg");
+                    Console.WriteLine($"Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg, Speed: {_planeInfoResponse.Speed:F0} kt");
                 }
             }
             catch (Exception ex)

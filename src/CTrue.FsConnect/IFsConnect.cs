@@ -33,8 +33,11 @@ namespace CTrue.FsConnect
         bool Connected { get; }
 
         /// <summary>
-        /// Gets or sets where to write the SimConnect.cfg file, that specifies how to connect to Flight Simulator.
+        /// Gets or sets where to write the SimConnect.cfg file, that specifies how to connect to Flight Simulator. By default set to local.
         /// </summary>
+        /// <remarks>
+        /// The default beghavior is to write the file to the same location as the executing assembly, but this may cause problems if the application does not have write access to this location. As an alternative the file can be written to My Document, but this may cause issues with other SimConnect using applications.
+        /// </remarks>
         SimConnectFileLocation SimConnectFileLocation { get; set; }
 
         /// <summary>

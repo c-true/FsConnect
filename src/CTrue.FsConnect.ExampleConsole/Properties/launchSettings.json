@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CTrue.FsConnect.ExampleConsole": {
+      "commandName": "Project",
+      "commandLineArgs": "localhost 500"
+    }
+  }
+}

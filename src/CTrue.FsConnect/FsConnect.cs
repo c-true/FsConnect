@@ -43,7 +43,7 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public SimConnectFileLocation SimConnectFileLocation { get; set; } = SimConnectFileLocation.MyDocuments;
+        public SimConnectFileLocation SimConnectFileLocation { get; set; } = SimConnectFileLocation.Local;
 
         /// <inheritdoc />
         public event EventHandler ConnectionChanged;
