@@ -7,6 +7,10 @@ These files are distributed via the Flight Simulator 2020 SDK, currently version
 
 At the moment this project is intended as an easier to use wrapper than the current SimConnect for simple projects, creating a simpler C# programming model and reducing the need for repeated boiler plate code. Expect breaking changes.
 
+## Additional information
+For more information about SimConnect and the Flight Simulator SDK see the [Microsoft Flight Simulator SDK site](
+https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) and the [SimConnect SDK section](https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) in particular.
+
 ## Current features
 * Supports connections from API, without direct use of SimConnect.cfg file
 * Supports registering and requesting simple simulation variables.

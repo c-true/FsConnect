@@ -21,9 +21,26 @@ namespace CTrue.FsConnect
 
         #region Simconnect structures
 
-        public enum DEFINITIONS
+        private enum DEFINITIONS
         {
-            Struct1,
+            PlaneInfo,
+        }
+
+        private enum SimEvents
+        {
+            EVENT_AIRCRAFT_LOAD,
+            EVENT_FLIGHT_LOAD,
+            EVENT_PAUSED,
+            EVENT_PAUSE,
+            EVENT_SIM,
+            EVENT_CRASHED,
+            ObjectAdded,
+            PauseSet
+        }
+
+        enum GROUP_IDS
+        {
+            GROUP_1 = 98,
         }
 
         #endregion
@@ -52,7 +69,25 @@ namespace CTrue.FsConnect
         public event EventHandler<FsDataReceivedEventArgs> FsDataReceived;
 
         /// <inheritdoc />
+        public event EventHandler<ObjectAddRemoveEventReceivedEventArgs> ObjectAddRemoveEventReceived;
+
+        /// <inheritdoc />
         public event EventHandler<FsErrorEventArgs> FsError;
+
+        /// <inheritdoc />
+        public event EventHandler AircraftLoaded;
+
+        /// <inheritdoc />
+        public event EventHandler FlightLoaded;
+
+        /// <inheritdoc />
+        public event EventHandler<PauseStateChangedEventArgs> PauseStateChanged;
+
+        /// <inheritdoc />
+        public event EventHandler<SimStateChangedEventArgs> SimStateChanged;
+
+        /// <inheritdoc />
+        public event EventHandler Crashed;
 
         /// <inheritdoc />
         public void Connect(string applicationName, uint configIndex = 0)
@@ -76,6 +111,21 @@ namespace CTrue.FsConnect
 
             _simConnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
             _simConnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
+            _simConnect.OnRecvEventObjectAddremove += new SimConnect.RecvEventObjectAddremoveEventHandler(SimConnect_OnRecvEventObjectAddremoveEventHandler);
+
+            _simConnect.OnRecvEvent += SimConnect_OnRecvEvent;
+
+            // System events
+            _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_AIRCRAFT_LOAD, "AircraftLoaded");
+            _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_FLIGHT_LOAD, "FlightLoaded");
+            _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_PAUSED, "Paused");
+            _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_PAUSE, "Pause");
+            _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_SIM, "Sim");
+            _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_CRASHED, "Crashed");
+            _simConnect.SubscribeToSystemEvent(SimEvents.ObjectAdded, "ObjectAdded");
+
+            // Client events
+            _simConnect.MapClientEventToSimEvent(SimEvents.PauseSet, "PAUSE_SET");
         }
 
         /// <inheritdoc />
@@ -95,6 +145,15 @@ namespace CTrue.FsConnect
 
             try
             {
+                _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_AIRCRAFT_LOAD);
+                _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_FLIGHT_LOAD);
+                _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_PAUSED);
+                _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_PAUSE);
+                _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_SIM);
+                _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_CRASHED);
+                _simConnect.UnsubscribeFromSystemEvent(SimEvents.ObjectAdded);
+
+                _simConnect.RemoveClientEvent(GROUP_IDS.GROUP_1, SimEvents.PauseSet);
                 _simConnectReceiveThread.Abort();
                 _simConnectReceiveThread.Join();
 
@@ -102,7 +161,8 @@ namespace CTrue.FsConnect
                 _simConnect.OnRecvQuit -= new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
                 _simConnect.OnRecvException -= new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
                 _simConnect.OnRecvSimobjectDataBytype -= new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
-                
+                _simConnect.OnRecvEvent -= SimConnect_OnRecvEvent;
+
                 _simConnect.Dispose();
             }
             catch (Exception e)
@@ -127,16 +187,21 @@ namespace CTrue.FsConnect
             _simConnect.RegisterDataDefineStruct<T>(id);
         }
 
-        /// <inheritdoc />
-        public void RequestData(Enum requestId)
+        public void RequestDataOnSimObject(Enum requestId, uint objectId, SIMCONNECT_PERIOD period, SIMCONNECT_DATA_REQUEST_FLAG flags, uint interval, uint origin, uint limit)
         {
-            _simConnect?.RequestDataOnSimObjectType( requestId, DEFINITIONS.Struct1, 0, SIMCONNECT_SIMOBJECT_TYPE.USER);
+            _simConnect?.RequestDataOnSimObject(requestId, DEFINITIONS.PlaneInfo, objectId, period, flags, interval, origin, limit);
         }
 
         /// <inheritdoc />
-        public void UpdateData<T>(Enum id, T data)
+        public void RequestData(Enum requestId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER)
         {
-            _simConnect?.SetDataOnSimObject(id, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
+            _simConnect?.RequestDataOnSimObjectType( requestId, DEFINITIONS.PlaneInfo, radius, type);
+        }
+
+        /// <inheritdoc />
+        public void UpdateData<T>(Enum id, T data, uint objectId = 1)
+        {
+            _simConnect?.SetDataOnSimObject(id, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
         }
 
         /// <summary>
@@ -146,8 +211,15 @@ namespace CTrue.FsConnect
         /// <param name="duration"></param>
         public void SetText(string text, int duration)
         {
-            _simConnect.Text(SIMCONNECT_TEXT_TYPE.PRINT_BLACK, duration, DEFINITIONS.Struct1, text);
+            _simConnect.Text(SIMCONNECT_TEXT_TYPE.PRINT_BLACK, duration, DEFINITIONS.PlaneInfo, text);
         }
+
+        public void Pause(bool pause)
+        {
+            _simConnect.TransmitClientEvent(0, SimEvents.PauseSet, pause ? (uint)1 : (uint)0, GROUP_IDS.GROUP_1, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+        }
+
+        #region Event Handlers
 
         private void SimConnect_OnRecvOpen(SimConnect sender, SIMCONNECT_RECV_OPEN data)
         {
@@ -157,6 +229,20 @@ namespace CTrue.FsConnect
         private void SimConnect_OnRecvQuit(SimConnect sender, SIMCONNECT_RECV data)
         {
             Disconnect();
+        }
+
+        private void SimConnect_OnRecvEvent(SimConnect sender, SIMCONNECT_RECV_EVENT data)
+        {
+            if (data.uEventID == (uint)SimEvents.EVENT_AIRCRAFT_LOAD)
+                AircraftLoaded?.Invoke(this, EventArgs.Empty);
+            else if (data.uEventID == (uint)SimEvents.EVENT_FLIGHT_LOAD)
+                FlightLoaded?.Invoke(this, EventArgs.Empty);
+            else if (data.uEventID == (uint)SimEvents.EVENT_PAUSE)
+                PauseStateChanged?.Invoke(this, new PauseStateChangedEventArgs() { Paused = data.dwData == 1 });
+            else if (data.uEventID == (uint)SimEvents.EVENT_SIM)
+                SimStateChanged?.Invoke(this, new SimStateChangedEventArgs() { Running = data.dwData == 1 });
+            else if (data.uEventID == (uint)SimEvents.EVENT_CRASHED)
+                Crashed?.Invoke(this, EventArgs.Empty);
         }
 
         private void SimConnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
@@ -177,7 +263,18 @@ namespace CTrue.FsConnect
             FsDataReceived?.Invoke(this, new FsDataReceivedEventArgs()
             {
                 RequestId = data.dwRequestID,
-                Data = data.dwData[0]
+                Data = data.dwData[0],
+                ObjectID = data.dwObjectID
+            });
+        }
+
+        private void SimConnect_OnRecvEventObjectAddremoveEventHandler(SimConnect sender, SIMCONNECT_RECV_EVENT recEvent)
+        {
+            ObjectAddRemoveEventReceived?.Invoke(this, new ObjectAddRemoveEventReceivedEventArgs()
+            {
+                RequestId = recEvent.uEventID,
+                Data = recEvent.dwData,
+                ObjectID = recEvent.dwID
             });
         }
 
@@ -196,6 +293,8 @@ namespace CTrue.FsConnect
                 }
             }
         }
+
+        #endregion
 
         private void CreateSimConnectConfigFile(string hostName, uint port, SimConnectProtocol protocol)
         {

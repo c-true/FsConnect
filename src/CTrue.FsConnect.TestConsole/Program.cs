@@ -21,6 +21,8 @@ namespace CTrue.FsConnect.TestConsole
         private static double _deltaAltitude = 1000;
         private static double _deltaHeading = 10;
 
+        private static bool _paused = false;
+
         static void Main(string[] args)
         {
             CommandLine.Parser parser = new CommandLine.Parser(with => with.HelpWriter = null);
@@ -59,7 +61,18 @@ namespace CTrue.FsConnect.TestConsole
                 }
             
                 _fsConnect.FsDataReceived += HandleReceivedFsData;
-                
+                _fsConnect.ConnectionChanged += (sender, args) => { Console.WriteLine(_fsConnect.Connected ? "Connected to Flight Simulator" : "Disconnected from Flight Simulator" ); };
+                _fsConnect.AircraftLoaded += (sender, args) => { Console.WriteLine("Aircraft loaded"); };
+                _fsConnect.FlightLoaded += (sender, args) => { Console.WriteLine("Flight loaded"); };
+                _fsConnect.SimStateChanged += (sender, args) => { Console.WriteLine("Flight simulator sim state changed. Running = " + args.Running); };
+                _fsConnect.Crashed += (sender, args) => { Console.WriteLine("Aircraft crashed"); };
+                _fsConnect.PauseStateChanged += (sender, args) => 
+                { 
+                    Console.WriteLine("Flight simulator pause state changed. Paused = " + args.Paused);
+                    _paused = args.Paused;
+                };
+                _fsConnect.ObjectAddRemoveEventReceived += (sender, args) => { Console.WriteLine($"Object ID {args.ObjectID} added or removed"); };
+
                 Console.WriteLine("Initializing data definitions");
                 InitializeDataDefinitions(_fsConnect);
 
@@ -72,6 +85,7 @@ namespace CTrue.FsConnect.TestConsole
                 _keyHandlers.Add(ConsoleKey.E, RotateRight);
                 _keyHandlers.Add(ConsoleKey.R, IncreaseAltitude);
                 _keyHandlers.Add(ConsoleKey.F, DecreaseAltitude);
+                _keyHandlers.Add(ConsoleKey.L, PauseSimulator);
 
                 Console.WriteLine("Press any key to request data from Flight Simulator or ESC to quit.");
                 Console.WriteLine("Press WASD keys to move, Q and E to rotate, R and F to change altitude.");
@@ -109,6 +123,50 @@ namespace CTrue.FsConnect.TestConsole
             {
                 Console.WriteLine("An error occurred: " + e);
             }
+        }
+
+        private static void InitializeDataDefinitions(FsConnect fsConnect)
+        {
+            List<SimProperty> definition = new List<SimProperty>();
+
+            definition.Add(new SimProperty(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
+            definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneAltitudeAboveGround, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty("PLANE ALTITUDE", "Feet", SIMCONNECT_DATATYPE.FLOAT64)); // Example using known/new values
+            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.ZuluTime, FsUnit.Seconds, SIMCONNECT_DATATYPE.FLOAT64));
+
+            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
+        }
+
+        private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
+        {
+            try
+            {
+                if (e.RequestId == (uint)Requests.PlaneInfo)
+                {
+                    _planeInfoResponse = (PlaneInfoResponse)e.Data;
+
+                    Console.WriteLine($"Time: {_planeInfoResponse.AbsoluteTime}, Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg, Speed: {_planeInfoResponse.Speed:F0} kt");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Could not handle received FS data: " + ex);
+            }
+        }
+
+        private static void PollFlightSimulator()
+        {
+            _fsConnect.RequestData(Requests.PlaneInfo);
+        }
+
+        private static void PauseSimulator()
+        {
+            _paused = !_paused;
+            _fsConnect.Pause(_paused);
         }
 
         private static void IncreaseAltitude()
@@ -157,43 +215,6 @@ namespace CTrue.FsConnect.TestConsole
         {
             _planeInfoResponse.Latitude += _deltaLatitude;
             _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
-        }
-
-        private static void PollFlightSimulator()
-        {
-            _fsConnect.RequestData(Requests.PlaneInfo);
-        }
-
-        private static void InitializeDataDefinitions(FsConnect fsConnect)
-        {
-            List<SimProperty> definition = new List<SimProperty>();
-
-            definition.Add(new SimProperty(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
-            definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.PlaneAltitudeAboveGround, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("PLANE ALTITUDE", "Feet", SIMCONNECT_DATATYPE.FLOAT64)); // Example using known/new values
-            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
-
-            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
-        }
-
-        private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
-        {
-            try
-            {
-                if(e.RequestId == (uint)Requests.PlaneInfo)
-                {
-                    _planeInfoResponse = (PlaneInfoResponse)e.Data;
-
-                    Console.WriteLine($"Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg, Speed: {_planeInfoResponse.Speed:F0} kt");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Could not handle received FS data: " + ex);
-            }
         }
 
         static void DisplayHelp<T>(ParserResult<T> result, IEnumerable<Error> errs)

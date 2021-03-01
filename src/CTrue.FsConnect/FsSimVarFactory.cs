@@ -13,6 +13,8 @@ namespace CTrue.FsConnect
 		static private readonly string[] _simVarNames = new string[]
 		{
 			"NONE",
+			"ABSOLUTE TIME",
+			"ZULU TIME",
 			"ANGLE OF ATTACK INDICATOR",
 			"GUN AMMO",
 			"CANNON AMMO",

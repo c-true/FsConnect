@@ -14,5 +14,6 @@ namespace CTrue.FsConnect.TestConsole
         public double Altitude;
         public double Heading;
         public double Speed;
+        public double AbsoluteTime;
     };
 }

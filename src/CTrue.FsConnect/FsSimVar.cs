@@ -6,6 +6,8 @@ namespace CTrue.FsConnect
 	public enum FsSimVar
 	{
 		None,
+		AbsoluteTime,
+		ZuluTime,
 		AngleOfAttackIndicator,
 		GunAmmo,
 		CannonAmmo,
