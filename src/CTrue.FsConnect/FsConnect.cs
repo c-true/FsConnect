@@ -21,11 +21,6 @@ namespace CTrue.FsConnect
 
         #region Simconnect structures
 
-        private enum DEFINITIONS
-        {
-            PlaneInfo,
-        }
-
         private enum SimEvents
         {
             EVENT_AIRCRAFT_LOAD,
@@ -35,7 +30,8 @@ namespace CTrue.FsConnect
             EVENT_SIM,
             EVENT_CRASHED,
             ObjectAdded,
-            PauseSet
+            PauseSet,
+            SetText
         }
 
         enum GROUP_IDS
@@ -110,6 +106,7 @@ namespace CTrue.FsConnect
             _simConnect.OnRecvQuit += new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
 
             _simConnect.OnRecvException += new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
+            _simConnect.OnRecvSimobjectData += new SimConnect.RecvSimobjectDataEventHandler(SimConnect_RecvSimObjectData);
             _simConnect.OnRecvSimobjectDataBytype += new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
             _simConnect.OnRecvEventObjectAddremove += new SimConnect.RecvEventObjectAddremoveEventHandler(SimConnect_OnRecvEventObjectAddremoveEventHandler);
 
@@ -160,6 +157,7 @@ namespace CTrue.FsConnect
                 _simConnect.OnRecvOpen -= new SimConnect.RecvOpenEventHandler(SimConnect_OnRecvOpen);
                 _simConnect.OnRecvQuit -= new SimConnect.RecvQuitEventHandler(SimConnect_OnRecvQuit);
                 _simConnect.OnRecvException -= new SimConnect.RecvExceptionEventHandler(SimConnect_OnRecvException);
+                _simConnect.OnRecvSimobjectData -= new SimConnect.RecvSimobjectDataEventHandler(SimConnect_RecvSimObjectData);
                 _simConnect.OnRecvSimobjectDataBytype -= new SimConnect.RecvSimobjectDataBytypeEventHandler(SimConnect_OnRecvSimobjectDataBytype);
                 _simConnect.OnRecvEvent -= SimConnect_OnRecvEvent;
 
@@ -187,15 +185,16 @@ namespace CTrue.FsConnect
             _simConnect.RegisterDataDefineStruct<T>(id);
         }
 
-        public void RequestDataOnSimObject(Enum requestId, uint objectId, SIMCONNECT_PERIOD period, SIMCONNECT_DATA_REQUEST_FLAG flags, uint interval, uint origin, uint limit)
+        /// <inheritdoc />
+        public void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, SIMCONNECT_PERIOD period, SIMCONNECT_DATA_REQUEST_FLAG flags, uint interval, uint origin, uint limit)
         {
-            _simConnect?.RequestDataOnSimObject(requestId, DEFINITIONS.PlaneInfo, objectId, period, flags, interval, origin, limit);
+            _simConnect?.RequestDataOnSimObject(requestId, defineId, objectId, period, flags, interval, origin, limit);
         }
 
         /// <inheritdoc />
-        public void RequestData(Enum requestId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER)
+        public void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER)
         {
-            _simConnect?.RequestDataOnSimObjectType( requestId, DEFINITIONS.PlaneInfo, radius, type);
+            _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, type);
         }
 
         /// <inheritdoc />
@@ -211,7 +210,7 @@ namespace CTrue.FsConnect
         /// <param name="duration"></param>
         public void SetText(string text, int duration)
         {
-            _simConnect.Text(SIMCONNECT_TEXT_TYPE.PRINT_BLACK, duration, DEFINITIONS.PlaneInfo, text);
+            _simConnect.Text(SIMCONNECT_TEXT_TYPE.PRINT_BLACK, duration, SimEvents.SetText, text);
         }
 
         public void Pause(bool pause)
@@ -255,6 +254,16 @@ namespace CTrue.FsConnect
                 ExceptionDescription = eException.ToString(),
                 SendID = data.dwSendID,
                 Index = data.dwIndex
+            });
+        }
+
+        private void SimConnect_RecvSimObjectData(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA data)
+        {
+            FsDataReceived?.Invoke(this, new FsDataReceivedEventArgs()
+            {
+                RequestId = data.dwRequestID,
+                Data = data.dwData[0],
+                ObjectID = data.dwObjectID
             });
         }
 

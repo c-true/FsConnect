@@ -60,6 +60,7 @@ namespace CTrue.FsConnect.TestConsole
                     return;
                 }
             
+                // Register event handlers
                 _fsConnect.FsDataReceived += HandleReceivedFsData;
                 _fsConnect.ConnectionChanged += (sender, args) => { Console.WriteLine(_fsConnect.Connected ? "Connected to Flight Simulator" : "Disconnected from Flight Simulator" ); };
                 _fsConnect.AircraftLoaded += (sender, args) => { Console.WriteLine("Aircraft loaded"); };
@@ -71,29 +72,20 @@ namespace CTrue.FsConnect.TestConsole
                     Console.WriteLine("Flight simulator pause state changed. Paused = " + args.Paused);
                     _paused = args.Paused;
                 };
+
                 _fsConnect.ObjectAddRemoveEventReceived += (sender, args) => { Console.WriteLine($"Object ID {args.ObjectID} added or removed"); };
 
                 Console.WriteLine("Initializing data definitions");
                 InitializeDataDefinitions(_fsConnect);
+                InitializeKeyHandlers();
 
-                _keyHandlers.Add(ConsoleKey.P, PollFlightSimulator);
-                _keyHandlers.Add(ConsoleKey.W, MoveForward);
-                _keyHandlers.Add(ConsoleKey.S, MoveBackward);
-                _keyHandlers.Add(ConsoleKey.A, MoveLeft);
-                _keyHandlers.Add(ConsoleKey.D, MoveRight);
-                _keyHandlers.Add(ConsoleKey.Q, RotateLeft);
-                _keyHandlers.Add(ConsoleKey.E, RotateRight);
-                _keyHandlers.Add(ConsoleKey.R, IncreaseAltitude);
-                _keyHandlers.Add(ConsoleKey.F, DecreaseAltitude);
-                _keyHandlers.Add(ConsoleKey.L, PauseSimulator);
+                _fsConnect.SetText("Test Console connected", 2);
+                _fsConnect.RequestDataOnSimObject(Requests.ContineousPlaneInfo, Definitions.PlaneInfo, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, 0, 0, 0, 0);
 
                 Console.WriteLine("Press any key to request data from Flight Simulator or ESC to quit.");
                 Console.WriteLine("Press WASD keys to move, Q and E to rotate, R and F to change altitude.");
+
                 ConsoleKeyInfo cki = Console.ReadKey(true);
-
-                _fsConnect.SetText("Test Console connected", 2);
-
-                _fsConnect.RequestData(Requests.PlaneInfo);
 
                 while (cki.Key != ConsoleKey.Escape)
                 {
@@ -141,6 +133,20 @@ namespace CTrue.FsConnect.TestConsole
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
         }
 
+        private static void InitializeKeyHandlers()
+        {
+            _keyHandlers.Add(ConsoleKey.P, PollFlightSimulator);
+            _keyHandlers.Add(ConsoleKey.W, MoveForward);
+            _keyHandlers.Add(ConsoleKey.S, MoveBackward);
+            _keyHandlers.Add(ConsoleKey.A, MoveLeft);
+            _keyHandlers.Add(ConsoleKey.D, MoveRight);
+            _keyHandlers.Add(ConsoleKey.Q, RotateLeft);
+            _keyHandlers.Add(ConsoleKey.E, RotateRight);
+            _keyHandlers.Add(ConsoleKey.R, IncreaseAltitude);
+            _keyHandlers.Add(ConsoleKey.F, DecreaseAltitude);
+            _keyHandlers.Add(ConsoleKey.L, PauseSimulator);
+        }
+
         private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
         {
             try
@@ -149,7 +155,13 @@ namespace CTrue.FsConnect.TestConsole
                 {
                     _planeInfoResponse = (PlaneInfoResponse)e.Data;
 
-                    Console.WriteLine($"Time: {_planeInfoResponse.AbsoluteTime}, Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg, Speed: {_planeInfoResponse.Speed:F0} kt");
+                    Console.WriteLine($"Time: {_planeInfoResponse.AbsoluteTime:F1}, Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg, Speed: {_planeInfoResponse.Speed:F0} kt");
+                }
+                else if (e.RequestId == (uint)Requests.ContineousPlaneInfo)
+                {
+                    _planeInfoResponse = (PlaneInfoResponse)e.Data;
+
+                    Console.WriteLine($"Time: {_planeInfoResponse.AbsoluteTime:F1}, Pos: ({FsUtils.Rad2Deg(_planeInfoResponse.Latitude):F4}, {FsUtils.Rad2Deg(_planeInfoResponse.Longitude):F4}), Alt: {_planeInfoResponse.Altitude:F0} ft, Hdg: {FsUtils.Rad2Deg(_planeInfoResponse.Heading):F1} deg, Speed: {_planeInfoResponse.Speed:F0} kt");
                 }
             }
             catch (Exception ex)
@@ -160,7 +172,7 @@ namespace CTrue.FsConnect.TestConsole
 
         private static void PollFlightSimulator()
         {
-            _fsConnect.RequestData(Requests.PlaneInfo);
+            _fsConnect.RequestData(Requests.PlaneInfo, Definitions.PlaneInfo);
         }
 
         private static void PauseSimulator()

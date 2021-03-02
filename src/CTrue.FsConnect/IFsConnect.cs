@@ -120,18 +120,19 @@ namespace CTrue.FsConnect
         /// Requests data on a Sim object, periodically or/and when changed.
         /// </summary>
         /// <param name="requestId"></param>
+        /// <param name="defineId"></param>
         /// <param name="objectId"></param>
         /// <param name="period"></param>
         /// <param name="flags"></param>
         /// <param name="interval"></param>
         /// <param name="origin"></param>
         /// <param name="limit"></param>
-        void RequestDataOnSimObject(Enum requestId, uint objectId, SIMCONNECT_PERIOD period, SIMCONNECT_DATA_REQUEST_FLAG flags, uint interval, uint origin, uint limit);
+        void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, SIMCONNECT_PERIOD period, SIMCONNECT_DATA_REQUEST_FLAG flags, uint interval, uint origin, uint limit);
 
         /// <summary>
         /// Requests data from Flight Simulator.
         /// </summary>
-        void RequestData(Enum requestId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER);
+        void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER);
 
         /// <summary>
         /// Updated data.

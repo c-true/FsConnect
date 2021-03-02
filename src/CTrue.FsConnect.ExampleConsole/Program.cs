@@ -11,6 +11,11 @@ namespace FsConnectTest
         PlaneInfo = 0
     }
 
+    public enum DEFINITIONS
+    {
+        PlaneInfo,
+    }
+
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public struct PlaneInfoResponse
     {
@@ -68,7 +73,7 @@ namespace FsConnectTest
 
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
 
-            fsConnect.RequestData(Requests.PlaneInfo);
+            fsConnect.RequestData(Requests.PlaneInfo, DEFINITIONS.PlaneInfo);
             Console.ReadKey();
             fsConnect.Disconnect();
         }

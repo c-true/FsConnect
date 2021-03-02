@@ -2,7 +2,8 @@
 {
     public enum Requests
     {
-        PlaneInfo=0
+        PlaneInfo=0,
+        ContineousPlaneInfo=1
     }
 
     public enum Definitions
