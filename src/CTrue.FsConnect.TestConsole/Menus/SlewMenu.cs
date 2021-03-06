@@ -1,16 +1,20 @@
 ﻿using System;
+using System.Threading;
 
 namespace CTrue.FsConnect.TestConsole
 {
     public class SlewMenu : Menu
     {
+        private readonly AutoResetEvent _pollPlanePositionResetEvent = new AutoResetEvent(false);
+
         private PlaneInfoResponse _planeInfoResponse;
+        private PlanePosition _planePosition;
 
         private static double _deltaLatitude = 0.001;
         private static double _deltaLongitude = 0.001;
         private static double _deltaAltitude = 1000;
         private static double _deltaHeading = 10;
-    
+        
 
         public SlewMenu(IFsConnect fsConnect) : base(fsConnect)
         {
@@ -88,6 +92,8 @@ namespace CTrue.FsConnect.TestConsole
 
         protected override void TearDownMenu()
         {
+            base.TearDownMenu();
+
             _fsConnect.FsDataReceived -= HandleReceivedFsData;
         }
 
@@ -104,6 +110,12 @@ namespace CTrue.FsConnect.TestConsole
                     _planeInfoResponse = (PlaneInfoResponse)e.Data;
                     
                     Console.WriteLine(_planeInfoResponse.ToString());
+                }
+                else if (e.RequestId == (uint)Requests.PlanePosition)
+                {
+                    _planePosition = (PlanePosition)e.Data;
+
+                    _pollPlanePositionResetEvent.Set();
                 }
             }
             catch (Exception ex)
@@ -123,10 +135,17 @@ namespace CTrue.FsConnect.TestConsole
             return false;
         }
 
+        private void PollPlanePosition()
+        {
+            _fsConnect.RequestData(Requests.PlanePosition, Definitions.PlanePosition);
+            _pollPlanePositionResetEvent.WaitOne(1000);
+        }
+
         private bool IncreaseAltitude()
         {
-            _planeInfoResponse.Altitude += _deltaAltitude;
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+            PollPlanePosition();
+            _planePosition.Altitude += _deltaAltitude;
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
             PollFlightSimulator();
 
             return false;
@@ -134,8 +153,9 @@ namespace CTrue.FsConnect.TestConsole
 
         private bool DecreaseAltitude()
         {
-            _planeInfoResponse.Altitude -= _deltaAltitude;
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+            PollPlanePosition();
+            _planePosition.Altitude -= _deltaAltitude;
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
             PollFlightSimulator();
 
             return false;
@@ -143,8 +163,9 @@ namespace CTrue.FsConnect.TestConsole
 
         private bool RotateRight()
         {
-            _planeInfoResponse.Heading += FsUtils.Deg2Rad(_deltaHeading);
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+            PollPlanePosition();
+            _planePosition.Heading += FsUtils.Deg2Rad(_deltaHeading);
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
             PollFlightSimulator();
 
             return false;
@@ -152,8 +173,9 @@ namespace CTrue.FsConnect.TestConsole
 
         private bool RotateLeft()
         {
-            _planeInfoResponse.Heading -= FsUtils.Deg2Rad(_deltaHeading);
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+            PollPlanePosition();
+            _planePosition.Heading -= FsUtils.Deg2Rad(_deltaHeading);
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
             PollFlightSimulator();
 
             return false;
@@ -161,8 +183,9 @@ namespace CTrue.FsConnect.TestConsole
 
         private bool MoveRight()
         {
-            _planeInfoResponse.Longitude += _deltaLongitude;
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+            PollPlanePosition();
+            _planePosition.Longitude += _deltaLongitude;
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
             PollFlightSimulator();
 
             return false;
@@ -170,17 +193,18 @@ namespace CTrue.FsConnect.TestConsole
 
         private bool MoveLeft()
         {
-            _planeInfoResponse.Longitude -= _deltaLongitude;
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
-            PollFlightSimulator();
+            PollPlanePosition();
+            _planePosition.Longitude -= _deltaLongitude;
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
 
             return false;
         }
 
         private bool MoveBackward()
         {
-            _planeInfoResponse.Latitude -= _deltaLatitude;
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+            PollPlanePosition();
+            _planePosition.Latitude -= _deltaLatitude;
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
             PollFlightSimulator();
 
             return false;
@@ -188,8 +212,9 @@ namespace CTrue.FsConnect.TestConsole
 
         private bool MoveForward()
         {
-            _planeInfoResponse.Latitude += _deltaLatitude;
-            _fsConnect.UpdateData(Definitions.PlaneInfo, _planeInfoResponse);
+            PollPlanePosition();
+            _planePosition.Latitude += _deltaLatitude;
+            _fsConnect.UpdateData(Definitions.PlanePosition, _planePosition);
             PollFlightSimulator();
 
             return false;

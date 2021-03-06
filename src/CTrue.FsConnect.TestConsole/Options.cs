@@ -12,5 +12,8 @@ namespace CTrue.FsConnect.TestConsole
 
         [Option('i', "index", SetName = "config", HelpText = "Specifies the config index in SimConnect.cfg to use.")]
         public uint ConfigIndex { get; set; }
+
+        [Option('l', "loglevel", HelpText = "Specifies the log level.", Default = 3)]
+        public uint LogLevel { get; set; }
     }
 }

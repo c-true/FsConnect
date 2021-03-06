@@ -147,6 +147,10 @@ namespace CTrue.FsConnect
         /// <summary>
         /// Requests data from Flight Simulator.
         /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="defineId"></param>
+        /// <param name="radius">Radius in meters. Should be less that 2000000 (200km).</param>
+        /// <param name="type"></param>
         void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER);
 
         /// <summary>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace CTrue.FsConnect.TestConsole
 {
@@ -10,7 +9,7 @@ namespace CTrue.FsConnect.TestConsole
         protected readonly IFsConnect _fsConnect;
         protected Dictionary<ConsoleKey, MenuItem> _menuItems = new Dictionary<ConsoleKey, MenuItem>();
 
-        public Menu(IFsConnect fsConnect)
+        protected Menu(IFsConnect fsConnect)
         {
             _fsConnect = fsConnect;
         }
@@ -19,13 +18,18 @@ namespace CTrue.FsConnect.TestConsole
         {
             _menuItems.Clear();
 
-            List<MenuItem> menuItemsList = new List<MenuItem>();
-
             Add(new MenuItem()
             {
                 Key = ConsoleKey.Escape,
                 Description = "ESC - To parent menu",
                 Handler = NavigateToParentMenu
+            });
+
+            Add(new MenuItem()
+            {
+                Key = ConsoleKey.H,
+                Description = "H - Display help",
+                Handler = ShowHelp
             });
 
             Add(new MenuItem()
@@ -56,7 +60,7 @@ namespace CTrue.FsConnect.TestConsole
             SetUpMenu();
             ShowMenu();
 
-            bool navigateToParentMenu = false;
+            bool navigateToParentMenu;
 
             do
             {
@@ -72,6 +76,8 @@ namespace CTrue.FsConnect.TestConsole
 
         public bool HandleKey(ConsoleKeyInfo cki)
         {
+            if (!_menuItems.ContainsKey(cki.Key)) return false;
+
             return _menuItems[cki.Key].Handler.Invoke();
         }
 
@@ -94,6 +100,13 @@ namespace CTrue.FsConnect.TestConsole
         //
         // Handlers
         //
+
+        protected bool ShowHelp()
+        {
+            ShowMenu();
+
+            return false;
+        }
 
         protected bool Pause()
         {

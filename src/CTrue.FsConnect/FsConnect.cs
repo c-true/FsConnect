@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.IO;
 using System.Reflection;
 using System.Text;
 using System.Threading;
 using Microsoft.FlightSimulator.SimConnect;
-using System.Diagnostics;
+using Serilog;
 
 namespace CTrue.FsConnect
 {
     /// <inheritdoc />
     public class FsConnect : IFsConnect
     {
+        
         private SimConnect _simConnect = null;
 
         private EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
@@ -78,6 +78,7 @@ namespace CTrue.FsConnect
                 if (_connectionInfo.Connected != value)
                 {
                     _connectionInfo.Connected = value;
+                    
                     ConnectionChanged?.Invoke(this, EventArgs.Empty);
                 }
             }
@@ -209,6 +210,8 @@ namespace CTrue.FsConnect
         /// <inheritdoc />
         public void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER)
         {
+            // TODO: Investigate: If this is set to zero only information on the user aircraft will be returned, although this value is ignored if type is set to SIMCONNECT_SIMOBJECT_TYPE_USER. The errorSIMCONNECT_EXCEPTION_OUT_OF_BOUNDS will be returned if a radius is given and it exceeds the maximum allowed (200000 meters, or 200 Km).
+
             _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, type);
         }
 
@@ -242,6 +245,8 @@ namespace CTrue.FsConnect
 
         private void SimConnect_OnRecvOpen(SimConnect sender, SIMCONNECT_RECV_OPEN data)
         {
+            Log.Debug("OnRecvOpen (Size: {Size}, Version: {Version}, Id: {Id})", data.dwSize, data.dwVersion, data.dwID);
+
             _connectionInfo.ApplicationName = data.szApplicationName;
             _connectionInfo.ApplicationVersionMajor = data.dwApplicationVersionMajor;
             _connectionInfo.ApplicationVersionMinor = data.dwApplicationVersionMinor;
@@ -257,31 +262,52 @@ namespace CTrue.FsConnect
 
         private void SimConnect_OnRecvQuit(SimConnect sender, SIMCONNECT_RECV data)
         {
+            Log.Debug("OnRecvQuit (S: {Size}, V: {Version}, I: {Id})", data.dwSize, data.dwVersion, data.dwID);
             Disconnect();
         }
 
         private void SimConnect_OnRecvEvent(SimConnect sender, SIMCONNECT_RECV_EVENT data)
         {
+            Log.Debug("OnRecvEvent (S: {Size}, V: {Version}, I: {Id}) {GroupId}, {EventId}, {Data}", data.dwSize, data.dwVersion, data.dwID, data.uGroupID, data.uEventID, data.dwData);
+
             if (data.uEventID == (uint)SimEvents.EVENT_AIRCRAFT_LOAD)
+            {
+                Log.Debug("SysEvent: Aircraft loaded");
                 AircraftLoaded?.Invoke(this, EventArgs.Empty);
+            }
             else if (data.uEventID == (uint)SimEvents.EVENT_FLIGHT_LOAD)
+            {
+                Log.Debug("SysEvent: Flight loaded");
                 FlightLoaded?.Invoke(this, EventArgs.Empty);
-            else if (data.uEventID == (uint)SimEvents.EVENT_PAUSE)
-                PauseStateChanged?.Invoke(this, new PauseStateChangedEventArgs() { Paused = data.dwData == 1 });
+            }
             else if (data.uEventID == (uint)SimEvents.EVENT_SIM)
+            {
+                Log.Debug("SysEvent: Running: {Running}", data.dwData == 1);
                 SimStateChanged?.Invoke(this, new SimStateChangedEventArgs() { Running = data.dwData == 1 });
+            }
             else if (data.uEventID == (uint)SimEvents.EVENT_CRASHED)
+            {
+                Log.Debug("SysEvent: Crashed");
                 Crashed?.Invoke(this, EventArgs.Empty);
+            }
+            else if (data.uEventID == (uint)SimEvents.EVENT_PAUSE)
+            {
+                _paused = data.dwData == 1;
+                Log.Debug("ClientEvent: Paused: {Paused}", _paused);
+                PauseStateChanged?.Invoke(this, new PauseStateChangedEventArgs() { Paused = data.dwData == 1 });
+            }
         }
 
         private void SimConnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
         {
+            Log.Warning("OnRecvException ({Size}b/{Version}/{Id}) Exception: {Exception}, SendId: {SendId}, Index: {Index}", data.dwSize, data.dwVersion, data.dwID, ((FsException)data.dwException).ToString(), data.dwSendID, data.dwIndex);
+
             SIMCONNECT_EXCEPTION eException = (SIMCONNECT_EXCEPTION)data.dwException;
 
             FsError?.Invoke(this, new FsErrorEventArgs()
             {
-                Exception = data.dwException,
-                ExceptionDescription = eException.ToString(),
+                ExceptionCode = (FsException)data.dwException,
+                ExceptionDescription = ((FsException)data.dwException).ToString(),
                 SendID = data.dwSendID,
                 Index = data.dwIndex
             });
@@ -289,6 +315,8 @@ namespace CTrue.FsConnect
 
         private void SimConnect_RecvSimObjectData(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA data)
         {
+            Log.Debug("RecvSimObjectData (S: {Size}, V: {Version}, I: {Id}) RequestID: {RequestID}, ObjectID: {ObjectID}, DefineID: {DefineID}, Flags: {Flags},EntryNumber: {EntryNumber}, OutOf: {OutOf}, DefineCount: {DefineCount}, DataItems: {DataItems}", data.dwSize, data.dwVersion, data.dwID, data.dwRequestID, data.dwObjectID, data.dwDefineID, data.dwFlags, data.dwentrynumber, data.dwoutof, data.dwDefineCount, data.dwData.Length);
+
             FsDataReceived?.Invoke(this, new FsDataReceivedEventArgs()
             {
                 RequestId = data.dwRequestID,
@@ -299,6 +327,8 @@ namespace CTrue.FsConnect
 
         private void SimConnect_OnRecvSimobjectDataBytype(SimConnect sender, SIMCONNECT_RECV_SIMOBJECT_DATA_BYTYPE data)
         {
+            Log.Debug("RecvSimObjectData (S: {Size}, V: {Version}, I: {Id}) RequestID: {RequestID}, ObjectID: {ObjectID}, DefineID: {DefineID}, Flags: {Flags},EntryNumber: {EntryNumber}, OutOf: {OutOf}, DefineCount: {DefineCount}, DataItems: {DataItems}", data.dwSize, data.dwVersion, data.dwID, data.dwRequestID, data.dwObjectID, data.dwDefineID, data.dwFlags, data.dwentrynumber, data.dwoutof, data.dwDefineCount, data.dwData.Length);
+
             FsDataReceived?.Invoke(this, new FsDataReceivedEventArgs()
             {
                 RequestId = data.dwRequestID,
@@ -307,15 +337,19 @@ namespace CTrue.FsConnect
             });
         }
 
-        private void SimConnect_OnRecvEventObjectAddremoveEventHandler(SimConnect sender, SIMCONNECT_RECV_EVENT recEvent)
+        private void SimConnect_OnRecvEventObjectAddremoveEventHandler(SimConnect sender, SIMCONNECT_RECV_EVENT data)
         {
+            Log.Debug("OnRecvEventObjectAddremoveEventHandler ({Size}b/{Version}/{Id}) EventId: {EventId}, Data: {Data}, Id: {Id}", data.dwSize, data.dwVersion, data.dwID, data.uEventID, data.dwData, data.dwID);
+
             ObjectAddRemoveEventReceived?.Invoke(this, new ObjectAddRemoveEventReceivedEventArgs()
             {
-                RequestId = recEvent.uEventID,
-                Data = recEvent.dwData,
-                ObjectID = recEvent.dwID
+                RequestId = data.uEventID,
+                Data = data.dwData,
+                ObjectID = data.dwID
             });
         }
+
+        #endregion
 
         private void SimConnect_MessageReceiveThreadHandler()
         {
@@ -332,8 +366,6 @@ namespace CTrue.FsConnect
                 }
             }
         }
-
-        #endregion
 
         private void CreateSimConnectConfigFile(string hostName, uint port, SimConnectProtocol protocol)
         {

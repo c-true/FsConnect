@@ -18,6 +18,13 @@ namespace CTrue.FsConnect.TestConsole
                 Description = "0 - Slew",
                 Handler = NavigateToMenu<SlewMenu>
             });
+
+            Add(new MenuItem()
+            {
+                Key = ConsoleKey.D1,
+                Description = "1 - Poll Sim Objects",
+                Handler = NavigateToMenu<SimObjectsMenu>
+            });
         }
 
         protected override bool NavigateToParentMenu()

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
 using System.Threading;
 using CommandLine;
 using CommandLine.Text;
 using Microsoft.FlightSimulator.SimConnect;
+using Serilog;
+using Serilog.Core;
+using Serilog.Events;
 
 namespace CTrue.FsConnect.TestConsole
 {
@@ -13,23 +15,33 @@ namespace CTrue.FsConnect.TestConsole
     /// </summary>
     class Program
     {
-        private static FsConnect _fsConnect;
-        private static Dictionary<ConsoleKey, Action> _keyHandlers = new Dictionary<ConsoleKey, Action>();
-        private static PlaneInfoResponse _planeInfoResponse;
         private static readonly AutoResetEvent _connectedResetEvent = new AutoResetEvent(false);
+
+        private static FsConnect _fsConnect;
+        private static PlaneInfoResponse _planeInfoResponse;
+        private static LoggingLevelSwitch _levelSwitch = new LoggingLevelSwitch(LogEventLevel.Warning);
 
         static void Main(string[] args)
         {
-            CommandLine.Parser parser = new CommandLine.Parser(with => with.HelpWriter = null);
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.ControlledBy(_levelSwitch)
+                .WriteTo.Console()
+                .CreateLogger();
+
+            Parser parser = new Parser(with => with.HelpWriter = null);
             var parserResult = parser.ParseArguments<Options>(args);
 
             parserResult
-                .WithParsed<Options>(options => Run(options))
+                .WithParsed(Run)
                 .WithNotParsed(errs => DisplayHelp(parserResult, errs));
+
+            Log.CloseAndFlush();
         }
 
         private static void Run(Options commandLineOptions)
         {
+            _levelSwitch.MinimumLevel = (LogEventLevel)commandLineOptions.LogLevel;
+
             try
             {
                 _fsConnect = new FsConnect();
@@ -49,7 +61,7 @@ namespace CTrue.FsConnect.TestConsole
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("An error occured while connection to Microsoft Flight Simulator: " + e.Message);
+                    Console.WriteLine("An error occurred while connection to Microsoft Flight Simulator: " + e.Message);
                     return;
                 }
             
@@ -58,18 +70,6 @@ namespace CTrue.FsConnect.TestConsole
                 //
                 _fsConnect.FsDataReceived += HandleReceivedFsData;
                 _fsConnect.ConnectionChanged += OnFsConnectOnConnectionChanged;
-
-                // For diagnostic purposes
-                _fsConnect.AircraftLoaded += (sender, args) => { Console.WriteLine("Aircraft loaded"); };
-                _fsConnect.FlightLoaded += (sender, args) => { Console.WriteLine("Flight loaded"); };
-                _fsConnect.SimStateChanged += (sender, args) => { Console.WriteLine("Flight simulator sim state changed. Running = " + args.Running); };
-                _fsConnect.Crashed += (sender, args) => { Console.WriteLine("Aircraft crashed"); };
-                _fsConnect.PauseStateChanged += (sender, args) => 
-                { 
-                    Console.WriteLine("Flight simulator pause state changed. Paused = " + args.Paused);
-                };
-
-                _fsConnect.ObjectAddRemoveEventReceived += (sender, args) => { Console.WriteLine($"Object ID {args.ObjectID} added or removed"); };
 
                 //
                 // Wait for connection to Flight Simulator before using API
@@ -143,12 +143,20 @@ namespace CTrue.FsConnect.TestConsole
             definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.PlaneAltitudeAboveGround, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("PLANE ALTITUDE", "Feet", SIMCONNECT_DATATYPE.FLOAT64)); // Example using known/new values
-            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.ZuluTime, FsUnit.Seconds, SIMCONNECT_DATATYPE.FLOAT64));
 
             fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
+
+            definition = new List<SimProperty>();
+
+            definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
+            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
+
+            fsConnect.RegisterDataDefinition<PlanePosition>(Definitions.PlanePosition, definition);
         }
 
         private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
@@ -170,7 +178,7 @@ namespace CTrue.FsConnect.TestConsole
 
         static void DisplayHelp<T>(ParserResult<T> result, IEnumerable<Error> errs)
         {
-            HelpText helpText = null;
+            HelpText helpText;
             if (errs.IsVersion())  //check if error is version request
                 helpText = HelpText.AutoBuild(result);
             else
