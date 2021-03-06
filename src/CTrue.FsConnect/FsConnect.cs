@@ -210,8 +210,6 @@ namespace CTrue.FsConnect
         /// <inheritdoc />
         public void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER)
         {
-            // TODO: Investigate: If this is set to zero only information on the user aircraft will be returned, although this value is ignored if type is set to SIMCONNECT_SIMOBJECT_TYPE_USER. The errorSIMCONNECT_EXCEPTION_OUT_OF_BOUNDS will be returned if a radius is given and it exceeds the maximum allowed (200000 meters, or 200 Km).
-
             _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, type);
         }
 
@@ -220,7 +218,6 @@ namespace CTrue.FsConnect
         {
             _simConnect?.SetDataOnSimObject(id, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
         }
-
 
         /// <inheritdoc />
         public void SetText(string text, int duration)

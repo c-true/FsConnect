@@ -25,6 +25,13 @@ namespace CTrue.FsConnect.TestConsole
                 Description = "1 - Poll Sim Objects",
                 Handler = NavigateToMenu<SimObjectsMenu>
             });
+
+            Add(new MenuItem()
+            {
+                Key = ConsoleKey.D2,
+                Description = "2 - Aircraft information",
+                Handler = NavigateToMenu<AircraftMenu>
+            });
         }
 
         protected override bool NavigateToParentMenu()

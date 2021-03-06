@@ -40,7 +40,7 @@ namespace CTrue.FsConnect.TestConsole
 
         private static void Run(Options commandLineOptions)
         {
-            _levelSwitch.MinimumLevel = (LogEventLevel)commandLineOptions.LogLevel;
+            _levelSwitch.MinimumLevel = commandLineOptions.LogLevel;
 
             try
             {
@@ -68,7 +68,6 @@ namespace CTrue.FsConnect.TestConsole
                 //
                 // Register event handlers
                 //
-                _fsConnect.FsDataReceived += HandleReceivedFsData;
                 _fsConnect.ConnectionChanged += OnFsConnectOnConnectionChanged;
 
                 //
@@ -91,8 +90,6 @@ namespace CTrue.FsConnect.TestConsole
                 InitializeDataDefinitions(_fsConnect);
 
                 _fsConnect.SetText("Test Console connected", 2);
-
-                //_fsConnect.RequestDataOnSimObject(Requests.ContineousPlaneInfo, Definitions.PlaneInfo, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, 0, 0, 0, 0);
 
                 //
                 // Show menu
@@ -157,23 +154,6 @@ namespace CTrue.FsConnect.TestConsole
             definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
 
             fsConnect.RegisterDataDefinition<PlanePosition>(Definitions.PlanePosition, definition);
-        }
-
-        private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
-        {
-            try
-            {
-                if (e.RequestId == (uint) Requests.ContineousPlaneInfo)
-                {
-                    _planeInfoResponse = (PlaneInfoResponse) e.Data;
-
-                    Console.WriteLine(_planeInfoResponse.ToString());
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Could not handle received FS data: " + ex);
-            }
         }
 
         static void DisplayHelp<T>(ParserResult<T> result, IEnumerable<Error> errs)
