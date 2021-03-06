@@ -17,7 +17,8 @@ namespace CTrue.FsConnect
 
         private EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
         private Thread _simConnectReceiveThread = null;
-        private bool _connected;
+        private readonly FsConnectionInfo _connectionInfo = new FsConnectionInfo();
+        private bool _paused = false;
 
         #region Simconnect structures
 
@@ -40,23 +41,6 @@ namespace CTrue.FsConnect
         }
 
         #endregion
-
-        /// <inheritdoc />
-        public bool Connected
-        {
-            get => _connected;
-            private set
-            {
-                if (_connected != value)
-                {
-                    _connected = value;
-                    ConnectionChanged?.Invoke(this, EventArgs.Empty);
-                }
-            }
-        }
-
-        /// <inheritdoc />
-        public SimConnectFileLocation SimConnectFileLocation { get; set; } = SimConnectFileLocation.Local;
 
         /// <inheritdoc />
         public event EventHandler ConnectionChanged;
@@ -84,6 +68,28 @@ namespace CTrue.FsConnect
 
         /// <inheritdoc />
         public event EventHandler Crashed;
+
+        /// <inheritdoc />
+        public bool Connected
+        {
+            get => _connectionInfo.Connected;
+            private set
+            {
+                if (_connectionInfo.Connected != value)
+                {
+                    _connectionInfo.Connected = value;
+                    ConnectionChanged?.Invoke(this, EventArgs.Empty);
+                }
+            }
+        }
+
+        public FsConnectionInfo ConnectionInfo => _connectionInfo;
+
+        /// <inheritdoc />
+        public SimConnectFileLocation SimConnectFileLocation { get; set; } = SimConnectFileLocation.Local;
+
+        /// <inheritdoc />
+        public bool Paused => _paused;
 
         /// <inheritdoc />
         public void Connect(string applicationName, uint configIndex = 0)
@@ -170,6 +176,15 @@ namespace CTrue.FsConnect
             {
                 _simConnectReceiveThread = null;
                 _simConnect = null;
+
+                _connectionInfo.ApplicationName = "";
+                _connectionInfo.ApplicationVersionMajor = 0;
+                _connectionInfo.ApplicationVersionMinor = 0;
+                _connectionInfo.ApplicationBuildMajor = 0;
+                _connectionInfo.ApplicationBuildMinor = 0;
+                _connectionInfo.SimConnectBuildMajor = 0;
+                _connectionInfo.SimConnectBuildMinor = 0;
+
                 Connected = false;
             }
         }
@@ -203,25 +218,40 @@ namespace CTrue.FsConnect
             _simConnect?.SetDataOnSimObject(id, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="text"></param>
-        /// <param name="duration"></param>
+
+        /// <inheritdoc />
         public void SetText(string text, int duration)
         {
             _simConnect.Text(SIMCONNECT_TEXT_TYPE.PRINT_BLACK, duration, SimEvents.SetText, text);
         }
 
+        /// <inheritdoc />
+        public void Pause()
+        {
+            Pause(!_paused);
+        }
+
+        /// <inheritdoc />
         public void Pause(bool pause)
         {
             _simConnect.TransmitClientEvent(0, SimEvents.PauseSet, pause ? (uint)1 : (uint)0, GROUP_IDS.GROUP_1, SIMCONNECT_EVENT_FLAG.GROUPID_IS_PRIORITY);
+            _paused = true;
         }
 
         #region Event Handlers
 
         private void SimConnect_OnRecvOpen(SimConnect sender, SIMCONNECT_RECV_OPEN data)
         {
+            _connectionInfo.ApplicationName = data.szApplicationName;
+            _connectionInfo.ApplicationVersionMajor = data.dwApplicationVersionMajor;
+            _connectionInfo.ApplicationVersionMinor = data.dwApplicationVersionMinor;
+            _connectionInfo.ApplicationBuildMajor = data.dwApplicationBuildMajor;
+            _connectionInfo.ApplicationBuildMinor = data.dwApplicationBuildMinor;
+            _connectionInfo.SimConnectVersionMajor = data.dwSimConnectVersionMajor;
+            _connectionInfo.SimConnectVersionMinor = data.dwSimConnectVersionMinor;
+            _connectionInfo.SimConnectBuildMajor = data.dwSimConnectBuildMajor;
+            _connectionInfo.SimConnectBuildMinor = data.dwSimConnectBuildMinor;
+
             Connected = true;
         }
 

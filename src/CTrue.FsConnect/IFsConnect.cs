@@ -71,6 +71,16 @@ namespace CTrue.FsConnect
         SimConnectFileLocation SimConnectFileLocation { get; set; }
 
         /// <summary>
+        /// The <see cref="ConnectionInfo"/> contains key information about the connection to the flight simulator, such as connection status and version information.
+        /// </summary>
+        FsConnectionInfo ConnectionInfo { get; }
+
+        /// <summary>
+        /// Gets whether the Flight Simulator is paused.
+        /// </summary>
+        bool Paused { get; }
+
+        /// <summary>
         /// Connects to Flight Simulator using an existing SimConnect.cfg.
         /// </summary>
         /// <param name="applicationName">A name identifying this client to Flight Simulator.</param>
@@ -109,6 +119,11 @@ namespace CTrue.FsConnect
         /// <param name="text">The text to display.</param>
         /// <param name="duration">Duration to display text, in seconds.</param>
         void SetText(string text, int duration);
+
+        /// <summary>
+        /// Toggle the pause status of the Flight Simulator.
+        /// </summary>
+        void Pause();
 
         /// <summary>
         /// Pauses or unpauses the simulator.
