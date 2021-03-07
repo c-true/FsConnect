@@ -2,7 +2,7 @@
   "profiles": {
     "FsConnectTestConsole": {
       "commandName": "Project",
-      "commandLineArgs": "-h 192.168.1.174 -p 57490 -l Warning"
+      "commandLineArgs": "-h 192.168.1.174 -p 57490 -l Debug"
     }
   }
 }

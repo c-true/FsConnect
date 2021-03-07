@@ -35,13 +35,6 @@ namespace CTrue.FsConnect.TestConsole
             });
         }
 
-        protected override void TearDownMenu()
-        {
-            base.TearDownMenu();
-
-            _aircraftManager.Dispose();
-        }
-
         private bool PollAircraftInfoUpdates()
         {
             _planeInfo = _aircraftManager.Get();
@@ -59,6 +52,12 @@ namespace CTrue.FsConnect.TestConsole
             Console.WriteLine($"Automatic updates: {(_updatedEnabled ? "Enabled" : "Disabled")}");
 
             return false;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _aircraftManager.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

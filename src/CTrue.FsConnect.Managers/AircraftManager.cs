@@ -11,6 +11,19 @@ namespace CTrue.FsConnect.Managers
         Continuously
     }
 
+    public class AircraftInfoUpdatedEventArgs<T> : EventArgs
+    {
+        public T AircraftInfo { get; set; }
+    }
+
+    /// <summary>
+    /// The <see cref="AircraftManager{T}"/> is a simple way to request information about the user aircraft.
+    /// </summary>
+    /// <typeparam name="T">The type that represents the aircraft information that will be requested.</typeparam>
+    /// <remarks>
+    /// The type used to represent aircraft information must already be registered with SimConnect using <see cref="FsConnect"/>.
+    /// <see cref="FsConnect"/> must already be connected before using this manager.
+    /// </remarks>
     public class AircraftManager<T> : IDisposable where T : struct
     {
         private readonly AutoResetEvent _getResetEvent = new AutoResetEvent(false);
@@ -24,6 +37,11 @@ namespace CTrue.FsConnect.Managers
         private T _aircraftInfo;
         private RequestMethod _requestMethod = RequestMethod.Poll;
 
+        public EventHandler<AircraftInfoUpdatedEventArgs<T>> Updated;
+
+        /// <summary>
+        /// Gets or sets whether to poll the flight simulator manually, using the <see cref="Get"/> method, or getting automatic updates using the <see cref="Updated"/> event.
+        /// </summary>
         public RequestMethod RequestMethod
         {
             get => _requestMethod;
@@ -40,7 +58,12 @@ namespace CTrue.FsConnect.Managers
             }
         }
 
-
+        /// <summary>
+        /// Creates an instance of the <see cref="AircraftManager{T}"/> class.
+        /// </summary>
+        /// <param name="fsConnect"></param>
+        /// <param name="defineId">The definition used when registering the aircraft information structure.</param>
+        /// <param name="requestId">The request Id to use when requesting data using the manager.</param>
         public AircraftManager(IFsConnect fsConnect, Enum defineId, Enum requestId)
         {
             _fsConnect = fsConnect;
@@ -60,11 +83,16 @@ namespace CTrue.FsConnect.Managers
                 {
                     _aircraftInfo = (T)e.Data;
                     _getResetEvent.Set();
+
+                    Updated?.Invoke(this, new AircraftInfoUpdatedEventArgs<T>()
+                    {
+                        AircraftInfo = _aircraftInfo
+                    });
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                Console.WriteLine("Could not handle received FS data: " + ex);
+                // Ignored
             }
         }
 

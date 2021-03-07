@@ -4,8 +4,9 @@ using System.Linq;
 
 namespace CTrue.FsConnect.TestConsole
 {
-    public abstract class Menu
+    public abstract class Menu : IDisposable
     {
+        private bool _disposed = false;
         protected readonly IFsConnect _fsConnect;
         protected Dictionary<ConsoleKey, MenuItem> _menuItems = new Dictionary<ConsoleKey, MenuItem>();
 
@@ -91,6 +92,7 @@ namespace CTrue.FsConnect.TestConsole
             Menu subMenu = Activator.CreateInstance(typeof(T), _fsConnect) as Menu;
 
             subMenu?.Run();
+            subMenu?.Dispose();
 
             ShowMenu();
 
@@ -113,6 +115,28 @@ namespace CTrue.FsConnect.TestConsole
             _fsConnect.Pause();
 
             return false;
+        }
+
+        private void ReleaseUnmanagedResources()
+        {
+            // TODO release unmanaged resources here
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (_disposed) return;
+
+            if (disposing)
+            {
+            }
+
+            _disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 

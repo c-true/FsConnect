@@ -318,7 +318,11 @@ namespace CTrue.FsConnect
             {
                 RequestId = data.dwRequestID,
                 Data = data.dwData[0],
-                ObjectID = data.dwObjectID
+                ObjectID = data.dwObjectID,
+                EntryNumber = data.dwentrynumber,
+                OutOf = data.dwoutof,
+                DefineCount = data.dwDefineCount,
+                DataItemCount = data.dwData.Length
             });
         }
 
@@ -330,7 +334,11 @@ namespace CTrue.FsConnect
             {
                 RequestId = data.dwRequestID,
                 Data = data.dwData[0],
-                ObjectID = data.dwObjectID
+                ObjectID = data.dwObjectID,
+                EntryNumber = data.dwentrynumber,
+                OutOf = data.dwoutof,
+                DefineCount = data.dwDefineCount,
+                DataItemCount = data.dwData.Length
             });
         }
 
