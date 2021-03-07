@@ -123,10 +123,10 @@ namespace CTrue.FsConnect.TestConsole
             if (_fsConnect.Connected)
             {
                 Console.WriteLine($"Application: {_fsConnect.ConnectionInfo.ApplicationName}");
-                Console.WriteLine($"Application Version: {_fsConnect.ConnectionInfo.ApplicationVersionMajor}.{_fsConnect.ConnectionInfo.ApplicationVersionMajor}");
-                Console.WriteLine($"Application Build: {_fsConnect.ConnectionInfo.ApplicationBuildMajor}.{_fsConnect.ConnectionInfo.ApplicationBuildMinor}");
-                Console.WriteLine($"SimConnect Version: {_fsConnect.ConnectionInfo.SimConnectVersionMajor}.{_fsConnect.ConnectionInfo.SimConnectVersionMinor}");
-                Console.WriteLine($"SimConnect Build: {_fsConnect.ConnectionInfo.SimConnectBuildMajor}.{_fsConnect.ConnectionInfo.SimConnectBuildMinor}");
+                Console.WriteLine($"Application Version: {_fsConnect.ConnectionInfo.ApplicationVersion}");
+                Console.WriteLine($"Application Build: {_fsConnect.ConnectionInfo.ApplicationBuild}");
+                Console.WriteLine($"SimConnect Version: {_fsConnect.ConnectionInfo.SimConnectVersion}");
+                Console.WriteLine($"SimConnect Build: {_fsConnect.ConnectionInfo.SimConnectBuild}");
 
                 _connectedResetEvent.Set();
             }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using CTrue.FsConnect;
 using Microsoft.FlightSimulator.SimConnect;
@@ -80,9 +81,11 @@ namespace FsConnectTest
 
         private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
         {
+            if (e.Data == null || e.Data.Count == 0) return;
+
             if (e.RequestId == (uint)Requests.PlaneInfo)
             {
-                PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
+                PlaneInfoResponse r = (PlaneInfoResponse)e.Data.FirstOrDefault();
                 Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.Altitude:F1}ft {r.Heading:F1}deg {r.SpeedMpS:F0}m/s {r.SpeedKnots:F0}kt");
             }
         }

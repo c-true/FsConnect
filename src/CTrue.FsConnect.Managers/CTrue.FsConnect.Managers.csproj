@@ -1,7 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net45</TargetFramework>
+    <Company>C-True</Company>
+    <Product>Flight Simulator Connect Managers</Product>
+    <Copyright />
+    <Description>
+      Managers that supports common operations working with Microsoft Flightsimulator 2020, through the use of FsConnect.
+      Supports:
+        - Aircraft information
+        - Retriveing sim objects
+    </Description>
+    <Authors>C-True</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseFile/>
+    <PackageRequireLicenseAcceptance/>
+    <RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
+    <PackageTags>msfs flight-simulator simconnect</PackageTags>
+    <Version>1.2.0</Version>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageReleaseNotes></PackageReleaseNotes>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">

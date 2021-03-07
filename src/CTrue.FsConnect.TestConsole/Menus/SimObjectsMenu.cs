@@ -8,11 +8,14 @@ namespace CTrue.FsConnect.TestConsole
 {
     public class SimObjectsMenu : Menu
     {
-        private SimObjectManager<PlaneInfoResponse> _simObjectManager;
+        private readonly SimObjectManager<PlaneInfoResponse> _simObjectManager;
         private PlaneInfoResponse _planeInfoResponse;
 
         public SimObjectsMenu(IFsConnect fsConnect) : base(fsConnect)
         {
+            _simObjectManager = new SimObjectManager<PlaneInfoResponse>(_fsConnect, Definitions.PlaneInfo, Requests.SimObjects);
+            _simObjectManager.Radius = 100 * 1000;
+            _simObjectManager.SimObjectType = FsConnectSimobjectType.Aircraft;
         }
 
         protected override void SetUpMenu()
@@ -60,11 +63,6 @@ namespace CTrue.FsConnect.TestConsole
                 Description = "0 - Request Sim Objects (Experimental)",
                 Handler = RequestAndReturnSimObjects
             });
-
-
-            _simObjectManager = new SimObjectManager<PlaneInfoResponse>(_fsConnect, Definitions.PlaneInfo, Requests.SimObjects);
-            _simObjectManager.Radius = 100 * 1000;
-            _simObjectManager.SimObjectType = SIMCONNECT_SIMOBJECT_TYPE.AIRCRAFT;
         }
 
         private bool RequestSimObjects()

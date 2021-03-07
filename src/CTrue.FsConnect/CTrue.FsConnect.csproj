@@ -13,11 +13,14 @@ Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
     <PackageTags>msfs flight-simulator simconnect</PackageTags>
-    <Version>1.1.2</Version>
+    <Version>1.2.0</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageReleaseNotes>Simple support for some system events</PackageReleaseNotes>
-    <AssemblyVersion>1.1.2.0</AssemblyVersion>
-    <FileVersion>1.1.2.0</FileVersion>
+    <PackageReleaseNotes>
+      Simple support for some system events
+      Request information about Sim objects
+    </PackageReleaseNotes>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -37,7 +40,7 @@ Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0
   <ItemGroup>
     <None Include="..\Dependencies\SimConnect\build\simconnect.dll" Visible="false" Pack="true" PackagePath="build" />
     <None Include="..\Dependencies\SimConnect\build\CTrue.FsConnect.targets" Visible="false" Pack="true" PackagePath="build" />
-    <None Include="..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net40" />
+    <None Include="..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net45" />
     <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
   </ItemGroup>
 

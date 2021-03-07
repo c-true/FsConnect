@@ -17,7 +17,7 @@ namespace CTrue.FsConnect.Managers
         /// </summary>
         uint Radius { get; set; }
 
-        SIMCONNECT_SIMOBJECT_TYPE SimObjectType { get; set; }
+        FsConnectSimobjectType SimObjectType { get; set; }
 
         /// <summary>
         /// Gets the current list of known Sim Objects.
@@ -62,7 +62,7 @@ namespace CTrue.FsConnect.Managers
         /// </summary>
         public uint Radius { get; set; } = 1000;
 
-        public SIMCONNECT_SIMOBJECT_TYPE SimObjectType { get; set; } = SIMCONNECT_SIMOBJECT_TYPE.ALL;
+        public FsConnectSimobjectType SimObjectType { get; set; } = FsConnectSimobjectType.All;
 
         public SimObjectManager(IFsConnect fsConnect, Enum defineId, Enum requestId)
         {
@@ -111,18 +111,20 @@ namespace CTrue.FsConnect.Managers
         {
             try
             {
+                if (e.Data == null || e.Data.Count == 0) throw new Exception("No data returned");
+
                 if (e.RequestId == _requestIdUInt)
                 {
-                    _simObjects[e.ObjectID] = (T) e.Data;
+                    _simObjects[e.ObjectID] = (T) e.Data.FirstOrDefault();
 
                     // Set reset event when all items have been returned.
                     if (e.EntryNumber == e.OutOf)
                         _getResetEvent.Set();
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // Ignored
+                Console.WriteLine("Could not handle received FS data: " + ex);
             }
         }
 

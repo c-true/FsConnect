@@ -142,7 +142,7 @@ namespace CTrue.FsConnect
         /// <param name="interval"></param>
         /// <param name="origin"></param>
         /// <param name="limit"></param>
-        void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, SIMCONNECT_PERIOD period, SIMCONNECT_DATA_REQUEST_FLAG flags, uint interval, uint origin, uint limit);
+        void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit);
 
         /// <summary>
         /// Requests data from Flight Simulator.
@@ -151,7 +151,7 @@ namespace CTrue.FsConnect
         /// <param name="defineId"></param>
         /// <param name="radius">Radius in meters. Should be less that 2000000 (200km).</param>
         /// <param name="type"></param>
-        void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER);
+        void RequestData(Enum requestId, Enum defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User);
 
         /// <summary>
         /// Updated data.

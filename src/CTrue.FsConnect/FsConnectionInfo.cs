@@ -9,13 +9,9 @@ namespace CTrue.FsConnect
     {
         public bool Connected { get; set; }
         public string ApplicationName { get; internal set; } = "";
-        public uint ApplicationVersionMajor { get; internal set; }
-        public uint ApplicationVersionMinor { get; internal set; }
-        public uint ApplicationBuildMajor { get; internal set; }
-        public uint ApplicationBuildMinor { get; internal set; }
-        public uint SimConnectVersionMajor { get; internal set; }
-        public uint SimConnectVersionMinor { get; internal set; }
-        public uint SimConnectBuildMajor { get; internal set; }
-        public uint SimConnectBuildMinor { get; internal set; }
+        public string ApplicationVersion { get; internal set; }
+        public string ApplicationBuild { get; internal set; }
+        public string SimConnectVersion { get; internal set; }
+        public string SimConnectBuild { get; internal set; }
     }
 }

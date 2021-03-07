@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading;
@@ -179,12 +180,9 @@ namespace CTrue.FsConnect
                 _simConnect = null;
 
                 _connectionInfo.ApplicationName = "";
-                _connectionInfo.ApplicationVersionMajor = 0;
-                _connectionInfo.ApplicationVersionMinor = 0;
-                _connectionInfo.ApplicationBuildMajor = 0;
-                _connectionInfo.ApplicationBuildMinor = 0;
-                _connectionInfo.SimConnectBuildMajor = 0;
-                _connectionInfo.SimConnectBuildMinor = 0;
+                _connectionInfo.ApplicationVersion = "";
+                _connectionInfo.ApplicationBuild = "";
+                _connectionInfo.SimConnectBuild = "";
 
                 Connected = false;
             }
@@ -202,15 +200,15 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, SIMCONNECT_PERIOD period, SIMCONNECT_DATA_REQUEST_FLAG flags, uint interval, uint origin, uint limit)
+        public void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit)
         {
-            _simConnect?.RequestDataOnSimObject(requestId, defineId, objectId, period, flags, interval, origin, limit);
+            _simConnect?.RequestDataOnSimObject(requestId, defineId, objectId, (SIMCONNECT_PERIOD)period, (SIMCONNECT_DATA_REQUEST_FLAG)flags, interval, origin, limit);
         }
 
         /// <inheritdoc />
-        public void RequestData(Enum requestId, Enum defineId, uint radius = 0, SIMCONNECT_SIMOBJECT_TYPE type = SIMCONNECT_SIMOBJECT_TYPE.USER)
+        public void RequestData(Enum requestId, Enum defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
-            _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, type);
+            _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
         /// <inheritdoc />
@@ -245,14 +243,10 @@ namespace CTrue.FsConnect
             Log.Debug("OnRecvOpen (Size: {Size}, Version: {Version}, Id: {Id})", data.dwSize, data.dwVersion, data.dwID);
 
             _connectionInfo.ApplicationName = data.szApplicationName;
-            _connectionInfo.ApplicationVersionMajor = data.dwApplicationVersionMajor;
-            _connectionInfo.ApplicationVersionMinor = data.dwApplicationVersionMinor;
-            _connectionInfo.ApplicationBuildMajor = data.dwApplicationBuildMajor;
-            _connectionInfo.ApplicationBuildMinor = data.dwApplicationBuildMinor;
-            _connectionInfo.SimConnectVersionMajor = data.dwSimConnectVersionMajor;
-            _connectionInfo.SimConnectVersionMinor = data.dwSimConnectVersionMinor;
-            _connectionInfo.SimConnectBuildMajor = data.dwSimConnectBuildMajor;
-            _connectionInfo.SimConnectBuildMinor = data.dwSimConnectBuildMinor;
+            _connectionInfo.ApplicationVersion = $"{data.dwApplicationVersionMajor}.{data.dwApplicationVersionMinor}";
+            _connectionInfo.ApplicationBuild = $"{data.dwApplicationBuildMajor}.{data.dwApplicationBuildMinor}";
+            _connectionInfo.SimConnectVersion = $"{data.dwSimConnectVersionMajor}.{data.dwSimConnectVersionMinor}";
+            _connectionInfo.SimConnectBuild = $"{data.dwSimConnectBuildMajor}.{data.dwSimConnectBuildMinor}";
 
             Connected = true;
         }
@@ -317,8 +311,10 @@ namespace CTrue.FsConnect
             FsDataReceived?.Invoke(this, new FsDataReceivedEventArgs()
             {
                 RequestId = data.dwRequestID,
-                Data = data.dwData[0],
                 ObjectID = data.dwObjectID,
+                DefineId = data.dwDefineID,
+                Flags = data.dwFlags,
+                Data = data.dwData.ToList(),
                 EntryNumber = data.dwentrynumber,
                 OutOf = data.dwoutof,
                 DefineCount = data.dwDefineCount,
@@ -333,8 +329,10 @@ namespace CTrue.FsConnect
             FsDataReceived?.Invoke(this, new FsDataReceivedEventArgs()
             {
                 RequestId = data.dwRequestID,
-                Data = data.dwData[0],
                 ObjectID = data.dwObjectID,
+                DefineId = data.dwDefineID,
+                Flags = data.dwFlags,
+                Data = data.dwData.ToList(),
                 EntryNumber = data.dwentrynumber,
                 OutOf = data.dwoutof,
                 DefineCount = data.dwDefineCount,

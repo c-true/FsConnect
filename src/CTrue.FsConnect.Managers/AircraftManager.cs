@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using Microsoft.FlightSimulator.SimConnect;
 
@@ -106,13 +107,13 @@ namespace CTrue.FsConnect.Managers
 
         private void Start()
         {
-            _fsConnect.RequestDataOnSimObject(_requestId, _aircraftInfoDefinitionId, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.SECOND, 0,
+            _fsConnect.RequestDataOnSimObject(_requestId, _aircraftInfoDefinitionId, SimConnect.SIMCONNECT_OBJECT_ID_USER, FsConnectPeriod.Second, 0,
                 0, 0, 0);
         }
 
         private void Stop()
         {
-            _fsConnect.RequestDataOnSimObject(_requestId, _aircraftInfoDefinitionId, SimConnect.SIMCONNECT_OBJECT_ID_USER, SIMCONNECT_PERIOD.NEVER, 0,
+            _fsConnect.RequestDataOnSimObject(_requestId, _aircraftInfoDefinitionId, SimConnect.SIMCONNECT_OBJECT_ID_USER, FsConnectPeriod.Never, 0,
                 0, 0, 0);
         }
 
@@ -120,9 +121,11 @@ namespace CTrue.FsConnect.Managers
         {
             try
             {
+                if (e.Data == null || e.Data.Count == 0) throw new Exception("No data returned");
+
                 if (e.RequestId == _requestIdUInt)
                 {
-                    _aircraftInfo = (T)e.Data;
+                    _aircraftInfo = (T)e.Data.FirstOrDefault();
                     _getResetEvent.Set();
 
                     Updated?.Invoke(this, new AircraftInfoUpdatedEventArgs<T>()
@@ -131,9 +134,9 @@ namespace CTrue.FsConnect.Managers
                     });
                 }
             }
-            catch
+            catch (Exception ex)
             {
-                // Ignored
+                Console.WriteLine("Could not handle received FS data: " + ex);
             }
         }
        

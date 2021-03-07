@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 using System.Threading;
 
 namespace CTrue.FsConnect.TestConsole
@@ -105,15 +107,17 @@ namespace CTrue.FsConnect.TestConsole
         {
             try
             {
+                if (e.Data == null || e.Data.Count == 0) throw new Exception("No data returned");
+
                 if (e.RequestId == (uint)Requests.PlaneInfo)
                 {
-                    _planeInfoResponse = (PlaneInfoResponse)e.Data;
+                    _planeInfoResponse = (PlaneInfoResponse)e.Data.FirstOrDefault();
                     
                     Console.WriteLine(_planeInfoResponse.ToString());
                 }
                 else if (e.RequestId == (uint)Requests.PlanePosition)
                 {
-                    _planePosition = (PlanePosition)e.Data;
+                    _planePosition = (PlanePosition)e.Data.FirstOrDefault();
 
                     _pollPlanePositionResetEvent.Set();
                 }

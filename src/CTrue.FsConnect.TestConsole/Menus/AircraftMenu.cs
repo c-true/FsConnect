@@ -8,7 +8,7 @@ namespace CTrue.FsConnect.TestConsole
     {
         private PlaneInfoResponse _planeInfo;
         private bool _updatedEnabled;
-        private AircraftManager<PlaneInfoResponse> _aircraftManager;
+        private readonly AircraftManager<PlaneInfoResponse> _aircraftManager;
 
         public AircraftMenu(IFsConnect fsConnect) : base(fsConnect)
         {
@@ -40,7 +40,7 @@ namespace CTrue.FsConnect.TestConsole
         private bool PollAircraftInfoUpdates()
         {
             _planeInfo = _aircraftManager.Get();
-            Console.WriteLine(_planeInfo.ToString());
+            // The Update event handlers will do the logging.
 
             return false;
         }
