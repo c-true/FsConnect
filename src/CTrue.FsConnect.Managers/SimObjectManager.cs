@@ -10,7 +10,42 @@ namespace CTrue.FsConnect.Managers
     /// The <see cref="SimObjectManager{T}"/> is a simple way to request information about Sim Objects in Microsoft Flight Simulator
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class SimObjectManager<T> : IDisposable where T : struct
+    public interface ISimObjectManager<T> : IDisposable where T : struct
+    {
+        /// <summary>
+        /// Gets or sets the radius, in meters relative to the user position, to get Sim Objects.
+        /// </summary>
+        uint Radius { get; set; }
+
+        SIMCONNECT_SIMOBJECT_TYPE SimObjectType { get; set; }
+
+        /// <summary>
+        /// Gets the current list of known Sim Objects.
+        /// </summary>
+        /// <returns></returns>
+        List<T> Get();
+
+        /// <summary>
+        /// Gets the current list of known Sim Objects by waiting for all items before returning.
+        /// </summary>
+        /// <returns>A list of sim objects.</returns>
+        /// <remarks>Note: The current sim objects list is cleared.</remarks>
+        List<T> GetWithRequest();
+
+        /// <summary>
+        /// Starts an asynchronous request for Sim Objects.
+        /// </summary>
+        void Request();
+
+        /// <summary>
+        /// Clears the list of known Sim Objects.
+        /// </summary>
+        void Clear();
+    }
+
+
+    /// <inheritdoc />
+    public class SimObjectManager<T> : ISimObjectManager<T> where T : struct
     {
         private readonly AutoResetEvent _getResetEvent = new AutoResetEvent(false);
         private bool _disposed;
@@ -40,20 +75,13 @@ namespace CTrue.FsConnect.Managers
             _requestIdUInt = Convert.ToUInt32(requestId);
         }
 
-        /// <summary>
-        /// Gets the current list of known Sim Objects.
-        /// </summary>
-        /// <returns></returns>
+        /// <inheritdoc />
         public List<T> Get()
         {
             return _simObjects.Values.ToList();
         }
 
-        /// <summary>
-        /// Gets the current list of known Sim Objects by waiting for all items before returning.
-        /// </summary>
-        /// <returns>A list of sim objects.</returns>
-        /// <remarks>Note: The current sim objects list is cleared.</remarks>
+        /// <inheritdoc />
         public List<T> GetWithRequest()
         {
             Clear();
@@ -65,12 +93,16 @@ namespace CTrue.FsConnect.Managers
             return _simObjects.Values.ToList();
         }
 
-        /// <summary>
-        /// Starts an asynchronous request for Sim Objects.
-        /// </summary>
+        /// <inheritdoc />
         public void Request()
         {
             _fsConnect.RequestData(_requestId, _definitionId, Radius, SimObjectType);
+        }
+
+        /// <inheritdoc />
+        public void Clear()
+        {
+            _simObjects.Clear();
         }
 
         public void Dispose() => Dispose(true);
@@ -107,11 +139,6 @@ namespace CTrue.FsConnect.Managers
             }
 
             _disposed = true;
-        }
-
-        public void Clear()
-        {
-            _simObjects.Clear();
         }
     }
 }

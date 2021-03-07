@@ -14,6 +14,8 @@ namespace CTrue.FsConnect.TestConsole
         {
             _aircraftManager =
                 new AircraftManager<PlaneInfoResponse>(fsConnect, Definitions.PlaneInfo, Requests.AircraftManager);
+
+            _aircraftManager.Updated += (sender, args) => Console.WriteLine(args.AircraftInfo.ToString());
         }
 
         protected override void SetUpMenu()
