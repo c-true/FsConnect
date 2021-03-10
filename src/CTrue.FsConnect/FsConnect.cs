@@ -32,6 +32,7 @@ namespace CTrue.FsConnect
             EVENT_SIM,
             EVENT_CRASHED,
             ObjectAdded,
+            ObjectRemoved,
             PauseSet,
             SetText
         }
@@ -44,7 +45,7 @@ namespace CTrue.FsConnect
         #endregion
 
         /// <inheritdoc />
-        public event EventHandler ConnectionChanged;
+        public event EventHandler<bool> ConnectionChanged;
 
         /// <inheritdoc />
         public event EventHandler<FsDataReceivedEventArgs> FsDataReceived;
@@ -80,7 +81,7 @@ namespace CTrue.FsConnect
                 {
                     _connectionInfo.Connected = value;
                     
-                    ConnectionChanged?.Invoke(this, EventArgs.Empty);
+                    ConnectionChanged?.Invoke(this, value);
                 }
             }
         }
@@ -128,6 +129,7 @@ namespace CTrue.FsConnect
             _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_SIM, "Sim");
             _simConnect.SubscribeToSystemEvent(SimEvents.EVENT_CRASHED, "Crashed");
             _simConnect.SubscribeToSystemEvent(SimEvents.ObjectAdded, "ObjectAdded");
+            _simConnect.SubscribeToSystemEvent(SimEvents.ObjectRemoved, "ObjectRemoved");
 
             // Client events
             _simConnect.MapClientEventToSimEvent(SimEvents.PauseSet, "PAUSE_SET");
@@ -342,13 +344,15 @@ namespace CTrue.FsConnect
 
         private void SimConnect_OnRecvEventObjectAddremoveEventHandler(SimConnect sender, SIMCONNECT_RECV_EVENT data)
         {
-            Log.Debug("OnRecvEventObjectAddremoveEventHandler ({Size}b/{Version}/{Id}) EventId: {EventId}, Data: {Data}, Id: {Id}", data.dwSize, data.dwVersion, data.dwID, data.uEventID, data.dwData, data.dwID);
+            SIMCONNECT_RECV_EVENT_OBJECT_ADDREMOVE eventData = (SIMCONNECT_RECV_EVENT_OBJECT_ADDREMOVE)data;
+            Log.Debug("OnRecvEventObjectAddremoveEventHandler ({Size}b/{Version}/{Id}) EventId: {EventId}, Added: {Added}, ObjType: {ObjType}, ObjId: {ObjId}", data.dwSize, data.dwVersion, data.dwID, data.uEventID, data.uEventID == (uint)SimEvents.ObjectAdded, eventData.eObjType, data.dwData);
 
             ObjectAddRemoveEventReceived?.Invoke(this, new ObjectAddRemoveEventReceivedEventArgs()
             {
-                RequestId = data.uEventID,
+                Added = data.uEventID == (uint)SimEvents.ObjectAdded,
                 Data = data.dwData,
-                ObjectID = data.dwID
+                ObjectType = eventData.eObjType,
+                ObjectID = data.dwData
             });
         }
 

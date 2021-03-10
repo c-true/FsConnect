@@ -116,7 +116,7 @@ namespace CTrue.FsConnect.TestConsole
             }
         }
 
-        private static void OnFsConnectOnConnectionChanged(object sender, EventArgs args)
+        private static void OnFsConnectOnConnectionChanged(object sender, bool args)
         {
             Console.WriteLine(_fsConnect.Connected ? "Connected to Flight Simulator" : "Disconnected from Flight Simulator");
 

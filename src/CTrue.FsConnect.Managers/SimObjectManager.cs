@@ -17,13 +17,29 @@ namespace CTrue.FsConnect.Managers
         /// </summary>
         uint Radius { get; set; }
 
+        /// <summary>
+        /// Gets or sets the type of Sim Object to get from flight simulator.
+        /// </summary>
         FsConnectSimobjectType SimObjectType { get; set; }
+
+        /// <summary>
+        /// Gets a Sim Object by its Object Id.
+        /// </summary>
+        /// <param name="objectId"></param>
+        /// <returns></returns>
+        T GetById(uint objectId);
+        
+        /// <summary>
+        /// Gets a dictionary of Sim Objects, containing the Object Id and instance.
+        /// </summary>
+        /// <returns></returns>
+        Dictionary<uint, T> GetDictionary();
 
         /// <summary>
         /// Gets the current list of known Sim Objects.
         /// </summary>
         /// <returns></returns>
-        List<T> Get();
+        List<T> GetList();
 
         /// <summary>
         /// Gets the current list of known Sim Objects by waiting for all items before returning.
@@ -64,6 +80,12 @@ namespace CTrue.FsConnect.Managers
 
         public FsConnectSimobjectType SimObjectType { get; set; } = FsConnectSimobjectType.All;
 
+        /// <summary>
+        /// Creates a <see cref="SimObjectManager{T}"/> instance.
+        /// </summary>
+        /// <param name="fsConnect"></param>
+        /// <param name="defineId"></param>
+        /// <param name="requestId"></param>
         public SimObjectManager(IFsConnect fsConnect, Enum defineId, Enum requestId)
         {
             _fsConnect = fsConnect;
@@ -76,9 +98,23 @@ namespace CTrue.FsConnect.Managers
         }
 
         /// <inheritdoc />
-        public List<T> Get()
+        public T GetById(uint objectId)
+        {
+            if (!_simObjects.ContainsKey(objectId)) return default(T);
+
+            return _simObjects[objectId];
+        }
+
+        /// <inheritdoc />
+        public List<T> GetList()
         {
             return _simObjects.Values.ToList();
+        }
+
+        /// <inheritdoc />
+        public Dictionary<uint, T> GetDictionary()
+        {
+            return _simObjects;
         }
 
         /// <inheritdoc />

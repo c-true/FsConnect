@@ -15,7 +15,7 @@ namespace CTrue.FsConnect
         /// <summary>
         /// The <see cref="ConnectionChanged"/> event is raised when the connection status to Flight Simulator has changed.
         /// </summary>
-        event EventHandler ConnectionChanged;
+        event EventHandler<bool> ConnectionChanged;
 
         /// <summary>
         /// The <see cref="FsDataReceived"/> event is raised when data has been received from Flight Simulator.

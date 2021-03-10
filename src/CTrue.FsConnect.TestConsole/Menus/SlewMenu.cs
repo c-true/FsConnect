@@ -9,6 +9,7 @@ namespace CTrue.FsConnect.TestConsole
     {
         private readonly AutoResetEvent _pollPlanePositionResetEvent = new AutoResetEvent(false);
 
+
         private PlaneInfoResponse _planeInfoResponse;
         private PlanePosition _planePosition;
 

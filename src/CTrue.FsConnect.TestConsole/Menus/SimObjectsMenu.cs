@@ -84,7 +84,7 @@ namespace CTrue.FsConnect.TestConsole
         {
             try
             {
-                List<PlaneInfoResponse> simObjects = _simObjectManager.Get();
+                List<PlaneInfoResponse> simObjects = _simObjectManager.GetList();
 
                 ListSimObjects(simObjects);
             }
