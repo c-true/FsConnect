@@ -8,6 +8,8 @@ namespace CTrue.FsConnect.TestConsole
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public String Title;
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+        public String Category;
         public double Latitude;
         public double Longitude;
         public double AltitudeAboveGround;
@@ -17,7 +19,7 @@ namespace CTrue.FsConnect.TestConsole
 
         public override string ToString()
         {
-            return $"Title: {Title}, Pos: ({FsUtils.Rad2Deg(Latitude):F4}, {FsUtils.Rad2Deg(Longitude):F4}), Alt: {Altitude:F0} ft, Hdg: {Heading:F1} deg, Speed: {Speed:F0} kt";
+            return $"Title: {Title}, Category: {Category}, Pos: ({FsUtils.Rad2Deg(Latitude):F4}, {FsUtils.Rad2Deg(Longitude):F4}), Alt: {Altitude:F0} ft, Hdg: {Heading:F1} deg, Speed: {Speed:F0} kt";
 
         }
     };

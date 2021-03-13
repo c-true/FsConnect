@@ -19,6 +19,17 @@ https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SD
 * NuGet package handles deployment of native binaries, just add reference to the package.
 * Supports enums for all known simulation variables and units.
 
+## Roadmap
+
+* Development of the FsConnect libary is first and foremost to have fun and create simple utilities and to better understand the posibilities of interfacing with Microsoft Flight Simulator.
+* FsConnect should provide a better developer experience than both the native SimConnect and the managed Microsoft.FlightSimulator.SimConnect. This may hide important features in these APIs, so please raise an issue in such cases.
+* FsConnect should hopefully be better documented as a starting point for new developers.
+
+More specific:
+* Establish parity on the most important SimConnect API features.
+* Work with hiding the 'ugly' details of defining data definitions, through mechanisms such as reflection. 
+* Investigate if a purely .NET Core/5 version is possible
+
 # Getting started
 * Download the Flight Simulator SDK.
 * See the list of available simulation variables in the SDK documentation: Documentation/04-Developer_Tools/SimConnect/SimConnect_Status_of_Simulation_Variables.html
@@ -27,7 +38,65 @@ https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SD
 * Define a data definition and register it. (See example below)
 * Take a look at the Simvars sample project and example below.
 
-# Usage
+# Packages and distribution
+
+Releases from this repo is distributed using NuGet:
+
+**CTrue.FsConnect**
+
+[![NuGet](https://img.shields.io/nuget/v/CTrue.FsConnect.svg)](https://www.nuget.org/packages/CTrue.FsConnect) [![Package stats FsConnect](https://img.shields.io/nuget/dt/CTrue.FsConnect.svg)](https://www.nuget.org/packages/CTrue.FsConnect)
+
+**CTrue.FsConnect.Managers**
+
+[![NuGet](https://img.shields.io/nuget/v/CTrue.FsConnect.Managers.svg)](https://www.nuget.org/packages/CTrue.FsConnect.Managers) [![Package stats FsConnect.Managers](https://img.shields.io/nuget/dt/CTrue.FsConnect.Managers.svg)](https://www.nuget.org/packages/CTrue.FsConnect.Managers)
+
+# Defining data definitions
+
+To request information from Flight Simulator using FsConnect objects needs to be constructued in a certain way.
+
+Such an object must:
+* Be a stuct
+* Be attributed with: [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
+
+Create a struct similar to shown below to hold this information:
+```
+[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
+public struct PlaneInfoResponse
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+    public String Title;
+    public double Latitude;
+    public double Longitude;
+}
+```
+
+Any string members needs the attribute [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)] with the SizeConst set to the expected size of the string.
+
+See the documentation for [simulation variables](https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm) to determine the correct data type.
+
+Before Flight Simulator can use this structure it needs the definition of the object. Flight Simulator sees a definition as a list of properties, with specified units and data types. This definition is then used to fill the registred struct with data from Flight Simulator.
+
+```
+List<SimProperty> definition = new List<SimProperty>();
+
+// Consult the SDK for valid sim variable names, units and whether they can be written to.
+definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
+definition.Add(new SimProperty("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimProperty("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+
+fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
+```
+
+See the enums FsSimVar and FsUnit in the FsConnect library for simpler to use enums instead of strings for specifying variable name and units.
+This would be an equal definition:
+```
+definition.Add(new SimProperty(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
+definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+```
+
+
+# Example
 
 1) Create a .NET Framework Console project that target x64.
 2) Add a reference to the CTrue.FsConnect package.
@@ -73,9 +142,14 @@ using Microsoft.FlightSimulator.SimConnect;
 
 namespace FsConnectTest
 {
-    public enum Requests
+    public enum Definitions
     {
         PlaneInfo = 0
+    }
+
+    public enum Requests
+    {
+        PlaneInfoRequest = 0
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
@@ -133,16 +207,16 @@ namespace FsConnectTest
             definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.MeterPerSecond, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
 
-            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
+            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
 
-            fsConnect.RequestData(Requests.PlaneInfo);
+            fsConnect.RequestData(Requests.PlaneInfoRequest, Definitions.PlaneInfo);
             Console.ReadKey();
             fsConnect.Disconnect();
         }
 
         private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
         {
-            if (e.RequestId == (uint)Requests.PlaneInfo)
+            if (e.RequestId == (uint)Requests.PlaneInfoRequest)
             {
                 PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
                 Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.Altitude:F1}ft {r.Heading:F1}deg {r.SpeedMpS:F0}m/s {r.SpeedKnots:F0}kt");
@@ -151,3 +225,70 @@ namespace FsConnectTest
     }
 }
 ```
+
+# Managers
+
+## Aircraft Manager
+
+The aircraft manager is a simple addon to the FsConnect that provides a common way to query Flight Simulator for details about the user's aircraft.
+
+The manager can either poll as often as needed, or set up to continously get updates, typically every second, from Fligth Simulator.
+
+The definition for the data to be requested needs to be done from FsConnect using _RegisterDataDefinition_ and the type then provided to the aircraft manager. See the example for how to register the PlaneInfoResponse definition.
+
+```
+
+AircraftManager aircraftManager =
+                new AircraftManager<PlaneInfoResponse>(fsConnect, Definitions.PlaneInfo, Requests.AircraftManager);
+
+aircraftManager.Updated += (sender, args) => Console.WriteLine(args.AircraftInfo.ToString());
+
+// Set request method to continuously to start automatic updates using the Updated event.
+aircraftManager.RequestMethod = RequestMethod.Continuously;
+
+// Set request method to poll to manually poll Flight Simulator.
+aircraftManager.RequestMethod = RequestMethod.Poll;
+var aircraftInfo = aircraftManager.Get();
+
+```
+
+Future updates will provide more functionality such as setting key variables.
+
+The test console has an example for how to use the Aircraft Manager, see the AircraftMenu class.
+
+## Sim Object Manager     
+
+The Sim Object Manager is a addon to the FsConnect to avoid making the base library handle every case imaginable. The manager can request information about Sim Objects. As with the Aircraft Manager, the definiton of what to returned is done by using FsConnect.
+
+See the example for how to register the PlaneInfoResponse definition.
+
+```
+
+SimObjectManager simObjectManager = new SimObjectManager<PlaneInfoResponse>(_fsConnect, Definitions.PlaneInfo, Requests.SimObjects);
+
+// Set the geographical radius, in meters, that sim objects will be returned from.
+simObjectManager.Radius = 100 * 1000;
+
+// Specify the type of sim objects to fetch
+simObjectManager.SimObjectType = FsConnectSimobjectType.Aircraft;
+
+// Gets and returns in one operation
+var simObjects = _simObjectManager.GetWithRequest();
+
+// Another way is to asynchronously execute a request, and get the returned Sim Objects later.
+simObjectManager.Request();
+
+// Wait for request to complete and get cached sim objects
+List<PlaneInfoResponse> simObjects = _simObjectManager.GetList();
+
+```
+
+Future updates will provide more functionality such as updating sim objects.
+
+The test console has an example for how to use the Sim Object Manager, see the SimObjectMenu class.
+
+## Community
+* Have you find a bug? Do you have an idea for a new feature? ... [open an issue on GitHub](https://github.com/c-true/FsConnect/issues)
+* Do you want to contribute piece of code? ... [submit a pull-request](https://github.com/c-true/FsConnect/pulls)
+    * `master` branch contains the code being worked on
+    * Or from your own fork
