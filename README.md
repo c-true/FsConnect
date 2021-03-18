@@ -55,7 +55,7 @@ Releases from this repo is distributed using NuGet:
 To request information from Flight Simulator using FsConnect objects needs to be constructued in a certain way.
 
 Such an object must:
-* Be a stuct
+* Be a struct
 * Be attributed with: [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
 
 Create a struct similar to shown below to hold this information:
