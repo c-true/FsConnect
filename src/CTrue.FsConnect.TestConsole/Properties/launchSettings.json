@@ -2,7 +2,7 @@
   "profiles": {
     "FsConnectTestConsole": {
       "commandName": "Project",
-      "commandLineArgs": "-h localhost -p 500"
+      "commandLineArgs": "-h localhost -p 500 -l Debug"
     }
   }
 }

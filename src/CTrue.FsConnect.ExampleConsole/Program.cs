@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 using CTrue.FsConnect;
 using Microsoft.FlightSimulator.SimConnect;
 
 namespace FsConnectTest
 {
-    public enum Requests
+    public enum Definitions
     {
         PlaneInfo = 0
+    }
+
+    public enum Requests
+    {
+        PlaneInfoRequest = 0
     }
 
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
@@ -66,18 +72,20 @@ namespace FsConnectTest
             definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.MeterPerSecond, SIMCONNECT_DATATYPE.FLOAT64));
             definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
 
-            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Requests.PlaneInfo, definition);
+            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
 
-            fsConnect.RequestData(Requests.PlaneInfo);
+            fsConnect.RequestData(Requests.PlaneInfoRequest, Definitions.PlaneInfo);
             Console.ReadKey();
             fsConnect.Disconnect();
         }
 
         private static void HandleReceivedFsData(object sender, FsDataReceivedEventArgs e)
         {
-            if (e.RequestId == (uint)Requests.PlaneInfo)
+            if (e.Data == null || e.Data.Count == 0) return;
+
+            if (e.RequestId == (uint)Requests.PlaneInfoRequest)
             {
-                PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
+                PlaneInfoResponse r = (PlaneInfoResponse)e.Data.FirstOrDefault();
                 Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.Altitude:F1}ft {r.Heading:F1}deg {r.SpeedMpS:F0}m/s {r.SpeedKnots:F0}kt");
             }
         }

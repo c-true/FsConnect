@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net40</TargetFramework>
+    <TargetFramework>net45</TargetFramework>
     <Company>C-True</Company>
     <Product>Flight Simulator Connect</Product>
     <Copyright />
@@ -13,13 +13,14 @@ Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
     <PackageTags>msfs flight-simulator simconnect</PackageTags>
-    <Version>1.1.1</Version>
+    <Version>1.2.0</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageReleaseNotes>Default location for writing SimConnect.cfg file changed to Local, to avoid intefering with other SimConnect using applications/mods.
-Verified that dependencies are the same for the SDK 0.10.0 release.
-Support for all SimVars and units as enums, as documented by the SimVars example.</PackageReleaseNotes>
-    <AssemblyVersion>1.1.1.0</AssemblyVersion>
-    <FileVersion>1.1.1.0</FileVersion>
+    <PackageReleaseNotes>
+      Simple support for some system events
+      Request information about Sim objects
+    </PackageReleaseNotes>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -39,8 +40,12 @@ Support for all SimVars and units as enums, as documented by the SimVars example
   <ItemGroup>
     <None Include="..\Dependencies\SimConnect\build\simconnect.dll" Visible="false" Pack="true" PackagePath="build" />
     <None Include="..\Dependencies\SimConnect\build\CTrue.FsConnect.targets" Visible="false" Pack="true" PackagePath="build" />
-    <None Include="..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net40" />
+    <None Include="..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net45" />
     <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.10.0" />
   </ItemGroup>
 
 </Project>
