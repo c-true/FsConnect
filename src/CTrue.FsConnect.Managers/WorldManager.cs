@@ -2,6 +2,15 @@
 
 namespace CTrue.FsConnect.Managers
 {
+    public enum WorldManagerId
+    {
+        SetTime = 100,
+        SetZuluYears = 101,
+        SetZuluDays = 102,
+        SetZuluHours = 103,
+        SetZuluMinute = 104,
+    };
+
     public class WorldManager
     {
         private readonly IFsConnect _fsConnect;
@@ -9,18 +18,21 @@ namespace CTrue.FsConnect.Managers
         public WorldManager(IFsConnect fsConnect)
         {
             _fsConnect = fsConnect;
+
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluYears, "ZULU_YEAR_SET");
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluDays, "ZULU_DAY_SET");
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluHours, "ZULU_HOURS_SET");
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluMinute, "ZULU_MINUTES_SET");
+
+            _fsConnect.SetNotificationGroupPriority(WorldManagerId.SetTime);
         }
 
-        public void SetTime(DateTime dateTime)
+        public void SetTime(DateTime time)
         {
-            _fsConnect.MapClientEvent(04);
+            _fsConnect.TransmitClientEvent(WorldManagerId.SetZuluYears, (uint)time.Year, WorldManagerId.SetTime);
+            _fsConnect.TransmitClientEvent(WorldManagerId.SetZuluDays, (uint)time.DayOfYear, WorldManagerId.SetTime);
+            _fsConnect.TransmitClientEvent(WorldManagerId.SetZuluHours, (uint)time.Hour, WorldManagerId.SetTime);
+            _fsConnect.TransmitClientEvent(WorldManagerId.SetZuluMinute, (uint)time.Minute, WorldManagerId.SetTime);
         }
-
-        /*
-         KEY_ZULU_HOURS_SET	ZULU_HOURS_SET	Sets hours, zulu time	Shared Cockpit
-KEY_ZULU_MINUTES_SET	ZULU_MINUTES_SET	Sets minutes, in zulu time	Shared Cockpit
-KEY_ZULU_DAY_SET	ZULU_DAY_SET	Sets day, in zulu time	Shared Cockpit
-KEY_ZULU_YEAR_SET	ZULU_YEAR_SET
-         */
     }
 }

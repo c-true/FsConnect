@@ -163,9 +163,19 @@ namespace CTrue.FsConnect
         void UpdateData<T>(Enum id, T data, uint objectId = 1);
 
         /// <summary>
-        /// Sets time
+        /// 
         /// </summary>
-        /// <param name="hour"></param>
-        void MapClientEvent(uint hour);
+        /// <param name="groupId"></param>
+        void SetNotificationGroupPriority(Enum groupId);
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="dwData"></param>
+        /// <param name="groupId"></param>
+        void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId);
+
+        void MapClientEventToSimEvent(Enum groupId, Enum eventId, string eventName);
     }
 }

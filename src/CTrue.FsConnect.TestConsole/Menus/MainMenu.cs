@@ -5,8 +5,11 @@ namespace CTrue.FsConnect.TestConsole
 {
     public class MainMenu : Menu
     {
+        private WorldManager _worldManager;
+
         public MainMenu(IFsConnect fsConnect) : base(fsConnect)
         {
+            _worldManager = new WorldManager(_fsConnect);
         }
 
         protected override void SetUpMenu()
@@ -44,10 +47,29 @@ namespace CTrue.FsConnect.TestConsole
 
         private bool SetTime()
         {
-            WorldManager worldManager = new WorldManager(_fsConnect);
             DateTime utc = DateTime.UtcNow;
-            
-            worldManager.SetTime(utc);
+
+            Console.WriteLine("Year:");
+            string input = Console.ReadLine();
+            int year = int.Parse(input);
+
+            Console.WriteLine("Month:");
+            input = Console.ReadLine();
+            int month = int.Parse(input);
+
+            Console.WriteLine("Day:");
+            input = Console.ReadLine();
+            int day = int.Parse(input);
+
+            Console.WriteLine("Hour:");
+            input = Console.ReadLine();
+            int hour = int.Parse(input);
+
+            Console.WriteLine("Minutes:");
+            input = Console.ReadLine();
+            int minute = int.Parse(input);
+
+            _worldManager.SetTime(new DateTime(year, month, day, hour, minute, 0));
 
             return false;
         }
