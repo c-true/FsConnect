@@ -9,12 +9,12 @@
       Managers that supports common operations working with Microsoft Flightsimulator 2020, through the use of FsConnect.
       Supports:
         - Aircraft information
-        - Retriveing sim objects
+        - Retrieving sim objects
     </Description>
     <Authors>C-True</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseFile/>
-    <PackageRequireLicenseAcceptance/>
+    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
     <PackageTags>msfs flight-simulator simconnect</PackageTags>
     <Version>1.2.0</Version>
@@ -40,6 +40,10 @@
     <Reference Include="Microsoft.FlightSimulator.SimConnect">
       <HintPath>..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
   </ItemGroup>
 
 </Project>

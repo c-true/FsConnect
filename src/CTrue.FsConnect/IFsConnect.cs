@@ -161,5 +161,11 @@ namespace CTrue.FsConnect
         /// <param name="objectId"></param>
         /// <typeparam name="T"></typeparam>
         void UpdateData<T>(Enum id, T data, uint objectId = 1);
+
+        /// <summary>
+        /// Sets time
+        /// </summary>
+        /// <param name="hour"></param>
+        void MapClientEvent(uint hour);
     }
 }

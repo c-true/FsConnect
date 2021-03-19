@@ -219,6 +219,27 @@ namespace CTrue.FsConnect
             _simConnect?.SetDataOnSimObject(id, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
         }
 
+        private enum ClientEvents
+        {
+            ZULU_HOURS_SET = 100
+        }
+
+        private enum GroupIds
+        {
+            Time = 28
+        }
+
+        public void MapClientEvent(uint hour)
+        {
+            uint uValue = hour;
+            _simConnect.MapClientEventToSimEvent(ClientEvents.ZULU_HOURS_SET, "ZULU_HOURS_SET");
+            _simConnect.AddClientEventToNotificationGroup(GroupIds.Time, ClientEvents.ZULU_HOURS_SET, false);
+            _simConnect.SetNotificationGroupPriority(GroupIds.Time, SimConnect.SIMCONNECT_GROUP_PRIORITY_STANDARD);
+            _simConnect.TransmitClientEvent(SimConnect.SIMCONNECT_OBJECT_ID_USER, ClientEvents.ZULU_HOURS_SET, uValue,
+                GroupIds.Time, SIMCONNECT_EVENT_FLAG.DEFAULT);
+
+        }
+
         /// <inheritdoc />
         public void SetText(string text, int duration)
         {

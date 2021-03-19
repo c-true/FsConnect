@@ -1,4 +1,5 @@
 ﻿using System;
+using CTrue.FsConnect.Managers;
 
 namespace CTrue.FsConnect.TestConsole
 {
@@ -32,6 +33,23 @@ namespace CTrue.FsConnect.TestConsole
                 Description = "2 - Aircraft information",
                 Handler = NavigateToMenu<AircraftMenu>
             });
+
+            Add(new MenuItem()
+            {
+                Key = ConsoleKey.D3,
+                Description = "3 - Set time",
+                Handler = SetTime
+            });
+        }
+
+        private bool SetTime()
+        {
+            WorldManager worldManager = new WorldManager(_fsConnect);
+            DateTime utc = DateTime.UtcNow;
+            
+            worldManager.SetTime(utc);
+
+            return false;
         }
 
         protected override bool NavigateToParentMenu()
