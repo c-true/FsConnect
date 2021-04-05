@@ -16,8 +16,8 @@ Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0
     <Version>1.3.0</Version>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageReleaseNotes>
-      Simple support for some system events
-      Request information about Sim objects
+      Support for registering client events
+      Aspect based data definition registration
     </PackageReleaseNotes>
     <AssemblyVersion>1.3.0.0</AssemblyVersion>
     <FileVersion>1.3.0.0</FileVersion>
