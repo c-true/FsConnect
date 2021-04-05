@@ -1,4 +1,5 @@
 ﻿using System;
+using CTrue.FsConnect.Managers;
 
 namespace CTrue.FsConnect.TestConsole
 {
@@ -31,6 +32,13 @@ namespace CTrue.FsConnect.TestConsole
                 Key = ConsoleKey.D2,
                 Description = "2 - Aircraft information",
                 Handler = NavigateToMenu<AircraftMenu>
+            });
+
+            Add(new MenuItem()
+            {
+                Key = ConsoleKey.D3,
+                Description = "3 - World",
+                Handler = NavigateToMenu<WorldMenu>
             });
         }
 

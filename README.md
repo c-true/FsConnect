@@ -5,7 +5,9 @@ If, on the other hand, you just want to connect to Flight Simulator and read som
 FsConnect uses the _Microsoft.FlightSimulator.SimConnect_ .NET Framework library and the underlying native x64 _simconnect.dll_ library. 
 These files are distributed via the Flight Simulator 2020 SDK, currently version 0.10.0, but are included for easy use.
 
-At the moment this project is intended as an easier to use wrapper than the current SimConnect for simple projects, creating a simpler C# programming model and reducing the need for repeated boiler plate code. Expect breaking changes.
+At the moment this project is intended as an easier to use wrapper than the current SimConnect for simple projects, creating a simpler C# programming model and reducing the need for repeated boiler plate code. 
+
+> NOTE: **Expect breaking changes and infrequent updates.**
 
 ## Additional information
 For more information about SimConnect and the Flight Simulator SDK see the [Microsoft Flight Simulator SDK site](
@@ -58,8 +60,10 @@ Such an object must:
 * Be a struct
 * Be attributed with: [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
 
+## SimConnect data definition
+
 Create a struct similar to shown below to hold this information:
-```
+```csharp
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
 public struct PlaneInfoResponse
 {
@@ -76,7 +80,7 @@ See the documentation for [simulation variables](https://docs.flightsimulator.co
 
 Before Flight Simulator can use this structure it needs the definition of the object. Flight Simulator sees a definition as a list of properties, with specified units and data types. This definition is then used to fill the registred struct with data from Flight Simulator.
 
-```
+```csharp
 List<SimProperty> definition = new List<SimProperty>();
 
 // Consult the SDK for valid sim variable names, units and whether they can be written to.
@@ -89,10 +93,35 @@ fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, defin
 
 See the enums FsSimVar and FsUnit in the FsConnect library for simpler to use enums instead of strings for specifying variable name and units.
 This would be an equal definition:
-```
+```csharp
 definition.Add(new SimProperty(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
 definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
 definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+```
+
+## Reflection based data definition
+
+An alternative method of defining the data definition is to decorate the type with the SimProperty attribute to describe field names and units:
+
+```csharp
+[StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
+public struct PlaneInfo
+{
+    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
+    public String Title;
+    [SimProperty(UnitId = FsUnit.Degree)]
+    public double PlaneLatitude;
+    [SimProperty(NameId=FsSimVar.PlaneLongitude, UnitId = FsUnit.Degree)]
+    public double Longitude;
+}
+```
+
+Such a type can be easily registered using FsConnect using the following method:
+
+```csharp
+
+int planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfo>();
+
 ```
 
 
@@ -142,27 +171,29 @@ using Microsoft.FlightSimulator.SimConnect;
 
 namespace FsConnectTest
 {
-    public enum Definitions
-    {
-        PlaneInfo = 0
-    }
-
     public enum Requests
     {
         PlaneInfoRequest = 0
     }
 
+    // Use field name and SimProperty attribute to configure the data definition for the type.
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public struct PlaneInfoResponse
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public String Title;
-        public double Latitude;
-        public double Longitude;
-        public double Altitude;
-        public double Heading;
-        public double SpeedMpS;
-        public double SpeedKnots;
+        [SimProperty(UnitId = FsUnit.Degree)]
+        public double PlaneLatitude;
+        [SimProperty(UnitId = FsUnit.Degree)]
+        public double PlaneLongitude;
+        [SimProperty(UnitId = FsUnit.Feet)]
+        public double PlaneAltitude;
+        [SimProperty(UnitId = FsUnit.Degree)]
+        public double PlaneHeadingDegreesTrue;
+        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
+        public double AirspeedTrueInMeterPerSecond;
+        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
+        public double AirspeedTrueInKnot;
     }
 
     public class FsConnectTestConsole
@@ -194,23 +225,17 @@ namespace FsConnectTest
 
             fsConnect.FsDataReceived += HandleReceivedFsData;
 
-            List<SimProperty> definition = new List<SimProperty>();
-
             // Consult the SDK for valid sim variable names, units and whether they can be written to.
-            definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
-            definition.Add(new SimProperty("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            int planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfoResponse>();
 
-            // Can also use predefined enums for sim variables and units (incomplete)
-            definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.MeterPerSecond, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
+            ConsoleKeyInfo cki;
 
-            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
+            do
+            {
+                fsConnect.RequestData(Requests.PlaneInfoRequest, planeInfoDefinitionId);
+                cki = Console.ReadKey();
+            } while (cki.Key != ConsoleKey.Escape);
 
-            fsConnect.RequestData(Requests.PlaneInfoRequest, Definitions.PlaneInfo);
-            Console.ReadKey();
             fsConnect.Disconnect();
         }
 
@@ -218,8 +243,8 @@ namespace FsConnectTest
         {
             if (e.RequestId == (uint)Requests.PlaneInfoRequest)
             {
-                PlaneInfoResponse r = (PlaneInfoResponse)e.Data;
-                Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.Altitude:F1}ft {r.Heading:F1}deg {r.SpeedMpS:F0}m/s {r.SpeedKnots:F0}kt");
+                PlaneInfoResponse r = (PlaneInfoResponse)e.Data.FirstOrDefault();
+                Console.WriteLine($"{r.PlaneLatitude:F4} {r.PlaneLongitude:F4} {r.PlaneAltitude:F1}ft {r.PlaneHeadingDegreesTrue:F1}deg {r.AirspeedTrueInMeterPerSecond:F0}m/s {r.AirspeedTrueInKnot:F0}kt");
             }
         }
     }
@@ -236,7 +261,7 @@ The manager can either poll as often as needed, or set up to continously get upd
 
 The definition for the data to be requested needs to be done from FsConnect using _RegisterDataDefinition_ and the type then provided to the aircraft manager. See the example for how to register the PlaneInfoResponse definition.
 
-```
+```csharp
 
 AircraftManager aircraftManager =
                 new AircraftManager<PlaneInfoResponse>(fsConnect, Definitions.PlaneInfo, Requests.AircraftManager);
@@ -262,7 +287,7 @@ The Sim Object Manager is a addon to the FsConnect to avoid making the base libr
 
 See the example for how to register the PlaneInfoResponse definition.
 
-```
+```csharp
 
 SimObjectManager simObjectManager = new SimObjectManager<PlaneInfoResponse>(_fsConnect, Definitions.PlaneInfo, Requests.SimObjects);
 
@@ -287,8 +312,35 @@ Future updates will provide more functionality such as updating sim objects.
 
 The test console has an example for how to use the Sim Object Manager, see the SimObjectMenu class.
 
+## World Manager
+
+The world manager currently supports updating the time in flight simulator.
+
+```csharp
+
+WorldManager worldManager = new WorldManager(fsConnect);
+worldManager.SetTime(new DateTime(year, month, day, hour, minute, 0));
+
+```
+
 ## Community
 * Have you find a bug? Do you have an idea for a new feature? ... [open an issue on GitHub](https://github.com/c-true/FsConnect/issues)
 * Do you want to contribute piece of code? ... [submit a pull-request](https://github.com/c-true/FsConnect/pulls)
     * `master` branch contains the code being worked on
     * Or from your own fork
+
+#Change log
+
+## 1.3.0
+
+- Aspect based data definition, using SimProperty attribute to define fields.
+- Simple support for registering client events.
+- Support for setting time in flight simulator, through the WorldManager.
+
+## 1.2.0
+
+- Opened up access to more of SimConnect's API.
+- Added support for some key simulator events, such as Pause.
+- Added support for requesting data on Sim Objects.
+- Added managers as example on how to wrap FsConnect for common operations, such as requesting aircraft or sim object data.
+- Documentation and refactorings.

@@ -106,14 +106,6 @@ namespace CTrue.FsConnect
         void Disconnect();
 
         /// <summary>
-        /// Registers data structures for requesting data from Flight Simulator.
-        /// </summary>
-        /// <remarks>
-        /// A connection to Flight Simulator must have been established before registering data definitions.
-        /// </remarks>
-        void RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct;
-
-        /// <summary>
         /// Displays a text in Flight Simulator.
         /// </summary>
         /// <param name="text">The text to display.</param>
@@ -132,10 +124,81 @@ namespace CTrue.FsConnect
         void Pause(bool pause);
 
         /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
+        /// <param name="definition"></param>
+        /// <returns>The definition id used to register the data definition</returns>
+        /// <remarks>
+        /// A connection to Flight Simulator must have been established before registering data definitions.
+        /// </remarks>
+        int RegisterDataDefinition<T>(Enum defineId, List<SimProperty> definition) where T : struct;
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
+        /// <param name="definition"></param>
+        /// <returns>The definition id used to register the data definition</returns>
+        /// <remarks>
+        /// A connection to Flight Simulator must have been established before registering data definitions.
+        /// </remarks>
+        int RegisterDataDefinition<T>(int defineId, List<SimProperty> definition) where T : struct;
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="definition"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// A connection to Flight Simulator must have been established before registering data definitions.
+        /// </remarks>
+        int RegisterDataDefinition<T>(List<SimProperty> definition) where T : struct;
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
+        /// <returns>The definition id used to register the data definition</returns>
+        /// <remarks>
+        /// A connection to Flight Simulator must have been established before registering data definitions.
+        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimPropertyReflector"/>.
+        /// </remarks>
+        int RegisterDataDefinition<T>(Enum defineId) where T : struct;
+
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
+        /// <returns>The definition id used to register the data definition</returns>
+        /// <remarks>
+        /// A connection to Flight Simulator must have been established before registering data definitions.
+        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimPropertyReflector"/>.
+        /// </remarks>
+        int RegisterDataDefinition<T>(int defineId) where T : struct;
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns>The definition id used to register the data definition</returns>
+        /// <remarks>
+        /// A connection to Flight Simulator must have been established before registering data definitions.
+        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimPropertyReflector"/>.
+        /// </remarks>
+        int RegisterDataDefinition<T>() where T : struct;
+
+        /// <summary>
         /// Requests data on a Sim object, periodically or/and when changed.
         /// </summary>
         /// <param name="requestId"></param>
-        /// <param name="defineId"></param>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
         /// <param name="objectId"></param>
         /// <param name="period"></param>
         /// <param name="flags"></param>
@@ -145,21 +208,94 @@ namespace CTrue.FsConnect
         void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit);
 
         /// <summary>
+        /// Requests data on a Sim object, periodically or/and when changed.
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
+        /// <param name="objectId"></param>
+        /// <param name="period"></param>
+        /// <param name="flags"></param>
+        /// <param name="interval"></param>
+        /// <param name="origin"></param>
+        /// <param name="limit"></param>
+        void RequestDataOnSimObject(Enum requestId, int defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit);
+
+        /// <summary>
         /// Requests data from Flight Simulator.
         /// </summary>
         /// <param name="requestId"></param>
-        /// <param name="defineId"></param>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
         /// <param name="radius">Radius in meters. Should be less that 2000000 (200km).</param>
         /// <param name="type"></param>
         void RequestData(Enum requestId, Enum defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User);
 
         /// <summary>
-        /// Updated data.
+        /// Requests data from Flight Simulator.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="requestId"></param>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
+        /// <param name="radius">Radius in meters. Should be less that 2000000 (200km).</param>
+        /// <param name="type"></param>
+        void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User);
+
+        /// <summary>
+        /// Updates a sim object in the flight simulator.
+        /// </summary>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
         /// <param name="data"></param>
         /// <param name="objectId"></param>
         /// <typeparam name="T"></typeparam>
-        void UpdateData<T>(Enum id, T data, uint objectId = 1);
+        void UpdateData<T>(Enum defineId, T data, uint objectId = 1);
+
+        /// <summary>
+        /// Updates a sim object in the flight simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="defineId">The definition id to associated with the data definition.</param>
+        /// <param name="data"></param>
+        /// <param name="objectId"></param>
+        void UpdateData<T>(int defineId, T data, uint objectId = 1);
+
+        /// <summary>
+        /// Sets notification group priority to highest level.
+        /// </summary>
+        /// <param name="groupId"></param>
+        void SetNotificationGroupPriority(Enum groupId);
+
+        /// <summary>
+        /// Sets notification group priority to highest level.
+        /// </summary>
+        /// <param name="groupId"></param>
+        void SetNotificationGroupPriority(int groupId);
+
+        /// <summary>
+        /// Sends a client event to flight simulator.
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="dwData"></param>
+        /// <param name="groupId"></param>
+        void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId);
+
+        /// <summary>
+        /// Maps a client event to a sim event.
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="eventId"></param>
+        /// <param name="eventName"></param>
+        void MapClientEventToSimEvent(Enum groupId, Enum eventId, string eventName);
+
+        /// <summary>
+        /// Maps a client event to a sim event.
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="eventId"></param>
+        /// <param name="eventName"></param>
+        void MapClientEventToSimEvent(int groupId, int eventId, string eventName);
+
+        /// <summary>
+        /// Gets the next id, for definitions and other SimConnect artifacts that require it.
+        /// </summary>
+        /// <returns>Returns an int that can be used to identifying SimConnect artifacts, such as definitions and events.</returns>
+        int GetNextId();
     }
 }

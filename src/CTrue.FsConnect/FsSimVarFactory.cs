@@ -5,12 +5,18 @@ using System.Text;
 
 namespace CTrue.FsConnect
 {
+    internal class FsSimVarInfo
+    {
+		public FsSimVar FsSimVarId { get; set; }
+		public string SimVarName { get; set; }
+        public string SimVarNameNoWhitespace { get; set; }
+	}
 
 	internal static class FsSimVarFactory
 	{
-		private static Dictionary<FsSimVar, string> _enumToCodeDictionary = new Dictionary<FsSimVar, string>();
+		private static Dictionary<FsSimVar, FsSimVarInfo> _enumToCodeDictionary = new Dictionary<FsSimVar, FsSimVarInfo>();
 
-		static private readonly string[] _simVarNames = new string[]
+        private static readonly string[] _simVarNames = new string[]
 		{
 			"NONE",
 			"ABSOLUTE TIME",
@@ -1074,20 +1080,39 @@ namespace CTrue.FsConnect
 
 		static FsSimVarFactory()
 		{
-			foreach (FsSimVar simVar in Enum.GetValues(typeof(FsSimVar)))
-			{
-				_enumToCodeDictionary[simVar] = _simVarNames[(uint)simVar];
+			foreach (FsSimVar simVarId in Enum.GetValues(typeof(FsSimVar)))
+            {
+                FsSimVarInfo svi = new FsSimVarInfo();
+
+                svi.SimVarName = _simVarNames[(uint)simVarId];
+				svi.SimVarNameNoWhitespace = string.Join("", svi.SimVarName.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
+
+				_enumToCodeDictionary[simVarId] = svi;
 			}
-		}
+        }
 
 		/// <summary>
 		/// Gets the corresponding simulation variable name to a simulation variable code.
 		/// </summary>
 		/// <param name="simVar">A <see cref="FsSimVar"/> enum.</param>
 		/// <returns>The corresponding sim variable name.</returns>
-		public static string GetSimVarCode(FsSimVar simVar)
-		{
-			return _enumToCodeDictionary[simVar];
+		public static string GetSimVarCode(FsSimVar simVarId)
+        {
+            if (!_enumToCodeDictionary.ContainsKey(simVarId))
+                throw new Exception("SimVar id not found.");
+
+			return _enumToCodeDictionary[simVarId].SimVarName;
 		}
+
+        public static string GetSimVarCode(string simVarName)
+        {
+			// Strip any underscores
+            simVarName = string.Join("", simVarName.Split('_'));
+
+			var svi = _enumToCodeDictionary.Values.ToList().Find(x =>
+                x.SimVarNameNoWhitespace.Equals(simVarName, StringComparison.InvariantCultureIgnoreCase));
+
+            return svi?.SimVarName;
+        }
 	}
 }

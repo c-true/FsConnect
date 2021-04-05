@@ -20,6 +20,7 @@ namespace CTrue.FsConnect
         private Thread _simConnectReceiveThread = null;
         private readonly FsConnectionInfo _connectionInfo = new FsConnectionInfo();
         private bool _paused = false;
+        private int _nextId = (int)FsConnectEnum.Base;
 
         #region Simconnect structures
 
@@ -190,8 +191,10 @@ namespace CTrue.FsConnect
             }
         }
 
+        #region RegisterDataDefinition
+
         /// <inheritdoc />
-        public void RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct
         {
             foreach (var item in definition)
             {
@@ -199,7 +202,50 @@ namespace CTrue.FsConnect
             }
 
             _simConnect.RegisterDataDefineStruct<T>(id);
+
+            return Convert.ToInt32(id);
         }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>(int id, List<SimProperty> definition) where T : struct
+        {
+            return RegisterDataDefinition<T>((FsConnectEnum) id, definition);
+        }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>(List<SimProperty> definition) where T : struct
+        {
+            int nextId = GetNextId();
+
+            return RegisterDataDefinition<T>(nextId, definition);
+        }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>(Enum defineId) where T : struct
+        {
+            SimPropertyReflector reflector = new SimPropertyReflector();
+            List<SimProperty> definition = reflector.GetSimProperties<T>();
+
+            RegisterDataDefinition<T>(defineId, definition);
+
+            return Convert.ToInt32(defineId);
+        }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>(int defineId) where T : struct
+        {
+            return RegisterDataDefinition<T>((FsConnectEnum)defineId);
+        }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>() where T : struct
+        {
+            return RegisterDataDefinition<T>(GetNextId());
+        }
+
+        #endregion
+
+        #region RequestData
 
         /// <inheritdoc />
         public void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit)
@@ -208,15 +254,74 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
+        public void RequestDataOnSimObject(Enum requestId, int defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit)
+        {
+            _simConnect?.RequestDataOnSimObject(requestId, (FsConnectEnum)defineId, objectId, (SIMCONNECT_PERIOD)period, (SIMCONNECT_DATA_REQUEST_FLAG)flags, interval, origin, limit);
+        }
+
+        /// <inheritdoc />
         public void RequestData(Enum requestId, Enum defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
             _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
-        /// <inheritdoc />
-        public void UpdateData<T>(Enum id, T data, uint objectId = 1)
+        public void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
-            _simConnect?.SetDataOnSimObject(id, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
+            _simConnect?.RequestDataOnSimObjectType(requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
+        }
+
+        #endregion
+
+        /// <inheritdoc />
+        public void UpdateData<T>(Enum defineId, T data, uint objectId = 1)
+        {
+            _simConnect?.SetDataOnSimObject(defineId, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
+        }
+
+        /// <inheritdoc />
+        public void UpdateData<T>(int defineId, T data, uint objectId = 1)
+        {
+            _simConnect?.SetDataOnSimObject((FsConnectEnum)defineId, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
+        }
+
+        /// <summary>
+        /// Gets the next id, for definitions and other SimConnect artifacts that require it.
+        /// </summary>
+        /// <returns>Returns an int that can be used to identifying SimConnect artifacts, such as definitions and events.</returns>
+        public int GetNextId()
+        {
+            return _nextId++;
+        }
+
+        /// <inheritdoc />
+        public void MapClientEventToSimEvent(Enum groupId, Enum eventId, string eventName)
+        {
+            _simConnect.MapClientEventToSimEvent(eventId, eventName);
+            _simConnect.AddClientEventToNotificationGroup(groupId, eventId, false);
+        }
+
+        /// <inheritdoc />
+        public void MapClientEventToSimEvent(int groupId, int eventId, string eventName)
+        {
+            MapClientEventToSimEvent((FsConnectEnum)groupId, (FsConnectEnum)eventId, eventName);
+        }
+
+        /// <inheritdoc />
+        public void SetNotificationGroupPriority(Enum groupId)
+        {
+            _simConnect.SetNotificationGroupPriority(groupId, SimConnect.SIMCONNECT_GROUP_PRIORITY_HIGHEST);
+        }
+
+        /// <inheritdoc />
+        public void SetNotificationGroupPriority(int groupId)
+        {
+            SetNotificationGroupPriority((FsConnectEnum) groupId);
+        }
+
+        /// <inheritdoc />
+        public void TransmitClientEvent(Enum eventId, uint dwData, Enum groupID)
+        {
+            _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, eventId, dwData, groupID, SIMCONNECT_EVENT_FLAG.DEFAULT);
         }
 
         /// <inheritdoc />
