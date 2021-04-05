@@ -7,10 +7,12 @@ namespace CTrue.FsConnect
     public class SimPropertyAttribute : Attribute
     {
         public string Name { get; set; } = null;
+
+        public FsSimVar NameId { get; set; } = FsSimVar.None;
         
         public string Unit { get; set; } = null;
 
-        public FsUnit? UnitId { get; set; } = null;
+        public FsUnit UnitId { get; set; } = FsUnit.Undefined;
 
         public SIMCONNECT_DATATYPE DataType { get; set; } = SIMCONNECT_DATATYPE.INVALID;
     }

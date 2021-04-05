@@ -20,6 +20,7 @@ namespace CTrue.FsConnect
         private Thread _simConnectReceiveThread = null;
         private readonly FsConnectionInfo _connectionInfo = new FsConnectionInfo();
         private bool _paused = false;
+        private int _nextId = (int)FsConnectEnum.Base;
 
         #region Simconnect structures
 
@@ -190,8 +191,10 @@ namespace CTrue.FsConnect
             }
         }
 
+        #region RegisterDataDefinition
+
         /// <inheritdoc />
-        public void RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct
         {
             foreach (var item in definition)
             {
@@ -199,7 +202,57 @@ namespace CTrue.FsConnect
             }
 
             _simConnect.RegisterDataDefineStruct<T>(id);
+
+            return Convert.ToInt32(id);
         }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>(int id, List<SimProperty> definition) where T : struct
+        {
+            foreach (var item in definition)
+            {
+                _simConnect.AddToDataDefinition((FsConnectEnum)id, item.Name, item.Unit, item.DataType, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            }
+
+            _simConnect.RegisterDataDefineStruct<T>((FsConnectEnum)id);
+
+            return id;
+        }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>(List<SimProperty> definition) where T : struct
+        {
+            int nextId = GetNextId();
+
+            foreach (var item in definition)
+            {
+                _simConnect.AddToDataDefinition((FsConnectEnum)nextId, item.Name, item.Unit, item.DataType, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            }
+
+            _simConnect.RegisterDataDefineStruct<T>((FsConnectEnum)nextId);
+
+            return nextId;
+        }
+
+        /// <inheritdoc />
+        public int RegisterDataDefinition<T>() where T : struct
+        {
+            int nextId = GetNextId();
+
+            SimPropertyReflector reflector = new SimPropertyReflector();
+            List<SimProperty> definition = reflector.GetSimProperties<T>();
+
+            foreach (var item in definition)
+            {
+                _simConnect.AddToDataDefinition((FsConnectEnum)nextId, item.Name, item.Unit, item.DataType, 0.0f, SimConnect.SIMCONNECT_UNUSED);
+            }
+
+            _simConnect.RegisterDataDefineStruct<T>((FsConnectEnum)nextId);
+
+            return nextId;
+        }
+
+        #endregion
 
         /// <inheritdoc />
         public void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit)
@@ -213,20 +266,24 @@ namespace CTrue.FsConnect
             _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
+        public void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
+        {
+            _simConnect?.RequestDataOnSimObjectType(requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
+        }
+
         /// <inheritdoc />
         public void UpdateData<T>(Enum id, T data, uint objectId = 1)
         {
             _simConnect?.SetDataOnSimObject(id, objectId, SIMCONNECT_DATA_SET_FLAG.DEFAULT, data);
         }
 
-        private enum ClientEvents
+        /// <summary>
+        /// Gets the next id, for definitions and other SimConnect artifacts that require it.
+        /// </summary>
+        /// <returns>Returns an int that can be used to identifying SimConnect artifacts, such as definitions and events.</returns>
+        public int GetNextId()
         {
-            ZULU_HOURS_SET = 100
-        }
-
-        private enum GroupIds
-        {
-            Time = 28
+            return _nextId++;
         }
 
         public void MapClientEventToSimEvent(Enum groupId, Enum eventId, string eventName)
@@ -234,7 +291,7 @@ namespace CTrue.FsConnect
             _simConnect.MapClientEventToSimEvent(eventId, eventName);
             _simConnect.AddClientEventToNotificationGroup(groupId, eventId, false);
         }
-
+       
         public void SetNotificationGroupPriority(Enum groupId)
         {
             _simConnect.SetNotificationGroupPriority(groupId, SimConnect.SIMCONNECT_GROUP_PRIORITY_HIGHEST);

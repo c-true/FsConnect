@@ -111,7 +111,31 @@ namespace CTrue.FsConnect
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
         /// </remarks>
-        void RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct;
+        int RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct;
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="id"></param>
+        /// <param name="definition"></param>
+        /// <returns></returns>
+        int RegisterDataDefinition<T>(int id, List<SimProperty> definition) where T : struct;
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="definition"></param>
+        /// <returns></returns>
+        int RegisterDataDefinition<T>(List<SimProperty> definition) where T : struct;
+
+        /// <summary>
+        /// Registers data structures for requesting data from Flight Simulator.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        int RegisterDataDefinition<T>() where T : struct;
 
         /// <summary>
         /// Displays a text in Flight Simulator.
@@ -154,6 +178,15 @@ namespace CTrue.FsConnect
         void RequestData(Enum requestId, Enum defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User);
 
         /// <summary>
+        /// Requests data from Flight Simulator.
+        /// </summary>
+        /// <param name="requestId"></param>
+        /// <param name="defineId"></param>
+        /// <param name="radius">Radius in meters. Should be less that 2000000 (200km).</param>
+        /// <param name="type"></param>
+        void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User);
+
+        /// <summary>
         /// Updated data.
         /// </summary>
         /// <param name="id"></param>
@@ -177,5 +210,11 @@ namespace CTrue.FsConnect
         void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId);
 
         void MapClientEventToSimEvent(Enum groupId, Enum eventId, string eventName);
+
+        /// <summary>
+        /// Gets the next id, for definitions and other SimConnect artifacts that require it.
+        /// </summary>
+        /// <returns>Returns an int that can be used to identifying SimConnect artifacts, such as definitions and events.</returns>
+        int GetNextId();
     }
 }

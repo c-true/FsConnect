@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CTrue.FsConnect
 {
@@ -354,5 +355,6 @@ namespace CTrue.FsConnect
 		Yd3,
 		Year,
 		Years,
+		Undefined = Int32.MaxValue,
 	};
 }

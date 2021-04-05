@@ -22,12 +22,17 @@ namespace FsConnectTest
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public String Title;
-        public double Latitude;
-        public double Longitude;
-        public double Altitude;
-        public double Heading;
-        public double SpeedMpS;
-        public double SpeedKnots;
+        [SimProperty(UnitId = FsUnit.Degree)]
+        public double PlaneLatitude;
+        [SimProperty(UnitId = FsUnit.Degree)]
+        public double PlaneLongitude;
+        public double PlaneAltitude;
+        [SimProperty(UnitId = FsUnit.Degree)]
+        public double PlaneHeadingDegreesTrue;
+        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
+        public double AirspeedTrueInMeterPerSecond;
+        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
+        public double AirspeedTrueInKnot;
     }
 
     public class FsConnectTestConsole
@@ -59,23 +64,16 @@ namespace FsConnectTest
 
             fsConnect.FsDataReceived += HandleReceivedFsData;
 
-            List<SimProperty> definition = new List<SimProperty>();
+            int planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfoResponse>();
 
-            // Consult the SDK for valid sim variable names, units and whether they can be written to.
-            definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
-            definition.Add(new SimProperty("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+            ConsoleKeyInfo cki;
 
-            // Can also use predefined enums for sim variables and units (incomplete)
-            definition.Add(new SimProperty(FsSimVar.PlaneAltitude, FsUnit.Feet, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.PlaneHeadingDegreesTrue, FsUnit.Degrees, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.MeterPerSecond, SIMCONNECT_DATATYPE.FLOAT64));
-            definition.Add(new SimProperty(FsSimVar.AirspeedTrue, FsUnit.Knot, SIMCONNECT_DATATYPE.FLOAT64));
+            do
+            {
+                fsConnect.RequestData(Requests.PlaneInfoRequest, planeInfoDefinitionId);
+                cki = Console.ReadKey();
+            } while (cki.Key != ConsoleKey.Escape);
 
-            fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
-
-            fsConnect.RequestData(Requests.PlaneInfoRequest, Definitions.PlaneInfo);
-            Console.ReadKey();
             fsConnect.Disconnect();
         }
 
@@ -86,7 +84,7 @@ namespace FsConnectTest
             if (e.RequestId == (uint)Requests.PlaneInfoRequest)
             {
                 PlaneInfoResponse r = (PlaneInfoResponse)e.Data.FirstOrDefault();
-                Console.WriteLine($"{r.Latitude:F4} {r.Longitude:F4} {r.Altitude:F1}ft {r.Heading:F1}deg {r.SpeedMpS:F0}m/s {r.SpeedKnots:F0}kt");
+                Console.WriteLine($"{r.PlaneLatitude:F4} {r.PlaneLongitude:F4} {r.PlaneAltitude:F1}ft {r.PlaneHeadingDegreesTrue:F1}deg {r.AirspeedTrueInMeterPerSecond:F0}m/s {r.AirspeedTrueInKnot:F0}kt");
             }
         }
     }
