@@ -7,11 +7,6 @@ using Microsoft.FlightSimulator.SimConnect;
 
 namespace FsConnectTest
 {
-    public enum Definitions
-    {
-        PlaneInfo = 0
-    }
-
     public enum Requests
     {
         PlaneInfoRequest = 0
@@ -26,6 +21,7 @@ namespace FsConnectTest
         public double PlaneLatitude;
         [SimProperty(UnitId = FsUnit.Degree)]
         public double PlaneLongitude;
+        [SimProperty(UnitId = FsUnit.Feet)]
         public double PlaneAltitude;
         [SimProperty(UnitId = FsUnit.Degree)]
         public double PlaneHeadingDegreesTrue;

@@ -6,6 +6,9 @@ using Microsoft.FlightSimulator.SimConnect;
 
 namespace CTrue.FsConnect
 {
+    /// <summary>
+    /// The <see cref="SimPropertyReflector"/> analyzes a type and determines a SimVar definition based on types, property names and the use of the <see cref="SimPropertyAttribute"/>.
+    /// </summary>
     public class SimPropertyReflector
     {
         public List<SimProperty> GetSimProperties<T>() where T : struct
