@@ -32,23 +32,52 @@ namespace CTrue.FsConnect
         /// <summary>
         /// Creates an initialized instance of the <see cref="SimProperty"/> class.
         /// </summary>
-        public SimProperty(string name, string unit, SIMCONNECT_DATATYPE dataType)
+        /// <param name="simVarName"></param>
+        /// <param name="unitName"></param>
+        /// <param name="dataType"></param>
+        public SimProperty(string simVarName, string unitName, SIMCONNECT_DATATYPE dataType)
         {
-            Name = name;
-            Unit = unit;
+            Name = simVarName;
+            Unit = unitName;
+            DataType = dataType;
+        }
+
+        /// <summary>
+        /// Creates an initialized instance of the <see cref="SimProperty"/> class.
+        /// </summary>
+        /// <param name="simVarName"></param>
+        /// <param name="unitId"></param>
+        /// <param name="dataType"></param>
+        public SimProperty(string simVarName, FsUnit unitId, SIMCONNECT_DATATYPE dataType)
+        {
+            Name = simVarName;
+            Unit = FsUnitFactory.GetUnitName(unitId);
+            DataType = dataType;
+        }
+
+        /// <summary>
+        /// Creates an initialized instance of the <see cref="SimProperty"/> class.
+        /// </summary>
+        /// <param name="simVarId"></param>
+        /// <param name="unitName"></param>
+        /// <param name="dataType"></param>
+        public SimProperty(FsSimVar simVarId, string unitName, SIMCONNECT_DATATYPE dataType)
+        {
+            Name = FsSimVarFactory.GetSimVarCode(simVarId);
+            Unit = unitName;
             DataType = dataType;
         }
 
         /// <summary>
         /// Creates an initialized instance using enums for known values.
         /// </summary>
-        /// <param name="simVar"></param>
+        /// <param name="simVarId"></param>
         /// <param name="unit"></param>
         /// <param name="dataType"></param>
-        public SimProperty(FsSimVar simVar, FsUnit unit, SIMCONNECT_DATATYPE dataType)
+        public SimProperty(FsSimVar simVarId, FsUnit unitId, SIMCONNECT_DATATYPE dataType)
         {
-            Name = FsSimVarFactory.GetSimVarCode(simVar);
-            Unit = FsUnitFactory.GetUnitName(unit);
+            Name = FsSimVarFactory.GetSimVarCode(simVarId);
+            Unit = FsUnitFactory.GetUnitName(unitId);
             DataType = dataType;
         }
     }
