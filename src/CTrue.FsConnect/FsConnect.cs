@@ -87,6 +87,7 @@ namespace CTrue.FsConnect
             }
         }
 
+        /// <inheritdoc />
         public FsConnectionInfo ConnectionInfo => _connectionInfo;
 
         /// <inheritdoc />
@@ -174,8 +175,9 @@ namespace CTrue.FsConnect
 
                 _simConnect.Dispose();
             }
-            catch (Exception e)
+            catch
             {
+                // ignored
             }
             finally
             {
@@ -224,7 +226,7 @@ namespace CTrue.FsConnect
         public int RegisterDataDefinition<T>(Enum defineId) where T : struct
         {
             SimVarReflector reflector = new SimVarReflector();
-            List<SimVar> definition = reflector.GetSimProperties<T>();
+            List<SimVar> definition = reflector.GetSimVars<T>();
 
             RegisterDataDefinition<T>(defineId, definition);
 
@@ -265,6 +267,7 @@ namespace CTrue.FsConnect
             _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
+        /// <inheritdoc />
         public void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
             _simConnect?.RequestDataOnSimObjectType(requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
@@ -473,8 +476,9 @@ namespace CTrue.FsConnect
                 {
                     _simConnect?.ReceiveMessage();
                 }
-                catch (Exception e)
+                catch
                 {
+                    // ignored
                 }
             }
         }

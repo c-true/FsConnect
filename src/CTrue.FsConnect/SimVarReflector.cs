@@ -12,7 +12,12 @@ namespace CTrue.FsConnect
     /// </summary>
     public class SimVarReflector
     {
-        public List<SimVar> GetSimProperties<T>() where T : struct
+        /// <summary>
+        /// Gets a collection of <see cref="SimVar"/> instances based on reflection of the provided stuct.
+        /// </summary>
+        /// <typeparam name="T">The struct</typeparam>
+        /// <returns>A list of <see cref="SimVar"/> instances.</returns>
+        public List<SimVar> GetSimVars<T>() where T : struct
         {
             List<SimVar> simProperties = new List<SimVar>();
 
@@ -54,7 +59,7 @@ namespace CTrue.FsConnect
         {
             if (attr != null && attr.NameId != FsSimVar.None)
             {
-                string theSimVarName = FsSimVarFactory.GetSimVarCode(attr.NameId);
+                string theSimVarName = FsSimVarFactory.GetSimVarName(attr.NameId);
 
                 return attr.Instance > 0 ? $"{theSimVarName}:{attr.Instance}" : theSimVarName;
             }
@@ -77,8 +82,8 @@ namespace CTrue.FsConnect
                 instance = int.Parse(result.Groups[2].Value);
             }
 
-            // Try to lookup variations of the SimVar name using PascalCase and Under_Score
-            string simVarName = FsSimVarFactory.GetSimVarCode(name);
+            // Try to lookup variations of the SimVar name using aNyCaSe and Under_Score
+            string simVarName = FsSimVarFactory.GetSimVarName(name);
             if (simVarName != null)
                 name = simVarName;
 

@@ -63,7 +63,7 @@ namespace CTrue.FsConnect
         /// <param name="dataType"></param>
         public SimVar(FsSimVar simVarId, string unitName, SIMCONNECT_DATATYPE dataType)
         {
-            Name = FsSimVarFactory.GetSimVarCode(simVarId);
+            Name = FsSimVarFactory.GetSimVarName(simVarId);
             Unit = unitName;
             DataType = dataType;
         }
@@ -72,11 +72,11 @@ namespace CTrue.FsConnect
         /// Creates an initialized instance using enums for known values.
         /// </summary>
         /// <param name="simVarId"></param>
-        /// <param name="unit"></param>
+        /// <param name="unitId"></param>
         /// <param name="dataType"></param>
         public SimVar(FsSimVar simVarId, FsUnit unitId, SIMCONNECT_DATATYPE dataType)
         {
-            Name = FsSimVarFactory.GetSimVarCode(simVarId);
+            Name = FsSimVarFactory.GetSimVarName(simVarId);
             Unit = FsUnitFactory.GetUnitName(unitId);
             DataType = dataType;
         }

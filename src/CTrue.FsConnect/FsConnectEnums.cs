@@ -53,6 +53,8 @@ namespace CTrue.FsConnect
         Ground,
     }
 
+#pragma warning disable 1591
+
     public enum FsException
     {
         None,
@@ -94,4 +96,6 @@ namespace CTrue.FsConnect
         ObjectAtc,
         ObjectSchedule,
     };
+
+#pragma warning restore 1591
 }

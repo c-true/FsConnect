@@ -15,7 +15,7 @@ namespace CTrue.FsConnect.Test
         {
             SimVarReflector reflector = new SimVarReflector();
 
-            List<SimVar> list = reflector.GetSimProperties<SimConnectObject>();
+            List<SimVar> list = reflector.GetSimVars<SimConnectObject>();
 
             Assert.That(list, Is.Not.Null);
             Assert.That(list.Count, Is.EqualTo(10));

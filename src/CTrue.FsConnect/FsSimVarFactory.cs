@@ -1094,9 +1094,9 @@ namespace CTrue.FsConnect
 		/// <summary>
 		/// Gets the corresponding simulation variable name to a simulation variable code.
 		/// </summary>
-		/// <param name="simVar">A <see cref="FsSimVar"/> enum.</param>
+		/// <param name="simVarId">A <see cref="FsSimVar"/> enum.</param>
 		/// <returns>The corresponding sim variable name.</returns>
-		public static string GetSimVarCode(FsSimVar simVarId)
+		public static string GetSimVarName(FsSimVar simVarId)
         {
             if (!_enumToCodeDictionary.ContainsKey(simVarId))
                 throw new Exception("SimVar id not found.");
@@ -1104,7 +1104,12 @@ namespace CTrue.FsConnect
 			return _enumToCodeDictionary[simVarId].SimVarName;
 		}
 
-        public static string GetSimVarCode(string simVarName)
+		/// <summary>
+		/// Looks up a text and tries to resolve the corresponding SimVar name.
+		/// </summary>
+		/// <param name="simVarName">A name containing any case or underscores.</param>
+		/// <returns>An identified SimVar name or null if not recognized.</returns>
+        public static string GetSimVarName(string simVarName)
         {
 			// Strip any underscores
             simVarName = string.Join("", simVarName.Split('_'));
