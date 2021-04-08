@@ -194,7 +194,7 @@ namespace CTrue.FsConnect
         #region RegisterDataDefinition
 
         /// <inheritdoc />
-        public int RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(Enum id, List<SimVar> definition) where T : struct
         {
             foreach (var item in definition)
             {
@@ -207,13 +207,13 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public int RegisterDataDefinition<T>(int id, List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(int id, List<SimVar> definition) where T : struct
         {
             return RegisterDataDefinition<T>((FsConnectEnum) id, definition);
         }
 
         /// <inheritdoc />
-        public int RegisterDataDefinition<T>(List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(List<SimVar> definition) where T : struct
         {
             int nextId = GetNextId();
 
@@ -223,8 +223,8 @@ namespace CTrue.FsConnect
         /// <inheritdoc />
         public int RegisterDataDefinition<T>(Enum defineId) where T : struct
         {
-            SimPropertyReflector reflector = new SimPropertyReflector();
-            List<SimProperty> definition = reflector.GetSimProperties<T>();
+            SimVarReflector reflector = new SimVarReflector();
+            List<SimVar> definition = reflector.GetSimProperties<T>();
 
             RegisterDataDefinition<T>(defineId, definition);
 
@@ -319,9 +319,9 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void TransmitClientEvent(Enum eventId, uint dwData, Enum groupID)
+        public void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId)
         {
-            _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, eventId, dwData, groupID, SIMCONNECT_EVENT_FLAG.DEFAULT);
+            _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, eventId, dwData, groupId, SIMCONNECT_EVENT_FLAG.DEFAULT);
         }
 
         /// <inheritdoc />

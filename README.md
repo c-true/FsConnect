@@ -9,6 +9,8 @@ At the moment this project is intended as an easier to use wrapper than the curr
 
 > NOTE: **Expect breaking changes and infrequent updates.**
 
+FsConnect will from version 2 follow major/minor version conventions regarding breaking changes.
+
 ## Additional information
 For more information about SimConnect and the Flight Simulator SDK see the [Microsoft Flight Simulator SDK site](
 https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) and the [SimConnect SDK section](https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) in particular.
@@ -81,12 +83,12 @@ See the documentation for [simulation variables](https://docs.flightsimulator.co
 Before Flight Simulator can use this structure it needs the definition of the object. Flight Simulator sees a definition as a list of properties, with specified units and data types. This definition is then used to fill the registred struct with data from Flight Simulator.
 
 ```csharp
-List<SimProperty> definition = new List<SimProperty>();
+List<SimVar> definition = new List<SimVar>();
 
 // Consult the SDK for valid sim variable names, units and whether they can be written to.
-definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
-definition.Add(new SimProperty("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-definition.Add(new SimProperty("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar("Title", null, SIMCONNECT_DATATYPE.STRING256));
+definition.Add(new SimVar("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
 
 fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
 ```
@@ -94,14 +96,14 @@ fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, defin
 See the enums FsSimVar and FsUnit in the FsConnect library for simpler to use enums instead of strings for specifying variable name and units.
 This would be an equal definition:
 ```csharp
-definition.Add(new SimProperty(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
-definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
-definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
+definition.Add(new SimVar(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
 ```
 
 ## Reflection based data definition
 
-An alternative method of defining the data definition is to decorate the type with the SimProperty attribute to describe field names and units:
+An alternative method of defining the data definition is to decorate the type with the SimVar attribute to describe field names and units:
 
 ```csharp
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
@@ -109,9 +111,9 @@ public struct PlaneInfo
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
     public String Title;
-    [SimProperty(UnitId = FsUnit.Degree)]
+    [SimVar(UnitId = FsUnit.Degree)]
     public double PlaneLatitude;
-    [SimProperty(NameId=FsSimVar.PlaneLongitude, UnitId = FsUnit.Degree)]
+    [SimVar(NameId=FsSimVar.PlaneLongitude, UnitId = FsUnit.Degree)]
     public double Longitude;
 }
 ```
@@ -176,23 +178,23 @@ namespace FsConnectTest
         PlaneInfoRequest = 0
     }
 
-    // Use field name and SimProperty attribute to configure the data definition for the type.
+    // Use field name and SimVar attribute to configure the data definition for the type.
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public struct PlaneInfoResponse
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public String Title;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneLatitude;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneLongitude;
-        [SimProperty(UnitId = FsUnit.Feet)]
+        [SimVar(UnitId = FsUnit.Feet)]
         public double PlaneAltitude;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneHeadingDegreesTrue;
-        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
+        [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
         public double AirspeedTrueInMeterPerSecond;
-        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
+        [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
         public double AirspeedTrueInKnot;
     }
 
@@ -333,7 +335,7 @@ worldManager.SetTime(new DateTime(year, month, day, hour, minute, 0));
 
 ## 1.3.0
 
-- Aspect based data definition, using SimProperty attribute to define fields.
+- Aspect based data definition, using SimVar attribute to define fields.
 - Simple support for registering client events.
 - Support for setting time in flight simulator, through the WorldManager.
 

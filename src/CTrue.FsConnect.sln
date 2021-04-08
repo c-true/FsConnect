@@ -16,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTrue.FsConnect.ExampleCons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTrue.FsConnect.Managers", "CTrue.FsConnect.Managers\CTrue.FsConnect.Managers.csproj", "{8D9B0572-5BB1-4097-8D11-0339F6B8C57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTrue.FsConnect.Test", "CTrue.FsConnect.Test\CTrue.FsConnect.Test.csproj", "{0DB161A6-82E6-4C8C-BB2E-71B87E367756}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTrue.FsConnect.Test", "CTrue.FsConnect.Test\CTrue.FsConnect.Test.csproj", "{0DB161A6-82E6-4C8C-BB2E-71B87E367756}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

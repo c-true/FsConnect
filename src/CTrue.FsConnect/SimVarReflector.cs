@@ -2,18 +2,19 @@
 using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using Microsoft.FlightSimulator.SimConnect;
 
 namespace CTrue.FsConnect
 {
     /// <summary>
-    /// The <see cref="SimPropertyReflector"/> analyzes a type and determines a SimVar definition based on types, property names and the use of the <see cref="SimPropertyAttribute"/>.
+    /// The <see cref="SimVarReflector"/> analyzes a type and determines a SimVar definition based on types, property names and the use of the <see cref="SimVarAttribute"/>.
     /// </summary>
-    public class SimPropertyReflector
+    public class SimVarReflector
     {
-        public List<SimProperty> GetSimProperties<T>() where T : struct
+        public List<SimVar> GetSimProperties<T>() where T : struct
         {
-            List<SimProperty> simProperties = new List<SimProperty>();
+            List<SimVar> simProperties = new List<SimVar>();
 
             Type type = typeof(T);
 
@@ -21,55 +22,73 @@ namespace CTrue.FsConnect
 
             foreach (var field in fields)
             {
-                SimProperty simProperty = new SimProperty();
+                SimVar simVar = new SimVar();
 
-                SimPropertyAttribute attr = field.GetCustomAttribute<SimPropertyAttribute>();
+                SimVarAttribute attr = field.GetCustomAttribute<SimVarAttribute>();
 
                 //
                 // Name
                 //
 
-                simProperty.Name = GetName(field, attr);
+                simVar.Name = GetName(field, attr);
 
                 //
                 // Unit
                 //
 
-                simProperty.Unit = GetUnit(field, attr);
+                simVar.Unit = GetUnit(field, attr);
 
                 //
                 // Data type
                 // 
 
-                simProperty.DataType = GetDataType(field, attr);
+                simVar.DataType = GetDataType(field, attr);
 
-                simProperties.Add(simProperty);
+                simProperties.Add(simVar);
             }
 
             return simProperties;
         }
 
-        private string GetName(FieldInfo fieldInfo, SimPropertyAttribute attr)
+        private string GetName(FieldInfo fieldInfo, SimVarAttribute attr)
         {
             if (attr != null && attr.NameId != FsSimVar.None)
             {
-                return FsSimVarFactory.GetSimVarCode(attr.NameId);
+                string theSimVarName = FsSimVarFactory.GetSimVarCode(attr.NameId);
+
+                return attr.Instance > 0 ? $"{theSimVarName}:{attr.Instance}" : theSimVarName;
             }
 
             if (!string.IsNullOrEmpty(attr?.Name))
             {
                 return attr.Name;
             }
-            
-            // Try to lookup variations of the SimVar name using PascalCase and Under_Score
-            string simVarName = FsSimVarFactory.GetSimVarCode(fieldInfo.Name);
-            if (simVarName != null)
-                return simVarName;
 
-            return fieldInfo.Name;
+            // Find any instance put in the name.
+            Regex re = new Regex(@"([a-zA-Z]+)(\d+)");
+            Match result = re.Match(fieldInfo.Name);
+
+            string name = fieldInfo.Name;
+            int? instance = attr?.Instance;
+
+            if (result.Groups.Count > 1)
+            {
+                name = result.Groups[1].Value;
+                instance = int.Parse(result.Groups[2].Value);
+            }
+
+            // Try to lookup variations of the SimVar name using PascalCase and Under_Score
+            string simVarName = FsSimVarFactory.GetSimVarCode(name);
+            if (simVarName != null)
+                name = simVarName;
+
+            if(instance > 0)
+                name = $"{name}:{instance}";
+
+            return name;
         }
 
-        private string GetUnit(FieldInfo fieldInfo, SimPropertyAttribute attr)
+        private string GetUnit(FieldInfo fieldInfo, SimVarAttribute attr)
         {
             if (attr != null && attr.UnitId != FsUnit.Undefined)
             {
@@ -84,7 +103,7 @@ namespace CTrue.FsConnect
             return "";
         }
 
-        private SIMCONNECT_DATATYPE GetDataType(FieldInfo field, SimPropertyAttribute attr)
+        private SIMCONNECT_DATATYPE GetDataType(FieldInfo field, SimVarAttribute attr)
         {
             if (attr != null && attr.DataType != SIMCONNECT_DATATYPE.INVALID)
             {
@@ -120,7 +139,10 @@ namespace CTrue.FsConnect
 
             if (field.FieldType == typeof(float))
                 return SIMCONNECT_DATATYPE.FLOAT32;
-            
+
+            if (field.FieldType == typeof(bool))
+                return SIMCONNECT_DATATYPE.INT32;
+
             // Default data type
             return SIMCONNECT_DATATYPE.FLOAT64;
         }

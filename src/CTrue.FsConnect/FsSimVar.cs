@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace CTrue.FsConnect
 {
+	/// <summary>
+	/// The <see cref="FsSimVar"/> enum contains all known simulation variables.
+	/// </summary>
 	public enum FsSimVar
 	{
 		None,

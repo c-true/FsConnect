@@ -3,9 +3,9 @@
 namespace CTrue.FsConnect
 {
     /// <summary>
-    /// The <see cref="SimProperty"/> class is used to define a data definition.
+    /// The <see cref="SimVar"/> class is used to define a data definition.
     /// </summary>
-    public class SimProperty
+    public class SimVar
     {
         /// <summary>
         /// The name of the definition. See the SimVars class in the Simvars example in the SDK.
@@ -23,19 +23,19 @@ namespace CTrue.FsConnect
         public SIMCONNECT_DATATYPE DataType { get; set; }
 
         /// <summary>
-        /// Creates an uninitialized instance of the <see cref="SimProperty"/> class.
+        /// Creates an uninitialized instance of the <see cref="SimVar"/> class.
         /// </summary>
-        public SimProperty()
+        public SimVar()
         {
         }
 
         /// <summary>
-        /// Creates an initialized instance of the <see cref="SimProperty"/> class.
+        /// Creates an initialized instance of the <see cref="SimVar"/> class.
         /// </summary>
         /// <param name="simVarName"></param>
         /// <param name="unitName"></param>
         /// <param name="dataType"></param>
-        public SimProperty(string simVarName, string unitName, SIMCONNECT_DATATYPE dataType)
+        public SimVar(string simVarName, string unitName, SIMCONNECT_DATATYPE dataType)
         {
             Name = simVarName;
             Unit = unitName;
@@ -43,12 +43,12 @@ namespace CTrue.FsConnect
         }
 
         /// <summary>
-        /// Creates an initialized instance of the <see cref="SimProperty"/> class.
+        /// Creates an initialized instance of the <see cref="SimVar"/> class.
         /// </summary>
         /// <param name="simVarName"></param>
         /// <param name="unitId"></param>
         /// <param name="dataType"></param>
-        public SimProperty(string simVarName, FsUnit unitId, SIMCONNECT_DATATYPE dataType)
+        public SimVar(string simVarName, FsUnit unitId, SIMCONNECT_DATATYPE dataType)
         {
             Name = simVarName;
             Unit = FsUnitFactory.GetUnitName(unitId);
@@ -56,12 +56,12 @@ namespace CTrue.FsConnect
         }
 
         /// <summary>
-        /// Creates an initialized instance of the <see cref="SimProperty"/> class.
+        /// Creates an initialized instance of the <see cref="SimVar"/> class.
         /// </summary>
         /// <param name="simVarId"></param>
         /// <param name="unitName"></param>
         /// <param name="dataType"></param>
-        public SimProperty(FsSimVar simVarId, string unitName, SIMCONNECT_DATATYPE dataType)
+        public SimVar(FsSimVar simVarId, string unitName, SIMCONNECT_DATATYPE dataType)
         {
             Name = FsSimVarFactory.GetSimVarCode(simVarId);
             Unit = unitName;
@@ -74,7 +74,7 @@ namespace CTrue.FsConnect
         /// <param name="simVarId"></param>
         /// <param name="unit"></param>
         /// <param name="dataType"></param>
-        public SimProperty(FsSimVar simVarId, FsUnit unitId, SIMCONNECT_DATATYPE dataType)
+        public SimVar(FsSimVar simVarId, FsUnit unitId, SIMCONNECT_DATATYPE dataType)
         {
             Name = FsSimVarFactory.GetSimVarCode(simVarId);
             Unit = FsUnitFactory.GetUnitName(unitId);
