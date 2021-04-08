@@ -3,6 +3,8 @@ using System.Collections.Generic;
 
 namespace CTrue.FsConnect
 {
+#pragma warning disable 1591
+
 	public enum FsUnit
 	{
 		None,
@@ -357,4 +359,6 @@ namespace CTrue.FsConnect
 		Years,
 		Undefined = Int32.MaxValue,
 	};
+
+#pragma warning restore 1591
 }
