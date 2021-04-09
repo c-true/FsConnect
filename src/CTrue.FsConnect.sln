@@ -18,6 +18,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTrue.FsConnect.Managers", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTrue.FsConnect.Test", "CTrue.FsConnect.Test\CTrue.FsConnect.Test.csproj", "{0DB161A6-82E6-4C8C-BB2E-71B87E367756}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{FAD9C7D7-63A6-482F-A9A9-3AFBCE2591C3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTrue.FsConnect.FsEnumGenerator", "tools\CTrue.FsConnect.FsEnumGenerator\CTrue.FsConnect.FsEnumGenerator.csproj", "{F13D4437-D58A-4743-AE66-902BB6119F23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -88,9 +92,24 @@ Global
 		{0DB161A6-82E6-4C8C-BB2E-71B87E367756}.Release|x64.Build.0 = Release|Any CPU
 		{0DB161A6-82E6-4C8C-BB2E-71B87E367756}.Release|x86.ActiveCfg = Release|Any CPU
 		{0DB161A6-82E6-4C8C-BB2E-71B87E367756}.Release|x86.Build.0 = Release|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Debug|x64.Build.0 = Debug|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Debug|x86.Build.0 = Debug|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Release|x64.ActiveCfg = Release|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Release|x64.Build.0 = Release|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Release|x86.ActiveCfg = Release|Any CPU
+		{F13D4437-D58A-4743-AE66-902BB6119F23}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F13D4437-D58A-4743-AE66-902BB6119F23} = {FAD9C7D7-63A6-482F-A9A9-3AFBCE2591C3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {617ABE05-D897-48A1-9953-F31E0077B6EF}

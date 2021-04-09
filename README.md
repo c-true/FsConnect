@@ -9,8 +9,6 @@ At the moment this project is intended as an easier to use wrapper than the curr
 
 > NOTE: **Expect breaking changes and infrequent updates.**
 
-FsConnect will from version 2 follow major/minor version conventions regarding breaking changes.
-
 ## Additional information
 For more information about SimConnect and the Flight Simulator SDK see the [Microsoft Flight Simulator SDK site](
 https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) and the [SimConnect SDK section](https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) in particular.
@@ -62,21 +60,31 @@ Such an object must:
 * Be a struct
 * Be attributed with: [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
 
-## SimConnect data definition
+## SimConnect simulator variables and data definition
+
+SimConnect uses simulation variables or SimVars to get available information from MSFS. Read more about SimVars in the [SimVars SDK documentation](https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm).
+
+### Struct
+The SimVars are stored in a struct when retrieved from MSFS. The struct combines a set of SimVars into a type that can be used to be filled by a request to MSFS. 
 
 Create a struct similar to shown below to hold this information:
 ```csharp
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
-public struct PlaneInfoResponse
+public struct MySimVarsStruct
 {
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-    public String Title;
-    public double Latitude;
-    public double Longitude;
+    ...
 }
 ```
 
+### SimVar Names
+
+An potentially incomplete list of valid names for SimVars can be looked up in the SDK documentation.
+
+### SimVar types
+
 Any string members needs the attribute [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)] with the SizeConst set to the expected size of the string.
+
+### SimVar units
 
 See the documentation for [simulation variables](https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm) to determine the correct data type.
 

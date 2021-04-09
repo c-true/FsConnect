@@ -80,5 +80,10 @@ namespace CTrue.FsConnect
             Unit = FsUnitFactory.GetUnitName(unitId);
             DataType = dataType;
         }
+
+        public override string ToString()
+        {
+            return $"{Name} in {Unit} as {DataType}";
+        }
     }
 }

@@ -1,0 +1,5818 @@
+<!DOCTYPE html>
+<!-- saved from url=(0096)https://docs.flightsimulator.com/html/Programming_Tools/SimVars/General_Simulation_Variables.htm -->
+<html xmlns="http://www.w3.org/1999/xhtml" class="js-focus-visible" data-js-focus-visible="" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=yes">
+  
+  <meta name="version" content="2019.0.8">
+  
+  <link rel="StyleSheet" href="./General Simulation Variables_files/topic.min.css" type="text/css">
+  <link rel="StyleSheet" href="./General Simulation Variables_files/topic.min.css" type="text/css"> <link rel="StyleSheet" data-skin="true" type="text/css" href="./General Simulation Variables_files/layout.css">
+  <link rel="StyleSheet" data-skin="true" href="./General Simulation Variables_files/userstyles.css" type="text/css">
+  
+  
+    
+    
+
+  
+  <meta name="generator" content="Adobe RoboHelp 2020">
+  
+  
+  <link rel="stylesheet" type="text/css" href="./General Simulation Variables_files/default.css">
+  
+  
+  <meta name="rh-authors" content="Mark Alexander">
+
+  
+  
+  
+  
+  <meta name="rh-authors" content="Mark Alexander">
+<!--<base href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/">--><base href="."><meta name="search-keywords" content="content"><link rel="shortcut icon" type="image/png" href="https://docs.flightsimulator.com/html/Favicon.png"><title>General Simulation Variables</title><link rel="stylesheet" href="./General Simulation Variables_files/extra_symbols.css" type="text/css"><meta name="rh-index-keywords" content="Variable Lists - General Simulation Variables"></head>
+
+<body class="rh-BODY-wrapper rh-layout-left-panel-expanded">
+  <div class="cookie-widget-holder frameless-hide" id="cookie-status-widget-holder"></div>
+<div class="RH-LAYOUT-HEADER-skip-content-container" id="skip-to-content"><a class="RH-LAYOUT-HEADER-skip-content-link" title="Skip To Main Content" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#rh-topic">Skip To Main Content</a></div>
+  <header class="RH-LAYOUT-HEADER-container" role="banner">
+    <div class="RH-LAYOUT-HEADER-logo-box  ">
+      <div class="RH-LAYOUT-HEADER-logo" id="logo-holder"><a class="rh-layout-HEADER-logo-link" title="Logo" aria-label="Logo" href="https://docs.flightsimulator.com/html/index.htm"></a></div>
+      <div class="RH-LAYOUT-HEADER-title" id="topic-title-holder"><a class="rh-layout-HEADER-title-link" href="https://docs.flightsimulator.com/html/index.htm" title="SDK Documentation" aria-label="SDK Documentation">SDK Documentation</a><div class="RH-LAYOUT-HEADER-separator "></div></div>
+    </div>
+    <div class="RH-LAYOUT-HEADERMENU-container" id="header-menu"></div>
+<div class="search-placeholder-class" id="search-with-help"><div class="RH-LAYOUT-SEARCHBOX-search "><div class="rh-layout-SEARCHBOX-searchcontainer" role="search"><div class="RH-LAYOUT-SEARCHBOX-searchbar"><button class="rh-button RH-LAYOUT-SEARCHBOX-search-icon  " title="Search the SDK"></button></div></div></div></div>
+</header>
+  <main role="main" class="RH-LAYOUT-BODY-container">
+    <div class="RH-LAYOUT-SEARCHRESULTS" id="rh-searchresults"><div class="RH-LAYOUT-SEARCHRESULTS-container "><div id="search-results" class="RH-LAYOUT-SEARCHRESULTS-results-outer-box  " role="region"></div></div></div>
+    <div class="RH-LAYOUT-LEFTPANEL-container" id="rh-leftpanel"><div tabindex="-1" class="rh-layout-LEFTPANEL-left-panel "><div class="RH-LAYOUT-LEFTPANEL-tab-view  "><div class="RH-LAYOUT-LEFTPANEL-tab-list" role="tablist"><button class="rh-button RH-LAYOUT-LEFTPANEL-tab RH-LAYOUT-LEFTPANEL-selected-tab" id="contents" title="Contents" role="tab" aria-selected="true" aria-controls="contents-panel"><label>Contents</label></button><button class="rh-button RH-LAYOUT-LEFTPANEL-tab  " id="glossary" title="Glossary" tabindex="-1" role="tab" aria-selected="false" aria-controls="glossary-panel"><label>Glossary</label></button></div><div id="contents-panel" class="RH-LAYOUT-LEFTPANEL-tab-panel " role="tabpanel" aria-labelledby="contents"><ul class="rh-layout-simple-list RH-LAYOUT-LEFTPANEL-toc" role="tree" aria-labelledby="contents"><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-0" tabindex="-1" role="treeitem" aria-expanded="false" aria-labelledby="Introduction00" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-collapsed-title RH-LAYOUT-LEFTPANEL-title-level-0" id="Introduction00"><div class="RH-LAYOUT-LEFTPANEL-expand-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="Introduction" tabindex="-1" href="https://docs.flightsimulator.com/html/Introduction/Introduction.htm">Introduction</a></div></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-0" tabindex="-1" role="treeitem" aria-expanded="false" aria-labelledby="Developer_Mode01" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-collapsed-title RH-LAYOUT-LEFTPANEL-title-level-0" id="Developer_Mode01"><div class="RH-LAYOUT-LEFTPANEL-expand-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="Developer Mode" tabindex="-1" href="https://docs.flightsimulator.com/html/Developer_Mode/Developer_Mode.htm">Developer Mode</a></div></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-0" tabindex="-1" role="treeitem" aria-expanded="false" aria-labelledby="Asset_Creation02" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-collapsed-title RH-LAYOUT-LEFTPANEL-title-level-0" id="Asset_Creation02"><div class="RH-LAYOUT-LEFTPANEL-expand-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="Asset Creation" tabindex="-1" href="https://docs.flightsimulator.com/html/Asset_Creation/Asset_Creation.htm">Asset Creation</a></div></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-0" tabindex="-1" role="treeitem" aria-expanded="false" aria-labelledby="Content_Configuration03" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-collapsed-title RH-LAYOUT-LEFTPANEL-title-level-0" id="Content_Configuration03"><div class="RH-LAYOUT-LEFTPANEL-expand-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="Content Configuration" tabindex="-1" href="https://docs.flightsimulator.com/html/Content_Configuration/Content_Configuration.htm">Content Configuration</a></div></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-0" tabindex="-1" role="treeitem" aria-expanded="true" aria-labelledby="Programming_Tools04" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-expanded-title RH-LAYOUT-LEFTPANEL-title-level-0" id="Programming_Tools04"><div class="RH-LAYOUT-LEFTPANEL-collapse-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="Programming Tools" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/Programming_Tools.htm">Programming Tools</a></div><ul class="rh-layout-simple-list" role="group"><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-1" tabindex="-1" role="treeitem" aria-expanded="true" aria-labelledby="SimConnect_SDK10" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-expanded-title RH-LAYOUT-LEFTPANEL-title-level-1" id="SimConnect_SDK10"><div class="RH-LAYOUT-LEFTPANEL-collapse-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="SimConnect SDK" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm">SimConnect SDK</a></div><ul class="rh-layout-simple-list" role="group"><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-2" tabindex="-1" role="treeitem" aria-expanded="false" aria-labelledby="SimConnect_API_Reference20" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-collapsed-title RH-LAYOUT-LEFTPANEL-title-level-2" id="SimConnect_API_Reference20"><div class="RH-LAYOUT-LEFTPANEL-expand-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="SimConnect API Reference" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_API_Reference.htm">SimConnect API Reference</a></div></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-2" tabindex="-1" role="treeitem" aria-expanded="true" aria-labelledby="SimConnect_API_Status21" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-expanded-title RH-LAYOUT-LEFTPANEL-title-level-2" id="SimConnect_API_Status21"><div class="RH-LAYOUT-LEFTPANEL-collapse-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="SimConnect API Status" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_API_Status.htm">SimConnect API Status</a></div><ul class="rh-layout-simple-list" role="group"><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-3" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Status Of Input Events" role="treeitem" tabindex="-1" aria-selected="false" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/Status_Of_Input_Events.htm">Status Of Input Events</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-3" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Status Of SimEvents" role="treeitem" aria-selected="false" tabindex="0" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/Status_Of_SimEvents.htm">Status Of SimEvents</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-3" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Status Of Simulation Variables" role="treeitem" tabindex="-1" aria-selected="false" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/Status_Of_Simulation_Variables.htm">Status Of Simulation Variables</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-3" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Status Of System Events" role="treeitem" tabindex="-1" aria-selected="false" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/Status_Of_System_Events.htm">Status Of System Events</a></li></ul></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="SimConnect INI Definition" role="treeitem" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_INI_Definition.htm" aria-selected="false">SimConnect INI Definition</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="SimConnect CFG Definition" role="treeitem" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_CFG_Definition.htm" aria-selected="false">SimConnect CFG Definition</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="SimConnect XML Definition" role="treeitem" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_XML_Definition.htm" aria-selected="false">SimConnect XML Definition</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Programming SimConnect Clients using Managed Code" role="treeitem" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Programming_SimConnect_Clients_using_Managed_Code.htm" aria-selected="false">Programming SimConnect Clients using Managed Code</a></li></ul></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-1" tabindex="-1" role="treeitem" aria-expanded="true" aria-labelledby="Simulation_Variables11" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-expanded-title RH-LAYOUT-LEFTPANEL-title-level-1" id="Simulation_Variables11"><div class="RH-LAYOUT-LEFTPANEL-collapse-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="Simulation Variables" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm">Simulation Variables</a></div><ul class="rh-layout-simple-list" role="group"><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-selected-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><div class="RH-LAYOUT-LEFTPANEL-selected-icon "></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="General Simulation Variables" role="treeitem" tabindex="-1" aria-selected="true" disabled="">General Simulation Variables</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Aircraft Simulation Variables" role="treeitem" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Aircraft_Simulation_Variables.htm" aria-selected="false">Aircraft Simulation Variables</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Audio Simulation Variables" role="treeitem" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Audio_Simulation_Variables.htm" aria-selected="false">Audio Simulation Variables</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Simulation Variable Units" role="treeitem" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variable_Units.htm" aria-selected="false">Simulation Variable Units</a></li><li class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-title-level-2" role="presentation"><a class="rh-layout-LEFTPANEL-tree-item-text" title="Legacy Event IDs" role="treeitem" tabindex="-1" aria-selected="false" href="https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Legacy_Event_IDs.htm">Legacy Event IDs</a></li></ul></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-1" tabindex="-1" role="treeitem" aria-expanded="false" aria-labelledby="WebAssembly12" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-collapsed-title RH-LAYOUT-LEFTPANEL-title-level-1" id="WebAssembly12"><div class="RH-LAYOUT-LEFTPANEL-expand-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="WebAssembly" tabindex="-1" href="https://docs.flightsimulator.com/html/Programming_Tools/WASM/WebAssembly.htm">WebAssembly</a></div></li></ul></li><li class="RH-LAYOUT-LEFTPANEL-section RH-LAYOUT-LEFTPANEL-section-level-0" tabindex="-1" role="treeitem" aria-expanded="false" aria-labelledby="Additional_Information05" aria-selected="false"><div class="RH-LAYOUT-LEFTPANEL-title RH-LAYOUT-LEFTPANEL-collapsed-title RH-LAYOUT-LEFTPANEL-title-level-0" id="Additional_Information05"><div class="RH-LAYOUT-LEFTPANEL-expand-icon"></div><a class="rh-layout-LEFTPANEL-tree-item-text" title="Additional Information" tabindex="-1" href="https://docs.flightsimulator.com/html/Additional_Information/Additional_Information.htm">Additional Information</a></div></li></ul></div><div id="index-panel" class="RH-LAYOUT-INDEX-tab-panel frameless-hide" role="tabpanel" aria-labelledby="index"><div class="RH-LAYOUT-INDEX-search-box" role="search" aria-labelledby="index"><div class="RH-LAYOUT-INDEX-search-text-box  "><input type="text" class="RH-LAYOUT-INDEX-search-textfield " placeholder="Search the SDK" aria-controls="index-list" title="Search the SDK" value=""><button class="rh-button RH-LAYOUT-INDEX-search-clear-icon frameless-invisible" title="Clear Search Box" aria-hidden="true"></button></div></div><ul id="index-list" class="rh-layout-simple-list RH-LAYOUT-INDEX-keyword-list rh-layout-LEFTPANEL-tree-item-no-left-margin" role="tree" aria-labelledby="index"><div class="RH-LAYOUT-LEFTPANEL-content-loading"></div></ul></div><div id="glossary-panel" class="RH-LAYOUT-GLOSSARY-tab-panel frameless-hide" role="tabpanel" aria-labelledby="glossary"><div class="RH-LAYOUT-GLOSSARY-search-box" role="search" aria-labelledby="glossary"><div class="RH-LAYOUT-GLOSSARY-search-text-box  "><input type="text" class="RH-LAYOUT-GLOSSARY-search-textfield " placeholder="Search the SDK" aria-controls="glossary-list" title="Search the SDK" value=""><button class="rh-button RH-LAYOUT-GLOSSARY-search-clear-icon frameless-invisible" title="Clear Search Box" aria-hidden="true"></button></div></div><ul id="glossary-list" class="rh-layout-simple-list RH-LAYOUT-GLOSSARY-glossary-list" aria-labelledby="glossary"><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="add-ons" tabindex="0" aria-expanded="false" aria-controls="add-ons"><label>add-ons</label></button><div id="add-ons"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ADF" tabindex="-1" aria-expanded="false" aria-controls="ADF"><label>ADF</label></button><div id="ADF"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ADPCM" tabindex="-1" aria-expanded="false" aria-controls="ADPCM"><label>ADPCM</label></button><div id="ADPCM"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="AGL" tabindex="-1" aria-expanded="false" aria-controls="AGL"><label>AGL</label></button><div id="AGL"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ambisonic" tabindex="-1" aria-expanded="false" aria-controls="ambisonic"><label>ambisonic</label></button><div id="ambisonic"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="AMSL" tabindex="-1" aria-expanded="false" aria-controls="AMSL"><label>AMSL</label></button><div id="AMSL"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="AoA" tabindex="-1" aria-expanded="false" aria-controls="AoA"><label>AoA</label></button><div id="AoA"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="API" tabindex="-1" aria-expanded="false" aria-controls="API"><label>API</label></button><div id="API"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="APU" tabindex="-1" aria-expanded="false" aria-controls="APU"><label>APU</label></button><div id="APU"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ATC" tabindex="-1" aria-expanded="false" aria-controls="ATC"><label>ATC</label></button><div id="ATC"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="BGL" tabindex="-1" aria-expanded="false" aria-controls="BGL"><label>BGL</label></button><div id="BGL"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="bpp" tabindex="-1" aria-expanded="false" aria-controls="bpp"><label>bpp</label></button><div id="bpp"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Camber" tabindex="-1" aria-expanded="false" aria-controls="Camber"><label>Camber</label></button><div id="Camber"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="CG" tabindex="-1" aria-expanded="false" aria-controls="CG"><label>CG</label></button><div id="CG"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="CGL" tabindex="-1" aria-expanded="false" aria-controls="CGL"><label>CGL</label></button><div id="CGL"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Chord" tabindex="-1" aria-expanded="false" aria-controls="Chord"><label>Chord</label></button><div id="Chord"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="CoL" tabindex="-1" aria-expanded="false" aria-controls="CoL"><label>CoL</label></button><div id="CoL"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="dB" tabindex="-1" aria-expanded="false" aria-controls="dB"><label>dB</label></button><div id="dB"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="dBTP" tabindex="-1" aria-expanded="false" aria-controls="dBTP"><label>dBTP</label></button><div id="dBTP"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="DDS" tabindex="-1" aria-expanded="false" aria-controls="DDS"><label>DDS</label></button><div id="DDS"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="de-crab" tabindex="-1" aria-expanded="false" aria-controls="de-crab"><label>de-crab</label></button><div id="de-crab"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="DEM" tabindex="-1" aria-expanded="false" aria-controls="DEM"><label>DEM</label></button><div id="DEM"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Dihedral" tabindex="-1" aria-expanded="false" aria-controls="Dihedral"><label>Dihedral</label></button><div id="Dihedral"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="DME" tabindex="-1" aria-expanded="false" aria-controls="DME"><label>DME</label></button><div id="DME"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="DoF" tabindex="-1" aria-expanded="false" aria-controls="DoF"><label>DoF</label></button><div id="DoF"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="DRM" tabindex="-1" aria-expanded="false" aria-controls="DRM"><label>DRM</label></button><div id="DRM"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="EGT" tabindex="-1" aria-expanded="false" aria-controls="EGT"><label>EGT</label></button><div id="EGT"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="EPR" tabindex="-1" aria-expanded="false" aria-controls="EPR"><label>EPR</label></button><div id="EPR"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="FAF" tabindex="-1" aria-expanded="false" aria-controls="FAF"><label>FAF</label></button><div id="FAF"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="flaps" tabindex="-1" aria-expanded="false" aria-controls="flaps"><label>flaps</label></button><div id="flaps"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="FOV" tabindex="-1" aria-expanded="false" aria-controls="FOV"><label>FOV</label></button><div id="FOV"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="FSUIPC" tabindex="-1" aria-expanded="false" aria-controls="FSUIPC"><label>FSUIPC</label></button><div id="FSUIPC"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ft" tabindex="-1" aria-expanded="false" aria-controls="ft"><label>ft</label></button><div id="ft"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ftlbs" tabindex="-1" aria-expanded="false" aria-controls="ftlbs"><label>ftlbs</label></button><div id="ftlbs"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="GA" tabindex="-1" aria-expanded="false" aria-controls="GA"><label>GA</label></button><div id="GA"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="gallon" tabindex="-1" aria-expanded="false" aria-controls="gallon"><label>gallon</label></button><div id="gallon"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="GDI+" tabindex="-1" aria-expanded="false" aria-controls="GDI+"><label>GDI+</label></button><div id="GDI+"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="glTF" tabindex="-1" aria-expanded="false" aria-controls="glTF"><label>glTF</label></button><div id="glTF"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="GPS" tabindex="-1" aria-expanded="false" aria-controls="GPS"><label>GPS</label></button><div id="GPS"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="GPWS" tabindex="-1" aria-expanded="false" aria-controls="GPWS"><label>GPWS</label></button><div id="GPWS"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="GUID" tabindex="-1" aria-expanded="false" aria-controls="GUID"><label>GUID</label></button><div id="GUID"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="hp" tabindex="-1" aria-expanded="false" aria-controls="hp"><label>hp</label></button><div id="hp"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="IAF" tabindex="-1" aria-expanded="false" aria-controls="IAF"><label>IAF</label></button><div id="IAF"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ICAO" tabindex="-1" aria-expanded="false" aria-controls="ICAO"><label>ICAO</label></button><div id="ICAO"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ICAO code" tabindex="-1" aria-expanded="false" aria-controls="ICAO code"><label>ICAO code</label></button><div id="ICAO code"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ILS" tabindex="-1" aria-expanded="false" aria-controls="ILS"><label>ILS</label></button><div id="ILS"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Incidence" tabindex="-1" aria-expanded="false" aria-controls="Incidence"><label>Incidence</label></button><div id="Incidence"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="inHg" tabindex="-1" aria-expanded="false" aria-controls="inHg"><label>inHg</label></button><div id="inHg"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ITT" tabindex="-1" aria-expanded="false" aria-controls="ITT"><label>ITT</label></button><div id="ITT"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="kcas" tabindex="-1" aria-expanded="false" aria-controls="kcas"><label>kcas</label></button><div id="kcas"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="kias" tabindex="-1" aria-expanded="false" aria-controls="kias"><label>kias</label></button><div id="kias"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="knot" tabindex="-1" aria-expanded="false" aria-controls="knot"><label>knot</label></button><div id="knot"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="ktas" tabindex="-1" aria-expanded="false" aria-controls="ktas"><label>ktas</label></button><div id="ktas"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="lbs" tabindex="-1" aria-expanded="false" aria-controls="lbs"><label>lbs</label></button><div id="lbs"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="LDA" tabindex="-1" aria-expanded="false" aria-controls="LDA"><label>LDA</label></button><div id="LDA"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="LKFS" tabindex="-1" aria-expanded="false" aria-controls="LKFS"><label>LKFS</label></button><div id="LKFS"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="LoD" tabindex="-1" aria-expanded="false" aria-controls="LoD"><label>LoD</label></button><div id="LoD"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="LU" tabindex="-1" aria-expanded="false" aria-controls="LU"><label>LU</label></button><div id="LU"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="MAC" tabindex="-1" aria-expanded="false" aria-controls="MAC"><label>MAC</label></button><div id="MAC"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="mach" tabindex="-1" aria-expanded="false" aria-controls="mach"><label>mach</label></button><div id="mach"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Makefile" tabindex="-1" aria-expanded="false" aria-controls="Makefile"><label>Makefile</label></button><div id="Makefile"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="MOI" tabindex="-1" aria-expanded="false" aria-controls="MOI"><label>MOI</label></button><div id="MOI"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="mph" tabindex="-1" aria-expanded="false" aria-controls="mph"><label>mph</label></button><div id="mph"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="MSL" tabindex="-1" aria-expanded="false" aria-controls="MSL"><label>MSL</label></button><div id="MSL"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="N1" tabindex="-1" aria-expanded="false" aria-controls="N1"><label>N1</label></button><div id="N1"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="N2" tabindex="-1" aria-expanded="false" aria-controls="N2"><label>N2</label></button><div id="N2"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="NDB" tabindex="-1" aria-expanded="false" aria-controls="NDB"><label>NDB</label></button><div id="NDB"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="nm" tabindex="-1" aria-expanded="false" aria-controls="nm"><label>nm</label></button><div id="nm"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Oswald Efficiency Factor" tabindex="-1" aria-expanded="false" aria-controls="Oswald Efficiency Factor"><label>Oswald Efficiency Factor</label></button><div id="Oswald Efficiency Factor"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="pbh" tabindex="-1" aria-expanded="false" aria-controls="pbh"><label>pbh</label></button><div id="pbh"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="PBR" tabindex="-1" aria-expanded="false" aria-controls="PBR"><label>PBR</label></button><div id="PBR"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="PCM" tabindex="-1" aria-expanded="false" aria-controls="PCM"><label>PCM</label></button><div id="PCM"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Percent Over 100" tabindex="-1" aria-expanded="false" aria-controls="Percent Over 100"><label>Percent Over 100</label></button><div id="Percent Over 100"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="PID" tabindex="-1" aria-expanded="false" aria-controls="PID"><label>PID</label></button><div id="PID"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="POH" tabindex="-1" aria-expanded="false" aria-controls="POH"><label>POH</label></button><div id="POH"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="POI" tabindex="-1" aria-expanded="false" aria-controls="POI"><label>POI</label></button><div id="POI"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="psf" tabindex="-1" aria-expanded="false" aria-controls="psf"><label>psf</label></button><div id="psf"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="psi" tabindex="-1" aria-expanded="false" aria-controls="psi"><label>psi</label></button><div id="psi"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="quadkey" tabindex="-1" aria-expanded="false" aria-controls="quadkey"><label>quadkey</label></button><div id="quadkey"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Rankine" tabindex="-1" aria-expanded="false" aria-controls="Rankine"><label>Rankine</label></button><div id="Rankine"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="RNAV" tabindex="-1" aria-expanded="false" aria-controls="RNAV"><label>RNAV</label></button><div id="RNAV"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="RPM" tabindex="-1" aria-expanded="false" aria-controls="RPM"><label>RPM</label></button><div id="RPM"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="RTO" tabindex="-1" aria-expanded="false" aria-controls="RTO"><label>RTO</label></button><div id="RTO"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="RTPC" tabindex="-1" aria-expanded="false" aria-controls="RTPC"><label>RTPC</label></button><div id="RTPC"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="SDF" tabindex="-1" aria-expanded="false" aria-controls="SDF"><label>SDF</label></button><div id="SDF"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Slug sqft" tabindex="-1" aria-expanded="false" aria-controls="Slug sqft"><label>Slug sqft</label></button><div id="Slug sqft"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="sqft" tabindex="-1" aria-expanded="false" aria-controls="sqft"><label>sqft</label></button><div id="sqft"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="STOL" tabindex="-1" aria-expanded="false" aria-controls="STOL"><label>STOL</label></button><div id="STOL"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Sweep" tabindex="-1" aria-expanded="false" aria-controls="Sweep"><label>Sweep</label></button><div id="Sweep"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="TIN" tabindex="-1" aria-expanded="false" aria-controls="TIN"><label>TIN</label></button><div id="TIN"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="Twist" tabindex="-1" aria-expanded="false" aria-controls="Twist"><label>Twist</label></button><div id="Twist"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="UI" tabindex="-1" aria-expanded="false" aria-controls="UI"><label>UI</label></button><div id="UI"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="VASI" tabindex="-1" aria-expanded="false" aria-controls="VASI"><label>VASI</label></button><div id="VASI"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="VFR" tabindex="-1" aria-expanded="false" aria-controls="VFR"><label>VFR</label></button><div id="VFR"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="VFS" tabindex="-1" aria-expanded="false" aria-controls="VFS"><label>VFS</label></button><div id="VFS"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="VMO" tabindex="-1" aria-expanded="false" aria-controls="VMO"><label>VMO</label></button><div id="VMO"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="VOR" tabindex="-1" aria-expanded="false" aria-controls="VOR"><label>VOR</label></button><div id="VOR"></div></div></li><li class=""><div class="RH-LAYOUT-GLOSSARY-glossary "><button class="rh-button RH-LAYOUT-GLOSSARY-term  " title="WASM" tabindex="-1" aria-expanded="false" aria-controls="WASM"><label>WASM</label></button><div id="WASM"></div></div></li></ul></div></div></div></div>
+    <div class="rh-layout-BODY-main" id="rh-layout-main">
+      <div class="RH-LAYOUT-TOOLBAR-toolbar-box" id="rh-toolbar"><div class="RH-LAYOUT-TOOLBAR-toolbar "><div class="rh-layout-TOOLBAR-custom-button-wrapper "><div class="RH-LAYOUT-TOOLBAR-toc-icon-div "><button class="rh-button RH-LAYOUT-TOOLBAR-panel-hide RH-LAYOUT-TOOLBAR-panel-hide  " title="Hide Left Panel"></button></div><div class="rh-layout-TOOLBAR-custom-button-wrapper "><div class="rh-layout-TOOLBAR-tool-list  " role="toolbar"><div class="nav" id="menu"><ul id="menu-close" role="presentation"><li role="presentation"><button class="rh-button RH-LAYOUT-TOOLBAR-button-0  " title="Expand All"><span class="RH-LAYOUT-TOOLBAR-button-icon  "></span></button></li><li role="presentation"><button class="rh-button RH-LAYOUT-TOOLBAR-button-1  " title="Favorites"><span class="RH-LAYOUT-TOOLBAR-button-icon  "></span></button></li><li role="presentation"><a class="RH-LAYOUT-TOOLBAR-menu-close" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#menu-close">× menu-close</a></li><li role="presentation"><a class="RH-LAYOUT-TOOLBAR-menu" href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#menu">☰ menu</a></li></ul></div></div></div></div></div></div>
+      <div class="rh-layout-BODY-body">
+        <div class="RH-LAYOUT-CENTERPANEL-container">
+          <div class="rh-layout-selectdetails" id="rh-selectdetails"><div class="RH-LAYOUT-CENTERPANEL-top-panel "><div role="region" aria-label="Selected Filters"><ul class="RH-LAYOUT-FILTERS-applied-filters-box  "></ul></div><div><div class="RH-LAYOUT-BCRUMBS-container "><div class="RH-LAYOUT-BCRUMBS-label-div "><span class="RH-LAYOUT-BCRUMBS-label  " title=""></span></div><nav class="rh-layout-BCRUMBS-nav" role="navigation" aria-label="Breadcrumb"><ul class="RH-LAYOUT-BCRUMBS-list-box  "><li class="rh-layout-BCRUMBS-list-item "><a class="RH-LAYOUT-BCRUMBS-brdcrmb-item" title="Programming Tools" href="https://docs.flightsimulator.com/html/Programming_Tools/Programming_Tools.htm">Programming Tools</a></li><li class="rh-layout-BCRUMBS-list-item "><a class="RH-LAYOUT-BCRUMBS-brdcrmb-item" title="Simulation Variables" href="https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm">Simulation Variables</a></li><li class="rh-layout-BCRUMBS-list-item RH-LAYOUT-BCRUMBS-active-topic"><a class="RH-LAYOUT-BCRUMBS-active-topic" title="General Simulation Variables">General Simulation Variables</a></li></ul></nav></div></div></div></div>
+          <div class="RH-LAYOUT-CENTERPANEL-topic-box" id="rh-topic"><div>
+  
+<h2 id="general_simulat">GENERAL SIMULATION VARIABLES</h2>
+  
+<p>The tables below contain information about all the simulation variables that are not directly related to an aircraft.</p>
+  
+
+  
+<p>&nbsp;</p>
+  
+<h3 id="ambient-conditions">Ambient Conditions</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AMBIENT PRECIP RATE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="autopilot-variables">Autopilot Variables</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT AIRSPEED ACQUISITION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT AIRSPEED HOLD CURRENT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT AIRSPEED MAX CALCULATED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_KNOTS</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT AIRSPEED MIN CALCULATED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_KNOTS</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT ALTITUDE MANUALLY TUNABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT CRUISE SPEED HOLD</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT FLIGHT LEVEL CHANGE</code></td>
+        
+<td>Boolean, toggles the autopilot&nbsp;Flight Level Change mode</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT HEADING MANUALLY TUNABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT MAX SPEED HOLD</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT SPEED SETTING</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_KNOTS</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="avionics-radio-receivers">Avionics (Radio Receivers)</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RADIOS AVAILABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="cfs-variables">CFS&nbsp;Variables</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOMB AMMO</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CANNON AMMO</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GUN AMMO</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROCKET AMMO</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="carrier-operations">Carrier Operations</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BLAST SHIELD POSITION</code></td>
+        
+<td>Indexed from 1, 100 is fully deployed, 0flat on deck</td>
+        
+<td>Percent_over_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CABLE CAUGHT BY TAILHOOK</code></td>
+        
+<td>A number 1 through 4 for the cable number caught by the tailhook. Cable 1 is the one closest to the stern of the carrier. A value of 0 indicates no cable was caught.</td>
+        
+<td>Number</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CATAPULT STROKE POSITION</code></td>
+        
+<td>Catapults are indexed from 1. This value will be 0 before the catapult fires, and then up to 100 as the aircraft is propelled down the catapult. The aircraft may takeoff before the value reaches 100 (depending on the aircraft weight, power applied, and other factors), in which case this value will not be further updated. This value could be used to drive a bogie animation.</td>
+        
+<td>Number</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">HOLDBACK BAR INSTALLED</code></td>
+        
+<td>Holdback bars allow build up of thrust before takeoff from a catapult, and are installed by the deck crew of an aircraft carrier.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LAUNCHBAR HELD EXTENDED</code></td>
+        
+<td>This will be True if the launchbar is fully extended, and can be used, for example, to change the color of an instrument light.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LAUNCHBAR POSITION</code></td>
+        
+<td>Installed on aircraft before takeoff from a carrier catapult. Note that gear cannot retract with this extended. 100 = fully extended. Refer to the document Notes on Aircraft Systems.</td>
+        
+<td>Percent_over_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LAUNCHBAR SWITCH</code></td>
+        
+<td>If this is set to True the launch bar switch has been engaged.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">NUMBER OF CATAPULTS</code></td>
+        
+<td>Maximum of 4. A model can contain more than 4 catapults, but only the first four will be read and recognized by the simulation.</td>
+        
+<td>Number</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SURFACE RELATIVE GROUND SPEED</code></td>
+        
+<td>The speed of the aircraft relative to the speed of the first surface directly underneath it. Use this to retrieve, for example, an aircraft's taxiing speed while it is moving on a moving carrier. It also applies to airborne aircraft, for example when a helicopter is successfully hovering above a moving ship, this value should be zero. The returned value will be the same as GROUND VELOCITY if the first surface beneath it is not moving.</td>
+        
+<td>Feet_per_second</td>
+        
+<td>&nbsp;</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">TAILHOOK HANDLE</code></td>
+        
+<td>True if the tailhook handle is engaged.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="electrical-systems">Electrical Systems</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT STANDBY VACUUM ON</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">NEW ELECTRICAL SYSTEM</code></td>
+        
+<td>Is the aircraft using the new Electrical System or the FSX one</td>
+        
+<td>Bool</td>
+        
+<td>&nbsp;</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="engine-variables">Engine Variables</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENGINE PRIMER</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">OIL AMOUNT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_FS7_OIL_QUANTITY</td>
+        
+<td>TYPE_VAR16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">PROPELLER ADVANCED SELECTION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_ENUM</td>
+        
+<td>TYPE_ENUM</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="fuel-variables">Fuel Variables</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUEL DUMP ACTIVE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="helicopter-specific-data">Helicopter Specific Data</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COLLECTIVE POSITION</code></td>
+        
+<td>The position of the helicopter's collective. 0 is fully up, 100 fully depressed.</td>
+        
+<td>Percent_over_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG ELECTRICAL LOAD</code></td>
+        
+<td>Electrical load.Applies only to Bell helicopter.</td>
+        
+<td>Percent scalar 16K (Max load * 16384)</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG FUEL PRESSURE</code></td>
+        
+<td>Fuel pressure.Applies only to Bell helicopter.</td>
+        
+<td>PSI scalar 16K (Psi * 16384)</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG ROTOR RPM</code></td>
+        
+<td>Rotor rpm. Returns main rotor rpm for Bell helicopter, or the indexed rotor rpm of other helicopters.</td>
+        
+<td>Percent scalar 16K (Max rpm * 16384)</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG TORQUE PERCENT</code></td>
+        
+<td>Torque. Returns main rotor torque for Bell helicopter, or the indexed rotor torque of other helicopters.</td>
+        
+<td>Percent scalar 16K (Ft/lbs * 16384)</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG TRANSMISSION PRESSURE</code></td>
+        
+<td>Transmission pressure.Applies only to Bell helicopter.</td>
+        
+<td>PSI scalar 16K (Psi * 16384)</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG TRANSMISSION TEMPERATURE</code></td>
+        
+<td>Transmission temperature.Applies only to Bell helicopter.</td>
+        
+<td>Celsius scalar 16K (Degrees * 16384)</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG TURBINE TEMPERATURE</code></td>
+        
+<td>Turbine temperature. Applies only to Bell helicopter.</td>
+        
+<td>Celsius scalar 16K (degrees * 16384)</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">IS ATTACHED TO SLING</code></td>
+        
+<td>Set to true if this object is attached to a sling.</td>
+        
+<td>Bool</td>
+        
+<td>&nbsp;</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">NUM SLING CABLES</code></td>
+        
+<td>The number of sling cables (not hoists) that are configured for the aircraft. Refer to the document Notes on Aircraft Systems.</td>
+        
+<td>Number</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">PAYLOAD STATION NUM SIMOBJECTS</code></td>
+        
+<td>The number of objects at the payload station (indexed from 1).</td>
+        
+<td>Number</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">PAYLOAD STATION OBJECT</code></td>
+        
+<td>Places the named object at the payload station identified by the index (starting from 1). The string is the Container name (refer to the title property of Simulation Object Configuration Files).</td>
+        
+<td>String</td>
+        
+<td>&nbsp;</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR BRAKE ACTIVE</code></td>
+        
+<td>Active</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR BRAKE HANDLE POS</code></td>
+        
+<td>Percent actuated</td>
+        
+<td>Percent Over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR CHIP DETECTED</code></td>
+        
+<td>Chip detection</td>
+        
+<td>Bool</td>
+        
+<td>&nbsp;</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR CLUTCH ACTIVE</code></td>
+        
+<td>Active</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR CLUTCH SWITCH POS</code></td>
+        
+<td>Switch position</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR GOV ACTIVE</code></td>
+        
+<td>Active</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR GOV SWITCH POS</code></td>
+        
+<td>Switch position</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR LATERAL TRIM PCT</code></td>
+        
+<td>Trim percent</td>
+        
+<td>Percent Over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR RPM PCT</code></td>
+        
+<td>Percent max rated rpm</td>
+        
+<td>Percent Over 100</td>
+        
+<td>&nbsp;</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ROTOR TEMPERATURE</code></td>
+        
+<td>Main rotor transmission temperature</td>
+        
+<td>Rankine</td>
+        
+<td>&nbsp;</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SLING ACTIVE PAYLOAD STATION</code></td>
+        
+<td>The payload station (identified by the parameter) where objects will be placed from the sling (identified by the index).</td>
+        
+<td>Number</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SLING CABLE BROKEN</code></td>
+        
+<td>True if the cable is broken.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SLING CABLE EXTENDED LENGTH</code></td>
+        
+<td>The length of the cable extending from the aircraft.</td>
+        
+<td>Feet</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SLING HOIST PERCENT DEPLOYED</code></td>
+        
+<td>The percentage of the full length of the sling cable deployed.</td>
+        
+<td>Percent_over_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SLING HOOK IN PICKUP MODE</code></td>
+        
+<td>A Boolean for whether or not the hook is in pickup mode, so capable of picking up another object.&nbsp;</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SLING OBJECT ATTACHED</code></td>
+        
+<td>If units are set as boolean, returns True if a sling object is attached. If units are set as a string, returns the container title of the object.There can be multiple sling positions, indexed from 1. The sling positions are set in the Aircraft Configuration File.</td>
+        
+<td>Bool/String</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="other-find-place">Other Find Place</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CONTROLLABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SEMIBODY LOADFACTOR X</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SEMIBODY LOADFACTOR Z</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="plane-positionorientation">Plane Position/Orientation</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COWL FLAPS</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FLAP POSITION SET</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FLY BY WIRE ALPHA PROTECTION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SIM SHOULD SET ON GROUND</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">YOKE X INIDICATOR</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_POSITION_16K</td>
+        
+<td>TYPE_SINT16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="propeller-data">Propeller Data</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG FUEL FLOW PPH SSL</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_PERCENT_SCALER_16K</td>
+        
+<td>TYPE_UINT16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ENG PRESSURE RATIO GES</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_PERCENT_SCALER_16K</td>
+        
+<td>TYPE_UINT16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GENERAL ENG FIRE DETECTED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">OLD ENG STARTER</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_ENUM</td>
+        
+<td>TYPE_ENUM16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">TURB ENG FREE TURBINE TORQUE</code></td>
+        
+<td>Float, the torque applied on the free turbine</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="racing">Racing</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG ANTIDETONATION TANK MAX QUANTITY</code></td>
+        
+<td>Indexed from 1. This value set in the Aircraft Configuration File.</td>
+        
+<td>Gallons</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG ANTIDETONATION TANK QUANTITY</code></td>
+        
+<td>Indexed from 1. Refer to the Mission Creation documentation for the procedure for refilling tanks.</td>
+        
+<td>Gallons</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG ANTIDETONATION TANK VALVE</code></td>
+        
+<td>Indexed from 1, each engine can have oneantidetonation tank. Installed on racing aircraft. Refer to the document Notes on Aircraft Systems.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG CYLINDER HEALTH</code></td>
+        
+<td>Index high 16 bits is engine number, low16 cylinder number, both indexed from 1.</td>
+        
+<td>Percent_over_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG DETONATING</code></td>
+        
+<td>Indexed from 1. Set to True if the engine is detonating.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG NITROUS TANK MAX QUANTITY</code></td>
+        
+<td>Indexed from 1. This value set in the Aircraft Configuration File.</td>
+        
+<td>Gallons</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG NITROUS TANK QUANTITY</code></td>
+        
+<td>Indexed from 1. Refer to the Mission Creation documentation for the procedure for refilling tanks.</td>
+        
+<td>Gallons</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG NITROUS TANK VALVE</code></td>
+        
+<td>Indexed from 1. Each engine can have one Nitrous fuel tank installed.</td>
+        
+<td>Bool</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG NUM CYLINDERS</code></td>
+        
+<td>Indexed from 1. The number of engine cylinders.</td>
+        
+<td>Number</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG NUM CYLINDERS FAILED</code></td>
+        
+<td>Indexed from 1. The number of cylinders that have failed.</td>
+        
+<td>Number</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="system-queries">System Queries</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUEL PUMP</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">INSTRUMENTS AVAILABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">PROP TYPE AVAILABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SYSTEMS AVAILABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="services-specific-variables">Services Specific Variables</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BAGGAGELOADER ANGLE CURRENT</code></td>
+        
+<td>Only for BaggageLoader SimObjects. Current angle of its ramp, relative to ground.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BAGGAGELOADER ANGLE TARGET</code></td>
+        
+<td>Only for BaggageLoader SimObjects. Target angle of its ramp, relative to ground.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BAGGAGELOADER END RAMP Y</code></td>
+        
+<td>Only for BaggageLoader SimObjects. Y coordinate of the end of its ramp.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BAGGAGELOADER END RAMP Z</code></td>
+        
+<td>Only for BaggageLoader SimObjects. Z coordinate of the end of its ramp.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BAGGAGELOADER PIVOT Y</code></td>
+        
+<td>Only for BaggageLoader SimObjects. Y coordinate of the pivot of its ramp.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BAGGAGELOADER PIVOT Z</code></td>
+        
+<td>Only for BaggageLoader SimObjects. Z coordinate of the pivot of its ramp.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP ELEVATION CURRENT</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Current altitude AGL of the top of its stairs.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP ELEVATION TARGET</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Target altitude AGL of the top of its stairs.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP END POSITION Y</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Y coordinate of the top of its stairs when extended at maximal capacity.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP END POSITION Z</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Z coordinate of the top of its stairs when extended at maximal capacity.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP ORIENTATION CURRENT</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Current orientation of its stairs, where 0 is at rest and 1 is suited for boarding.</td>
+        
+<td>Percent over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP ORIENTATION TARGET</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Target orientation of its stairs, where 0 is at rest and 1 is suited for boarding.</td>
+        
+<td>Percent over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP START POSITION Y</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Y coordinate of the top of its stairs when extended at minimal capacity.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BOARDINGRAMP START POSITION Z</code></td>
+        
+<td>Only for BoardingRamp SimObjects. Z coordinate of the top of its stairs when extended at minimal capacity.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CATERINGTRUCK AIRCRAFT DOOR CONTACT OFFSET Z</code></td>
+        
+<td>Only for CateringTruck SimObjects. Z coordinate of the point of contact with the bottom or aircraft door.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CATERINGTRUCK ELEVATION CURRENT</code></td>
+        
+<td>Only for CateringTruck SimObjects. Current altitude AGL of the bottom of its container.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CATERINGTRUCK ELEVATION TARGET</code></td>
+        
+<td>Only for CateringTruck SimObjects. Target altitude AGL of the bottom of its container.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CATERINGTRUCK OPENING CURRENT</code></td>
+        
+<td>Only for CateringTruck SimObjects. Current opening of the container and deployment of the bridge.</td>
+        
+<td>Percent over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CATERINGTRUCK OPENING TARGET</code></td>
+        
+<td>Only for CateringTruck SimObjects. Target opening of the container and deployment of the bridge.</td>
+        
+<td>Percent over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELTRUCK HOSE DEPLOYED</code></td>
+        
+<td>Only for FuelTruck SimObjects. Percentage of deployment of its hose. Currently only set to 0 and 1.</td>
+        
+<td>Percent over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELTRUCK HOSE END POSX</code></td>
+        
+<td>Only for FuelTruck SimObjects. X coordinate of the end of its hose, when fully deployed.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELTRUCK HOSE END POSZ</code></td>
+        
+<td>Only for FuelTruck SimObjects. Z coordinate of the end of its hose, when fully deployed.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELTRUCK HOSE END RELATIVE HEADING</code></td>
+        
+<td>Only for FuelTruck SimObjects. Heading of the end of its hose relative to the FuelTruck heading.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GROUNDPOWERUNIT HOSE DEPLOYED</code></td>
+        
+<td>Only for GroundPowerUnit SimObjects. Percentage of deployment of its cable. Currently only set to 0 and 1.</td>
+        
+<td>Percent over 100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GROUNDPOWERUNIT HOSE END POSX</code></td>
+        
+<td>Only for GroundPowerUnit SimObjects. Z coordinate of the end of its cable, when fully deployed.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GROUNDPOWERUNIT HOSE END POSZ</code></td>
+        
+<td>Only for GroundPowerUnit SimObjects. Z coordinate of the end of its cable, when fully deployed.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GROUNDPOWERUNIT HOSE END RELATIVE HEADING</code></td>
+        
+<td>Only for GroundPowerUnit SimObjects. Heading of the end of its cable relative to the GroundPowerUnit heading.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY HOOD LEFT BEND</code></td>
+        
+<td>Only for Jetway SimObjects. Target, 0 to 100 percent, for the left bend animation of jetway hood.</td>
+        
+<td>Percent</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY HOOD LEFT DEPLOYMENT</code></td>
+        
+<td>Only for Jetway SimObjects. Target angle (0 being vertical) for the left deployment animation of jetway hood.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY HOOD RIGHT BEND</code></td>
+        
+<td>Only for Jetway SimObjects. Target, 0 to 100 percent, for the right bend animation of jetway hood.</td>
+        
+<td>Percent</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY HOOD RIGHT DEPLOYMENT</code></td>
+        
+<td>Only for Jetway SimObjects. Target angle (0 being vertical) for the right deployment animation of jetway hood.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY HOOD TOP HORIZONTAL</code></td>
+        
+<td>Only for Jetway SimObjects. Target, -100 to +100 percent, for the top horizontal animation of jetway hood.</td>
+        
+<td>Percent</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY HOOD TOP VERTICAL</code></td>
+        
+<td>Only for Jetway SimObjects. Target, -100 to +100 percent, for the top vertical animation of jetway hood.</td>
+        
+<td>Percent</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY MOVING</code></td>
+        
+<td>Only for Jetway SimObjects. True if this jetway body is currently moving (does not include hood animation).</td>
+        
+<td>Boolean</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY WHEEL ORIENTATION CURRENT</code></td>
+        
+<td>Only for Jetway SimObjects. Current angle of jetway wheels.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY WHEEL ORIENTATION TARGET</code></td>
+        
+<td>Only for Jetway SimObjects. Target angle of jetway wheels (approximate).</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">JETWAY WHEEL SPEED</code></td>
+        
+<td>Only for Jetway SimObjects. Current speed of jetway wheels.</td>
+        
+<td>Meters per second</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT DIRECTION PARKINGSPACE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT DISTANCE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT DISTANCE DIRECTION X PARKINGSPACE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT DISTANCE DIRECTION Z PARKINGSPACE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT ENGINE SHUTDOWN</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT HEADING PARKINGSPACE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT PROJECTION POINT PARKINGSPACE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MARSHALLER AIRCRAFT VELOCITY</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">PUSHBACK ATTACHED</code></td>
+        
+<td>Only for Pushback or SmallPushback SimObjects. True if this vehicle is attached to an aircraft.</td>
+        
+<td>Boolean</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WAGON BACK LINK LENGTH</code></td>
+        
+<td>Only for GroundVehicles. Length of the link at the back of the vehicle used to attach a wagon behind.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WAGON BACK LINK ORIENTATION</code></td>
+        
+<td>Only for GroundVehicles. Current orientation of the link at the back of the vehicle used to attach a wagon behind.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WAGON BACK LINK START POSZ</code></td>
+        
+<td>Only for GroundVehicles. Z coordinate of the start of the link at the back of the vehicle used to attach a wagon behind.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WAGON FRONT LINK LENGTH</code></td>
+        
+<td>Only for GroundVehicles. Length of the link at the front of the vehicle used to be attached as wagon.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WAGON FRONT LINK ORIENTATION</code></td>
+        
+<td>Only for GroundVehicles. Current orientation of the link at the front of the vehicle used to be attached as wagon.</td>
+        
+<td>Degrees</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle"></span>
+<span class="checkmark_stem"></span>
+<span class="checkmark_kick"></span></span></td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WAGON FRONT LINK START POSZ</code></td>
+        
+<td>Only for GroundVehicles. Z coordinate of the start of the link at the front of the vehicle used to be attached as wagon.</td>
+        
+<td>Meters</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td style="text-align: center;">
+<span class="checkmark">
+<span class="checkmark_circle_red"></span>
+<span class="checkmark_right"></span>
+<span class="checkmark_left"></span></span></td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="switches">Switches</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">STROBE FLASH</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL8</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="touchdown">Touchdown</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ADF VOLUME</code></td>
+        
+<td>Float - Returns the volume of the 
+<a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#" data-popovertext="&#39;Automatic Direction Finding&#39; is an electronic aid to navigation that identifies the relative bearing of an aircraft from a radio beacon transmitting in the MF or LF bandwidth, such as an Non-Directional Beacon or commercial radio broadcast station." data-rhwidget="TextPopOver" aria-haspopup="true" role="button">ADF</a></td>
+        
+<td>UNITS_PERCENT_OVER_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AIRSPEED TRUE RAW</code></td>
+        
+<td>Equivalent to 
+<code class="inline">SIMVAR_AIRSPEED_TRUE</code>, but does not account for wind when used to Set Airspeed value</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ALTERNATOR BREAKER PULLED</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ALTERNATOR CONNECTION ON</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">APU BLEED PRESSURE RECEIVED BY ENGINE</code></td>
+        
+<td>Boolean, Whether or not the engine receives Bleed air from the APU.</td>
+        
+<td>UNITS_PSI</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">APU SWITCH</code></td>
+        
+<td>Boolean, whether or not the APU is switched on.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT APPROACH ACTIVE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT APPROACH ARM</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT APPROACH CAPTURED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT GLIDESLOPE ACTIVE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT GLIDESLOPE ARM</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT MAX BANK ID</code></td>
+        
+<td>Integer, the index of the current Max Bank setting of the autopilot.</td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BATTERY BREAKER PULLED</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BATTERY CONNECTION ON</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BLEED AIR APU</code></td>
+        
+<td>Boolean, returns whether or not the APU attempts to provide Bleed Air.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BLEED AIR ENGINE</code></td>
+        
+<td>Boolean, returns whether or not the Engine attempts to provide Bleed Air. Requires index.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BUS BREAKER PULLED</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BUS CONNECTION ON</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BUS LOOKUP INDEX</code></td>
+        
+<td>
+          
+<p>&nbsp;</p>
+        </td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA ACTION COCKPIT VIEW RESET</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA ACTION COCKPIT VIEW SAVE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA GAMEPLAY PITCH YAW</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA REQUEST ACTION</code></td>
+        
+<td>TODO</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA STATE</code></td>
+        
+<td>TODO</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA SUBSTATE</code></td>
+        
+<td>TODO</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA VIEW TYPE AND INDEX</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CAMERA VIEW TYPE AND INDEX MAX</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CHASE CAMERA HEADLOOK</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CHASE CAMERA MOMENTUM</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CHASE CAMERA SPEED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CHASE CAMERA ZOOM</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CHASE CAMERA ZOOM SPEED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT BREAKER PULLED</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT CONNECTION ON</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT NAVCOM1 ON</code></td>
+        
+<td>Whether or not power is available to the NAVCOM1 circuit.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT NAVCOM2 ON</code></td>
+        
+<td>Whether or not power is available to the NAVCOM2 circuit.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT NAVCOM3 ON</code></td>
+        
+<td>Whether or not power is available to the NAVCOM3 circuit.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT ON</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT POWER SETTING</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">CIRCUIT SWITCH ON</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA HEADLOOK</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA HEIGHT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA INSTRUMENT AUTOSELECT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA MOMENTUM</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA SIDE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA SPEED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA UPPER POSITION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA ZOOM</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COCKPIT CAMERA ZOOM SPEED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DRONE CAMERA FOCUS</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DRONE CAMERA FOCUS MODE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DRONE CAMERA FOLLOW</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DRONE CAMERA FOV</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DRONE CAMERA LOCKED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DRONE CAMERA SPEED ROTATION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DRONE CAMERA SPEED TRAVELLING</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ELECTRICAL GENALT LOAD</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ELT ACTIVATED</code></td>
+        
+<td>Whether or not the Emergency Locator Transmitter is active.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">EXTERNAL POWER AVAILABLE</code></td>
+        
+<td>Boolean, Whether or not an external power supply is available.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">EXTERNAL POWER BREAKER PULLED</code></td>
+        
+<td>Boolean, The state of the breaker of an external power source</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">EXTERNAL POWER CONNECTION ON</code></td>
+        
+<td>Boolean, The state of the connection between a bus and an external power source</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">EXTERNAL POWER ON</code></td>
+        
+<td>Boolean, Whether or not the external power is activated.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM ENGINE PRESSURE</code></td>
+        
+<td>Float, Pressure of the fuel coming to this engine. (Requires plane configured to use the modular FuelSystem).</td>
+        
+<td>UNITS_KILOPASCAL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM JUNCTION SETTING</code></td>
+        
+<td>Enum, which is the junction options set in the plane's fuel system configuration is currently enabled (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_UINT32</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM LINE FUEL FLOW</code></td>
+        
+<td>Float, fuel flowing through the line in Galons per Hour. (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_GALLONS_PER_HOUR</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM LINE FUEL LEVEL</code></td>
+        
+<td>Float, Level of fuel in the line in Gallons. (Requires plane configured to use the modular FuelSystem).</td>
+        
+<td>UNITS_GALLONS</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM LINE FUEL PRESSURE</code></td>
+        
+<td>Float, pressure in the fuel line in KiloPascal. (Requires plane configured to use the modular FuelSystem).</td>
+        
+<td>UNITS_KILOPASCAL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM PUMP ACTIVE</code></td>
+        
+<td>Boolean, Whether or not the pump is actually active (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM PUMP SWITCH</code></td>
+        
+<td>Boolean, Whether or not the pump is enabled (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_ENUM</td>
+        
+<td>TYPE_ENUM</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM TANK CAPACITY</code></td>
+        
+<td>Gallons, Total capacity of a fuel tank (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_GALLON</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM TANK LEVEL</code></td>
+        
+<td>Percent, Quantity of fuel available in a fuel tank (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_PERCENT_OVER_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM TANK QUANTITY</code></td>
+        
+<td>Gallons, Quantity of fuel available in a fuel tank (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_GALLON</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM TANK WEIGHT</code></td>
+        
+<td>Pounds, Weight of fuel available in a fuel tank (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_POUND</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM TRIGGER STATUS</code></td>
+        
+<td>Bool, whether or not a trigger is active. (Requires plane configured to use the modular FuelSystem).</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM VALVE OPEN</code></td>
+        
+<td>Boolean, Whether or not the valve is actually fully opened (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_PERCENT_OVER_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUELSYSTEM VALVE SWITCH</code></td>
+        
+<td>Boolean, Whether ot not the valve is set to be opened (Requires plane configured to use the modular FuelSystem.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">FUEL TRANSFER PUMP ON</code></td>
+        
+<td>Return true if the pump at the specified index is active.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GAMEPLAY CAMERA FOCUS</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GENERAL ENG COMBUSTION EX1</code></td>
+        
+<td>Similar to 
+<code class="inline">SIMVAR_GENERAL_ENG_COMBUSTION</code>, except that when it is set it only affects the combustion flag.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GENERAL ENG FUEL PUMP SWITCH EX1</code></td>
+        
+<td>Equivalent to 
+<code class="inline">SIMVAR_GENERAL_ENG_FUEL_PUMP_SWITCH</code> but differenciates between ON and AUTO</td>
+        
+<td>UNITS_ENUM</td>
+        
+<td>TYPE_ENUM</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GENERAL ENG HOBBS ELAPSED TIME</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_SECONDS</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">GPS FLIGHTPLAN TOTAL DISTANCE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_METERS</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">IDLE ANIMATION ID</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">IS ANY INTERIOR LIGHT ON</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT CABIN POWER SETTING</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT GLARESHIELD</code></td>
+        
+<td>Whether or not the Light switch for the Glareshield is enabled</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT GLARESHIELD ON</code></td>
+        
+<td>Whether or not the Glareshield light is on.</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT GLARESHIELD POWER SETTING</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT PANEL POWER SETTING</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT PEDESTRAL</code></td>
+        
+<td>Whether or not the Light switch for the Pedestal is enabled</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT PEDESTRAL ON</code></td>
+        
+<td>Whether or not the Pedestal light is on.</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT PEDESTRAL POWER SETTING</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">MISSION SCORE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_NUMBER</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">NAV GLIDE SLOPE LENGTH</code></td>
+        
+<td>Float, the distance between the plane and the Glide beacon</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">PLANE IN PARKING STATE</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG ENGINE MASTER SWITCH</code></td>
+        
+<td>Whether or not the Engine Master switch is active on a reciprocating engine.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">RECIP ENG GLOW PLUG ACTIVE</code></td>
+        
+<td>Whether or not the Glow Plug is active on a reciprocating engine.</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SMART CAMERA ACTIVE</code></td>
+        
+<td>TODO</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SMART CAMERA INFO</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SMART CAMERA LIST</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SMART CAMERA LIST DESCRIPTION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">TRACK IR ENABLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">TURB ENG IGNITION SWITCH EX1</code></td>
+        
+<td>Position of the Ignition Switch. Similar to 
+<code class="inline">SIMVAR_TURB_ENG_IGNITION_SWITCH</code> but differentiates between ON and AUTO. (Enum)</td>
+        
+<td>UNITS_ENUM</td>
+        
+<td>TYPE_ENUM</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">TURB ENG IS IGNITING</code></td>
+        
+<td>Wheter or not the ignition system is currently running. Depends on 
+<code class="inline">SIMVAR_TURB_ENG_IGNITION_SWITCH_ENUM</code>, the cfg var ignition_auto_type and current state of the plane. (Bool)</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">UNUSABLE FUEL TOTAL QUANTITY</code></td>
+        
+<td>Gallons, the total amount of fuel on the plane which is not usable.</td>
+        
+<td>UNITS_GALLONS</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="uncategorized-new-ones">Uncategorized&nbsp;Variables</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ASSISTANCE LANDING ENABLED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ASSISTANCE TAKEOFF ENABLED</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC CLEARED IFR</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC CURRENT WAYPOINT ALTITUDE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC FLIGHTPLAN DIFF ALT</code></td>
+        
+<td>Altitude between the position of the aircraft and his closest waypoints in the flightplan</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC FLIGHTPLAN DIFF DISTANCE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC FLIGHTPLAN DIFF HEADING</code></td>
+        
+<td>Heading between the position of the aircraft and his closest waypoints in the flightplan</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC IFR FP TO REQUEST</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC PREVIOUS WAYPOINT ALTITUDE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">ATC TAXIPATH DISTANCE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AUTOPILOT ALTITUDE ARM</code></td>
+        
+<td>Whether or not the Autopilot is in Altitude Arm mode</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER ADF</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER ALTFLD</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER AUTOPILOT</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER AVNBUS1</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER AVNBUS2</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER AVNFAN</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER FLAP</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER GPS</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER INST</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER INSTLTS</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER LTS PWR</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER NAVCOM1</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER NAVCOM2</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER NAVCOM3</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER TURNCOORD</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER WARN</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">BREAKER XPNDR</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COM1 STORED FREQUENCY</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_FREQUENCY_BCD16</td>
+        
+<td>TYPE_BCD16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COM2 STORED FREQUENCY</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_FREQUENCY_BCD16</td>
+        
+<td>TYPE_BCD16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COM3 STORED FREQUENCY</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_FREQUENCY_BCD16</td>
+        
+<td>TYPE_BCD16</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COM RECEIVE</code></td>
+        
+<td>Whether or not the plane is receiving on this com channel</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">COM VOLUME</code></td>
+        
+<td>The Volume of the Com Radio (Percents)</td>
+        
+<td>UNITS_PERCENT</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">LIGHT POTENTIOMETER</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_PERCENT_OVER_100</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">NAV VOLUME</code></td>
+        
+<td>The Volume of the Nav Radio (Percents)</td>
+        
+<td>UNITS_PERCENT</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">PUSHBACK AVAILABLE</code></td>
+        
+<td>True if a push back is available on the parking space</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SHUTOFF VALVE PULLED</code></td>
+        
+<td>TODO</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="warning-variables">Warning Variables</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING FUEL</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING FUEL LEFT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING FUEL RIGHT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING LOW HEIGHT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL32</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING OIL PRESSURE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING VACUUM</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING VACUUM LEFT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING VACUUM RIGHT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">WARNING VOLTAGE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_FLOAT64</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="design-speeds">Design Speeds</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">AI CONTROLS</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DELEGATE CONTROLS TO AI</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DESIGN CRUISE ALT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DESIGN SPAWN ALTITUDE CRUISE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DESIGN SPAWN ALTITUDE DESCENT</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DESIGN SPEED CLIMB</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DESIGN SPEED MIN ROTATION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">DESIGN TAKEOFF SPEED</code></td>
+        
+<td>Recommended speed before takeoff in Knots (default: 55)</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="unitless-structures">Unitless&nbsp;Structures</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">STRUCT BODY ROTATION ACCELERATION</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">STRUCT DAMAGEVISIBLE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">STRUCT PBH32</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">STRUCT REALISM VARS</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">STRUC AIRSPEED HOLD PID CONSTS</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">STRUC HEADING HOLD PID CONSTS</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="user-to-get-valid-terrain-info">Get Valid Terrain Info</h3>
+  
+<table style="table-layout:auto;">
+    
+<colgroup>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+      
+<col>
+    </colgroup>
+    
+<tbody>
+      
+<tr>
+        
+<th>Simulation Variable</th>
+        
+<th>Description</th>
+        
+<th>Units</th>
+        
+<th>Type</th>
+        
+<th>Settable</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">EXTERNAL SYSTEM VALUE</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+        
+<td>&nbsp;</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">SLING HOIST SWITCH</code></td>
+        
+<td>&nbsp;</td>
+        
+<td>UNITS_BOOL</td>
+        
+<td>TYPE_BOOL</td>
+        
+<td>&nbsp;</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+  
+<h3 id="fuel-tank-selection">Fuel Tank Selection</h3>
+  
+<table style="table-layout:auto;width:50%;">
+    
+<tbody>
+      
+<tr>
+        
+<th>Number</th>
+        
+<th>Description</th>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">0</code></td>
+        
+<td>Off</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">1</code></td>
+        
+<td>All</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">2</code></td>
+        
+<td>Left</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">3</code></td>
+        
+<td>Right</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">4</code></td>
+        
+<td>Left auxiliary</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">5</code></td>
+        
+<td>Right auxiliary</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">6</code></td>
+        
+<td>Center</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">7</code></td>
+        
+<td>Center2</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">8</code></td>
+        
+<td>Center3</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">9</code></td>
+        
+<td>External1</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">10</code></td>
+        
+<td>External2</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">11</code></td>
+        
+<td>Right tip</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">12</code></td>
+        
+<td>Left tip</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">13</code></td>
+        
+<td>Crossfeed</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">14</code></td>
+        
+<td>Crossfeed left to right</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">15</code></td>
+        
+<td>Crossfeed right to left</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">16</code></td>
+        
+<td>Both</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">17</code></td>
+        
+<td>External</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">18</code></td>
+        
+<td>Isolate</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">19</code></td>
+        
+<td>Left main</td>
+      </tr>
+      
+<tr>
+        
+<td>
+<code class="inline">20</code></td>
+        
+<td>Right main</td>
+      </tr>
+    </tbody>
+  </table>
+  
+<p>&nbsp;</p>
+  
+<p>&nbsp;</p>
+
+</div></div>
+          <div class="RH-LAYOUT-BRS-container" id="rh-brs"></div>
+        </div>
+        <div class="RH-LAYOUT-RIGHTPANEL-container" id="rh-rightpanel"><div tabindex="-1" class="rh-layout-RIGHTPANEL-rightpanel-content "><div class="RH-LAYOUT-RIGHTPANEL-top-buttons "><button class="rh-button RH-LAYOUT-RIGHTPANEL-fav-button  " title="Set as Favorite"></button><button class="rh-button RH-LAYOUT-RIGHTPANEL-print-button  " title="Print"></button><button class="rh-button RH-LAYOUT-RIGHTPANEL-highlight-remove-button  " title="Remove Highlight"></button></div><div class="RH-LAYOUT-MINITOC-container " role="navigation" aria-labelledby="minitoc-caption">       <label data-type="minitoc-caption" href="#" class="RH-LAYOUT-MINITOC-caption" id="minitoc-caption">In this Topic</label> <ol><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-1"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#general_simulat" class="RH-LAYOUT-MINITOC-item">GENERAL SIMULATION VARIABLES</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-1"><ol><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#ambient-conditions" class="RH-LAYOUT-MINITOC-item">Ambient Conditions</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer RH-LAYOUT-MINITOC-selected-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#autopilot-variables" class="RH-LAYOUT-MINITOC-item RH-LAYOUT-MINITOC-selected-item">Autopilot Variables</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#avionics-radio-receivers" class="RH-LAYOUT-MINITOC-item">Avionics (Radio Receivers)</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#cfs-variables" class="RH-LAYOUT-MINITOC-item">CFS&nbsp;Variables</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#carrier-operations" class="RH-LAYOUT-MINITOC-item">Carrier Operations</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#electrical-systems" class="RH-LAYOUT-MINITOC-item">Electrical Systems</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#engine-variables" class="RH-LAYOUT-MINITOC-item">Engine Variables</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#fuel-variables" class="RH-LAYOUT-MINITOC-item">Fuel Variables</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#helicopter-specific-data" class="RH-LAYOUT-MINITOC-item">Helicopter Specific Data</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#other-find-place" class="RH-LAYOUT-MINITOC-item">Other Find Place</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#plane-positionorientation" class="RH-LAYOUT-MINITOC-item">Plane Position/Orientation</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#propeller-data" class="RH-LAYOUT-MINITOC-item">Propeller Data</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#racing" class="RH-LAYOUT-MINITOC-item">Racing</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#system-queries" class="RH-LAYOUT-MINITOC-item">System Queries</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#services-specific-variables" class="RH-LAYOUT-MINITOC-item">Services Specific Variables</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#switches" class="RH-LAYOUT-MINITOC-item">Switches</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#touchdown" class="RH-LAYOUT-MINITOC-item">Touchdown</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#uncategorized-new-ones" class="RH-LAYOUT-MINITOC-item">Uncategorized&nbsp;Variables</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#warning-variables" class="RH-LAYOUT-MINITOC-item">Warning Variables</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#design-speeds" class="RH-LAYOUT-MINITOC-item">Design Speeds</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#unitless-structures" class="RH-LAYOUT-MINITOC-item">Unitless&nbsp;Structures</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#user-to-get-valid-terrain-info" class="RH-LAYOUT-MINITOC-item">Get Valid Terrain Info</a></div></li><li class="rh-layout-MINITOC-rightpanel-minitoc-list RH-LAYOUT-MINITOC-item-level-2"><div class="rh-layout-MINITOC-item-wrapper"><div class="rh-layout-MINITOC-item-pointer"></div><a href="https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/Status/#fuel-tank-selection" class="RH-LAYOUT-MINITOC-item">Fuel Tank Selection</a></div></li></ol></li></ol></div><div class="rh-layout-RIGHTPANEL-bottom-buttons "><button class="rh-button RH-LAYOUT-RIGHTPANEL-pageup-button  " title="Go to Top"></button><button class="rh-button RH-LAYOUT-RIGHTPANEL-fullscreen-button  " title="Full Screen" aria-pressed="false"></button></div></div></div>
+      </div>
+    </div>
+  </main>
+<footer role="contentinfo" class="RH-LAYOUT-FOOTER-container" id="rh-footer">
+  <div class="rh-layout-footer-outer-box" style="background-color: #EFEFEF;">
+    <!--<div class="rh-layout-footer-inner-left-box" style="background-color: #EFEFEF;"><img alt="World Icon" class="rh-layout-footer-imgTag" src="Group 114.svg" title="World Icon" />
+      <div>
+        <p style="text-align: center;background-color: #EFEFEF;color: rgb(0,0,0,);line-height: 2;margin: 0;"><span style="color:#ffffff;"></span><span style="color:rgb(0,0,0,);">EN</span></p>
+      </div>
+    </div>-->
+    <div class="rh-layout-footer-inner-right-box" style="background-color: #EFEFEF;">
+      <div class="rh-layout-footer-inner-right-box1" style="background-color: #EFEFEF;">
+        <p style="text-align: center;background-color:  #EFEFEF;color: rgb(0,0,0,);line-height: 2;margin: 0;"><a href="https://www.microsoft.com/" style="color: black; text-decoration: none;">©2021 Microsoft</a></p>
+      </div>
+      <div class="rh-layout-footer-inner-right-box2" style="background-color: #EFEFEF;">
+        <p style="text-align: center;background-color:  #EFEFEF;color: rgb(0,0,0,);height: 100%;line-height: 2;margin: 0;"><a href="https://flightsimulator.zendesk.com/hc/en-us" style="color: black; text-decoration: none;">Contact Us</a></p>
+      </div>
+      <div class="rh-layout-footer-inner-right-box3" style="background-color: #EFEFEF;">
+        <p style="text-align: center;background-color:  #EFEFEF;color: rgb(0,0,0,);line-height: 2;margin: 0;"><span style="font-size: 11pt;"><a href="https://privacy.microsoft.com/en-us/privacystatement" style="color: black; text-decoration: none;">Privacy Policy</a></span></p>
+      </div>
+      <!--<div class="rh-layout-footer-inner-right-box4" style="background-color: #EFEFEF;">
+        <p style="text-align: center;background-color:  #EFEFEF;color: rgb(0,0,0,);line-height: 2;margin: 0;"><a href="http://www.example.com" style="color: black; text-decoration: none;">Terms and Conditions<a/></p>
+      </div>-->
+      <div class="rh-layout-footer-inner-right-box3" style="background-color: #EFEFEF;">
+        <p style="text-align: center;background-color:  #EFEFEF;color: rgb(0,0,0,);line-height: 2;margin: 0;"><a href="https://forums.flightsimulator.com/" style="color: black; text-decoration: none;">MSFS Forums</a></p>
+      </div>
+    </div>
+  </div>
+
+</footer>
+  <script type="text/javascript">//<![CDATA[
+
+    gRootRelPath = "../../.."
+    gCommonRootRelPath = "../../.."
+    gTopicId = "5.1.2.0_2"
+  
+//]]></script>
+
+
+  <script src="./General Simulation Variables_files/topicpage.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/parentdata.js.download"></script>
+  <script src="./General Simulation Variables_files/layoutconfig.js.download"></script>
+  <script src="./General Simulation Variables_files/brsdata.js.download"></script>
+
+  
+    
+
+            
+
+
+<script type="text/javascript" async="" src="./General Simulation Variables_files/projectdata.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/projectsettings.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/usersettings.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/gdata1.new.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/idata1.new.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/brsdata.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/toc.new.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/search_auto_index.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/search_auto_map_0.js.download"></script><div id="modal-root-menubar"></div><script type="text/javascript" async="" src="./General Simulation Variables_files/csh.new.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/whtagdata.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/toc41.new.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/parentdata.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/toc42.new.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/toc51.new.js.download"></script><script type="text/javascript" async="" src="./General Simulation Variables_files/toc52.new.js.download"></script></body></html>
