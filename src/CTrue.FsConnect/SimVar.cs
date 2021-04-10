@@ -3,7 +3,7 @@
 namespace CTrue.FsConnect
 {
     /// <summary>
-    /// The <see cref="SimVar"/> class is used to define a data definition.
+    /// Represents a simulation variable, used to define a data definition.
     /// </summary>
     public class SimVar
     {
@@ -81,6 +81,10 @@ namespace CTrue.FsConnect
             DataType = dataType;
         }
 
+        /// <summary>
+        /// Gets a textual representation of the SimVar.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{Name} in {Unit} as {DataType}";

@@ -84,8 +84,11 @@ namespace CTrue.FsConnect.FsEnumGenerator
 
                 id = GetFsEventNameId(name);
 
+                description = description.Replace(">", "&gt;");
+                description = description.Replace("<", "&lt;");
+
                 // Remove duplicates
-                if(list.Exists(x => x.Id.Equals(id))) continue;
+                if (list.Exists(x => x.Id.Equals(id))) continue;
 
                 list.Add(new FsEventInfo()
                 {

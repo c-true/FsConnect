@@ -2,6 +2,9 @@
 
 namespace CTrue.FsConnect
 {
+    /// <summary>
+    /// Describes how often data should be returned.
+    /// </summary>
     public enum FsConnectPeriod
     {
         /// <summary>

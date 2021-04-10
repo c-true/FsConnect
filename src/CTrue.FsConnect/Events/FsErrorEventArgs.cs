@@ -2,6 +2,9 @@
 
 namespace CTrue.FsConnect
 {
+    /// <summary>
+    /// Describes information about an error reported by SimConnect.
+    /// </summary>
     public class FsErrorEventArgs : EventArgs
     {
         public FsException ExceptionCode { get; set; }

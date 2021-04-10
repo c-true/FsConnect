@@ -122,7 +122,7 @@ namespace CTrue.FsConnect.TestConsole
 
                 Console.WriteLine($"Radius set to {_simObjectManager.Radius} meters");
             }
-            catch (Exception e)
+            catch
             {
                 Console.WriteLine("Not a valid radius.");
             }

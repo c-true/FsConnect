@@ -117,7 +117,7 @@ definition.Add(new SimVar(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DAT
 definition.Add(new SimVar(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
 ```
 
-## Reflection based data definition
+### Reflection based data definition
 
 An alternative method of defining the data definition is to decorate the type with the SimVar attribute to describe field names and units:
 
@@ -134,11 +134,25 @@ public struct PlaneInfo
 }
 ```
 
-Such a type can be easily registered using FsConnect using the following method:
+Such a type can be easily registered using FsConnect by just providing the type. An enum based defintion id can be supplied or let FsConnect generate one. The request id can similarily also be an int.
+
+```csharp
+
+int myRequestId = 42;
+int myDefineId = fsConnect.RegisterDataDefinition<MyDataDefinitionStruct>();
+fsConnect.RequestData(myRequestId, myDefineId);
+
+```
+
+### Generating definition ids
+
+FsConnect supports generating definition ids that can be stored by the client as an int, elliminating the need to managing enums and ranges of their ids. FsConnect will manage an internal enum and range of ints.
+
 
 ```csharp
 
 int planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfo>();
+fsConnect.
 
 ```
 
