@@ -149,13 +149,6 @@ fsConnect.RequestData(myRequestId, myDefineId);
 FsConnect supports generating definition ids that can be stored by the client as an int, elliminating the need to managing enums and ranges of their ids. FsConnect will manage an internal enum and range of ints.
 
 
-```csharp
-
-int planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfo>();
-fsConnect.
-
-```
-
 ## Client events
 
 Client events can be mapped to sim events, either by using the event name or the FsEventNameId enum to identify the event.
