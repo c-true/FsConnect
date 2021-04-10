@@ -3,6 +3,11 @@ using System.Collections.Generic;
 
 namespace CTrue.FsConnect
 {
+#pragma warning disable 1591
+
+	/// <summary>
+	/// The <see cref="FsSimVar"/> enum contains all known simulation variables.
+	/// </summary>
 	public enum FsSimVar
 	{
 		None,
@@ -1063,4 +1068,6 @@ namespace CTrue.FsConnect
 		ExternalPowerAvailable,
 		ExternalPowerOn,
 	};
+
+#pragma warning restore 1591
 }

@@ -17,17 +17,17 @@ namespace FsConnectTest
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public String Title;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneLatitude;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneLongitude;
-        [SimProperty(UnitId = FsUnit.Feet)]
+        [SimVar(UnitId = FsUnit.Feet)]
         public double PlaneAltitude;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneHeadingDegreesTrue;
-        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
+        [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
         public double AirspeedTrueInMeterPerSecond;
-        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
+        [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
         public double AirspeedTrueInKnot;
     }
 

@@ -1,0 +1,1040 @@
+Event ID	SimConnect Name	Description	Multiplayer
+KEY_THROTTLE_FULL	THROTTLE_FULL	Set throttles max	Shared Cockpit
+KEY_THROTTLE_INCR	THROTTLE_INCR	Increment throttles	Shared Cockpit
+KEY_THROTTLE_INCR_SMALL	THROTTLE_INCR_SMALL	Increment throttles small	Shared Cockpit
+KEY_THROTTLE_DECR	THROTTLE_DECR	Decrement throttles	Shared Cockpit
+KEY_THROTTLE_DECR_SMALL	THROTTLE_DECR_SMALL	Decrease throttles small	Shared Cockpit
+KEY_THROTTLE_CUT	THROTTLE_CUT	Set throttles to idle	Shared Cockpit
+KEY_INCREASE_THROTTLE	INCREASE_THROTTLE	Increment throttles	Shared Cockpit
+KEY_DECREASE_THROTTLE	DECREASE_THROTTLE	Decrement throttles	Shared Cockpit
+KEY_THROTTLE_SET	THROTTLE_SET	Set throttles exactly (0- 16383)	Shared Cockpit
+KEY_AXIS_THROTTLE_SET	AXIS_THROTTLE_SET	Set throttles (0- 16383)	Shared Cockpit (Pilot only, transmitted to Co-pilot if in a helicopter, not-transmitted otherwise).
+KEY_THROTTLE1_SET	THROTTLE1_SET	Set throttle 1 exactly (0 to 16383)	Shared Cockpit
+KEY_THROTTLE2_SET	THROTTLE2_SET	Set throttle 2 exactly (0 to 16383)	Shared Cockpit
+KEY_THROTTLE3_SET	THROTTLE3_SET	Set throttle 3 exactly (0 to 16383)	Shared Cockpit
+KEY_THROTTLE4_SET	THROTTLE4_SET	Set throttle 4 exactly (0 to 16383)	Shared Cockpit
+KEY_THROTTLE1_FULL	THROTTLE1_FULL	Set throttle 1 max	Shared Cockpit
+KEY_THROTTLE1_INCR	THROTTLE1_INCR	Increment throttle 1	Shared Cockpit
+KEY_THROTTLE1_INCR_SMALL	THROTTLE1_INCR_SMALL	Increment throttle 1 small	Shared Cockpit
+KEY_THROTTLE1_DECR	THROTTLE1_DECR	Decrement throttle 1	Shared Cockpit
+KEY_THROTTLE1_CUT	THROTTLE1_CUT	Set throttle 1 to idle	Shared Cockpit
+KEY_THROTTLE2_FULL	THROTTLE2_FULL	Set throttle 2 max	Shared Cockpit
+KEY_THROTTLE2_INCR	THROTTLE2_INCR	Increment throttle 2	Shared Cockpit
+KEY_THROTTLE2_INCR_SMALL	THROTTLE2_INCR_SMALL	Increment throttle 2 small	Shared Cockpit
+KEY_THROTTLE2_DECR	THROTTLE2_DECR	Decrement throttle 2	Shared Cockpit
+KEY_THROTTLE2_CUT	THROTTLE2_CUT	Set throttle 2 to idle	Shared Cockpit
+KEY_THROTTLE3_FULL	THROTTLE3_FULL	Set throttle 3 max	Shared Cockpit
+KEY_THROTTLE3_INCR	THROTTLE3_INCR	Increment throttle 3	Shared Cockpit
+KEY_THROTTLE3_INCR_SMALL	THROTTLE3_INCR_SMALL	Increment throttle 3 small	Shared Cockpit
+KEY_THROTTLE3_DECR	THROTTLE3_DECR	Decrement throttle 3	Shared Cockpit
+KEY_THROTTLE3_CUT	THROTTLE3_CUT	Set throttle 3 to idle	Shared Cockpit
+KEY_THROTTLE4_FULL	THROTTLE4_FULL	Set throttle 1 max	Shared Cockpit
+KEY_THROTTLE4_INCR	THROTTLE4_INCR	Increment throttle 4	Shared Cockpit
+KEY_THROTTLE4_INCR_SMALL	THROTTLE4_INCR_SMALL	Increment throttle 4 small	Shared Cockpit
+KEY_THROTTLE4_DECR	THROTTLE4_DECR	Decrement throttle 4	Shared Cockpit
+KEY_THROTTLE4_CUT	THROTTLE4_CUT	Set throttle 4 to idle	Shared Cockpit
+KEY_THROTTLE_10	THROTTLE_10	Set throttles to 10%	Shared Cockpit
+KEY_THROTTLE_20	THROTTLE_20	Set throttles to 20%	Shared Cockpit
+KEY_THROTTLE_30	THROTTLE_30	Set throttles to 30%	Shared Cockpit
+KEY_THROTTLE_40	THROTTLE_40	Set throttles to 40%	Shared Cockpit
+KEY_THROTTLE_50	THROTTLE_50	Set throttles to 50%	Shared Cockpit
+KEY_THROTTLE_60	THROTTLE_60	Set throttles to 60%	Shared Cockpit
+KEY_THROTTLE_70	THROTTLE_70	Set throttles to 70%	Shared Cockpit
+KEY_THROTTLE_80	THROTTLE_80	Set throttles to 80%	Shared Cockpit
+KEY_THROTTLE_90	THROTTLE_90	Set throttles to 90%	Shared Cockpit
+KEY_AXIS_THROTTLE1_SET	AXIS_THROTTLE1_SET	Set throttle 1 exactly (-16383 - +16383)	Shared Cockpit
+KEY_AXIS_THROTTLE2_SET	AXIS_THROTTLE2_SET	Set throttle 2 exactly (-16383 - +16383)	Shared Cockpit
+KEY_AXIS_THROTTLE3_SET	AXIS_THROTTLE3_SET	Set throttle 3 exactly (-16383 - +16383)	Shared Cockpit
+KEY_AXIS_THROTTLE4_SET	AXIS_THROTTLE4_SET	Set throttle 4 exactly (-16383 - +16383)	Shared Cockpit
+KEY_THROTTLE1_DECR_SMALL	THROTTLE1_DECR_SMALL	Decrease throttle 1 small	Shared Cockpit
+KEY_THROTTLE2_DECR_SMALL	THROTTLE2_DECR_SMALL	Decrease throttle 2 small	Shared Cockpit
+KEY_THROTTLE3_DECR_SMALL	THROTTLE3_DECR_SMALL	Decrease throttle 3 small	Shared Cockpit
+KEY_THROTTLE4_DECR_SMALL	THROTTLE4_DECR_SMALL	Decrease throttle 4 small	Shared Cockpit
+KEY_PROP_PITCH_DECR_SMALL	PROP_PITCH_DECR_SMALL	Decrease prop levers small	Shared Cockpit
+KEY_PROP_PITCH1_DECR_SMALL	PROP_PITCH1_DECR_SMALL	Decrease prop lever 1 small	Shared Cockpit
+KEY_PROP_PITCH2_DECR_SMALL	PROP_PITCH2_DECR_SMALL	Decrease prop lever 2 small	Shared Cockpit
+KEY_PROP_PITCH3_DECR_SMALL	PROP_PITCH3_DECR_SMALL	Decrease prop lever 3 small	Shared Cockpit
+KEY_PROP_PITCH4_DECR_SMALL	PROP_PITCH4_DECR_SMALL	Decrease prop lever 4 small	Shared Cockpit
+KEY_MIXTURE1_RICH	MIXTURE1_RICH	Set mixture lever 1 to max rich	Shared Cockpit
+KEY_MIXTURE1_INCR	MIXTURE1_INCR	Increment mixture lever 1	Shared Cockpit
+KEY_MIXTURE1_INCR_SMALL	MIXTURE1_INCR_SMALL	Increment mixture lever 1 small	Shared Cockpit
+KEY_MIXTURE1_DECR	MIXTURE1_DECR	Decrement mixture lever 1	Shared Cockpit
+KEY_MIXTURE1_LEAN	MIXTURE1_LEAN	Set mixture lever 1 to max lean	Shared Cockpit
+KEY_MIXTURE2_RICH	MIXTURE2_RICH	Set mixture lever 2 to max rich	Shared Cockpit
+KEY_MIXTURE2_INCR	MIXTURE2_INCR	Increment mixture lever 2	Shared Cockpit
+KEY_MIXTURE2_INCR_SMALL	MIXTURE2_INCR_SMALL	Increment mixture lever 2 small	Shared Cockpit
+KEY_MIXTURE2_DECR	MIXTURE2_DECR	Decrement mixture lever 2	Shared Cockpit
+KEY_MIXTURE2_LEAN	MIXTURE2_LEAN	Set mixture lever 2 to max lean	Shared Cockpit
+KEY_MIXTURE3_RICH	MIXTURE3_RICH	Set mixture lever 3 to max rich	Shared Cockpit
+KEY_MIXTURE3_INCR	MIXTURE3_INCR	Increment mixture lever 3	Shared Cockpit
+KEY_MIXTURE3_INCR_SMALL	MIXTURE3_INCR_SMALL	Increment mixture lever 3 small	Shared Cockpit
+KEY_MIXTURE3_DECR	MIXTURE3_DECR	Decrement mixture lever 3	Shared Cockpit
+KEY_MIXTURE3_LEAN	MIXTURE3_LEAN	Set mixture lever 3 to max lean	Shared Cockpit
+KEY_MIXTURE4_RICH	MIXTURE4_RICH	Set mixture lever 4 to max rich	Shared Cockpit
+KEY_MIXTURE4_INCR	MIXTURE4_INCR	Increment mixture lever 4	Shared Cockpit
+KEY_MIXTURE4_INCR_SMALL	MIXTURE4_INCR_SMALL	Increment mixture lever 4 small	Shared Cockpit
+KEY_MIXTURE4_DECR	MIXTURE4_DECR	Decrement mixture lever 4	Shared Cockpit
+KEY_MIXTURE4_LEAN	MIXTURE4_LEAN	Set mixture lever 4 to max lean	Shared Cockpit
+KEY_MIXTURE_SET	MIXTURE_SET	Set mixture levers to exact value (0 to 16383)	Shared Cockpit
+KEY_MIXTURE_RICH	MIXTURE_RICH	Set mixture levers to max rich	Shared Cockpit
+KEY_MIXTURE_INCR	MIXTURE_INCR	Increment mixture levers	Shared Cockpit
+KEY_MIXTURE_INCR_SMALL	MIXTURE_INCR_SMALL	Increment mixture levers small	Shared Cockpit
+KEY_MIXTURE_DECR	MIXTURE_DECR	Decrement mixture levers	Shared Cockpit
+KEY_MIXTURE_LEAN	MIXTURE_LEAN	Set mixture levers to max lean	Shared Cockpit
+KEY_MIXTURE1_SET	MIXTURE1_SET	Set mixture lever 1 exact value (0 to 16383)	Shared Cockpit
+KEY_MIXTURE2_SET	MIXTURE2_SET	Set mixture lever 2 exact value (0 to 16383)	Shared Cockpit
+KEY_MIXTURE3_SET	MIXTURE3_SET	Set mixture lever 3 exact value (0 to 16383)	Shared Cockpit
+KEY_MIXTURE4_SET	MIXTURE4_SET	Set mixture lever 4 exact value (0 to 16383)	Shared Cockpit
+KEY_AXIS_MIXTURE_SET	AXIS_MIXTURE_SET	Set mixture lever 1 exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_MIXTURE1_SET	AXIS_MIXTURE1_SET	Set mixture lever 1 exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_MIXTURE2_SET	AXIS_MIXTURE2_SET	Set mixture lever 2 exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_MIXTURE3_SET	AXIS_MIXTURE3_SET	Set mixture lever 3 exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_MIXTURE4_SET	AXIS_MIXTURE4_SET	Set mixture lever 4 exact value (-16383 to +16383)	Shared Cockpit
+KEY_MIXTURE_SET_BEST	MIXTURE_SET_BEST	Set mixture levers to current best power setting	Shared Cockpit
+KEY_MIXTURE_DECR_SMALL	MIXTURE_DECR_SMALL	Decrement mixture levers small	Shared Cockpit
+KEY_MIXTURE1_DECR_SMALL	MIXTURE1_DECR_SMALL	Decrement mixture lever 1 small	Shared Cockpit
+KEY_MIXTURE2_DECR_SMALL	MIXTURE2_DECR_SMALL	Decrement mixture lever 4 small	Shared Cockpit
+KEY_MIXTURE3_DECR_SMALL	MIXTURE3_DECR_SMALL	Decrement mixture lever 4 small	Shared Cockpit
+KEY_MIXTURE4_DECR_SMALL	MIXTURE4_DECR_SMALL	Decrement mixture lever 4 small	Shared Cockpit
+KEY_PROP_PITCH_SET	PROP_PITCH_SET	Set prop pitch levers (0 to 16383)	Shared Cockpit
+KEY_PROP_PITCH_LO	PROP_PITCH_LO	Set prop pitch levers max (lo pitch)	Shared Cockpit
+KEY_PROP_PITCH_INCR	PROP_PITCH_INCR	Increment prop pitch levers	Shared Cockpit
+KEY_PROP_PITCH_INCR_SMALL	PROP_PITCH_INCR_SMALL	Increment prop pitch levers small	Shared Cockpit
+KEY_PROP_PITCH_DECR	PROP_PITCH_DECR	Decrement prop pitch levers	Shared Cockpit
+KEY_PROP_PITCH_HI	PROP_PITCH_HI	Set prop pitch levers min (hi pitch)	Shared Cockpit
+KEY_PROP_PITCH1_SET	PROP_PITCH1_SET	Set prop pitch lever 1 exact value (0 to 16383)	Shared Cockpit
+KEY_PROP_PITCH2_SET	PROP_PITCH2_SET	Set prop pitch lever 2 exact value (0 to 16383)	Shared Cockpit
+KEY_PROP_PITCH3_SET	PROP_PITCH3_SET	Set prop pitch lever 3 exact value (0 to 16383)	Shared Cockpit
+KEY_PROP_PITCH4_SET	PROP_PITCH4_SET	Set prop pitch lever 4 exact value (0 to 16383)	Shared Cockpit
+KEY_PROP_PITCH1_LO	PROP_PITCH1_LO	Set prop pitch lever 1 max (lo pitch)	Shared Cockpit
+KEY_PROP_PITCH1_INCR	PROP_PITCH1_INCR	Increment prop pitch lever 1	Shared Cockpit
+KEY_PROP_PITCH1_INCR_SMALL	PROP_PITCH1_INCR_SMALL	Increment prop pitch lever 1 small	Shared Cockpit
+KEY_PROP_PITCH1_DECR	PROP_PITCH1_DECR	Decrement prop pitch lever 1	Shared Cockpit
+KEY_PROP_PITCH1_HI	PROP_PITCH1_HI	Set prop pitch lever 1 min (hi pitch)	Shared Cockpit
+KEY_PROP_PITCH2_LO	PROP_PITCH2_LO	Set prop pitch lever 2 max (lo pitch)	Shared Cockpit
+KEY_PROP_PITCH2_INCR	PROP_PITCH2_INCR	Increment prop pitch lever 2	Shared Cockpit
+KEY_PROP_PITCH2_INCR_SMALL	PROP_PITCH2_INCR_SMALL	Increment prop pitch lever 2 small	Shared Cockpit
+KEY_PROP_PITCH2_DECR	PROP_PITCH2_DECR	Decrement prop pitch lever 2	Shared Cockpit
+KEY_PROP_PITCH2_HI	PROP_PITCH2_HI	Set prop pitch lever 2 min (hi pitch)	Shared Cockpit
+KEY_PROP_PITCH3_LO	PROP_PITCH3_LO	Set prop pitch lever 3 max (lo pitch)	Shared Cockpit
+KEY_PROP_PITCH3_INCR	PROP_PITCH3_INCR	Increment prop pitch lever 3	Shared Cockpit
+KEY_PROP_PITCH3_INCR_SMALL	PROP_PITCH3_INCR_SMALL	Increment prop pitch lever 3 small	Shared Cockpit
+KEY_PROP_PITCH3_DECR	PROP_PITCH3_DECR	Decrement prop pitch lever 3	Shared Cockpit
+KEY_PROP_PITCH3_HI	PROP_PITCH3_HI	Set prop pitch lever 3 min (hi pitch)	Shared Cockpit
+KEY_PROP_PITCH4_LO	PROP_PITCH4_LO	Set prop pitch lever 4 max (lo pitch)	Shared Cockpit
+KEY_PROP_PITCH4_INCR	PROP_PITCH4_INCR	Increment prop pitch lever 4	Shared Cockpit
+KEY_PROP_PITCH4_INCR_SMALL	PROP_PITCH4_INCR_SMALL	Increment prop pitch lever 4 small	Shared Cockpit
+KEY_PROP_PITCH4_DECR	PROP_PITCH4_DECR	Decrement prop pitch lever 4	Shared Cockpit
+KEY_PROP_PITCH4_HI	PROP_PITCH4_HI	Set prop pitch lever 4 min (hi pitch)	Shared Cockpit
+KEY_AXIS_PROPELLER_SET	AXIS_PROPELLER_SET	Set propeller levers exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_PROPELLER1_SET	AXIS_PROPELLER1_SET	Set propeller lever 1 exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_PROPELLER2_SET	AXIS_PROPELLER2_SET	Set propeller lever 2 exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_PROPELLER3_SET	AXIS_PROPELLER3_SET	Set propeller lever 3 exact value (-16383 to +16383)	Shared Cockpit
+KEY_AXIS_PROPELLER4_SET	AXIS_PROPELLER4_SET	Set propeller lever 4 exact value (-16383 to +16383)	Shared Cockpit
+KEY_JET_STARTER	JET_STARTER	Selects jet engine starter (for +/- sequence)	Shared Cockpit
+KEY_STARTER_SET	MAGNETO_SET	Sets magnetos (0,1)	Shared Cockpit
+KEY_TOGGLE_STARTER1	TOGGLE_STARTER1	Toggle starter 1	Shared Cockpit
+KEY_TOGGLE_STARTER2	TOGGLE_STARTER2	Toggle starter 2	Shared Cockpit
+KEY_TOGGLE_STARTER3	TOGGLE_STARTER3	Toggle starter 3	Shared Cockpit
+KEY_TOGGLE_STARTER4	TOGGLE_STARTER4	Toggle starter 4	Shared Cockpit
+KEY_TOGGLE_ALL_STARTERS	TOGGLE_ALL_STARTERS	Toggle starters	Shared Cockpit
+KEY_ENGINE_AUTO_START	ENGINE_AUTO_START	Triggers auto-start	Shared Cockpit
+KEY_ENGINE_AUTO_SHUTDOWN	ENGINE_AUTO_SHUTDOWN	Triggers auto-shutdown	Shared Cockpit
+KEY_MAGNETO	MAGNETO	Selects magnetos (for +/- sequence)	Shared Cockpit
+KEY_MAGNETO_DECR	MAGNETO_DECR	Decrease magneto switches positions	Shared Cockpit
+KEY_MAGNETO_INCR	MAGNETO_INCR	Increase magneto switches positions	Shared Cockpit
+KEY_MAGNETO1_OFF	MAGNETO1_OFF	Set engine 1 magnetos off	Shared Cockpit
+KEY_MAGNETO1_RIGHT	MAGNETO1_RIGHT	Toggle engine 1 right magneto	All aircraft
+KEY_MAGNETO1_LEFT	MAGNETO1_LEFT	Toggle engine 1 left magneto	All aircraft
+KEY_MAGNETO1_BOTH	MAGNETO1_BOTH	Set engine 1 magnetos on	Shared Cockpit
+KEY_MAGNETO1_START	MAGNETO1_START	Set engine 1 magnetos on and toggle starter	Shared Cockpit
+KEY_MAGNETO2_OFF	MAGNETO2_OFF	Set engine 2 magnetos off	Shared Cockpit
+KEY_MAGNETO2_RIGHT	MAGNETO2_RIGHT	Toggle engine 2 right magneto	All aircraft
+KEY_MAGNETO2_LEFT	MAGNETO2_LEFT	Toggle engine 2 left magneto	All aircraft
+KEY_MAGNETO2_BOTH	MAGNETO2_BOTH	Set engine 2 magnetos on	Shared Cockpit
+KEY_MAGNETO2_START	MAGNETO2_START	Set engine 2 magnetos on and toggle starter	Shared Cockpit
+KEY_MAGNETO3_OFF	MAGNETO3_OFF	Set engine 3 magnetos off	Shared Cockpit
+KEY_MAGNETO3_RIGHT	MAGNETO3_RIGHT	Toggle engine 3 right magneto	All aircraft
+KEY_MAGNETO3_LEFT	MAGNETO3_LEFT	Toggle engine 3 left magneto	All aircraft
+KEY_MAGNETO3_BOTH	MAGNETO3_BOTH	Set engine 3 magnetos on	Shared Cockpit
+KEY_MAGNETO3_START	MAGNETO3_START	Set engine 3 magnetos on and toggle starter	Shared Cockpit
+KEY_MAGNETO4_OFF	MAGNETO4_OFF	Set engine 4 magnetos off	Shared Cockpit
+KEY_MAGNETO4_RIGHT	MAGNETO4_RIGHT	Toggle engine 4 right magneto	All aircraft
+KEY_MAGNETO4_LEFT	MAGNETO4_LEFT	Toggle engine 4 left magneto	All aircraft
+KEY_MAGNETO4_BOTH	MAGNETO4_BOTH	Set engine 4 magnetos on	Shared Cockpit
+KEY_MAGNETO4_START	MAGNETO4_START	Set engine 4 magnetos on and toggle starter	Shared Cockpit
+KEY_MAGNETO_OFF	MAGNETO_OFF	Set engine magnetos off	Shared Cockpit
+KEY_MAGNETO_RIGHT	MAGNETO_RIGHT	Set engine right magnetos on	Shared Cockpit
+KEY_MAGNETO_LEFT	MAGNETO_LEFT	Set engine left magnetos on	Shared Cockpit
+KEY_MAGNETO_BOTH	MAGNETO_BOTH	Set engine magnetos on	Shared Cockpit
+KEY_MAGNETO_START	MAGNETO_START	Set engine magnetos on and toggle starters	Shared Cockpit
+KEY_MAGNETO1_DECR	MAGNETO1_DECR	Decrease engine 1 magneto switch position	Shared Cockpit
+KEY_MAGNETO1_INCR	MAGNETO1_INCR	Increase engine 1 magneto switch position	Shared Cockpit
+KEY_MAGNETO2_DECR	MAGNETO2_DECR	Decrease engine 2 magneto switch position	Shared Cockpit
+KEY_MAGNETO2_INCR	MAGNETO2_INCR	Increase engine 2 magneto switch position	Shared Cockpit
+KEY_MAGNETO3_DECR	MAGNETO3_DECR	Decrease engine 3 magneto switch position	Shared Cockpit
+KEY_MAGNETO3_INCR	MAGNETO3_INCR	Increase engine 3 magneto switch position	Shared Cockpit
+KEY_MAGNETO4_DECR	MAGNETO4_DECR	Decrease engine 4 magneto switch position	Shared Cockpit
+KEY_MAGNETO4_INCR	MAGNETO4_INCR	Increase engine 4 magneto switch position	Shared Cockpit
+KEY_MAGNETO_SET	Not supported	Set engine magneto switches	Shared Cockpit
+KEY_MAGNETO1_SET	MAGNETO1_SET	Set engine 1 magneto switch	Shared Cockpit
+KEY_MAGNETO2_SET	MAGNETO2_SET	Set engine 2 magneto switch	Shared Cockpit
+KEY_MAGNETO3_SET	MAGNETO3_SET	Set engine 3 magneto switch	Shared Cockpit
+KEY_MAGNETO4_SET	MAGNETO4_SET	Set engine 4 magneto switch	Shared Cockpit
+KEY_ANTI_ICE_ON	ANTI_ICE_ON	Sets anti-ice switches on	Shared Cockpit
+KEY_ANTI_ICE_OFF	ANTI_ICE_OFF	Sets anti-ice switches off	Shared Cockpit
+KEY_ANTI_ICE_SET	ANTI_ICE_SET	Sets anti-ice switches from argument (0,1)	Shared Cockpit
+KEY_ANTI_ICE_TOGGLE	ANTI_ICE_TOGGLE	Toggle anti-ice switches	Shared Cockpit
+KEY_ANTI_ICE_TOGGLE_ENG1	ANTI_ICE_TOGGLE_ENG1	Toggle engine 1 anti-ice switch	Shared Cockpit
+KEY_ANTI_ICE_TOGGLE_ENG2	ANTI_ICE_TOGGLE_ENG2	Toggle engine 2 anti-ice switch	Shared Cockpit
+KEY_ANTI_ICE_TOGGLE_ENG3	ANTI_ICE_TOGGLE_ENG3	Toggle engine 3 anti-ice switch	Shared Cockpit
+KEY_ANTI_ICE_TOGGLE_ENG4	ANTI_ICE_TOGGLE_ENG4	Toggle engine 4 anti-ice switch	Shared Cockpit
+KEY_ANTI_ICE_SET_ENG1	ANTI_ICE_SET_ENG1	Sets engine 1 anti-ice switch (0,1)	Shared Cockpit
+KEY_ANTI_ICE_SET_ENG2	ANTI_ICE_SET_ENG2	Sets engine 2 anti-ice switch (0,1)	Shared Cockpit
+KEY_ANTI_ICE_SET_ENG3	ANTI_ICE_SET_ENG3	Sets engine 3 anti-ice switch (0,1)	Shared Cockpit
+KEY_ANTI_ICE_SET_ENG4	ANTI_ICE_SET_ENG4	Sets engine 4 anti-ice switch (0,1)	Shared Cockpit
+KEY_TOGGLE_FUEL_VALVE_ALL	TOGGLE_FUEL_VALVE_ALL	Toggle engine fuel valves	Shared Cockpit
+KEY_TOGGLE_FUEL_VALVE_ENG1	TOGGLE_FUEL_VALVE_ENG1	Toggle engine 1 fuel valve	All aircraft
+KEY_TOGGLE_FUEL_VALVE_ENG2	TOGGLE_FUEL_VALVE_ENG2	Toggle engine 2 fuel valve	All aircraft
+KEY_TOGGLE_FUEL_VALVE_ENG3	TOGGLE_FUEL_VALVE_ENG3	Toggle engine 3 fuel valve	All aircraft
+KEY_TOGGLE_FUEL_VALVE_ENG4	TOGGLE_FUEL_VALVE_ENG4	Toggle engine 4 fuel valve	All aircraft
+KEY_COWLFLAP1_SET	COWLFLAP1_SET	Sets engine 1 cowl flap lever position (0 to 16383)	Shared Cockpit
+KEY_COWLFLAP2_SET	COWLFLAP2_SET	Sets engine 2 cowl flap lever position (0 to 16383)	Shared Cockpit
+KEY_COWLFLAP3_SET	COWLFLAP3_SET	Sets engine 3 cowl flap lever position (0 to 16383)	Shared Cockpit
+KEY_COWLFLAP4_SET	COWLFLAP4_SET	Sets engine 4 cowl flap lever position (0 to 16383)	Shared Cockpit
+KEY_INC_COWL_FLAPS	INC_COWL_FLAPS	Increment cowl flap levers	Shared Cockpit
+KEY_DEC_COWL_FLAPS	DEC_COWL_FLAPS	Decrement cowl flap levers	Shared Cockpit
+KEY_INC_COWL_FLAPS1	INC_COWL_FLAPS1	Increment engine 1 cowl flap lever	Shared Cockpit
+KEY_DEC_COWL_FLAPS1	DEC_COWL_FLAPS1	Decrement engine 1 cowl flap lever	Shared Cockpit
+KEY_INC_COWL_FLAPS2	INC_COWL_FLAPS2	Increment engine 2 cowl flap lever	Shared Cockpit
+KEY_DEC_COWL_FLAPS2	DEC_COWL_FLAPS2	Decrement engine 2 cowl flap lever	Shared Cockpit
+KEY_INC_COWL_FLAPS3	INC_COWL_FLAPS3	Increment engine 3 cowl flap lever	Shared Cockpit
+KEY_DEC_COWL_FLAPS3	DEC_COWL_FLAPS3	Decrement engine 3 cowl flap lever	Shared Cockpit
+KEY_INC_COWL_FLAPS4	INC_COWL_FLAPS4	Increment engine 4 cowl flap lever	Shared Cockpit
+KEY_DEC_COWL_FLAPS4	DEC_COWL_FLAPS4	Decrement engine 4 cowl flap lever	Shared Cockpit
+KEY_FUEL_PUMP	FUEL_PUMP	Toggle electric fuel pumps	Shared Cockpit
+KEY_TOGGLE_ELECT_FUEL_PUMP	TOGGLE_ELECT_FUEL_PUMP	Toggle electric fuel pumps	Shared Cockpit
+KEY_TOGGLE_ELECT_FUEL_PUMP1	TOGGLE_ELECT_FUEL_PUMP1	Toggle engine 1 electric fuel pump	All aircraft
+KEY_TOGGLE_ELECT_FUEL_PUMP2	TOGGLE_ELECT_FUEL_PUMP2	Toggle engine 2 electric fuel pump	All aircraft
+KEY_TOGGLE_ELECT_FUEL_PUMP3	TOGGLE_ELECT_FUEL_PUMP3	Toggle engine 3 electric fuel pump	All aircraft
+KEY_TOGGLE_ELECT_FUEL_PUMP4	TOGGLE_ELECT_FUEL_PUMP4	Toggle engine 4 electric fuel pump	All aircraft
+KEY_ENGINE_PRIMER	ENGINE_PRIMER	Trigger engine primers	Shared Cockpit
+KEY_TOGGLE_PRIMER	TOGGLE_PRIMER	Trigger engine primers	Shared Cockpit
+KEY_TOGGLE_PRIMER1	TOGGLE_PRIMER1	Trigger engine 1 primer	Shared Cockpit
+KEY_TOGGLE_PRIMER2	TOGGLE_PRIMER2	Trigger engine 2 primer	Shared Cockpit
+KEY_TOGGLE_PRIMER3	TOGGLE_PRIMER3	Trigger engine 3 primer	Shared Cockpit
+KEY_TOGGLE_PRIMER4	TOGGLE_PRIMER4	Trigger engine 4 primer	Shared Cockpit
+KEY_TOGGLE_FEATHER_SWITCHES	TOGGLE_FEATHER_SWITCHES	Trigger propeller switches	Shared Cockpit
+KEY_TOGGLE_FEATHER_SWITCH_1	TOGGLE_FEATHER_SWITCH_1	Trigger propeller 1 switch	Shared Cockpit
+KEY_TOGGLE_FEATHER_SWITCH_2	TOGGLE_FEATHER_SWITCH_2	Trigger propeller 2 switch	Shared Cockpit
+KEY_TOGGLE_FEATHER_SWITCH_3	TOGGLE_FEATHER_SWITCH_3	Trigger propeller 3 switch	Shared Cockpit
+KEY_TOGGLE_FEATHER_SWITCH_4	TOGGLE_FEATHER_SWITCH_4	Trigger propeller 4 switch	Shared Cockpit
+KEY_TOGGLE_PROP_SYNC	TOGGLE_PROPELLER_SYNC	Turns propeller synchronization switch on	Shared Cockpit
+KEY_TOGGLE_ARM_AUTOFEATHER	TOGGLE_AUTOFEATHER_ARM	Turns auto-feather arming switch on.	Shared Cockpit
+KEY_TOGGLE_AFTERBURNER	TOGGLE_AFTERBURNER	Toggles afterburners	Shared Cockpit
+KEY_TOGGLE_AFTERBURNER1	TOGGLE_AFTERBURNER1	Toggles engine 1 afterburner	Shared Cockpit
+KEY_TOGGLE_AFTERBURNER2	TOGGLE_AFTERBURNER2	Toggles engine 2 afterburner	Shared Cockpit
+KEY_TOGGLE_AFTERBURNER3	TOGGLE_AFTERBURNER3	Toggles engine 3 afterburner	Shared Cockpit
+KEY_TOGGLE_AFTERBURNER4	TOGGLE_AFTERBURNER4	Toggles engine 4 afterburner	Shared Cockpit
+KEY_ENGINE	ENGINE	Sets engines for 1,2,3,4 selection (to be followed by SELECT_n)	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_SPOILERS_TOGGLE	SPOILERS_TOGGLE	Toggles spoiler handle	All aircraft
+KEY_FLAPS_UP	FLAPS_UP	Sets flap handle to full retract position	All aircraft
+KEY_FLAPS_1	FLAPS_1	Sets flap handle to first extension position	All aircraft
+KEY_FLAPS_2	FLAPS_2	Sets flap handle to second extension position	All aircraft
+KEY_FLAPS_3	FLAPS_3	Sets flap handle to third extension position	All aircraft
+KEY_FLAPS_DOWN	FLAPS_DOWN	Sets flap handle to full extension position	All aircraft
+KEY_ELEV_TRIM_DN	ELEV_TRIM_DN	Increments elevator trim down	Shared Cockpit
+KEY_ELEV_DOWN	ELEV_DOWN	Increments elevator down	Shared Cockpit (Pilot only).
+KEY_AILERONS_LEFT	AILERONS_LEFT	Increments ailerons left	Shared Cockpit (Pilot only).
+KEY_CENTER_AILER_RUDDER	CENTER_AILER_RUDDER	Centers aileron and rudder positions	Shared Cockpit
+KEY_AILERONS_RIGHT	AILERONS_RIGHT	Increments ailerons right	Shared Cockpit (Pilot only).
+KEY_ELEV_TRIM_UP	ELEV_TRIM_UP	Increment elevator trim up	Shared Cockpit
+KEY_ELEV_UP	ELEV_UP	Increments elevator up	Shared Cockpit (Pilot only).
+KEY_ELEVATOR_DOWN	Unsupported	Increments elevator down	Shared Cockpit
+KEY_ELEVATOR_UP	Unsupported	Increments elevator up	Shared Cockpit
+KEY_AILERON_LEFT	Unsupported	Increments ailerons left	Shared Cockpit
+KEY_AILERON_CENTER	Unsupported	Centers aileron position	Shared Cockpit
+KEY_AILERON_RIGHT	Unsupported	Increments ailerons right	Shared Cockpit
+KEY_RUDDER_LEFT	RUDDER_LEFT	Increments rudder left	Shared Cockpit
+KEY_RUDDER_CENTER	RUDDER_CENTER	Centers rudder position	Shared Cockpit
+KEY_RUDDER_RIGHT	RUDDER_RIGHT	Increments rudder right	Shared Cockpit
+KEY_ELEVATOR_SET	ELEVATOR_SET	Sets elevator position (-16383 - +16383)	Shared Cockpit
+KEY_AILERON_SET	AILERON_SET	Sets aileron position (-16383 - +16383)	Shared Cockpit
+KEY_RUDDER_SET	RUDDER_SET	Sets rudder position (-16383 - +16383)	Shared Cockpit
+KEY_FLAPS_INCR	FLAPS_INCR	Increments flap handle position	All aircraft
+KEY_FLAPS_DECR	FLAPS_DECR	Decrements flap handle position	All aircraft
+KEY_AXIS_ELEVATOR_SET	AXIS_ELEVATOR_SET	Sets elevator position (-16383 - +16383)	Shared Cockpit (Pilot only, and not transmitted to Co-pilot)
+KEY_AXIS_AILERONS_SET	AXIS_AILERONS_SET	Sets aileron position (-16383 - +16383)	Shared Cockpit (Pilot only, and not transmitted to Co-pilot)
+KEY_AXIS_RUDDER_SET	AXIS_RUDDER_SET	Sets rudder position (-16383 - +16383)	Shared Cockpit (Pilot only, and not transmitted to Co-pilot)
+KEY_AXIS_ELEV_TRIM_SET	AXIS_ELEV_TRIM_SET	Sets elevator trim position (-16383 - +16383)	Shared Cockpit
+KEY_SPOILERS_SET	SPOILERS_SET	Sets spoiler handle position (0 to 16383)	All aircraft
+KEY_SPOILERS_ARM_TOGGLE	SPOILERS_ARM_TOGGLE	Toggles arming of auto-spoilers	All aircraft
+KEY_SPOILERS_ON	SPOILERS_ON	Sets spoiler handle to full extend position	All aircraft
+KEY_SPOILERS_OFF	SPOILERS_OFF	Sets spoiler handle to full retract position	All aircraft
+KEY_SPOILERS_ARM_ON	SPOILERS_ARM_ON	Sets auto-spoiler arming on	All aircraft
+KEY_SPOILERS_ARM_OFF	SPOILERS_ARM_OFF	Sets auto-spoiler arming off	All aircraft
+KEY_SPOILERS_ARM_SET	SPOILERS_ARM_SET	Sets auto-spoiler arming (0,1)	All aircraft
+KEY_AILERON_TRIM_LEFT	AILERON_TRIM_LEFT	Increments aileron trim left	Shared Cockpit
+KEY_AILERON_TRIM_RIGHT	AILERON_TRIM_RIGHT	Increments aileron trim right	Shared Cockpit
+KEY_RUDDER_TRIM_LEFT	RUDDER_TRIM_LEFT	Increments rudder trim left	Shared Cockpit
+KEY_RUDDER_TRIM_RIGHT	RUDDER_TRIM_RIGHT	Increments aileron trim right	Shared Cockpit
+KEY_AXIS_SPOILER_SET	AXIS_SPOILER_SET	Sets spoiler handle position (-16383 - +16383)	All aircraft
+KEY_FLAPS_SET	FLAPS_SET	Sets flap handle to closest increment (0 to 16383)	All aircraft
+KEY_ELEVATOR_TRIM_SET	ELEVATOR_TRIM_SET	Sets elevator trim position (0 to 16383)	Shared Cockpit
+KEY_AXIS_FLAPS_SET	AXIS_FLAPS_SET	Sets flap handle to closest increment (-16383 - +16383)	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_AP_MASTER	AP_MASTER	Toggles AP on/off	Shared Cockpit
+KEY_AUTOPILOT_OFF	AUTOPILOT_OFF	Turns AP off	Shared Cockpit
+KEY_AUTOPILOT_ON	AUTOPILOT_ON	Turns AP on	Shared Cockpit
+KEY_YAW_DAMPER_TOGGLE	YAW_DAMPER_TOGGLE	Toggles yaw damper on/off	Shared Cockpit
+KEY_AP_PANEL_HEADING_HOLD	AP_PANEL_HEADING_HOLD	Toggles heading hold mode on/off	Shared Cockpit
+KEY_AP_PANEL_ALTITUDE_HOLD	AP_PANEL_ALTITUDE_HOLD	Toggles altitude hold mode on/off	Shared Cockpit
+KEY_AP_ATT_HOLD_ON	AP_ATT_HOLD_ON	Turns on AP wing leveler and pitch hold mode	Shared Cockpit
+KEY_AP_LOC_HOLD_ON	AP_LOC_HOLD_ON	Turns AP localizer hold on/armed and glide-slope hold mode off	Shared Cockpit
+KEY_AP_APR_HOLD_ON	AP_APR_HOLD_ON	Turns both AP localizer and glide-slope modes on/armed	Shared Cockpit
+KEY_AP_HDG_HOLD_ON	AP_HDG_HOLD_ON	Turns heading hold mode on	Shared Cockpit
+KEY_AP_ALT_HOLD_ON	AP_ALT_HOLD_ON	Turns altitude hold mode on	Shared Cockpit
+KEY_AP_WING_LEVELER_ON	AP_WING_LEVELER_ON	Turns wing leveler mode on	Shared Cockpit
+KEY_AP_BC_HOLD_ON	AP_BC_HOLD_ON	Turns localizer back course hold mode on/armed	Shared Cockpit
+KEY_AP_NAV1_HOLD_ON	AP_NAV1_HOLD_ON	Turns lateral hold mode on	Shared Cockpit
+KEY_AP_ATT_HOLD_OFF	AP_ATT_HOLD_OFF	Turns off attitude hold mode	Shared Cockpit
+KEY_AP_LOC_HOLD_OFF	AP_LOC_HOLD_OFF	Turns off localizer hold mode	Shared Cockpit
+KEY_AP_APR_HOLD_OFF	AP_APR_HOLD_OFF	Turns off approach hold mode	Shared Cockpit
+KEY_AP_HDG_HOLD_OFF	AP_HDG_HOLD_OFF	Turns off heading hold mode	Shared Cockpit
+KEY_AP_ALT_HOLD_OFF	AP_ALT_HOLD_OFF	Turns off altitude hold mode	Shared Cockpit
+KEY_AP_WING_LEVELER_OFF	AP_WING_LEVELER_OFF	Turns off wing leveler mode	Shared Cockpit
+KEY_AP_BC_HOLD_OFF	AP_BC_HOLD_OFF	Turns off backcourse mode for localizer hold	Shared Cockpit
+KEY_AP_NAV1_HOLD_OFF	AP_NAV1_HOLD_OFF	Turns off nav hold mode	Shared Cockpit
+KEY_AP_AIRSPEED_HOLD	AP_AIRSPEED_HOLD	Toggles airspeed hold mode	Shared Cockpit
+KEY_AUTO_THROTTLE_ARM	AUTO_THROTTLE_ARM	Toggles autothrottle arming mode	Shared Cockpit
+KEY_AUTO_THROTTLE_TO_GA	AUTO_THROTTLE_TO_GA	Toggles Takeoff/Go Around mode	Shared Cockpit
+KEY_HEADING_BUG_INC	HEADING_BUG_INC	Increments heading hold reference bug	Shared Cockpit
+KEY_HEADING_BUG_DEC	HEADING_BUG_DEC	Decrements heading hold reference bug	Shared Cockpit
+KEY_HEADING_BUG_SET	HEADING_BUG_SET	Set heading hold reference bug (degrees)	Shared Cockpit
+KEY_AP_PANEL_SPEED_HOLD	AP_PANEL_SPEED_HOLD	Toggles airspeed hold mode	Shared Cockpit
+KEY_AP_ALT_VAR_INC	AP_ALT_VAR_INC	Increments reference altitude	Shared Cockpit
+KEY_AP_ALT_VAR_DEC	AP_ALT_VAR_DEC	Decrements reference altitude	Shared Cockpit
+KEY_AP_VS_VAR_INC	AP_VS_VAR_INC	Increments vertical speed reference	Shared Cockpit
+KEY_AP_VS_VAR_DEC	AP_VS_VAR_DEC	Decrements vertical speed reference	Shared Cockpit
+KEY_AP_SPD_VAR_INC	AP_SPD_VAR_INC	Increments airspeed hold reference	Shared Cockpit
+KEY_AP_SPD_VAR_DEC	AP_SPD_VAR_DEC	Decrements airspeed hold reference	Shared Cockpit
+KEY_AP_PANEL_MACH_HOLD	AP_PANEL_MACH_HOLD	Toggles mach hold	Shared Cockpit
+KEY_AP_MACH_VAR_INC	AP_MACH_VAR_INC	Increments reference mach	Shared Cockpit
+KEY_AP_MACH_VAR_DEC	AP_MACH_VAR_DEC	Decrements reference mach	Shared Cockpit
+KEY_AP_MACH_HOLD	AP_MACH_HOLD	Toggles mach hold	Shared Cockpit
+KEY_AP_ALT_VAR_SET_METRIC	AP_ALT_VAR_SET_METRIC	Sets reference altitude in meters	Shared Cockpit
+KEY_AP_VS_VAR_SET_ENGLISH	AP_VS_VAR_SET_ENGLISH	Sets reference vertical speed in feet per minute	Shared Cockpit
+KEY_AP_SPD_VAR_SET	AP_SPD_VAR_SET	Sets airspeed reference in knots	Shared Cockpit
+KEY_AP_MACH_VAR_SET	AP_MACH_VAR_SET	Sets mach reference	Shared Cockpit
+KEY_YAW_DAMPER_ON	YAW_DAMPER_ON	Turns yaw damper on	Shared Cockpit
+KEY_YAW_DAMPER_OFF	YAW_DAMPER_OFF	Turns yaw damper off	Shared Cockpit
+KEY_YAW_DAMPER_SET	YAW_DAMPER_SET	Sets yaw damper on/off (1,0)	Shared Cockpit
+KEY_AP_AIRSPEED_ON	AP_AIRSPEED_ON	Turns airspeed hold on	Shared Cockpit
+KEY_AP_AIRSPEED_OFF	AP_AIRSPEED_OFF	Turns airspeed hold off	Shared Cockpit
+KEY_AP_AIRSPEED_SET	AP_AIRSPEED_SET	Sets airspeed hold on/off (1,0)	Shared Cockpit
+KEY_AP_MACH_ON	AP_MACH_ON	Turns mach hold on	Shared Cockpit
+KEY_AP_MACH_OFF	AP_MACH_OFF	Turns mach hold off	Shared Cockpit
+KEY_AP_MACH_SET	AP_MACH_SET	Sets mach hold on/off (1,0)	Shared Cockpit
+KEY_AP_PANEL_ALTITUDE_ON	AP_PANEL_ALTITUDE_ON	Turns altitude hold mode on (without capturing current altitude)	Shared Cockpit
+KEY_AP_PANEL_ALTITUDE_OFF	AP_PANEL_ALTITUDE_OFF	Turns altitude hold mode off	Shared Cockpit
+KEY_AP_PANEL_ALTITUDE_SET	AP_PANEL_ALTITUDE_SET	Sets altitude hold mode on/off (1,0)	Shared Cockpit
+KEY_AP_PANEL_HEADING_ON	AP_PANEL_HEADING_ON	Turns heading mode on (without capturing current heading)	Shared Cockpit
+KEY_AP_PANEL_HEADING_OFF	AP_PANEL_HEADING_OFF	Turns heading mode off	Shared Cockpit
+KEY_AP_PANEL_HEADING_SET	AP_PANEL_HEADING_SET	Set heading mode on/off (1,0)	Shared Cockpit
+KEY_AP_PANEL_MACH_ON	AP_PANEL_MACH_ON	Turns on mach hold	Shared Cockpit
+KEY_AP_PANEL_MACH_OFF	AP_PANEL_MACH_OFF	Turns off mach hold	Shared Cockpit
+KEY_AP_PANEL_MACH_SET	AP_PANEL_MACH_SET	Sets mach hold on/off (1,0)	Shared Cockpit
+KEY_AP_PANEL_SPEED_ON	AP_PANEL_SPEED_ON	Turns on speed hold mode	Shared Cockpit
+KEY_AP_PANEL_SPEED_OFF	AP_PANEL_SPEED_OFF	Turns off speed hold mode	Shared Cockpit
+KEY_AP_PANEL_SPEED_SET	AP_PANEL_SPEED_SET	Set speed hold mode on/off (1,0)	Shared Cockpit
+KEY_AP_ALT_VAR_SET_ENGLISH	AP_ALT_VAR_SET_ENGLISH	Sets altitude reference in feet	Shared Cockpit
+KEY_AP_VS_VAR_SET_METRIC	AP_VS_VAR_SET_METRIC	Sets vertical speed reference in meters per minute	Shared Cockpit
+KEY_TOGGLE_FLIGHT_DIRECTOR	TOGGLE_FLIGHT_DIRECTOR	Toggles flight director on/off	Shared Cockpit
+KEY_SYNC_FLIGHT_DIRECTOR_PITCH	SYNC_FLIGHT_DIRECTOR_PITCH	Synchronizes flight director pitch with current aircraft pitch	Shared Cockpit
+KEY_INC_AUTOBRAKE_CONTROL	INCREASE_AUTOBRAKE_CONTROL	Increments autobrake level	Shared Cockpit
+KEY_DEC_AUTOBRAKE_CONTROL	DECREASE_AUTOBRAKE_CONTROL	Decrements autobrake level	Shared Cockpit
+KEY_AUTOPILOT_AIRSPEED_HOLD_CURRENT	AP_PANEL_SPEED_HOLD_TOGGLE	Turns airspeed hold mode on with current airspeed	Shared Cockpit
+KEY_AUTOPILOT_PANEL_AIRSPEED_SET	Unsupported	Sets airspeed reference to current airspeed	Shared Cockpit
+KEY_AUTOPILOT_MACH_HOLD_CURRENT	AP_PANEL_MACH_HOLD_TOGGLE	Sets mach hold reference to current mach	Shared Cockpit
+KEY_AP_NAV_SELECT_SET	AP_NAV_SELECT_SET	Sets the nav (1 or 2) which is used by the Nav hold modes	Shared Cockpit
+KEY_HEADING_BUG_SELECT	HEADING_BUG_SELECT	Selects the heading bug for use with +/-	Shared Cockpit
+KEY_ALTITUDE_BUG_SELECT	ALTITUDE_BUG_SELECT	Selects the altitude reference for use with +/-	Shared Cockpit
+KEY_VSI_BUG_SELECT	VSI_BUG_SELECT	Selects the vertical speed reference for use with +/-	Shared Cockpit
+KEY_AIRSPEED_BUG_SELECT	AIRSPEED_BUG_SELECT	Selects the airspeed reference for use with +/-	Shared Cockpit
+KEY_AP_PITCH_REF_INC_UP	AP_PITCH_REF_INC_UP	Increments the pitch reference for pitch hold mode	Shared Cockpit
+KEY_AP_PITCH_REF_INC_DN	AP_PITCH_REF_INC_DN	Decrements the pitch reference for pitch hold mode	Shared Cockpit
+KEY_AP_PITCH_REF_SELECT	AP_PITCH_REF_SELECT	Selects pitch reference for use with +/-	Shared Cockpit
+KEY_AP_ATT_HOLD	AP_ATT_HOLD	Toggle attitude hold mode	Shared Cockpit
+KEY_AP_LOC_HOLD	AP_LOC_HOLD	Toggles localizer (only) hold mode	Shared Cockpit
+KEY_AP_APR_HOLD	AP_APR_HOLD	Toggles approach hold (localizer and glide-slope)	Shared Cockpit
+KEY_AP_HDG_HOLD	AP_HDG_HOLD	Toggles heading hold mode	Shared Cockpit
+KEY_AP_ALT_HOLD	AP_ALT_HOLD	Toggles altitude hold mode	Shared Cockpit
+KEY_AP_WING_LEVELER	AP_WING_LEVELER	Toggles wing leveler mode	Shared Cockpit
+KEY_AP_BC_HOLD	AP_BC_HOLD	Toggles the backcourse mode for the localizer hold	Shared Cockpit
+KEY_AP_NAV1_HOLD	AP_NAV1_HOLD	Toggles the nav hold mode	Shared Cockpit
+KEY_AP_MAX_BANK_INC	AP_MAX_BANK_INC	Autopilot max bank angle increment.	Shared Cockpit
+KEY_AP_MAX_BANK_DEC	AP_MAX_BANK_DEC	Autopilot max bank angle decrement.	Shared Cockpit
+KEY_AP_N1_HOLD	AP_N1_HOLD	Autopilot, hold the N1 percentage at its current level.	Shared Cockpit
+KEY_AP_N1_REF_INC	AP_N1_REF_INC	Increment the autopilot N1 reference.	Shared Cockpit
+KEY_AP_N1_REF_DEC	AP_N1_REF_DEC	Decrement the autopilot N1 reference.	Shared Cockpit
+KEY_AP_N1_REF_SET	AP_N1_REF_SET	Sets the autopilot N1 reference.	Shared Cockpit
+KEY_FLY_BY_WIRE_ELAC_TOGGLE	FLY_BY_WIRE_ELAC_TOGGLE	Turn on or off the fly by wire Elevators and Ailerons computer.	Shared Cockpit
+KEY_FLY_BY_WIRE_FAC_TOGGLE	FLY_BY_WIRE_FAC_TOGGLE	Turn on or off the fly by wire Flight Augmentation computer.	Shared Cockpit
+KEY_FLY_BY_WIRE_SEC_TOGGLE	FLY_BY_WIRE_SEC_TOGGLE	Turn on or off the fly by wire Spoilers and Elevators computer.	Shared Cockpit
+KEY_G1000_PFD_FLIGHTPLAN_BUTTON	G1000_PFD_FLIGHTPLAN_BUTTON	The primary flight display (PFD) should display its current flight plan.	Shared Cockpit
+KEY_G1000_PFD_PROCEDURE_BUTTON	G1000_PFD_PROCEDURE_BUTTON	Turn to the Procedure page.	Shared Cockpit
+KEY_G1000_PFD_ZOOMIN_BUTTON	G1000_PFD_ZOOMIN_BUTTON	Zoom in on the current map.	Shared Cockpit
+KEY_G1000_PFD_ZOOMOUT_BUTTON	G1000_PFD_ZOOMOUT_BUTTON	Zoom out on the current map.	Shared Cockpit
+KEY_G1000_PFD_DIRECTTO_BUTTON	G1000_PFD_DIRECTTO_BUTTON	Turn to the Direct To page.	Shared Cockpit
+KEY_G1000_PFD_MENU_BUTTON	G1000_PFD_MENU_BUTTON	If a segmented flight plan is highlighted, activates the associated menu.	Shared Cockpit
+KEY_G1000_PFD_CLEAR_BUTTON	G1000_PFD_CLEAR_BUTTON	Clears the current input.	Shared Cockpit
+KEY_G1000_PFD_ENTER_BUTTON	G1000_PFD_ENTER_BUTTON	Enters the current input.	Shared Cockpit
+KEY_G1000_PFD_CURSOR_BUTTON	G1000_PFD_CURSOR_BUTTON	Turns on or off a screen cursor.	Shared Cockpit
+KEY_G1000_PFD_GROUP_KNOB_INC	G1000_PFD_GROUP_KNOB_INC	Step up through the page groups.	Shared Cockpit
+KEY_G1000_PFD_GROUP_KNOB_DEC	G1000_PFD_GROUP_KNOB_DEC	Step down through the page groups.	Shared Cockpit
+KEY_G1000_PFD_PAGE_KNOB_INC	G1000_PFD_PAGE_KNOB_INC	Step up through the individual pages.	Shared Cockpit
+KEY_G1000_PFD_PAGE_KNOB_DEC	G1000_PFD_PAGE_KNOB_DEC	Step down through the individual pages.	Shared Cockpit
+KEY_G1000_PFD_SOFTKEY1, to KEY_G1000_PFD_SOFTKEY12	G1000_PFD_SOFTKEY1, to G1000_PFD_SOFTKEY12	Initiate the action for the icon displayed in the softkey position.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_G1000_MFD_FLIGHTPLAN_BUTTON	G1000_MFD_FLIGHTPLAN_BUTTON	The multi-function display (MFD) should display its current flight plan.	Shared Cockpit
+KEY_G1000_MFD_PROCEDURE_BUTTON	G1000_MFD_PROCEDURE_BUTTON	Turn to the Procedure page.	Shared Cockpit
+KEY_G1000_MFD_ZOOMIN_BUTTON	G1000_MFD_ZOOMIN_BUTTON	Zoom in on the current map.	Shared Cockpit
+KEY_G1000_MFD_ZOOMOUT_BUTTON	G1000_MFD_ZOOMOUT_BUTTON	Zoom out on the current map.	Shared Cockpit
+KEY_G1000_MFD_DIRECTTO_BUTTON	G1000_MFD_DIRECTTO_BUTTON	Turn to the Direct To page.	Shared Cockpit
+KEY_G1000_MFD_MENU_BUTTON	G1000_MFD_MENU_BUTTON	If a segmented flight plan is highlighted, activates the associated menu.	Shared Cockpit
+KEY_G1000_MFD_CLEAR_BUTTON	G1000_MFD_CLEAR_BUTTON	Clears the current input.	Shared Cockpit
+KEY_G1000_MFD_ENTER_BUTTON	G1000_MFD_ENTER_BUTTON	Enters the current input.	Shared Cockpit
+KEY_G1000_MFD_CURSOR_BUTTON	G1000_MFD_CURSOR_BUTTON	Turns on or off a screen cursor.	Shared Cockpit
+KEY_G1000_MFD_GROUP_KNOB_INC	G1000_MFD_GROUP_KNOB_INC	Step up through the page groups.	Shared Cockpit
+KEY_G1000_MFD_GROUP_KNOB_DEC	G1000_MFD_GROUP_KNOB_DEC	Step down through the page groups.	Shared Cockpit
+KEY_G1000_MFD_PAGE_KNOB_INC	G1000_MFD_PAGE_KNOB_INC	Step up through the individual pages.	Shared Cockpit
+KEY_G1000_MFD_PAGE_KNOB_DEC	G1000_MFD_PAGE_KNOB_DEC	Step down through the individual pages.	Shared Cockpit
+KEY_G1000_MFD_SOFTKEY1, to KEY_G1000_MFD_SOFTKEY12	G1000_MFD_SOFTKEY1, to G1000_MFD_SOFTKEY2	Initiate the action for the icon displayed in the softkey position.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_FUEL_SELECTOR_OFF	FUEL_SELECTOR_OFF	Turns selector 1 to OFF position	Shared Cockpit
+KEY_FUEL_SELECTOR_ALL	FUEL_SELECTOR_ALL	Turns selector 1 to ALL position	Shared Cockpit
+KEY_FUEL_SELECTOR_LEFT	FUEL_SELECTOR_LEFT	Turns selector 1 to LEFT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_RIGHT	FUEL_SELECTOR_RIGHT	Turns selector 1 to RIGHT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_LEFT_AUX	FUEL_SELECTOR_LEFT_AUX	Turns selector 1 to LEFT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_RIGHT_AUX	FUEL_SELECTOR_RIGHT_AUX	Turns selector 1 to RIGHT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_CENTER	FUEL_SELECTOR_CENTER	Turns selector 1 to CENTER position	Shared Cockpit
+KEY_FUEL_SELECTOR_SET	FUEL_SELECTOR_SET	Sets selector 1 position (see code list below)	Shared Cockpit
+KEY_FUEL_SELECTOR_2_OFF	FUEL_SELECTOR_2_OFF	Turns selector 2 to OFF position	Shared Cockpit
+KEY_FUEL_SELECTOR_2_ALL	FUEL_SELECTOR_2_ALL	Turns selector 2 to ALL position	Shared Cockpit
+KEY_FUEL_SELECTOR_2_LEFT	FUEL_SELECTOR_2_LEFT	Turns selector 2 to LEFT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_2_RIGHT	FUEL_SELECTOR_2_RIGHT	Turns selector 2 to RIGHT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_2_LEFT_AUX	FUEL_SELECTOR_2_LEFT_AUX	Turns selector 2 to LEFT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_2_RIGHT_AUX	FUEL_SELECTOR_2_RIGHT_AUX	Turns selector 2 to RIGHT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_2_CENTER	FUEL_SELECTOR_2_CENTER	Turns selector 2 to CENTER position	Shared Cockpit
+KEY_FUEL_SELECTOR_2_SET	FUEL_SELECTOR_2_SET	Sets selector 2 position (see code list below)	Shared Cockpit
+KEY_FUEL_SELECTOR_3_OFF	FUEL_SELECTOR_3_OFF	Turns selector 3 to OFF position	Shared Cockpit
+KEY_FUEL_SELECTOR_3_ALL	FUEL_SELECTOR_3_ALL	Turns selector 3 to ALL position	Shared Cockpit
+KEY_FUEL_SELECTOR_3_LEFT	FUEL_SELECTOR_3_LEFT	Turns selector 3 to LEFT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_3_RIGHT	FUEL_SELECTOR_3_RIGHT	Turns selector 3 to RIGHT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_3_LEFT_AUX	FUEL_SELECTOR_3_LEFT_AUX	Turns selector 3 to LEFT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_3_RIGHT_AUX	FUEL_SELECTOR_3_RIGHT_AUX	Turns selector 3 to RIGHT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_3_CENTER	FUEL_SELECTOR_3_CENTER	Turns selector 3 to CENTER position	Shared Cockpit
+KEY_FUEL_SELECTOR_3_SET	FUEL_SELECTOR_3_SET	Sets selector 3 position (see code list below)	Shared Cockpit
+KEY_FUEL_SELECTOR_4_OFF	FUEL_SELECTOR_4_OFF	Turns selector 4 to OFF position	Shared Cockpit
+KEY_FUEL_SELECTOR_4_ALL	FUEL_SELECTOR_4_ALL	Turns selector 4 to ALL position	Shared Cockpit
+KEY_FUEL_SELECTOR_4_LEFT	FUEL_SELECTOR_4_LEFT	Turns selector 4 to LEFT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_4_RIGHT	FUEL_SELECTOR_4_RIGHT	Turns selector 4 to RIGHT position (burns from tip then aux then main)	Shared Cockpit
+KEY_FUEL_SELECTOR_4_LEFT_AUX	FUEL_SELECTOR_4_LEFT_AUX	Turns selector 4 to LEFT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_4_RIGHT_AUX	FUEL_SELECTOR_4_RIGHT_AUX	Turns selector 4 to RIGHT AUX position	Shared Cockpit
+KEY_FUEL_SELECTOR_4_CENTER	FUEL_SELECTOR_4_CENTER	Turns selector 4 to CENTER position	Shared Cockpit
+KEY_FUEL_SELECTOR_4_SET	FUEL_SELECTOR_4_SET	Sets selector 4 position (see code list below)	Shared Cockpit
+KEY_CROSS_FEED_OPEN	CROSS_FEED_OPEN	"Opens cross feed valve (when used in conjunction with ""isolate"" tank)"	Shared Cockpit
+KEY_CROSS_FEED_TOGGLE	CROSS_FEED_TOGGLE	"Toggles crossfeed valve (when used in conjunction with ""isolate"" tank)"	Shared Cockpit
+KEY_CROSS_FEED_OFF	CROSS_FEED_OFF	"Closes crossfeed valve (when used in conjunction with ""isolate"" tank)"	Shared Cockpit
+KEY_FUEL_DUMP_SWITCH_SET	FUEL_DUMP_SWITCH_SET	Set to True or False. The switch can only be set to True if fuel_dump_rate is specified in the aircraft configuration file, which indicates that a fuel dump system exists.	Shared Cockpit
+KEY_TOGGLE_ANTIDETONATION_TANK_VALVE	ANTIDETONATION_TANK_VALVE_TOGGLE	Toggle the anti-detonation valve. Pass a value to determine which tank, if there are multiple tanks, to use. Tanks are indexed from 1. Refer to the document Notes on Aircraft Systems.	Shared Cockpit
+KEY_TOGGLE_NITROUS_TANK_VALVE	NITROUS_TANK_VALVE_TOGGLE	Toggle the nitrous valve. Pass a value to determine which tank, if there are multiple tanks, to use. Tanks are indexed from 1.	Shared Cockpit
+KEY_REPAIR_AND_REFUEL	REPAIR_AND_REFUEL	Fully repair and refuel the user aircraft. Ignored if flight realism is enforced.	Shared Cockpit
+KEY_FUEL_DUMP_TOGGLE	FUEL_DUMP_TOGGLE	Turns on or off the fuel dump switch.	Shared Cockpit
+KEY_REQUEST_FUEL	REQUEST_FUEL_KEY	Request a fuel truck. The aircraft must be in a parking spot for this to be successful.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_FUEL_SELECTOR_LEFT_MAIN	FUEL_SELECTOR_LEFT_MAIN	Sets the fuel selector. Fuel will be taken in the order left tip, left aux,then main fuel tanks.	Shared Cockpit
+KEY_FUEL_SELECTOR_2_LEFT_MAIN	FUEL_SELECTOR_2_LEFT_MAIN	Sets the fuel selector for engine 2.	Shared Cockpit
+KEY_FUEL_SELECTOR_3_LEFT_MAIN	FUEL_SELECTOR_3_LEFT_MAIN	Sets the fuel selector for engine 3.	Shared Cockpit
+KEY_FUEL_SELECTOR_4_LEFT_MAIN	FUEL_SELECTOR_4_LEFT_MAIN	Sets the fuel selector for engine 4.	Shared Cockpit
+KEY_FUEL_SELECTOR_RIGHT_MAIN	FUEL_SELECTOR_RIGHT_MAIN	Sets the fuel selector. Fuel will be taken in the order right tip, right aux,then main fuel tanks.	Shared Cockpit
+KEY_FUEL_SELECTOR_2_RIGHT_MAIN	FUEL_SELECTOR_2_RIGHT_MAIN	Sets the fuel selector for engine 2.	Shared Cockpit
+KEY_FUEL_SELECTOR_3_RIGHT_MAIN	FUEL_SELECTOR_3_RIGHT_MAIN	Sets the fuel selector for engine 3.	Shared Cockpit
+KEY_FUEL_SELECTOR_4_RIGHT_MAIN	FUEL_SELECTOR_4_RIGHT_MAIN	Sets the fuel selector for engine 4.	Shared Cockpit
+FuelSelector	Code
+FUEL_TANK_SELECTOR_OFF	0
+FUEL_TANK_SELECTOR_ALL	1
+FUEL_TANK_SELECTOR_LEFT	2
+FUEL_TANK_SELECTOR_RIGHT	3
+FUEL_TANK_SELECTOR_LEFT_AUX	4
+FUEL_TANK_SELECTOR_RIGHT_AUX	5
+FUEL_TANK_SELECTOR_CENTER	6
+FUEL_TANK_SELECTOR_CENTER2	7
+FUEL_TANK_SELECTOR_CENTER3	8
+FUEL_TANK_SELECTOR_EXTERNAL1	9
+FUEL_TANK_SELECTOR_EXTERNAL2	10
+FUEL_TANK_SELECTOR_RIGHT_TIP	11
+FUEL_TANK_SELECTOR_LEFT_TIP	12
+FUEL_TANK_SELECTOR_CROSSFEED	13
+FUEL_TANK_SELECTOR_CROSSFEED_L2R	14
+FUEL_TANK_SELECTOR_CROSSFEED_R2L	15
+FUEL_TANK_SELECTOR_BOTH	16
+FUEL_TANK_SELECTOR_EXTERNAL_ALL	17
+FUEL_TANK_SELECTOR_ISOLATE	18
+Event ID	String Name	Description	Multiplayer
+KEY_XPNDR	XPNDR	Sequentially selects the transponder digits for use with +/-.	Shared Cockpit
+KEY_ADF	ADF	Sequentially selects the ADF tuner digits for use with +/-. Follow byKEY_SELECT_2 for ADF 2.	Shared Cockpit
+KEY_DME	DME	Selects the DME for use with +/-	Shared Cockpit
+KEY_COM_RADIO	COM_RADIO	Sequentially selects the COM tuner digits for use with +/-. Follow byKEY_SELECT_2 for COM 2.	All aircraft
+KEY_VOR_OBS	VOR_OBS	Sequentially selects the VOR OBS for use with +/-. Follow by KEY_SELECT_2 for VOR 2.	Shared Cockpit
+KEY_NAV_RADIO	NAV_RADIO	Sequentially selects the NAV tuner digits for use with +/-. Follow byKEY_SELECT_2 for NAV 2.	Shared Cockpit
+KEY_COM_RADIO_WHOLE_DEC	COM_RADIO_WHOLE_DEC	Decrements COM by one MHz	All aircraft
+KEY_COM_RADIO_WHOLE_INC	COM_RADIO_WHOLE_INC	Increments COM by one MHz	All aircraft
+KEY_COM_RADIO_FRACT_DEC	COM_RADIO_FRACT_DEC	Decrements COM by 25 KHz	All aircraft
+KEY_COM_RADIO_FRACT_INC	COM_RADIO_FRACT_INC	Increments COM by 25 KHz	All aircraft
+KEY_NAV1_RADIO_WHOLE_DEC	NAV1_RADIO_WHOLE_DEC	Decrements Nav 1 by one MHz	Shared Cockpit
+KEY_NAV1_RADIO_WHOLE_INC	NAV1_RADIO_WHOLE_INC	Increments Nav 1 by one MHz	Shared Cockpit
+KEY_NAV1_RADIO_FRACT_DEC	NAV1_RADIO_FRACT_DEC	Decrements Nav 1 by 25 KHz	Shared Cockpit
+KEY_NAV1_RADIO_FRACT_INC	NAV1_RADIO_FRACT_INC	Increments Nav 1 by 25 KHz	Shared Cockpit
+KEY_NAV2_RADIO_WHOLE_DEC	NAV2_RADIO_WHOLE_DEC	Decrements Nav 2 by one MHz	Shared Cockpit
+KEY_NAV2_RADIO_WHOLE_INC	NAV2_RADIO_WHOLE_INC	Increments Nav 2 by one MHz	Shared Cockpit
+KEY_NAV2_RADIO_FRACT_DEC	NAV2_RADIO_FRACT_DEC	Decrements Nav 2 by 25 KHz	Shared Cockpit
+KEY_NAV2_RADIO_FRACT_INC	NAV2_RADIO_FRACT_INC	Increments Nav 2 by 25 KHz	Shared Cockpit
+KEY_ADF_100_INC	ADF_100_INC	Increments ADF by 100 KHz	Shared Cockpit
+KEY_ADF_10_INC	ADF_10_INC	Increments ADF by 10 KHz	Shared Cockpit
+KEY_ADF_1_INC	ADF_1_INC	Increments ADF by 1 KHz	Shared Cockpit
+KEY_XPNDR_1000_INC	XPNDR_1000_INC	Increments first digit of transponder	Shared Cockpit
+KEY_XPNDR_100_INC	XPNDR_100_INC	Increments second digit of transponder	Shared Cockpit
+KEY_XPNDR_10_INC	XPNDR_10_INC	Increments third digit of transponder	Shared Cockpit
+KEY_XPNDR_1_INC	XPNDR_1_INC	Increments fourth digit of transponder	Shared Cockpit
+KEY_VOR1_OBI_DEC	VOR1_OBI_DEC	Decrements the VOR 1 OBS setting	Shared Cockpit
+KEY_VOR1_OBI_INC	VOR1_OBI_INC	Increments the VOR 1 OBS setting	Shared Cockpit
+KEY_VOR2_OBI_DEC	VOR2_OBI_DEC	Decrements the VOR 2 OBS setting	Shared Cockpit
+KEY_VOR2_OBI_INC	VOR2_OBI_INC	Increments the VOR 2 OBS setting	Shared Cockpit
+KEY_ADF_100_DEC	ADF_100_DEC	Decrements ADF by 100 KHz	Shared Cockpit
+KEY_ADF_10_DEC	ADF_10_DEC	Decrements ADF by 10 KHz	Shared Cockpit
+KEY_ADF_1_DEC	ADF_1_DEC	Decrements ADF by 1 KHz	Shared Cockpit
+KEY_COM_RADIO_SET	COM_RADIO_SET	Sets COM frequency (BCD Hz)	All aircraft
+KEY_NAV1_RADIO_SET	NAV1_RADIO_SET	Sets NAV 1 frequency (BCD Hz)	Shared Cockpit
+KEY_NAV2_RADIO_SET	NAV2_RADIO_SET	Sets NAV 2 frequency (BCD Hz)	Shared Cockpit
+KEY_ADF_SET	ADF_SET	Sets ADF frequency (BCD Hz)	Shared Cockpit
+KEY_XPNDR_SET	XPNDR_SET	Sets transponder code (BCD)	All aircraft
+KEY_VOR1_SET	VOR1_SET	Sets OBS 1 (0 to 360)	Shared Cockpit
+KEY_VOR2_SET	VOR2_SET	Sets OBS 2 (0 to 360)	Shared Cockpit
+KEY_DME1_TOGGLE	DME1_TOGGLE	Sets DME display to Nav 1	Shared Cockpit
+KEY_DME2_TOGGLE	DME2_TOGGLE	Sets DME display to Nav 2	Shared Cockpit
+KEY_RADIO_VOR1_IDENT_DISABLE	RADIO_VOR1_IDENT_DISABLE	Turns NAV 1 ID off	Shared Cockpit
+KEY_RADIO_VOR2_IDENT_DISABLE	RADIO_VOR2_IDENT_DISABLE	Turns NAV 2 ID off	Shared Cockpit
+KEY_RADIO_DME1_IDENT_DISABLE	RADIO_DME1_IDENT_DISABLE	Turns DME 1 ID off	Shared Cockpit
+KEY_RADIO_DME2_IDENT_DISABLE	RADIO_DME2_IDENT_DISABLE	Turns DME 2 ID off	Shared Cockpit
+KEY_RADIO_ADF_IDENT_DISABLE	RADIO_ADF_IDENT_DISABLE	Turns ADF 1 ID off	Shared Cockpit
+KEY_RADIO_VOR1_IDENT_ENABLE	RADIO_VOR1_IDENT_ENABLE	Turns NAV 1 ID on	Shared Cockpit
+KEY_RADIO_VOR2_IDENT_ENABLE	RADIO_VOR2_IDENT_ENABLE	Turns NAV 2 ID on	Shared Cockpit
+KEY_RADIO_DME1_IDENT_ENABLE	RADIO_DME1_IDENT_ENABLE	Turns DME 1 ID on	Shared Cockpit
+KEY_RADIO_DME2_IDENT_ENABLE	RADIO_DME2_IDENT_ENABLE	Turns DME 2 ID on	Shared Cockpit
+KEY_RADIO_ADF_IDENT_ENABLE	RADIO_ADF_IDENT_ENABLE	Turns ADF 1 ID on	Shared Cockpit
+KEY_RADIO_VOR1_IDENT_TOGGLE	RADIO_VOR1_IDENT_TOGGLE	Toggles NAV 1 ID	Shared Cockpit
+KEY_RADIO_VOR2_IDENT_TOGGLE	RADIO_VOR2_IDENT_TOGGLE	Toggles NAV 2 ID	Shared Cockpit
+KEY_RADIO_DME1_IDENT_TOGGLE	RADIO_DME1_IDENT_TOGGLE	Toggles DME 1 ID	Shared Cockpit
+KEY_RADIO_DME2_IDENT_TOGGLE	RADIO_DME2_IDENT_TOGGLE	Toggles DME 2 ID	Shared Cockpit
+KEY_RADIO_ADF_IDENT_TOGGLE	RADIO_ADF_IDENT_TOGGLE	Toggles ADF 1 ID	Shared Cockpit
+KEY_RADIO_VOR1_IDENT_SET	RADIO_VOR1_IDENT_SET	Sets NAV 1 ID (on/off)	Shared Cockpit
+KEY_RADIO_VOR2_IDENT_SET	RADIO_VOR2_IDENT_SET	Sets NAV 2 ID (on/off)	Shared Cockpit
+KEY_RADIO_DME1_IDENT_SET	RADIO_DME1_IDENT_SET	Sets DME 1 ID (on/off)	Shared Cockpit
+KEY_RADIO_DME2_IDENT_SET	RADIO_DME2_IDENT_SET	Sets DME 2 ID (on/off)	Shared Cockpit
+KEY_RADIO_ADF_IDENT_SET	RADIO_ADF_IDENT_SET	Sets ADF 1 ID (on/off)	Shared Cockpit
+KEY_ADF_CARD_INC	ADF_CARD_INC	Increments ADF card	Shared Cockpit
+KEY_ADF_CARD_DEC	ADF_CARD_DEC	Decrements ADF card	Shared Cockpit
+KEY_ADF_CARD_SET	ADF_CARD_SET	Sets ADF card (0-360)	Shared Cockpit
+KEY_DME_TOGGLE	TOGGLE_DME	Toggles between NAV 1 and NAV 2	Shared Cockpit
+KEY_AVIONICS_MASTER_SET	AVIONICS_MASTER_SET	Sets the avionics master switch	All aircraft
+KEY_TOGGLE_AVIONICS_MASTER	TOGGLE_AVIONICS_MASTER	Toggles the avionics master switch	All aircraft
+KEY_COM_STBY_RADIO_SET	COM_STBY_RADIO_SET	Sets COM 1 standby frequency (BCD Hz)	All aircraft
+KEY_COM_STBY_RADIO_SWITCH_TO, or KEY_COM_RADIO_SWAP	COM_STBY_RADIO_SWAP	Swaps COM 1 frequency with standby	All aircraft
+KEY_COM_RADIO_FRACT_DEC_CARRY	COM_RADIO_FRACT_DEC_CARRY	Decrement COM 1 frequency by 25 KHz, and carry when digit wraps	All aircraft
+KEY_COM_RADIO_FRACT_INC_CARRY	COM_RADIO_FRACT_INC_CARRY	Increment COM 1 frequency by 25 KHz, and carry when digit wraps	All aircraft
+KEY_COM2_RADIO_WHOLE_DEC	COM2_RADIO_WHOLE_DEC	Decrement COM 2 frequency by 1 MHz, with no carry when digit wraps	All aircraft
+KEY_COM2_RADIO_WHOLE_INC	COM2_RADIO_WHOLE_INC	Increment COM 2 frequency by 1 MHz, with no carry when digit wraps	All aircraft
+KEY_COM2_RADIO_FRACT_DEC	COM2_RADIO_FRACT_DEC	Decrement COM 2 frequency by 25 KHz, with no carry when digit wraps	All aircraft
+KEY_COM2_RADIO_FRACT_DEC_CARRY	COM2_RADIO_FRACT_DEC_CARRY	Decrement COM 2 frequency by 25 KHz, and carry when digit wraps	All aircraft
+KEY_COM2_RADIO_FRACT_INC	COM2_RADIO_FRACT_INC	Increment COM 2 frequency by 25 KHz, with no carry when digit wraps	All aircraft
+KEY_COM2_RADIO_FRACT_INC_CARRY	COM2_RADIO_FRACT_INC_CARRY	Increment COM 2 frequency by 25 KHz, and carry when digit wraps	All aircraft
+KEY_COM2_RADIO_SET	COM2_RADIO_SET	Sets COM 2 frequency (BCD Hz)	All aircraft
+KEY_COM2_STBY_RADIO_SET	COM2_STBY_RADIO_SET	Sets COM 2 standby frequency (BCD Hz)	All aircraft
+KEY_COM2_RADIO_SWAP	COM2_RADIO_SWAP	Swaps COM 2 frequency with standby	All aircraft
+KEY_NAV1_RADIO_FRACT_DEC_CARRY	NAV1_RADIO_FRACT_DEC_CARRY	Decrement NAV 1 frequency by 50 KHz, and carry when digit wraps	Shared Cockpit
+KEY_NAV1_RADIO_FRACT_INC_CARRY	NAV1_RADIO_FRACT_INC_CARRY	Increment NAV 1 frequency by 50 KHz, and carry when digit wraps	Shared Cockpit
+KEY_NAV1_STBY_SET	NAV1_STBY_SET	Sets NAV 1 standby frequency (BCD Hz)	Shared Cockpit
+KEY_NAV1_RADIO_SWAP	NAV1_RADIO_SWAP	Swaps NAV 1 frequency with standby	Shared Cockpit
+KEY_NAV2_RADIO_FRACT_DEC_CARRY	NAV2_RADIO_FRACT_DEC_CARRY	Decrement NAV 2 frequency by 50 KHz, and carry when digit wraps	Shared Cockpit
+KEY_NAV2_RADIO_FRACT_INC_CARRY	NAV2_RADIO_FRACT_INC_CARRY	Increment NAV 2 frequency by 50 KHz, and carry when digit wraps	Shared Cockpit
+KEY_NAV2_STBY_SET	NAV2_STBY_SET	Sets NAV 2 standby frequency (BCD Hz)	Shared Cockpit
+KEY_NAV2_RADIO_SWAP	NAV2_RADIO_SWAP	Swaps NAV 2 frequency with standby	Shared Cockpit
+KEY_ADF1_RADIO_TENTHS_DEC	ADF1_RADIO_TENTHS_DEC	Decrements ADF 1 by 0.1 KHz.	Shared Cockpit
+KEY_ADF1_RADIO_TENTHS_INC	ADF1_RADIO_TENTHS_INC	Increments ADF 1 by 0.1 KHz.	Shared Cockpit
+KEY_XPNDR_1000_DEC	XPNDR_1000_DEC	Decrements first digit of transponder	Shared Cockpit
+KEY_XPNDR_100_DEC	XPNDR_100_DEC	Decrements second digit of transponder	Shared Cockpit
+KEY_XPNDR_10_DEC	XPNDR_10_DEC	Decrements third digit of transponder	Shared Cockpit
+KEY_XPNDR_1_DEC	XPNDR_1_DEC	Decrements fourth digit of transponder	Shared Cockpit
+KEY_XPNDR_DEC_CARRY	XPNDR_DEC_CARRY	Decrements fourth digit of transponder, and with carry.	Shared Cockpit
+KEY_XPNDR_INC_CARRY	XPNDR_INC_CARRY	Increments fourth digit of transponder, and with carry.	Shared Cockpit
+KEY_ADF_FRACT_DEC_CARRY	ADF_FRACT_DEC_CARRY	Decrements ADF 1 frequency by 0.1 KHz, with carry	Shared Cockpit
+KEY_ADF_FRACT_INC_CARRY	ADF_FRACT_INC_CARRY	Increments ADF 1 frequency by 0.1 KHz, with carry	Shared Cockpit
+KEY_COM1_TRANSMIT_SELECT	COM1_TRANSMIT_SELECT	Selects COM 1 to transmit	All aircraft
+KEY_COM2_TRANSMIT_SELECT	COM2_TRANSMIT_SELECT	Selects COM 2 to transmit	All aircraft
+KEY_COM_RECEIVE_ALL_TOGGLE	COM_RECEIVE_ALL_TOGGLE	Toggles all COM radios to receive on	All aircraft
+KEY_COM_RECEIVE_ALL_SET	COM_RECEIVE_ALL_SET	Sets whether to receive on all COM radios (1,0)	All aircraft
+KEY_MARKER_SOUND_TOGGLE	MARKER_SOUND_TOGGLE	Toggles marker beacon sound on/off	Shared Cockpit
+KEY_MARKER_SOUND_SET	Unsupported	Sets marker beacon sound (1, 0)	Shared Cockpit
+KEY_ADF_COMPLETE_SET	ADF_COMPLETE_SET	Sets ADF 1 frequency (BCD Hz)	Shared Cockpit
+KEY_ADF_WHOLE_INC	ADF1_WHOLE_INC	Increments ADF 1 by 1 KHz, with carry as digits wrap.	Shared Cockpit
+KEY_ADF_WHOLE_DEC	ADF1_WHOLE_DEC	Decrements ADF 1 by 1 KHz, with carry as digits wrap.	Shared Cockpit
+KEY_ADF2_100_INC	ADF2_100_INC	Increments the ADF 2 frequency 100 digit, with wrapping	Shared Cockpit
+KEY_ADF2_10_INC	ADF2_10_INC	Increments the ADF 2 frequency 10 digit, with wrapping	Shared Cockpit
+KEY_ADF2_1_INC	ADF2_1_INC	Increments the ADF 2 frequency 1 digit, with wrapping	Shared Cockpit
+KEY_ADF2_RADIO_TENTHS_INC	ADF2_RADIO_TENTHS_INC	Increments ADF 2 frequency 1/10 digit, with wrapping	Shared Cockpit
+KEY_ADF2_100_DEC	ADF2_100_DEC	Decrements the ADF 2 frequency 100 digit, with wrapping	Shared Cockpit
+KEY_ADF2_10_DEC	ADF2_10_DEC	Decrements the ADF 2 frequency 10 digit, with wrapping	Shared Cockpit
+KEY_ADF2_1_DEC	ADF2_1_DEC	Decrements the ADF 2 frequency 1 digit, with wrapping	Shared Cockpit
+KEY_ADF2_RADIO_TENTHS_DEC	ADF2_RADIO_TENTHS_DEC	Decrements ADF 2 frequency 1/10 digit, with wrapping	Shared Cockpit
+KEY_ADF2_WHOLE_INC	ADF2_WHOLE_INC	Increments ADF 2 by 1 KHz, with carry as digits wrap.	Shared Cockpit
+KEY_ADF2_WHOLE_DEC	ADF2_WHOLE_DEC	Decrements ADF 2 by 1 KHz, with carry as digits wrap.	Shared Cockpit
+KEY_ADF2_FRACT_INC_CARRY	ADF2_FRACT_DEC_CARRY	Decrements ADF 2 frequency by 0.1 KHz, with carry	Shared Cockpit
+KEY_ADF2_FRACT_DEC_CARRY	ADF2_FRACT_INC_CARRY	Increments ADF 2 frequency by 0.1 KHz, with carry	Shared Cockpit
+KEY_ADF2_COMPLETE_SET	ADF2_COMPLETE_SET	Sets ADF 1 frequency (BCD Hz)	Shared Cockpit
+KEY_RADIO_ADF2_IDENT_DISABLE	RADIO_ADF2_IDENT_DISABLE	Turns ADF 2 ID off	Shared Cockpit
+KEY_RADIO_ADF2_IDENT_ENABLE	RADIO_ADF2_IDENT_ENABLE	Turns ADF 2 ID on	Shared Cockpit
+KEY_RADIO_ADF2_IDENT_TOGGLE	RADIO_ADF2_IDENT_TOGGLE	Toggles ADF 2 ID	Shared Cockpit
+KEY_RADIO_ADF2_IDENT_SET	RADIO_ADF2_IDENT_SET	Sets ADF 2 ID on/off (1,0)	Shared Cockpit
+KEY_FREQUENCY_SWAP	FREQUENCY_SWAP	Swaps frequency with standby on whichever NAV or COM radio is selected.	Shared Cockpit
+KEY_TOGGLE_GPS_DRIVES_NAV1	TOGGLE_GPS_DRIVES_NAV1	Toggles between GPS and NAV 1 driving NAV 1 OBS display (and AP)	Shared Cockpit
+KEY_GPS_POWER_BUTTON	GPS_POWER_BUTTON	Toggles power button	Shared Cockpit
+KEY_GPS_NEAREST_BUTTON	GPS_NEAREST_BUTTON	Selects Nearest Airport Page	Shared Cockpit
+KEY_GPS_OBS_BUTTON	GPS_OBS_BUTTON	Toggles automatic sequencing of waypoints	Shared Cockpit
+KEY_GPS_MSG_BUTTON	GPS_MSG_BUTTON	Toggles the Message Page	Shared Cockpit
+KEY_GPS_MSG_BUTTON_DOWN	GPS_MSG_BUTTON_DOWN	Triggers the pressing of the message button.	Shared Cockpit
+KEY_GPS_MSG_BUTTON_UP	GPS_MSG_BUTTON_UP	Triggers the release of the message button	Shared Cockpit
+KEY_GPS_FLIGHTPLAN_BUTTON	GPS_FLIGHTPLAN_BUTTON	Displays the programmed flightplan.	Shared Cockpit
+KEY_GPS_TERRAIN_BUTTON	GPS_TERRAIN_BUTTON	Displays terrain information on default display	Shared Cockpit
+KEY_GPS_PROCEDURE_BUTTON	GPS_PROCEDURE_BUTTON	Displays the approach procedure page.	Shared Cockpit
+KEY_GPS_ZOOMIN_BUTTON	GPS_ZOOMIN_BUTTON	Zooms in default display	Shared Cockpit
+KEY_GPS_ZOOMOUT_BUTTON	GPS_ZOOMOUT_BUTTON	Zooms out default display	Shared Cockpit
+KEY_GPS_DIRECTTO_BUTTON	GPS_DIRECTTO_BUTTON	"Brings up the ""Direct To"" page"	Shared Cockpit
+KEY_GPS_MENU_BUTTON	GPS_MENU_BUTTON	Brings up page to select active legs in a flightplan.	Shared Cockpit
+KEY_GPS_CLEAR_BUTTON	GPS_CLEAR_BUTTON	Clears entered data on a page	Shared Cockpit
+KEY_GPS_CLEAR_ALL_BUTTON	GPS_CLEAR_ALL_BUTTON	Clears all data immediately	Shared Cockpit
+KEY_GPS_CLEAR_BUTTON_DOWN	GPS_CLEAR_BUTTON_DOWN	Triggers the pressing of the Clear button	Shared Cockpit
+KEY_GPS_CLEAR_BUTTON_UP	GPS_CLEAR_BUTTON_UP	Triggers the release of the Clear button.	Shared Cockpit
+KEY_GPS_ENTER_BUTTON	GPS_ENTER_BUTTON	Approves entered data.	Shared Cockpit
+KEY_GPS_CURSOR_BUTTON	GPS_CURSOR_BUTTON	Selects GPS cursor	Shared Cockpit
+KEY_GPS_GROUP_KNOB_INC	GPS_GROUP_KNOB_INC	Increments cursor	Shared Cockpit
+KEY_GPS_GROUP_KNOB_DEC	GPS_GROUP_KNOB_DEC	Decrements cursor	Shared Cockpit
+KEY_GPS_PAGE_KNOB_INC	GPS_PAGE_KNOB_INC	Increments through pages	Shared Cockpit
+KEY_GPS_PAGE_KNOB_DEC	GPS_PAGE_KNOB_DEC	Decrements through pages	Shared Cockpit
+KEY_DME_SELECT	DME_SELECT	Selects one of the two DME systems (1,2).	Shared Cockpit
+KEY_RADIO_SELECTED_DME_IDENT_ENABLE	RADIO_SELECTED_DME_IDENT_ENABLE	Turns on the identification sound for the selected DME.	Shared Cockpit
+KEY_RADIO_SELECTED_DME_IDENT_DISABLE	RADIO_SELECTED_DME_IDENT_DISABLE	Turns off the identification sound for the selected DME.	Shared Cockpit
+KEY_RADIO_SELECTED_DME_IDENT_SET	RADIO_SELECTED_DME_IDENT_SET	Sets the DME identification sound to the given filename.	Shared Cockpit
+KEY_RADIO_SELECTED_DME_IDENT_TOGGLE	RADIO_SELECTED_DME_IDENT_TOGGLE	Turns on or off the identification sound for the selected DME.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_EGT	EGT	Selects EGT bug for +/-	Shared Cockpit
+KEY_EGT_INC	EGT_INC	Increments EGT bugs	Shared Cockpit
+KEY_EGT_DEC	EGT_DEC	Decrements EGT bugs	Shared Cockpit
+KEY_EGT_SET	EGT_SET	Sets EGT bugs (0 to 32767)	Shared Cockpit
+KEY_BAROMETRIC	BAROMETRIC	Syncs altimeter setting to sea level pressure, or 29.92 if above 18000 feet	Shared Cockpit
+KEY_GYRO_DRIFT_INC	GYRO_DRIFT_INC	Increments heading indicator	Shared Cockpit
+KEY_GYRO_DRIFT_DEC	GYRO_DRIFT_DEC	Decrements heading indicator	Shared Cockpit
+KEY_KOHLSMAN_INC	KOHLSMAN_INC	Increments altimeter setting	Shared Cockpit
+KEY_KOHLSMAN_DEC	KOHLSMAN_DEC	Decrements altimeter setting	Shared Cockpit
+KEY_KOHLSMAN_SET	KOHLSMAN_SET	Sets altimeter setting (Millibars * 16)	Shared Cockpit
+KEY_TRUE_AIRSPEED_CALIBRATE_INC	TRUE_AIRSPEED_CAL_INC	Increments airspeed indicators true airspeed reference card	Shared Cockpit
+KEY_TRUE_AIRSPEED_CALIBRATE_DEC	TRUE_AIRSPEED_CAL_DEC	Decrements airspeed indicators true airspeed reference card	Shared Cockpit
+KEY_TRUE_AIRSPEED_CAL_SET	TRUE_AIRSPEED_CAL_SET	Sets airspeed indicators true airspeed reference card (degrees, where 0 is standard sea level conditions)	Shared Cockpit
+KEY_EGT1_INC	EGT1_INC	Increments EGT bug 1	Shared Cockpit
+KEY_EGT1_DEC	EGT1_DEC	Decrements EGT bug 1	Shared Cockpit
+KEY_EGT1_SET	EGT1_SET	Sets EGT bug 1 (0 to 32767)	Shared Cockpit
+KEY_EGT2_INC	EGT2_INC	Increments EGT bug 2	Shared Cockpit
+KEY_EGT2_DEC	EGT2_DEC	Decrements EGT bug 2	Shared Cockpit
+KEY_EGT2_SET	EGT2_SET	Sets EGT bug 2 (0 to 32767)	Shared Cockpit
+KEY_EGT3_INC	EGT3_INC	Increments EGT bug 3	Shared Cockpit
+KEY_EGT3_DEC	EGT3_DEC	Decrements EGT bug 3	Shared Cockpit
+KEY_EGT3_SET	EGT3_SET	Sets EGT bug 3 (0 to 32767)	Shared Cockpit
+KEY_EGT4_INC	EGT4_INC	Increments EGT bug 4	Shared Cockpit
+KEY_EGT4_DEC	EGT4_DEC	Decrements EGT bug 4	Shared Cockpit
+KEY_EGT4_SET	EGT4_SET	Sets EGT bug 4 (0 to 32767)	Shared Cockpit
+KEY_ATTITUDE_BARS_POSITION_INC	ATTITUDE_BARS_POSITION_UP	Increments attitude indicator pitch reference bars	Shared Cockpit
+KEY_ATTITUDE_BARS_POSITION_DEC	ATTITUDE_BARS_POSITION_DOWN	Decrements attitude indicator pitch reference bars	Shared Cockpit
+KEY_TOGGLE_ATTITUDE_CAGE	ATTITUDE_CAGE_BUTTON	Cages attitude indicator at 0 pitch and bank	Shared Cockpit
+KEY_RESET_G_FORCE_INDICATOR	RESET_G_FORCE_INDICATOR	Resets max/min indicated G force to 1.0.	Shared Cockpit
+KEY_RESET_MAX_RPM_INDICATOR	RESET_MAX_RPM_INDICATOR	Reset max indicated engine rpm to 0.	Shared Cockpit
+KEY_HEADING_GYRO_SET	HEADING_GYRO_SET	Sets heading indicator to 0 drift error.	Shared Cockpit
+KEY_GYRO_DRIFT_SET	GYRO_DRIFT_SET	Sets heading indicator drift angle (degrees).	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_STROBES_TOGGLE	STROBES_TOGGLE	Toggle strobe lights	All aircraft
+KEY_ALL_LIGHTS_TOGGLE	ALL_LIGHTS_TOGGLE	Toggle all lights	Shared Cockpit
+KEY_PANEL_LIGHTS_TOGGLE	PANEL_LIGHTS_TOGGLE	Toggle panel lights	All aircraft
+KEY_LANDING_LIGHTS_TOGGLE	LANDING_LIGHTS_TOGGLE	Toggle landing lights	All aircraft
+KEY_LANDING_LIGHT_UP	LANDING_LIGHT_UP	Rotate landing light up	Shared Cockpit
+KEY_LANDING_LIGHT_DOWN	LANDING_LIGHT_DOWN	Rotate landing light down	Shared Cockpit
+KEY_LANDING_LIGHT_LEFT	LANDING_LIGHT_LEFT	Rotate landing light left	Shared Cockpit
+KEY_LANDING_LIGHT_RIGHT	LANDING_LIGHT_RIGHT	Rotate landing light right	Shared Cockpit
+KEY_LANDING_LIGHT_HOME	LANDING_LIGHT_HOME	Return landing light to default position	Shared Cockpit
+KEY_STROBES_ON	STROBES_ON	Turn strobe lights on	All aircraft
+KEY_STROBES_OFF	STROBES_OFF	Turn strobe light off	All aircraft
+KEY_STROBES_SET	STROBES_SET	Set strobe lights on/off (1,0)	All aircraft
+KEY_PANEL_LIGHTS_ON	PANEL_LIGHTS_ON	Turn panel lights on	All aircraft
+KEY_PANEL_LIGHTS_OFF	PANEL_LIGHTS_OFF	Turn panel lights off	All aircraft
+KEY_PANEL_LIGHTS_SET	PANEL_LIGHTS_SET	Set panel lights on/off (1,0)	All aircraft
+KEY_LANDING_LIGHTS_ON	LANDING_LIGHTS_ON	Turn landing lights on	All aircraft
+KEY_LANDING_LIGHTS_OFF	LANDING_LIGHTS_OFF	Turn landing lights off	All aircraft
+KEY_LANDING_LIGHTS_SET	LANDING_LIGHTS_SET	Set landing lights on/off (1,0)	All aircraft
+KEY_TOGGLE_BEACON_LIGHTS	TOGGLE_BEACON_LIGHTS	Toggle beacon lights	All aircraft
+KEY_TOGGLE_TAXI_LIGHTS	TOGGLE_TAXI_LIGHTS	Toggle taxi lights	All aircraft
+KEY_TOGGLE_LOGO_LIGHTS	TOGGLE_LOGO_LIGHTS	Toggle logo lights	All aircraft
+KEY_TOGGLE_RECOGNITION_LIGHTS	TOGGLE_RECOGNITION_LIGHTS	Toggle recognition lights	All aircraft
+KEY_TOGGLE_WING_LIGHTS	TOGGLE_WING_LIGHTS	Toggle wing lights	All aircraft
+KEY_TOGGLE_NAV_LIGHTS	TOGGLE_NAV_LIGHTS	Toggle navigation lights	All aircraft
+KEY_TOGGLE_CABIN_LIGHTS	TOGGLE_CABIN_LIGHTS	Toggle cockpit/cabin lights	All aircraft
+Event ID	String Name	Description	Multiplayer
+KEY_TOGGLE_VACUUM_FAILURE	TOGGLE_VACUUM_FAILURE	Toggle vacuum system failure	Shared Cockpit
+KEY_TOGGLE_ELECTRICAL_FAILURE	TOGGLE_ELECTRICAL_FAILURE	Toggle electrical system failure	Shared Cockpit
+KEY_TOGGLE_PITOT_BLOCKAGE	TOGGLE_PITOT_BLOCKAGE	Toggles blocked pitot tube	Shared Cockpit
+KEY_TOGGLE_STATIC_PORT_BLOCKAGE	TOGGLE_STATIC_PORT_BLOCKAGE	Toggles blocked static port	Shared Cockpit
+KEY_TOGGLE_HYDRAULIC_FAILURE	TOGGLE_HYDRAULIC_FAILURE	Toggles hydraulic system failure	Shared Cockpit
+KEY_TOGGLE_TOTAL_BRAKE_FAILURE	TOGGLE_TOTAL_BRAKE_FAILURE	Toggles brake failure (both)	Shared Cockpit
+KEY_TOGGLE_LEFT_BRAKE_FAILURE	TOGGLE_LEFT_BRAKE_FAILURE	Toggles left brake failure	Shared Cockpit
+KEY_TOGGLE_RIGHT_BRAKE_FAILURE	TOGGLE_RIGHT_BRAKE_FAILURE	Toggles right brake failure	Shared Cockpit
+KEY_TOGGLE_ENGINE1_FAILURE	TOGGLE_ENGINE1_FAILURE	Toggle engine 1 failure	Shared Cockpit
+KEY_TOGGLE_ENGINE2_FAILURE	TOGGLE_ENGINE2_FAILURE	Toggle engine 2 failure	Shared Cockpit
+KEY_TOGGLE_ENGINE3_FAILURE	TOGGLE_ENGINE3_FAILURE	Toggle engine 3 failure	Shared Cockpit
+KEY_TOGGLE_ENGINE4_FAILURE	TOGGLE_ENGINE4_FAILURE	Toggle engine 4 failure	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_SMOKE_TOGGLE	SMOKE_TOGGLE	Toggle smoke system switch	All aircraft
+KEY_GEAR_TOGGLE	GEAR_TOGGLE	Toggle gear handle	All aircraft
+KEY_BRAKES	BRAKES	Increment brake pressure	Shared Cockpit
+KEY_GEAR_SET	GEAR_SET	Sets gear handle position up/down (0,1)	All aircraft
+KEY_BRAKES_LEFT	BRAKES_LEFT	Increments left brake pressure	Shared Cockpit
+KEY_BRAKES_RIGHT	BRAKES_RIGHT	Increments right brake pressure	Shared Cockpit
+KEY_PARKING_BRAKES	PARKING_BRAKES	Toggles parking brake on/off	Shared Cockpit
+KEY_GEAR_PUMP	GEAR_PUMP	Increments emergency gear extension	Shared Cockpit
+KEY_PITOT_HEAT_TOGGLE	PITOT_HEAT_TOGGLE	Toggles pitot heat switch	All aircraft
+KEY_SMOKE_ON	SMOKE_ON	Turns smoke system on	All aircraft
+KEY_SMOKE_OFF	SMOKE_OFF	Turns smoke system off	All aircraft
+KEY_SMOKE_SET	SMOKE_SET	Sets smoke system on/off (1,0)	All aircraft
+KEY_PITOT_HEAT_ON	PITOT_HEAT_ON	Turns pitot heat switch on	Shared Cockpit
+KEY_PITOT_HEAT_OFF	PITOT_HEAT_OFF	Turns pitot heat switch off	Shared Cockpit
+KEY_PITOT_HEAT_SET	PITOT_HEAT_SET	Sets pitot heat switch on/off (1,0)	Shared Cockpit
+KEY_GEAR_UP	GEAR_UP	Sets gear handle in UP position	All aircraft
+KEY_GEAR_DOWN	GEAR_DOWN	Sets gear handle in DOWN position	All aircraft
+KEY_TOGGLE_MASTER_BATTERY	TOGGLE_MASTER_BATTERY	Toggles main battery switch	All aircraft
+KEY_TOGGLE_MASTER_ALTERNATOR	TOGGLE_MASTER_ALTERNATOR	Toggles main alternator/generator switch	All aircraft
+KEY_TOGGLE_ELECTRIC_VACUUM_PUMP	TOGGLE_ELECTRIC_VACUUM_PUMP	Toggles backup electric vacuum pump	Shared Cockpit
+KEY_TOGGLE_ALTERNATE_STATIC	TOGGLE_ALTERNATE_STATIC	Toggles alternate static pressure port	All aircraft
+KEY_DECISION_HEIGHT_DEC	DECREASE_DECISION_HEIGHT	Decrements decision height reference	Shared Cockpit
+KEY_DECISION_HEIGHT_INC	INCREASE_DECISION_HEIGHT	Increments decision height reference	Shared Cockpit
+KEY_TOGGLE_STRUCTURAL_DEICE	TOGGLE_STRUCTURAL_DEICE	Toggles structural deice switch	Shared Cockpit
+KEY_TOGGLE_PROPELLER_DEICE	TOGGLE_PROPELLER_DEICE	Toggles propeller deice switch	Shared Cockpit
+KEY_TOGGLE_ALTERNATOR1	TOGGLE_ALTERNATOR1	Toggles alternator/generator 1 switch	All aircraft
+KEY_TOGGLE_ALTERNATOR2	TOGGLE_ALTERNATOR2	Toggles alternator/generator 2 switch	All aircraft
+KEY_TOGGLE_ALTERNATOR3	TOGGLE_ALTERNATOR3	Toggles alternator/generator 3 switch	All aircraft
+KEY_TOGGLE_ALTERNATOR4	TOGGLE_ALTERNATOR4	Toggles alternator/generator 4 switch	All aircraft
+KEY_TOGGLE_MASTER_BATTERY_ALTERNATOR	TOGGLE_MASTER_BATTERY_ALTERNATOR	Toggles master battery and alternator switch	Shared Cockpit
+KEY_AXIS_LEFT_BRAKE_SET	AXIS_LEFT_BRAKE_SET	Sets left brake position from axis controller (e.g. joystick). -16383 (0brakes) to +16383 (max brakes)	Shared Cockpit
+KEY_AXIS_RIGHT_BRAKE_SET	AXIS_RIGHT_BRAKE_SET	Sets right brake position from axis controller (e.g. joystick). -16383 (0brakes) to +16383 (max brakes)	Shared Cockpit
+KEY_TOGGLE_AIRCRAFT_EXIT	TOGGLE_AIRCRAFT_EXIT	Toggles primary door open/close. Follow by KEY_SELECT_2, etc for subsequent doors.	Shared Cockpit
+KEY_TOGGLE_WING_FOLD	TOGGLE_WING_FOLD	Toggles wing folding	Shared Cockpit
+KEY_SET_WING_FOLD	SET_WING_FOLD	Sets the wings into the folded position suitable for storage, typically on a carrier. Takes a value:1 -fold wings, 0 - unfold wings	Shared Cockpit
+KEY_TOGGLE_TAIL_HOOK_HANDLE	TOGGLE_TAIL_HOOK_HANDLE	Toggles tail hook	Shared Cockpit
+KEY_SET_TAIL_HOOK_HANDLE	SET_TAIL_HOOK_HANDLE	Sets the tail hook handle. Takes a value: 1 - set tail hook, 0 - retract tail hook	Shared Cockpit
+KEY_TOGGLE_WATER_RUDDER	TOGGLE_WATER_RUDDER	Toggles water rudders	Shared Cockpit
+KEY_PUSHBACK_SET	TOGGLE_PUSHBACK	Toggles pushback.	Shared Cockpit
+KEY_TUG_HEADING	KEY_TUG_HEADING	Triggers tug and sets the desired heading. The units are a 32 bit integer (0 to4294967295) which represent 0 to 360 degrees. To set a 45 degree angle, for example, set the value to 4294967295 / 8.	Shared Cockpit
+KEY_TUG_SPEED	KEY_TUG_SPEED	Triggers tug, and sets desired speed, in feet per second. The speed can be bothpositive (forward movement) and negative (backward movement).	Shared Cockpit
+KEY_TUG_DISABLE	TUG_DISABLE	Disables tug	Shared Cockpit
+KEY_TOGGLE_MASTER_IGNITION_SWITCH	TOGGLE_MASTER_IGNITION_SWITCH	Toggles master ignition switch	Shared Cockpit
+KEY_TOGGLE_TAILWHEEL_LOCK	TOGGLE_TAILWHEEL_LOCK	Toggles tail wheel lock	Shared Cockpit
+KEY_ADD_FUEL_QUANTITY	ADD_FUEL_QUANTITY	Adds fuel to the aircraft, 25% of capacity by default. 0 to 65535 (max fuel) canbe passed.	Shared Cockpit
+KEY_TOW_PLANE_RELEASE	TOW_PLANE_RELEASE	Release a towed aircraft, usually a glider.	Shared Cockpit
+KEY_REQUEST_TOW_PLANE	TOW_PLANE_REQUEST	Request a tow plane. The user aircraft must be tow-able, stationary, on the ground and not already attached for this to succeed.	Shared Cockpit
+KEY_RELEASE_DROPPABLE_OBJECTS	RELEASE_DROPPABLE_OBJECTS	Release one droppable object. Multiple key events will release multiple objects.	Shared Cockpit
+KEY_RETRACT_FLOAT_SWITCH_DEC	RETRACT_FLOAT_SWITCH_DEC	If the plane has retractable floats, moves the retract position from Extend to Neutral, or Neutral to Retract.	Shared Cockpit
+KEY_RETRACT_FLOAT_SWITCH_INC	RETRACT_FLOAT_SWITCH_INC	If the plane has retractable floats, moves the retract position from Retract to Neutral, or Neutral to Extend.	Shared Cockpit
+KEY_TOGGLE_WATER_BALLAST_VALVE	TOGGLE_WATER_BALLAST_VALVE	Turn the water ballast valve on or off.	Shared Cockpit
+KEY_TOGGLE_VARIOMETER_SWITCH	TOGGLE_VARIOMETER_SWITCH	Turn the variometer on or off.	Shared Cockpit
+KEY_TOGGLE_TURN_INDICATOR_SWITCH	TOGGLE_TURN_INDICATOR_SWITCH	Turn the turn indicator on or off.	Shared Cockpit
+KEY_APU_STARTER	APU_STARTER	Start up the auxiliary power unit (APU).	Shared Cockpit
+KEY_APU_OFF_SWITCH	APU_OFF_SWITCH	Turn the APU off.	Shared Cockpit
+KEY_APU_GENERATOR_SWITCH_TOGGLE	APU_GENERATOR_SWITCH_TOGGLE	Turn the auxiliary generator on or off.	Shared Cockpit
+KEY_APU_GENERATOR_SWITCH_SET	APU_GENERATOR_SWITCH_SET	Set the auxiliary generator switch (0,1).	Shared Cockpit
+KEY_EXTINGUISH_ENGINE_FIRE	EXTINGUISH_ENGINE_FIRE	Takes a two digit argument.The first digit represents the fire extinguisher index, and the second represents the engine index.For example,11 would represent using bottle 1 on engine 1.21 would represent using bottle 2 on engine 1.Typical entries for a twin engine aircraft would be 11 and 22.	Shared Cockpit
+KEY_HYDRAULIC_SWITCH_TOGGLE	HYDRAULIC_SWITCH_TOGGLE	Turn the hydraulic switch on or off.	Shared Cockpit
+KEY_BLEED_AIR_SOURCE_CONTROL_INC	BLEED_AIR_SOURCE_CONTROL_INC	Increases the bleed air source control.	Shared Cockpit
+KEY_BLEED_AIR_SOURCE_CONTROL_DEC	BLEED_AIR_SOURCE_CONTROL_DEC	Decreases the bleed air source control.	Shared Cockpit
+KEY_BLEED_AIR_SOURCE_CONTROL_SET	BLEED_AIR_SOURCE_CONTROL_SET	Set to one of: 0: auto1: off2: apu3: engines	Shared Cockpit
+KEY_TURBINE_IGNITION_SWITCH_TOGGLE	TURBINE_IGNITION_SWITCH_TOGGLE	Turn the turbine ignition switch on or off.	Shared Cockpit
+KEY_CABIN_NO_SMOKING_ALERT_ SWITCH_TOGGLE	CABIN_NO_SMOKING_ALERT_ SWITCH_TOGGLE	"Turn the ""No smoking"" alert on or off."	Shared Cockpit
+KEY_CABIN_SEATBELTS_ALERT_ SWITCH_TOGGLE	CABIN_SEATBELTS_ALERT_ SWITCH_TOGGLE	"Turn the ""Fasten seatbelts"" alert on or off."	Shared Cockpit
+KEY_ANTISKID_BRAKES_TOGGLE	ANTISKID_BRAKES_TOGGLE	Turn the anti-skid braking system on or off.	Shared Cockpit
+KEY_GPWS_SWITCH_TOGGLE	GPWS_SWITCH_TOGGLE	Turn the g round proximity warning system (GPWS) on or off.	Shared Cockpit
+KEY_MANUAL_FUEL_PRESSURE_PUMP	MANUAL_FUEL_PRESSURE_PUMP	Activate the manual fuel pressure pump.	Shared Cockpit
+KEY_ANNUNCIATOR_SWITCH_TOGGLE	ANNUNCIATOR_SWITCH_TOGGLE	Togles the annunciator switch.	Shared Cockpit
+KEY_ANNUNCIATOR_SWITCH_ON	ANNUNCIATOR_SWITCH_ON	Turns on the annunciator switch.	Shared Cockpit
+KEY_ANNUNCIATOR_SWITCH_OFF	ANNUNCIATOR_SWITCH_OFF	Turns off the annunciator switch.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_STEERING_INC	STEERING_INC	Increments the nose wheel steering position by 5 percent.	Shared Cockpit
+KEY_STEERING_DEC	STEERING_DEC	Decrements the nose wheel steering position by 5 percent.	Shared Cockpit
+KEY_STEERING_SET	STEERING_SET	Sets the value of the nose wheel steering position. Zero is straight ahead(-16383, far left +16383, far right).	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_PRESSURIZATION_PRESSURE_ALT_INC	KEY_PRESSURIZATION_PRESSURE_ALT_INC	Increases the altitude that the cabin is pressurized to.	Shared Cockpit
+KEY_PRESSURIZATION_PRESSURE_ALT_DEC	KEY_PRESSURIZATION_PRESSURE_ALT_DEC	Decreases the altitude that the cabin is pressurized to.	Shared Cockpit
+KEY_PRESSURIZATION_CLIMB_RATE_INC	PRESSURIZATION_CLIMB_RATE_INC	Sets the rate at which cabin pressurization is increased.	Shared Cockpit
+KEY_PRESSURIZATION_CLIMB_RATE_DEC	PRESSURIZATION_CLIMB_RATE_DEC	Sets the rate at which cabin pressurization is decreased.	Shared Cockpit
+KEY_PRESSURIZATION_PRESSURE_DUMP _SWTICH	PRESSURIZATION_PRESSURE_DUMP _SWTICH	Sets the cabin pressure to the outside air pressure.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_TAKEOFF_ASSIST_ARM_TOGGLE	TAKEOFF_ASSIST_ARM_TOGGLE	Deploy or remove the assist arm. Refer to the document Notes on Aircraft Systems.	Shared Cockpit
+KEY_TAKEOFF_ASSIST_ARM_SET	TAKEOFF_ASSIST_ARM_SET	Value: TRUE request set FALSE request unset	Shared Cockpit
+KEY_TAKEOFF_ASSIST_FIRE	TAKEOFF_ASSIST_FIRE	If everything is set up correctly. Launch from the catapult.	Shared Cockpit
+KEY_TOGGLE_LAUNCH_BAR_SWITCH	TOGGLE_LAUNCH_BAR_SWITCH	Toggle the request for the launch bar to be installed or removed.	Shared Cockpit
+KEY_SET_LAUNCHBAR_SWITCH	SET_LAUNCH_BAR_SWITCH	Value: TRUE request set FALSE request unset	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_ROTOR_BRAKE	ROTOR_BRAKE	Triggers rotor braking input	Shared Cockpit
+KEY_ROTOR_CLUTCH_SWITCH_TOGGLE	ROTOR_CLUTCH_SWITCH_TOGGLE	Toggles on electric rotor clutch switch	Shared Cockpit
+KEY_ROTOR_CLUTCH_SWITCH_SET	ROTOR_CLUTCH_SWITCH_SET	Sets electric rotor clutch switch on/off (1,0)	Shared Cockpit
+KEY_ROTOR_GOV_SWITCH_TOGGLE	ROTOR_GOV_SWITCH_TOGGLE	Toggles the electric rotor governor switch	Shared Cockpit
+KEY_ROTOR_GOV_SWITCH_SET	ROTOR_GOV_SWITCH_SET	Sets the electric rotor governor switch on/off (1,0)	Shared Cockpit
+KEY_ROTOR_LATERAL_TRIM_INC	ROTOR_LATERAL_TRIM_INC	Increments the lateral (right) rotor trim	Shared Cockpit
+KEY_ROTOR_LATERAL_TRIM_DEC	ROTOR_LATERAL_TRIM_DEC	Decrements the lateral (right) rotor trim	Shared Cockpit
+KEY_ROTOR_LATERAL_TRIM_SET	ROTOR_LATERAL_TRIM_SET	Sets the lateral (right) rotor trim (0 to 16383)	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_SLING_PICKUP_RELEASE	SLING_PICKUP_RELEASE	Toggle between pickup and release mode. Hold mode is automatic and cannot be selected. Refer to the document Notes on Aircraft Systems.	Shared Cockpit
+KEY_HOIST_SWITCH_EXTEND	HOIST_SWITCH_EXTEND	The rate at which a hoist cable extends is set in the Aircraft Configuration File.	Shared Cockpit
+KEY_HOIST_SWITCH_RETRACT	HOIST_SWITCH_RETRACT	The rate at which a hoist cable retracts is set in the Aircraft Configuration File.	Shared Cockpit
+KEY_HOIST_SWITCH_SET	HOIST_SWITCH_SET	The data value should be set to one of: <0 up=0 off >0 down	Shared Cockpit
+KEY_HOIST_DEPLOY_TOGGLE	HOIST_DEPLOY_TOGGLE	Toggles the hoist arm switch, extend or retract.	Shared Cockpit
+KEY_HOIST_DEPLOY_SET	HOIST_DEPLOY_SET	The data value should be set to: 0 - set hoist switch to retract the arm1 - set hoist switch to extend the arm	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_SLEW_TOGGLE	SLEW_TOGGLE	Toggles slew on/off	Shared Cockpit (Pilot only)
+KEY_SLEW_OFF	SLEW_OFF	Turns slew off	Shared Cockpit (Pilot only)
+KEY_SLEW_ON	SLEW_ON	Turns slew on	Shared Cockpit (Pilot only)
+KEY_SLEW_SET	SLEW_SET	Sets slew on/off (1,0)	Shared Cockpit (Pilot only)
+KEY_SLEW_RESET	SLEW_RESET	Stop slew and reset pitch, bank, and heading all to zero.	Shared Cockpit (Pilot only)
+KEY_SLEW_ALTIT_UP_FAST	SLEW_ALTIT_UP_FAST	Slew upward fast	Shared Cockpit (Pilot only)
+KEY_SLEW_ALTIT_UP_SLOW	SLEW_ALTIT_UP_SLOW	Slew upward slow	Shared Cockpit (Pilot only)
+KEY_SLEW_ALTIT_FREEZE	SLEW_ALTIT_FREEZE	Stop vertical slew	Shared Cockpit (Pilot only)
+KEY_SLEW_ALTIT_DN_SLOW	SLEW_ALTIT_DN_SLOW	Slew downward slow	Shared Cockpit (Pilot only)
+KEY_SLEW_ALTIT_DN_FAST	SLEW_ALTIT_DN_FAST	Slew downward fast	Shared Cockpit (Pilot only)
+KEY_SLEW_ALTIT_PLUS	SLEW_ALTIT_PLUS	Increase upward slew	Shared Cockpit (Pilot only)
+KEY_SLEW_ALTIT_MINUS	SLEW_ALTIT_MINUS	Decrease upward slew	Shared Cockpit (Pilot only)
+KEY_SLEW_PITCH_DN_FAST	SLEW_PITCH_DN_FAST	Slew pitch downward fast	Shared Cockpit (Pilot only)
+KEY_SLEW_PITCH_DN_SLOW	SLEW_PITCH_DN_SLOW	Slew pitch downward slow	Shared Cockpit (Pilot only)
+KEY_SLEW_PITCH_FREEZE	SLEW_PITCH_FREEZE	Stop pitch slew	Shared Cockpit (Pilot only)
+KEY_SLEW_PITCH_UP_SLOW	SLEW_PITCH_UP_SLOW	Slew pitch up slow	Shared Cockpit (Pilot only)
+KEY_SLEW_PITCH_UP_FAST	SLEW_PITCH_UP_FAST	Slew pitch upward fast	Shared Cockpit (Pilot only)
+KEY_SLEW_PITCH_PLUS	SLEW_PITCH_PLUS	Increase pitch up slew	Shared Cockpit (Pilot only)
+KEY_SLEW_PITCH_MINUS	SLEW_PITCH_MINUS	Decrease pitch up slew	Shared Cockpit (Pilot only)
+KEY_SLEW_BANK_MINUS	SLEW_BANK_MINUS	Increase left bank slew	Shared Cockpit (Pilot only)
+KEY_SLEW_AHEAD_PLUS	SLEW_AHEAD_PLUS	Increase forward slew	Shared Cockpit (Pilot only)
+KEY_SLEW_BANK_PLUS	SLEW_BANK_PLUS	Increase right bank slew	Shared Cockpit (Pilot only)
+KEY_SLEW_LEFT	SLEW_LEFT	Slew to the left	Shared Cockpit (Pilot only)
+KEY_SLEW_FREEZE	SLEW_FREEZE	Stop all slew	Shared Cockpit (Pilot only)
+KEY_SLEW_RIGHT	SLEW_RIGHT	Slew to the right	Shared Cockpit (Pilot only)
+KEY_SLEW_HEADING_MINUS	SLEW_HEADING_MINUS	Increase slew heading to the left	Shared Cockpit (Pilot only)
+KEY_SLEW_AHEAD_MINUS	SLEW_AHEAD_MINUS	Decrease forward slew	Shared Cockpit (Pilot only)
+KEY_SLEW_HEADING_PLUS	SLEW_HEADING_PLUS	Increase slew heading to the right	Shared Cockpit (Pilot only)
+KEY_AXIS_SLEW_AHEAD_SET	AXIS_SLEW_AHEAD_SET	Sets forward slew (+/- 16383)	Shared Cockpit (Pilot only)
+KEY_AXIS_SLEW_SIDEWAYS_SET	AXIS_SLEW_SIDEWAYS_SET	Sets sideways slew (+/- 16383)	Shared Cockpit (Pilot only)
+KEY_AXIS_SLEW_HEADING_SET	AXIS_SLEW_HEADING_SET	Sets heading slew (+/- 16383)	Shared Cockpit (Pilot only)
+KEY_AXIS_SLEW_ALT_SET	AXIS_SLEW_ALT_SET	Sets vertical slew (+/- 16383)	Shared Cockpit (Pilot only)
+KEY_AXIS_SLEW_BANK_SET	AXIS_SLEW_BANK_SET	Sets roll slew (+/- 16383)	Shared Cockpit (Pilot only)
+KEY_AXIS_SLEW_PITCH_SET	AXIS_SLEW_PITCH_SET	Sets pitch slew (+/- 16383)	Shared Cockpit (Pilot only)
+Event ID	String Name	Description	Multiplayer
+KEY_VIEW_MODE	VIEW_MODE	Selects next view	Shared Cockpit
+KEY_VIEW_WINDOW_TO_FRONT	VIEW_WINDOW_TO_FRONT	Sets active window to front	Shared Cockpit
+KEY_VIEW_RESET	VIEW_RESET	Resets the view to the default	Shared Cockpit
+KEY_VIEW_ALWAYS_PAN_UP	VIEW_ALWAYS_PAN_UP		Shared Cockpit
+KEY_VIEW_ALWAYS_PAN_DOWN	VIEW_ALWAYS_PAN_DOWN		Shared Cockpit
+KEY_NEXT_SUB_VIEW	NEXT_SUB_VIEW		Shared Cockpit
+KEY_PREV_SUB_VIEW	PREV_SUB_VIEW		Shared Cockpit
+KEY_VIEW_TRACK_PAN_TOGGLE	VIEW_TRACK_PAN_TOGGLE		Shared Cockpit
+KEY_VIEW_PREVIOUS_TOGGLE	VIEW_PREVIOUS_TOGGLE		Shared Cockpit
+KEY_VIEW_CAMERA_SELECT_STARTING	VIEW_CAMERA_SELECT_START		Shared Cockpit
+KEY_PANEL_HUD_NEXT	PANEL_HUD_NEXT		Shared Cockpit
+KEY_PANEL_HUD_PREVIOUS	PANEL_HUD_PREVIOUS		Shared Cockpit
+KEY_ZOOM_IN	ZOOM_IN	Zooms view in	Shared Cockpit
+KEY_ZOOM_OUT	ZOOM_OUT	Zooms view out	Shared Cockpit
+KEY_MAP_ZOOM_FINE_IN	MAP_ZOOM_FINE_IN	Fine zoom in map view	Shared Cockpit
+KEY_PAN_LEFT	PAN_LEFT	Pans view left	Shared Cockpit
+KEY_PAN_RIGHT	PAN_RIGHT	Pans view right	Shared Cockpit
+KEY_MAP_ZOOM_FINE_OUT	MAP_ZOOM_FINE_OUT	Fine zoom out in map view	Shared Cockpit
+KEY_VIEW_FORWARD	VIEW_FORWARD	Sets view direction forward	Shared Cockpit
+KEY_VIEW_FORWARD_RIGHT	VIEW_FORWARD_RIGHT	Sets view direction forward and right	Shared Cockpit
+KEY_VIEW_RIGHT	VIEW_RIGHT	Sets view direction to the right	Shared Cockpit
+KEY_VIEW_REAR_RIGHT	VIEW_REAR_RIGHT	Sets view direction to the rear and right	Shared Cockpit
+KEY_VIEW_REAR	VIEW_REAR	Sets view direction to the rear	Shared Cockpit
+KEY_VIEW_REAR_LEFT	VIEW_REAR_LEFT	Sets view direction to the rear and left	Shared Cockpit
+KEY_VIEW_LEFT	VIEW_LEFT	Sets view direction to the left	Shared Cockpit
+KEY_VIEW_FORWARD_LEFT	VIEW_FORWARD_LEFT	Sets view direction forward and left	Shared Cockpit
+KEY_VIEW_DOWN	VIEW_DOWN	Sets view direction down	Shared Cockpit
+KEY_ZOOM_MINUS	ZOOM_MINUS	Decreases zoom	Shared Cockpit
+KEY_ZOOM_PLUS	ZOOM_PLUS	Increase zoom	Shared Cockpit
+KEY_PAN_UP	PAN_UP	Pan view up	Shared Cockpit
+KEY_PAN_DOWN	PAN_DOWN	Pan view down	Shared Cockpit
+KEY_VIEW_MODE_REV	VIEW_MODE_REV	Reverse view cycle	Shared Cockpit
+KEY_ZOOM_IN_FINE	ZOOM_IN_FINE	Zoom in fine	Shared Cockpit
+KEY_ZOOM_OUT_FINE	ZOOM_OUT_FINE	Zoom out fine	Shared Cockpit
+KEY_CLOSE_VIEW	CLOSE_VIEW	Close current view	Shared Cockpit
+KEY_NEW_VIEW	NEW_VIEW	Open new view	Shared Cockpit
+KEY_NEXT_VIEW	NEXT_VIEW	Select next view	Shared Cockpit
+KEY_PREV_VIEW	PREV_VIEW	Select previous view	Shared Cockpit
+KEY_PAN_LEFT_UP	PAN_LEFT_UP	Pan view left	Shared Cockpit
+KEY_PAN_LEFT_DOWN	PAN_LEFT_DOWN	Pan view left and down	Shared Cockpit
+KEY_PAN_RIGHT_UP	PAN_RIGHT_UP	Pan view right and up	Shared Cockpit
+KEY_PAN_RIGHT_DOWN	PAN_RIGHT_DOWN	Pan view right and down	Shared Cockpit
+KEY_PAN_TILT_LEFT	PAN_TILT_LEFT	Tilt view left	Shared Cockpit
+KEY_PAN_TILT_RIGHT	PAN_TILT_RIGHT	Tilt view right	Shared Cockpit
+KEY_PAN_RESET	PAN_RESET	Reset view to forward	Shared Cockpit
+KEY_VIEW_FORWARD_UP	VIEW_FORWARD_UP	Sets view forward and up	Shared Cockpit
+KEY_VIEW_FORWARD_RIGHT_UP	VIEW_FORWARD_RIGHT_UP	Sets view forward, right, and up	Shared Cockpit
+KEY_VIEW_RIGHT_UP	VIEW_RIGHT_UP	Sets view right and up	Shared Cockpit
+KEY_VIEW_REAR_RIGHT_UP	VIEW_REAR_RIGHT_UP	Sets view rear, right, and up	Shared Cockpit
+KEY_VIEW_REAR_UP	VIEW_REAR_UP	Sets view rear and up	Shared Cockpit
+KEY_VIEW_REAR_LEFT_UP	VIEW_REAR_LEFT_UP	Sets view rear left and up	Shared Cockpit
+KEY_VIEW_LEFT_UP	VIEW_LEFT_UP	Sets view left and up	Shared Cockpit
+KEY_VIEW_FORWARD_LEFT_UP	VIEW_FORWARD_LEFT_UP	Sets view forward left and up	Shared Cockpit
+KEY_VIEW_UP	VIEW_UP	Sets view up	Shared Cockpit
+KEY_VIEW_RESET	VIEW_RESET	Reset view forward	Shared Cockpit
+KEY_PAN_RESET_COCKPIT	PAN_RESET_COCKPIT	Reset panning to forward, if in cockpit view	Shared Cockpit
+KEY_CHASE_VIEW_NEXT	KEY_CHASE_VIEW_NEXT	Cycle view to next target	Shared Cockpit
+KEY_CHASE_VIEW_PREV	KEY_CHASE_VIEW_PREV	Cycle view to previous target	Shared Cockpit
+KEY_CHASE_VIEW_TOGGLE	CHASE_VIEW_TOGGLE	Toggles chase view on/off	Shared Cockpit
+KEY_EYEPOINT_UP	EYEPOINT_UP	Move eyepoint up	Shared Cockpit
+KEY_EYEPOINT_DOWN	EYEPOINT_DOWN	Move eyepoint down	Shared Cockpit
+KEY_EYEPOINT_RIGHT	EYEPOINT_RIGHT	Move eyepoint right	Shared Cockpit
+KEY_EYEPOINT_LEFT	EYEPOINT_LEFT	Move eyepoint left	Shared Cockpit
+KEY_EYEPOINT_FORWARD	EYEPOINT_FORWARD	Move eyepoint forward	Shared Cockpit
+KEY_EYEPOINT_BACK	EYEPOINT_BACK	Move eyepoint backward	Shared Cockpit
+KEY_EYEPOINT_RESET	EYEPOINT_RESET	Move eyepoint to default position	Shared Cockpit
+KEY_NEW_MAP	NEW_MAP	Opens new map view	Shared Cockpit
+KEY_VIEW_COCKPIT_FORWARD	VIEW_COCKPIT_FORWARD	Switch immediately to the forward view, in 2D mode.	Shared Cockpit
+KEY_VIEW_VIRTUAL_COCKPIT_FORWARD	VIEW_VIRTUAL_COCKPIT_FORWARD	Switch immediately to the forward view, in virtual cockpit mode.	Shared Cockpit
+KEY_VIEW_PANEL_ALPHA_SET	VIEW_PANEL_ALPHA_SET	Sets the alpha-blending value for the panel. Takes a parameter in the range 0to 255. The alpha-blending can be changed from the keyboard using Ctrl-Shift-T,and the plus and minus keys.	Shared Cockpit
+KEY_VIEW_PANEL_ALPHA_SELECT	VIEW_PANEL_ALPHA_SELECT	Sets the mode to change the alpha-blending, so the keys KEY_PLUS and KEY_MINUS increment and decrement the value.	Shared Cockpit
+KEY_VIEW_PANEL_ALPHA_INC	VIEW_PANEL_ALPHA_INC	Increment alpha-blending for the panel.	Shared Cockpit
+KEY_VIEW_PANEL_ALPHA_DEC	VIEW_PANEL_ALPHA_DEC	Decrement alpha-blending for the panel.	Shared Cockpit
+KEY_VIEW_LINKING_SET	VIEW_LINKING_SET	Links all the views from one camera together, so that panning the view will change the view of all the linked cameras.	Shared Cockpit
+KEY_VIEW_LINKING_TOGGLE	VIEW_LINKING_TOGGLE	Turns view linking on or off.	Shared Cockpit
+KEY_VIEW_CHASE_DISTANCE_ADD	VIEW_CHASE_DISTANCE_ADD	Increments the distance of the view camera from the chase object (such as in Spot Plane view, or viewing an AI controlled aircraft).	Shared Cockpit
+KEY_VIEW_CHASE_DISTANCE_SUB	VIEW_CHASE_DISTANCE_SUB	Decrements the distance of the view camera from the chase object.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_PAUSE_TOGGLE	PAUSE_TOGGLE	Toggles pause on/off	Disabled
+KEY_PAUSE_ON	PAUSE_ON	Turns pause on	Disabled
+KEY_PAUSE_OFF	PAUSE_OFF	Turns pause off	Disabled
+KEY_PAUSE_SET	PAUSE_SET	Sets pause on/off (1,0)	Disabled
+KEY_DEMO_STOP	DEMO_STOP	Stops demo system playback	Shared Cockpit
+KEY_SELECT_1	SELECT_1	"Sets ""selected"" index (for other events) to 1"	Shared Cockpit
+KEY_SELECT_2	SELECT_2	"Sets ""selected"" index (for other events) to 2"	Shared Cockpit
+KEY_SELECT_3	SELECT_3	"Sets ""selected"" index (for other events) to 3"	Shared Cockpit
+KEY_SELECT_4	SELECT_4	"Sets ""selected"" index (for other events) to 4"	Shared Cockpit
+KEY_MINUS	MINUS	"Used in conjunction with ""selected"" parameters to decrease their value (e.g.,radio frequency)"	Shared Cockpit
+KEY_PLUS	PLUS	"Used in conjunction with ""selected"" parameters to increase their value (e.g.,radio frequency)"	Shared Cockpit
+KEY_ZOOM_1X	ZOOM_1X	Sets zoom level to 1	Shared Cockpit
+KEY_SOUND_TOGGLE	SOUND_TOGGLE	Toggles sound on/off	Shared Cockpit
+KEY_SIM_RATE	SIM_RATE	Selects simulation rate (use KEY_MINUS, KEY_PLUS to change)	Shared Cockpit
+KEY_JOYSTICK_CALIBRATE	JOYSTICK_CALIBRATE	Toggles joystick on/off	Shared Cockpit
+KEY_SITUATION_SAVE	SITUATION_SAVE	Saves flight situation	Shared Cockpit
+KEY_SITUATION_RESET	SITUATION_RESET	Resets flight situation	Shared Cockpit
+KEY_SOUND_SET	SOUND_SET	Sets sound on/off (1,0)	Shared Cockpit
+KEY_EXIT	EXIT	Quit ESP with a message	Shared Cockpit
+KEY_ABORT	ABORT	Quit ESP without a message	Shared Cockpit
+KEY_READOUTS_SLEW	READOUTS_SLEW	Cycle through information readouts while in slew	Shared Cockpit
+KEY_READOUTS_FLIGHT	READOUTS_FLIGHT	Cycle through information readouts	Shared Cockpit
+KEY_MINUS_SHIFT	MINUS_SHIFT	Used with other events	Shared Cockpit
+KEY_PLUS_SHIFT	PLUS_SHIFT	Used with other events	Shared Cockpit
+KEY_SIM_RATE_INCR	SIM_RATE_INCR	Increase sim rate	Shared Cockpit
+KEY_SIM_RATE_DECR	SIM_RATE_DECR	Decrease sim rate	Shared Cockpit
+KEY_KNEEBOARD	KNEEBOARD_VIEW	Toggles kneeboard	Shared Cockpit
+KEY_PANEL_1	PANEL_1	Toggles panel 1	Shared Cockpit
+KEY_PANEL_2	PANEL_2	Toggles panel 2	Shared Cockpit
+KEY_PANEL_3	PANEL_3	Toggles panel 3	Shared Cockpit
+KEY_PANEL_4	PANEL_4	Toggles panel 4	Shared Cockpit
+KEY_PANEL_5	PANEL_5	Toggles panel 5	Shared Cockpit
+KEY_PANEL_6	PANEL_6	Toggles panel 6	Shared Cockpit
+KEY_PANEL_7	PANEL_7	Toggles panel 7	Shared Cockpit
+KEY_PANEL_8	PANEL_8	Toggles panel 8	Shared Cockpit
+KEY_PANEL_9	PANEL_9	Toggles panel 9	Shared Cockpit
+KEY_SOUND_ON	SOUND_ON	Turns sound on	Shared Cockpit
+KEY_SOUND_OFF	SOUND_OFF	Turns sound off	Shared Cockpit
+KEY_INVOKE_HELP	INVOKE_HELP	Brings up Help system	Shared Cockpit
+KEY_TOGGLE_AIRCRAFT_LABELS	TOGGLE_AIRCRAFT_LABELS	Toggles aircraft labels	Shared Cockpit
+KEY_FLIGHT_MAP	FLIGHT_MAP	Brings up flight map	Shared Cockpit
+KEY_RELOAD_PANELS	RELOAD_PANELS	Reload panel data	Shared Cockpit
+KEY_PANEL_ID_TOGGLE	PANEL_ID_TOGGLE	Toggles indexed panel (1 to 9)	Shared Cockpit
+KEY_PANEL_ID_OPEN	PANEL_ID_OPEN	Opens indexed panel (1 to 9)	Shared Cockpit
+KEY_PANEL_ID_CLOSE	PANEL_ID_CLOSE	Closes indexed panel (1 to 9)	Shared Cockpit
+KEY_CONTROL_RELOAD_USER_AIRCRAFT	RELOAD_USER_AIRCRAFT	Reloads the user aircraft data (from cache if same type loaded as an AI,otherwise from disk)	Shared Cockpit
+KEY_SIM_RESET	SIM_RESET	Resets aircraft state	Shared Cockpit
+KEY_VIRTUAL_COPILOT_TOGGLE	VIRTUAL_COPILOT_TOGGLE	Turns Flying Tips on/off	Shared Cockpit
+KEY_VIRTUAL_COPILOT_SET	VIRTUAL_COPILOT_SET	Sets Flying Tips on/off (1,0)	Shared Cockpit
+KEY_VIRTUAL_COPILOT_ACTION	VIRTUAL_COPILOT_ACTION	Triggers action noted in Flying Tips	Shared Cockpit
+KEY_REFRESH_SCENERY	REFRESH_SCENERY	Reloads scenery	Shared Cockpit
+KEY_CLOCK_HOURS_DEC	CLOCK_HOURS_DEC	Decrements time by hours	Shared Cockpit
+KEY_CLOCK_HOURS_INC	CLOCK_HOURS_INC	Increments time by hours	Shared Cockpit
+KEY_CLOCK_MINUTES_DEC	CLOCK_MINUTES_DEC	Decrements time by minutes	Shared Cockpit
+KEY_CLOCK_MINUTES_INC	CLOCK_MINUTES_INC	Increments time by minutes	Shared Cockpit
+KEY_CLOCK_SECONDS_ZERO	CLOCK_SECONDS_ZERO	Zeros seconds	Shared Cockpit
+KEY_CLOCK_HOURS_SET	CLOCK_HOURS_SET	Sets hour of day	Shared Cockpit
+KEY_CLOCK_MINUTES_SET	CLOCK_MINUTES_SET	Sets minutes of the hour	Shared Cockpit
+KEY_ZULU_HOURS_SET	ZULU_HOURS_SET	Sets hours, zulu time	Shared Cockpit
+KEY_ZULU_MINUTES_SET	ZULU_MINUTES_SET	Sets minutes, in zulu time	Shared Cockpit
+KEY_ZULU_DAY_SET	ZULU_DAY_SET	Sets day, in zulu time	Shared Cockpit
+KEY_ZULU_YEAR_SET	ZULU_YEAR_SET	Sets year, in zulu time	Shared Cockpit
+KEY_GAUGE_KEYSTROKE	GAUGE_KEYSTROKE	Enables a keystroke to be sent to a gauge that is in focus. The keystrokes can only be in the range 0 to 9, A to Z, and the four keys: plus, minus, comma and period. This is typically used to allow some keyboard entry to a complex device such as a GPS to enter such things as ICAO codes using the keyboard, rather than turning dials.	Shared Cockpit
+KEY_SIMUI_WINDOW_HIDESHOW	SIMUI_WINDOW_HIDESHOW	Display the ATC window.	Shared Cockpit
+KEY_WINDOW_TITLES_TOGGLE	VIEW_WINDOW_TITLES_TOGGLE	Turn window titles on or off.	Shared Cockpit
+KEY_AXIS_PAN_PITCH	AXIS_PAN_PITCH	Sets the pitch of the axis. Requires an angle.	Shared Cockpit
+KEY_AXIS_PAN_HEADING	AXIS_PAN_HEADING	Sets the heading of the axis. Requires an angle.	Shared Cockpit
+KEY_AXIS_PAN_TILT	AXIS_PAN_TILT	Sets the tilt of the axis. Requires an angle.	Shared Cockpit
+KEY_AXIS_INDICATOR_CYCLE	VIEW_AXIS_INDICATOR_CYCLE	Step through the view axes.	Shared Cockpit
+KEY_MAP_ORIENTATION_CYCLE	VIEW_MAP_ORIENTATION_CYCLE	Step through the map orientations.	Shared Cockpit
+KEY_TOGGLE_JETWAY	TOGGLE_JETWAY	Requests a jetway, which will only be answered if the aircraft is at a parking spot.	Shared Cockpit
+KEY_VIDEO_RECORD_TOGGLE	VIDEO_RECORD_TOGGLE	Turn on or off the video recording feature. This records uncompressed AVI format files to: My Documents\Videos\	Shared Cockpit
+KEY_TOGGLE_AIRPORT_NAME_DISPLAY	TOGGLE_AIRPORT_NAME_DISPLAY	Turn on or off the airport name.	Shared Cockpit
+KEY_CAPTURE_SCREENSHOT	CAPTURE_SCREENSHOT	Capture the current view as a screenshot. Which will be saved to a bmp file in: My Documents\Pictures\	Shared Cockpit
+KEY_MOUSE_LOOK_TOGGLE	MOUSE_LOOK_TOGGLE	Switch Mouse Look mode on or off. Mouse Look mode enables a user to control their view using the mouse, and holding down the space bar.	Shared Cockpit
+KEY_YAXIS_INVERT_TOGGLE	YAXIS_INVERT_TOGGLE	Switch inversion of Y axis controls on or off.	Shared Cockpit
+KEY_AUTOCOORD_TOGGLE	AUTORUDDER_TOGGLE	Turn the automatic rudder control feature on or off.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_FREEZE_LATITUDE_LONGITUDE_TOGGLE	FREEZE_LATITUDE_LONGITUDE_TOGGLE	Turns the freezing of the lat/lon position of the aircraft (either user or AI controlled) on or off. If this key event is set, it means that the latitude and longitude of the aircraft are not being controlled by ESP, so enabling, for example, a SimConnect client to control the position of the aircraft. This can also apply to altitude and attitude. Refer to the simulation variables: IS LATITUDE LONGITUDE FREEZE ON, IS ALTITUDE FREEZE ON, and IS ATTITUDE FREEZE ON Refer also to the SimConnect_AIReleaseControl function.	Shared Cockpit
+KEY_FREEZE_LATITUDE_LONGITUDE_SET	FREEZE_LATITUDE_LONGITUDE_SET	Freezes the lat/lon position of the aircraft.	Shared Cockpit
+KEY_FREEZE_ALTITUDE_TOGGLE	FREEZE_ALTITUDE_TOGGLE	Turns the freezing of the altitude of the aircraft on or off.	Shared Cockpit
+KEY_FREEZE_ALTITUDE_SET	FREEZE_ALTITUDE_SET	Freezes the altitude of the aircraft.	Shared Cockpit
+KEY_FREEZE_ATTITUDE_TOGGLE	FREEZE_ATTITUDE_TOGGLE	Turns the freezing of the attitude (pitch, bank and heading) of the aircraft on or off.	Shared Cockpit
+KEY_FREEZE_ATTITUDE_SET	FREEZE_ATTITUDE_SET	Freezes the attitude (pitch, bank and heading) of the aircraft.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_POINT_OF_INTEREST_TOGGLE_POINTER	POINT_OF_INTEREST_TOGGLE_POINTER	Turn the point-of-interest indicator (often a light beam) on or off. Refer to the Missions system documentation.	Shared Cockpit
+KEY_POINT_OF_INTEREST_CYCLE_PREVIOUS	POINT_OF_INTEREST_CYCLE_PREVIOUS	Change the current point-of-interest to the previous point-of-interest.	Shared Cockpit
+KEY_POINT_OF_INTEREST_CYCLE_NEXT	POINT_OF_INTEREST_CYCLE_NEXT	Change the current point-of-interest to the next point-of-interest.	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_ATC	ATC	Activates ATC window	Shared Cockpit
+KEY_ATC_MENU_1	ATC_MENU_1	Selects ATC option 1	Shared Cockpit
+KEY_ATC_MENU_2	ATC_MENU_2	Selects ATC option 2	Shared Cockpit
+KEY_ATC_MENU_3	ATC_MENU_3	Selects ATC option 3	Shared Cockpit
+KEY_ATC_MENU_4	ATC_MENU_4	Selects ATC option 4	Shared Cockpit
+KEY_ATC_MENU_5	ATC_MENU_5	Selects ATC option 5	Shared Cockpit
+KEY_ATC_MENU_6	ATC_MENU_6	Selects ATC option 6	Shared Cockpit
+KEY_ATC_MENU_7	ATC_MENU_7	Selects ATC option 7	Shared Cockpit
+KEY_ATC_MENU_8	ATC_MENU_8	Selects ATC option 8	Shared Cockpit
+KEY_ATC_MENU_9	ATC_MENU_9	Selects ATC option 9	Shared Cockpit
+KEY_ATC_MENU_0	ATC_MENU_0	Selects ATC option 10	Shared Cockpit
+Event ID	String Name	Description	Multiplayer
+KEY_MULTIPLAYER_TRANSFER_CONTROL	MP_TRANSFER_CONTROL	Toggle to the next player to track	-
+KEY_MULTIPLAYER_PLAYER_CYCLE	MP_PLAYER_CYCLE	Cycle through the current user aircraft.	Shared Cockpit
+KEY_MULTIPLAYER_PLAYER_FOLLOW	MP_PLAYER_FOLLOW	Set the view to follow the selected user aircraft.	Shared Cockpit
+KEY_MULTIPLAYER_CHAT	MP_CHAT	Toggles chat window visible/invisible	Shared Cockpit
+KEY_MULTIPLAYER_ACTIVATE_CHAT	MP_ACTIVATE_CHAT	Activates chat window	Shared Cockpit
+KEY_MULTIPLAYER_VOICE_CAPTURE_START	MP_VOICE_CAPTURE_START	Start capturing audio from the users computer and transmitting it to all other players in the multiplayer session who are turned to the same radio frequency.	Shared Cockpit
+KEY_MULTIPLAYER_VOICE_CAPTURE_STOP	MP_VOICE_CAPTURE_STOP	Stop capturing radio audio.	Shared Cockpit
+KEY_MULTIPLAYER_BROADCAST_VOICE_ CAPTURE_START	MP_BROADCAST_VOICE_ CAPTURE_START	Start capturing audio from the users computer and transmitting it to all other players in the multiplayer session.	Shared Cockpit
+KEY_MULTIPLAYER_BROADCAST_VOICE_ CAPTURE_STOP	MP_BROADCAST_VOICE_ CAPTURE_STOP	Stop capturing broadcast audio.	Shared Cockpit
+KEY_TOGGLE_RACERESULTS_WINDOW	TOGGLE_RACERESULTS_WINDOW	Show or hide multi-player race results.	Disabled

@@ -133,7 +133,7 @@ namespace CTrue.FsConnect
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
         /// </remarks>
-        int RegisterDataDefinition<T>(Enum defineId, List<SimProperty> definition) where T : struct;
+        int RegisterDataDefinition<T>(Enum defineId, List<SimVar> definition) where T : struct;
 
         /// <summary>
         /// Registers data structures for requesting data from Flight Simulator.
@@ -145,7 +145,7 @@ namespace CTrue.FsConnect
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
         /// </remarks>
-        int RegisterDataDefinition<T>(int defineId, List<SimProperty> definition) where T : struct;
+        int RegisterDataDefinition<T>(int defineId, List<SimVar> definition) where T : struct;
 
         /// <summary>
         /// Registers data structures for requesting data from Flight Simulator.
@@ -156,7 +156,7 @@ namespace CTrue.FsConnect
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
         /// </remarks>
-        int RegisterDataDefinition<T>(List<SimProperty> definition) where T : struct;
+        int RegisterDataDefinition<T>(List<SimVar> definition) where T : struct;
 
         /// <summary>
         /// Registers data structures for requesting data from Flight Simulator.
@@ -166,7 +166,7 @@ namespace CTrue.FsConnect
         /// <returns>The definition id used to register the data definition</returns>
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
-        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimPropertyReflector"/>.
+        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimVarReflector"/>.
         /// </remarks>
         int RegisterDataDefinition<T>(Enum defineId) where T : struct;
 
@@ -179,7 +179,7 @@ namespace CTrue.FsConnect
         /// <returns>The definition id used to register the data definition</returns>
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
-        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimPropertyReflector"/>.
+        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimVarReflector"/>.
         /// </remarks>
         int RegisterDataDefinition<T>(int defineId) where T : struct;
 
@@ -190,7 +190,7 @@ namespace CTrue.FsConnect
         /// <returns>The definition id used to register the data definition</returns>
         /// <remarks>
         /// A connection to Flight Simulator must have been established before registering data definitions.
-        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimPropertyReflector"/>.
+        /// The data definition is based on reflection, by analyzing the type. See <see cref="SimVarReflector"/>.
         /// </remarks>
         int RegisterDataDefinition<T>() where T : struct;
 
@@ -289,8 +289,24 @@ namespace CTrue.FsConnect
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="eventId"></param>
+        /// <param name="eventNameId"></param>
+        void MapClientEventToSimEvent(Enum groupId, Enum eventId, FsEventNameId eventNameId);
+
+        /// <summary>
+        /// Maps a client event to a sim event.
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="eventId"></param>
         /// <param name="eventName"></param>
         void MapClientEventToSimEvent(int groupId, int eventId, string eventName);
+
+        /// <summary>
+        /// Maps a client event to a sim event.
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="eventId"></param>
+        /// <param name="eventNameId"></param>
+        void MapClientEventToSimEvent(int groupId, int eventId, FsEventNameId eventNameId);
 
         /// <summary>
         /// Gets the next id, for definitions and other SimConnect artifacts that require it.

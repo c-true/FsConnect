@@ -1,4 +1,5 @@
 # FsConnect
+
 A simple easy-to-use wrapper for the Flight Simulator 2020 SimConnect library. A simple solution to simple problems, if you already are fluent in SimConnect, this won't impress you much.
 If, on the other hand, you just want to connect to Flight Simulator and read some information this may give you a quicker start.
 
@@ -10,16 +11,18 @@ At the moment this project is intended as an easier to use wrapper than the curr
 > NOTE: **Expect breaking changes and infrequent updates.**
 
 ## Additional information
+
 For more information about SimConnect and the Flight Simulator SDK see the [Microsoft Flight Simulator SDK site](
 https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) and the [SimConnect SDK section](https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SDK.htm) in particular.
 
 ## Current features
+
 * Supports connections from API, without direct use of SimConnect.cfg file
-* Supports registering and requesting simple simulation variables.
+* Supports registering and requesting simple simulation variables, including by reflection.
 * Supports updating simulation variables.
+* Supports enums for known SimVars, units and events.
 * Does not require a Windows message pump.
 * NuGet package handles deployment of native binaries, just add reference to the package.
-* Supports enums for all known simulation variables and units.
 
 ## Roadmap
 
@@ -28,11 +31,13 @@ https://docs.flightsimulator.com/html/Programming_Tools/SimConnect/SimConnect_SD
 * FsConnect should hopefully be better documented as a starting point for new developers.
 
 More specific:
+
 * Establish parity on the most important SimConnect API features.
-* Work with hiding the 'ugly' details of defining data definitions, through mechanisms such as reflection. 
+* Work with hiding the 'ugly' details of defining data definitions, through mechanisms such as reflection.
 * Investigate if a purely .NET Core/5 version is possible
 
-# Getting started
+## Getting started
+
 * Download the Flight Simulator SDK.
 * See the list of available simulation variables in the SDK documentation: Documentation/04-Developer_Tools/SimConnect/SimConnect_Status_of_Simulation_Variables.html
 * Determine unit to use when registering the data structure.
@@ -40,68 +45,81 @@ More specific:
 * Define a data definition and register it. (See example below)
 * Take a look at the Simvars sample project and example below.
 
-# Packages and distribution
+## Packages and distribution
 
 Releases from this repo is distributed using NuGet:
 
-**CTrue.FsConnect**
+### CTrue.FsConnect
 
 [![NuGet](https://img.shields.io/nuget/v/CTrue.FsConnect.svg)](https://www.nuget.org/packages/CTrue.FsConnect) [![Package stats FsConnect](https://img.shields.io/nuget/dt/CTrue.FsConnect.svg)](https://www.nuget.org/packages/CTrue.FsConnect)
 
-**CTrue.FsConnect.Managers**
+### CTrue.FsConnect.Managers
 
 [![NuGet](https://img.shields.io/nuget/v/CTrue.FsConnect.Managers.svg)](https://www.nuget.org/packages/CTrue.FsConnect.Managers) [![Package stats FsConnect.Managers](https://img.shields.io/nuget/dt/CTrue.FsConnect.Managers.svg)](https://www.nuget.org/packages/CTrue.FsConnect.Managers)
 
-# Defining data definitions
+## Defining data definitions
 
 To request information from Flight Simulator using FsConnect objects needs to be constructued in a certain way.
 
 Such an object must:
+
 * Be a struct
 * Be attributed with: [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
 
-## SimConnect data definition
+## SimConnect simulator variables and data definition
+
+SimConnect uses simulation variables or SimVars to get available information from MSFS. Read more about SimVars in the [SimVars SDK documentation](https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm).
+
+### Struct
+
+The SimVars are stored in a struct when retrieved from MSFS. The struct combines a set of SimVars into a type that can be used to be filled by a request to MSFS.  
 
 Create a struct similar to shown below to hold this information:
 ```csharp
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
-public struct PlaneInfoResponse
+public struct MySimVarsStruct
 {
-    [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
-    public String Title;
-    public double Latitude;
-    public double Longitude;
+    ...
 }
 ```
 
+### SimVar Names
+
+An potentially incomplete list of valid names for SimVars can be looked up in the SDK documentation.
+
+### SimVar types
+
 Any string members needs the attribute [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)] with the SizeConst set to the expected size of the string.
+
+### SimVar units
 
 See the documentation for [simulation variables](https://docs.flightsimulator.com/html/Programming_Tools/SimVars/Simulation_Variables.htm) to determine the correct data type.
 
 Before Flight Simulator can use this structure it needs the definition of the object. Flight Simulator sees a definition as a list of properties, with specified units and data types. This definition is then used to fill the registred struct with data from Flight Simulator.
 
 ```csharp
-List<SimProperty> definition = new List<SimProperty>();
+List<SimVar> definition = new List<SimVar>();
 
 // Consult the SDK for valid sim variable names, units and whether they can be written to.
-definition.Add(new SimProperty("Title", null, SIMCONNECT_DATATYPE.STRING256));
-definition.Add(new SimProperty("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
-definition.Add(new SimProperty("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar("Title", null, SIMCONNECT_DATATYPE.STRING256));
+definition.Add(new SimVar("Plane Latitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar("Plane Longitude", "degrees", SIMCONNECT_DATATYPE.FLOAT64));
 
 fsConnect.RegisterDataDefinition<PlaneInfoResponse>(Definitions.PlaneInfo, definition);
 ```
 
 See the enums FsSimVar and FsUnit in the FsConnect library for simpler to use enums instead of strings for specifying variable name and units.
 This would be an equal definition:
+
 ```csharp
-definition.Add(new SimProperty(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
-definition.Add(new SimProperty(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
-definition.Add(new SimProperty(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar(FsSimVar.Title, FsUnit.None, SIMCONNECT_DATATYPE.STRING256));
+definition.Add(new SimVar(FsSimVar.PlaneLatitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
+definition.Add(new SimVar(FsSimVar.PlaneLongitude, FsUnit.Radians, SIMCONNECT_DATATYPE.FLOAT64));
 ```
 
-## Reflection based data definition
+### Reflection based data definition
 
-An alternative method of defining the data definition is to decorate the type with the SimProperty attribute to describe field names and units:
+An alternative method of defining the data definition is to decorate the type with the SimVar attribute to describe field names and units:
 
 ```csharp
 [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
@@ -109,23 +127,67 @@ public struct PlaneInfo
 {
     [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
     public String Title;
-    [SimProperty(UnitId = FsUnit.Degree)]
+    [SimVar(UnitId = FsUnit.Degree)]
     public double PlaneLatitude;
-    [SimProperty(NameId=FsSimVar.PlaneLongitude, UnitId = FsUnit.Degree)]
+    [SimVar(NameId=FsSimVar.PlaneLongitude, UnitId = FsUnit.Degree)]
     public double Longitude;
 }
 ```
 
-Such a type can be easily registered using FsConnect using the following method:
+Such a type can be easily registered using FsConnect by just providing the type. An enum based defintion id can be supplied or let FsConnect generate one. The request id can similarily also be an int.
+
+```csharp
+
+int myRequestId = 42;
+int myDefineId = fsConnect.RegisterDataDefinition<MyDataDefinitionStruct>();
+fsConnect.RequestData(myRequestId, myDefineId);
+
+```
+
+### Generating definition ids
+
+FsConnect supports generating definition ids that can be stored by the client as an int, elliminating the need to managing enums and ranges of their ids. FsConnect will manage an internal enum and range of ints.
+
 
 ```csharp
 
 int planeInfoDefinitionId = fsConnect.RegisterDataDefinition<PlaneInfo>();
+fsConnect.
 
 ```
 
+## Client events
 
-# Example
+Client events can be mapped to sim events, either by using the event name or the FsEventNameId enum to identify the event.
+
+See below for an example on how to set the time in Flight Simulator using client events. The WorldManager class in the CTrue.FsConnect.Managers project also contains an example on this.
+
+```csharp
+
+enum MyEnums
+{
+    SetTimeGroup,
+    SetZuluYears,
+    SetZuluDays,
+    SetZuluHours,
+    SetZuluMinute,
+};
+
+fsConnect.MapClientEventToSimEvent(MyEnums.SetTimeGroup, MyEnums.SetZuluYears, FsEventNameId.ZuluYearSet);
+fsConnect.MapClientEventToSimEvent(MyEnums.SetTimeGroup, MyEnums.SetZuluDays, FsEventNameId.ZuluDaySet);
+fsConnect.MapClientEventToSimEvent(MyEnums.SetTimeGroup, MyEnums.SetZuluHours, FsEventNameId.ZuluHoursSet);
+fsConnect.MapClientEventToSimEvent(MyEnums.SetTimeGroup, MyEnums.SetZuluMinute, FsEventNameId.ZuluMinutesSet);
+
+fsConnect.SetNotificationGroupPriority(MyEnums.SetTimeGroup);
+
+DateTime now = DateTime.Now();
+fsConnect.TransmitClientEvent(MyEnums.SetZuluYears, (uint)time.Year, SetTimeGroup.SetTime);
+fsConnect.TransmitClientEvent(MyEnums.SetZuluDays, (uint)time.DayOfYear, SetTimeGroup.SetTime);
+fsConnect.TransmitClientEvent(MyEnums.SetZuluHours, (uint)time.Hour, SetTimeGroup.SetTime);
+fsConnect.TransmitClientEvent(MyEnums.SetZuluMinute, (uint)time.Minute, SetTimeGroup.SetTime);
+```
+
+## Example
 
 1) Create a .NET Framework Console project that target x64.
 2) Add a reference to the CTrue.FsConnect package.
@@ -135,14 +197,14 @@ Ensure that the SimConnect.xml file has an entry for the type of connection that
 E.g. for a remote TCP IvP4 connection, the file should have an entry such as this:
 
 ```xml
-	<SimConnect.Comm>
-		<Descr>Static IP4 port</Descr>
-		<Protocol>IPv4</Protocol>
-		<Scope>remote</Scope>
-		<Port>33333</Port>
-		<MaxClients>64</MaxClients>
-		<MaxRecvSize>41088</MaxRecvSize>
-	</SimConnect.Comm>
+    <SimConnect.Comm>
+        <Descr>Static IP4 port</Descr>
+        <Protocol>IPv4</Protocol>
+        <Scope>remote</Scope>
+        <Port>33333</Port>
+        <MaxClients>64</MaxClients>
+        <MaxRecvSize>41088</MaxRecvSize>
+    </SimConnect.Comm>
 ```
 
 For a local TCP IPv4 connection:
@@ -176,23 +238,23 @@ namespace FsConnectTest
         PlaneInfoRequest = 0
     }
 
-    // Use field name and SimProperty attribute to configure the data definition for the type.
+    // Use field name and SimVar attribute to configure the data definition for the type.
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public struct PlaneInfoResponse
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public String Title;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneLatitude;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneLongitude;
-        [SimProperty(UnitId = FsUnit.Feet)]
+        [SimVar(UnitId = FsUnit.Feet)]
         public double PlaneAltitude;
-        [SimProperty(UnitId = FsUnit.Degree)]
+        [SimVar(UnitId = FsUnit.Degree)]
         public double PlaneHeadingDegreesTrue;
-        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
+        [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.MeterPerSecond)]
         public double AirspeedTrueInMeterPerSecond;
-        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
+        [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
         public double AirspeedTrueInKnot;
     }
 
@@ -251,9 +313,9 @@ namespace FsConnectTest
 }
 ```
 
-# Managers
+## Managers
 
-## Aircraft Manager
+### Aircraft Manager
 
 The aircraft manager is a simple addon to the FsConnect that provides a common way to query Flight Simulator for details about the user's aircraft.
 
@@ -281,7 +343,7 @@ Future updates will provide more functionality such as setting key variables.
 
 The test console has an example for how to use the Aircraft Manager, see the AircraftMenu class.
 
-## Sim Object Manager     
+### Sim Object Manager     
 
 The Sim Object Manager is a addon to the FsConnect to avoid making the base library handle every case imaginable. The manager can request information about Sim Objects. As with the Aircraft Manager, the definiton of what to returned is done by using FsConnect.
 
@@ -312,7 +374,7 @@ Future updates will provide more functionality such as updating sim objects.
 
 The test console has an example for how to use the Sim Object Manager, see the SimObjectMenu class.
 
-## World Manager
+### World Manager
 
 The world manager currently supports updating the time in flight simulator.
 
@@ -324,23 +386,30 @@ worldManager.SetTime(new DateTime(year, month, day, hour, minute, 0));
 ```
 
 ## Community
+
 * Have you find a bug? Do you have an idea for a new feature? ... [open an issue on GitHub](https://github.com/c-true/FsConnect/issues)
 * Do you want to contribute piece of code? ... [submit a pull-request](https://github.com/c-true/FsConnect/pulls)
     * `master` branch contains the code being worked on
     * Or from your own fork
 
-#Change log
+## Change log
+
+## 1.3.1
+
+* [Breaking] SimProperty renamed to SimVar, minor other renames.
+* Added support for reflection of SimVars, see the SimVar attribute.
+* Added enum, FsEventNameId, for configuring client events using an enum.
 
 ## 1.3.0
 
-- Aspect based data definition, using SimProperty attribute to define fields.
-- Simple support for registering client events.
-- Support for setting time in flight simulator, through the WorldManager.
+* Aspect based data definition, using SimVar attribute to define fields.
+* Simple support for registering client events.
+* Support for setting time in flight simulator, through the WorldManager.
 
 ## 1.2.0
 
-- Opened up access to more of SimConnect's API.
-- Added support for some key simulator events, such as Pause.
-- Added support for requesting data on Sim Objects.
-- Added managers as example on how to wrap FsConnect for common operations, such as requesting aircraft or sim object data.
-- Documentation and refactorings.
+* Opened up access to more of SimConnect's API.
+* Added support for some key simulator events, such as Pause.
+* Added support for requesting data on Sim Objects.
+* Added managers as example on how to wrap FsConnect for common operations, such as requesting aircraft or sim object data.
+* Documentation and refactorings.

@@ -87,6 +87,7 @@ namespace CTrue.FsConnect
             }
         }
 
+        /// <inheritdoc />
         public FsConnectionInfo ConnectionInfo => _connectionInfo;
 
         /// <inheritdoc />
@@ -174,8 +175,9 @@ namespace CTrue.FsConnect
 
                 _simConnect.Dispose();
             }
-            catch (Exception e)
+            catch
             {
+                // ignored
             }
             finally
             {
@@ -194,7 +196,7 @@ namespace CTrue.FsConnect
         #region RegisterDataDefinition
 
         /// <inheritdoc />
-        public int RegisterDataDefinition<T>(Enum id, List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(Enum id, List<SimVar> definition) where T : struct
         {
             foreach (var item in definition)
             {
@@ -207,13 +209,13 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public int RegisterDataDefinition<T>(int id, List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(int id, List<SimVar> definition) where T : struct
         {
             return RegisterDataDefinition<T>((FsConnectEnum) id, definition);
         }
 
         /// <inheritdoc />
-        public int RegisterDataDefinition<T>(List<SimProperty> definition) where T : struct
+        public int RegisterDataDefinition<T>(List<SimVar> definition) where T : struct
         {
             int nextId = GetNextId();
 
@@ -223,8 +225,8 @@ namespace CTrue.FsConnect
         /// <inheritdoc />
         public int RegisterDataDefinition<T>(Enum defineId) where T : struct
         {
-            SimPropertyReflector reflector = new SimPropertyReflector();
-            List<SimProperty> definition = reflector.GetSimProperties<T>();
+            SimVarReflector reflector = new SimVarReflector();
+            List<SimVar> definition = reflector.GetSimVars<T>();
 
             RegisterDataDefinition<T>(defineId, definition);
 
@@ -265,6 +267,7 @@ namespace CTrue.FsConnect
             _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
+        /// <inheritdoc />
         public void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
             _simConnect?.RequestDataOnSimObjectType(requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
@@ -301,9 +304,23 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
+        public void MapClientEventToSimEvent(Enum groupId, Enum eventId, FsEventNameId eventNameId)
+        {
+            string eventName = FsEventNameLookup.GetFsEventName(eventNameId);
+            _simConnect.MapClientEventToSimEvent(eventId, eventName);
+            _simConnect.AddClientEventToNotificationGroup(groupId, eventId, false);
+        }
+
+        /// <inheritdoc />
         public void MapClientEventToSimEvent(int groupId, int eventId, string eventName)
         {
             MapClientEventToSimEvent((FsConnectEnum)groupId, (FsConnectEnum)eventId, eventName);
+        }
+
+        /// <inheritdoc />
+        public void MapClientEventToSimEvent(int groupId, int eventId, FsEventNameId eventNameId)
+        {
+            MapClientEventToSimEvent((FsConnectEnum)groupId, (FsConnectEnum)eventId, eventNameId);
         }
 
         /// <inheritdoc />
@@ -319,9 +336,9 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void TransmitClientEvent(Enum eventId, uint dwData, Enum groupID)
+        public void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId)
         {
-            _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, eventId, dwData, groupID, SIMCONNECT_EVENT_FLAG.DEFAULT);
+            _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, eventId, dwData, groupId, SIMCONNECT_EVENT_FLAG.DEFAULT);
         }
 
         /// <inheritdoc />
@@ -473,8 +490,9 @@ namespace CTrue.FsConnect
                 {
                     _simConnect?.ReceiveMessage();
                 }
-                catch (Exception e)
+                catch
                 {
+                    // ignored
                 }
             }
         }

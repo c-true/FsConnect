@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading;
 using CommandLine;
 using CommandLine.Text;
-using Microsoft.FlightSimulator.SimConnect;
 using Serilog;
 using Serilog.Core;
 using Serilog.Events;
@@ -18,7 +17,6 @@ namespace CTrue.FsConnect.TestConsole
         private static readonly AutoResetEvent _connectedResetEvent = new AutoResetEvent(false);
 
         private static FsConnect _fsConnect;
-        private static PlaneInfoResponse _planeInfoResponse;
         private static LoggingLevelSwitch _levelSwitch = new LoggingLevelSwitch(LogEventLevel.Warning);
 
         static void Main(string[] args)

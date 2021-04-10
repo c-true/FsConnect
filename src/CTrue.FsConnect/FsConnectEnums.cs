@@ -2,6 +2,9 @@
 
 namespace CTrue.FsConnect
 {
+    /// <summary>
+    /// Describes how often data should be returned.
+    /// </summary>
     public enum FsConnectPeriod
     {
         /// <summary>
@@ -53,6 +56,8 @@ namespace CTrue.FsConnect
         Ground,
     }
 
+#pragma warning disable 1591
+
     public enum FsException
     {
         None,
@@ -94,4 +99,6 @@ namespace CTrue.FsConnect
         ObjectAtc,
         ObjectSchedule,
     };
+
+#pragma warning restore 1591
 }

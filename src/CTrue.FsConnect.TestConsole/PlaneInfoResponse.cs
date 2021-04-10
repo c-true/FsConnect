@@ -10,17 +10,17 @@ namespace CTrue.FsConnect.TestConsole
         public String Title;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 256)]
         public String Category;
-        [SimProperty(NameId = FsSimVar.PlaneLatitude, UnitId = FsUnit.Radian)]
+        [SimVar(NameId = FsSimVar.PlaneLatitude, UnitId = FsUnit.Radian)]
         public double Latitude;
-        [SimProperty(NameId = FsSimVar.PlaneLongitude, UnitId = FsUnit.Radian)]
+        [SimVar(NameId = FsSimVar.PlaneLongitude, UnitId = FsUnit.Radian)]
         public double Longitude;
-        [SimProperty(NameId = FsSimVar.PlaneAltitudeAboveGround, UnitId = FsUnit.Feet)]
+        [SimVar(NameId = FsSimVar.PlaneAltitudeAboveGround, UnitId = FsUnit.Feet)]
         public double AltitudeAboveGround;
-        [SimProperty(NameId = FsSimVar.PlaneAltitude, UnitId = FsUnit.Feet)]
+        [SimVar(NameId = FsSimVar.PlaneAltitude, UnitId = FsUnit.Feet)]
         public double Altitude;
-        [SimProperty(NameId = FsSimVar.PlaneHeadingDegreesTrue, UnitId = FsUnit.Degree)]
+        [SimVar(NameId = FsSimVar.PlaneHeadingDegreesTrue, UnitId = FsUnit.Degree)]
         public double Heading;
-        [SimProperty(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
+        [SimVar(NameId = FsSimVar.AirspeedTrue, UnitId = FsUnit.Knot)]
         public double Speed;
 
         public override string ToString()
@@ -33,13 +33,13 @@ namespace CTrue.FsConnect.TestConsole
     [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
     public struct PlanePosition
     {
-        [SimProperty(NameId = FsSimVar.PlaneLatitude, UnitId = FsUnit.Degree)]
+        [SimVar(NameId = FsSimVar.PlaneLatitude, UnitId = FsUnit.Degree)]
         public double Latitude;
-        [SimProperty(NameId = FsSimVar.PlaneLongitude, UnitId = FsUnit.Degree)]
+        [SimVar(NameId = FsSimVar.PlaneLongitude, UnitId = FsUnit.Degree)]
         public double Longitude;
-        [SimProperty(NameId = FsSimVar.PlaneAltitude, UnitId = FsUnit.Feet)]
+        [SimVar(NameId = FsSimVar.PlaneAltitude, UnitId = FsUnit.Feet)]
         public double Altitude;
-        [SimProperty(NameId = FsSimVar.PlaneHeadingDegreesTrue, UnitId = FsUnit.Degree)]
+        [SimVar(NameId = FsSimVar.PlaneHeadingDegreesTrue, UnitId = FsUnit.Degree)]
         public double Heading;
 
         public override string ToString()

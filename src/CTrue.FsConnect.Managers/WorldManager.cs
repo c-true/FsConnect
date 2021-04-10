@@ -19,10 +19,10 @@ namespace CTrue.FsConnect.Managers
         {
             _fsConnect = fsConnect;
 
-            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluYears, "ZULU_YEAR_SET");
-            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluDays, "ZULU_DAY_SET");
-            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluHours, "ZULU_HOURS_SET");
-            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluMinute, "ZULU_MINUTES_SET");
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluYears, FsEventNameId.ZuluYearSet);
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluDays, FsEventNameId.ZuluDaySet);
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluHours, FsEventNameId.ZuluHoursSet);
+            _fsConnect.MapClientEventToSimEvent(WorldManagerId.SetTime, WorldManagerId.SetZuluMinute, FsEventNameId.ZuluMinutesSet);
 
             _fsConnect.SetNotificationGroupPriority(WorldManagerId.SetTime);
         }

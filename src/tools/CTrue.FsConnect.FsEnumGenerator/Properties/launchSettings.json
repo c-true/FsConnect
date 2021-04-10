@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CTrue.FsConnect.FsEnumGenerator": {
+      "commandName": "Project",
+      "commandLineArgs": "-s \"C:\\repo\\c-true\\FsConnect\\data\\Legacy Event IDs.csv\" -t \"C:\\repo\\c-true\\FsConnect\\src\\CTrue.FsConnect\\FsEventNameId.cs\""
+    }
+  }
+}
