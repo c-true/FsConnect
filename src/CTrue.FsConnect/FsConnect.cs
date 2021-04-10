@@ -304,9 +304,23 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
+        public void MapClientEventToSimEvent(Enum groupId, Enum eventId, FsEventNameId eventNameId)
+        {
+            string eventName = FsEventNameLookup.GetFsEventName(eventNameId);
+            _simConnect.MapClientEventToSimEvent(eventId, eventName);
+            _simConnect.AddClientEventToNotificationGroup(groupId, eventId, false);
+        }
+
+        /// <inheritdoc />
         public void MapClientEventToSimEvent(int groupId, int eventId, string eventName)
         {
             MapClientEventToSimEvent((FsConnectEnum)groupId, (FsConnectEnum)eventId, eventName);
+        }
+
+        /// <inheritdoc />
+        public void MapClientEventToSimEvent(int groupId, int eventId, FsEventNameId eventNameId)
+        {
+            MapClientEventToSimEvent((FsConnectEnum)groupId, (FsConnectEnum)eventId, eventNameId);
         }
 
         /// <inheritdoc />

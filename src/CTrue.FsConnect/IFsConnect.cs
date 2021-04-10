@@ -289,8 +289,24 @@ namespace CTrue.FsConnect
         /// </summary>
         /// <param name="groupId"></param>
         /// <param name="eventId"></param>
+        /// <param name="eventNameId"></param>
+        void MapClientEventToSimEvent(Enum groupId, Enum eventId, FsEventNameId eventNameId);
+
+        /// <summary>
+        /// Maps a client event to a sim event.
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="eventId"></param>
         /// <param name="eventName"></param>
         void MapClientEventToSimEvent(int groupId, int eventId, string eventName);
+
+        /// <summary>
+        /// Maps a client event to a sim event.
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="eventId"></param>
+        /// <param name="eventNameId"></param>
+        void MapClientEventToSimEvent(int groupId, int eventId, FsEventNameId eventNameId);
 
         /// <summary>
         /// Gets the next id, for definitions and other SimConnect artifacts that require it.
