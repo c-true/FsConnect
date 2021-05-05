@@ -298,7 +298,13 @@ namespace CTrue.FsConnect
 		AutopilotMaster,
 		AutopilotWingLeveler,
 		AutopilotNav1Lock,
+		/// <summary>
+		/// Heading mode active
+		/// </summary>
 		AutopilotHeadingLock,
+		/// <summary>
+		/// Selected heading
+		/// </summary>
 		AutopilotHeadingLockDir,
 		AutopilotAltitudeLock,
 		AutopilotAltitudeLockVar,

@@ -12,7 +12,7 @@ namespace CTrue.FsConnect.Managers.Test
     /// Observe that the time changes in the simulator.
     /// </remarks>
     [TestFixture(Explicit = true)]
-    public class FsConnectManagersIntegrationTests
+    public class WorldManagerIntegrationTests
     {
         [Test]
         public void SetTime_SetsTimeInMSFS()
@@ -32,7 +32,7 @@ namespace CTrue.FsConnect.Managers.Test
                 Console.WriteLine($"Error: {args.ExceptionDescription}");
             };
 
-            fsConnect.Connect("FsConnectManagersIntegrationTest", 0);
+            fsConnect.Connect("WorldManagerIntegrationTests", 0);
 
             bool res = resetEvent.WaitOne(2000);
             if(!res) Assert.Fail("Not connected to MSFS within timeout");

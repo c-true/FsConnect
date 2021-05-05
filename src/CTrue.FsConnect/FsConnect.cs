@@ -342,6 +342,12 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
+        public void TransmitClientEvent(int eventId, uint dwData, int groupId)
+        {
+            _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, (FsConnectEnum)eventId, dwData, (FsConnectEnum)groupId, SIMCONNECT_EVENT_FLAG.DEFAULT);
+        }
+
+        /// <inheritdoc />
         public void SetText(string text, int duration)
         {
             _simConnect.Text(SIMCONNECT_TEXT_TYPE.PRINT_BLACK, duration, SimEvents.SetText, text);
