@@ -110,6 +110,7 @@ namespace CTrue.FsConnect
 
         private SIMCONNECT_DATATYPE GetDataType(FieldInfo field, SimVarAttribute attr)
         {
+            // Always return the specified data type if provided
             if (attr != null && attr.DataType != SIMCONNECT_DATATYPE.INVALID)
             {
                 return attr.DataType;
@@ -147,6 +148,12 @@ namespace CTrue.FsConnect
 
             if (field.FieldType == typeof(bool))
                 return SIMCONNECT_DATATYPE.INT32;
+
+            if (field.FieldType == typeof(uint) || field.FieldType == typeof(int))
+                return SIMCONNECT_DATATYPE.INT32;
+
+            if (field.FieldType == typeof(ulong) || field.FieldType == typeof(long))
+                return SIMCONNECT_DATATYPE.INT64;
 
             // Default data type
             return SIMCONNECT_DATATYPE.FLOAT64;
