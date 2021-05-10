@@ -268,9 +268,9 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
+        public void RequestData(int requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
-            _simConnect?.RequestDataOnSimObjectType(requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
+            _simConnect?.RequestDataOnSimObjectType((FsConnectEnum)requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
         #endregion

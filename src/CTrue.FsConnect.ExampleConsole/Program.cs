@@ -66,7 +66,7 @@ namespace FsConnectTest
 
             do
             {
-                fsConnect.RequestData(Requests.PlaneInfoRequest, planeInfoDefinitionId);
+                fsConnect.RequestData((int)Requests.PlaneInfoRequest, planeInfoDefinitionId);
                 cki = Console.ReadKey();
             } while (cki.Key != ConsoleKey.Escape);
 

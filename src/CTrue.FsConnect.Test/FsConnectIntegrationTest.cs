@@ -60,7 +60,7 @@ namespace CTrue.FsConnect.Test
                 resetEvent.Set();
             };
 
-            fsConnect.RequestData(TestEnums.RequestId, hbDef);
+            fsConnect.RequestData((int)TestEnums.RequestId, hbDef);
             res = resetEvent.WaitOne(2000);
             if (!res) Assert.Fail("Data not returned from MSFS within timeout");
 

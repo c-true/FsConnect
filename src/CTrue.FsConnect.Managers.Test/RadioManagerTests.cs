@@ -50,8 +50,12 @@ namespace CTrue.FsConnect.Managers.Test
 
             fsConnect.SetText("Observe COM1&COM2 Standby frequencies have changed", 1000);
 
+            manager.Update();
+            
             // Assert
             Assert.That(errorCount, Is.Zero);
+            Assert.That(manager.Com1StandbyFrequency, Is.EqualTo(2797));
+            Assert.That(manager.Com2StandbyFrequency, Is.EqualTo(3625));
         }
     }
 }
