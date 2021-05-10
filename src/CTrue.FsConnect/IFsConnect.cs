@@ -277,6 +277,14 @@ namespace CTrue.FsConnect
         void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId);
 
         /// <summary>
+        /// Sends a client event to flight simulator.
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="dwData"></param>
+        /// <param name="groupId"></param>
+        void TransmitClientEvent(int eventId, uint dwData, int groupId);
+
+        /// <summary>
         /// Maps a client event to a sim event.
         /// </summary>
         /// <param name="groupId"></param>
