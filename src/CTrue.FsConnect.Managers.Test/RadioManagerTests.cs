@@ -94,5 +94,46 @@ namespace CTrue.FsConnect.Managers.Test
             manager.Update();
             Assert.That(manager.Com2ActiveFrequency, Is.EqualTo(freq).Within(0.01));
         }
+
+        [Test]
+        public void SetCom1StandbyFrequenciesInHz()
+        {
+            // Arrange
+            AutoResetEvent resetEvent = new AutoResetEvent(false);
+
+            FsConnect fsConnect = new FsConnect();
+            fsConnect.ConnectionChanged += (sender, b) =>
+            {
+                if (b) resetEvent.Set();
+            };
+            fsConnect.FsError += (sender, args) =>
+            {
+                Assert.Fail($"MSFS Error: {args.ExceptionDescription}");
+            };
+
+            fsConnect.Connect("FsConnectManagersIntegrationTest", 0);
+
+            bool res = resetEvent.WaitOne(2000);
+            if (!res) Assert.Fail("Not connected to MSFS within timeout");
+
+            RadioManager manager = new RadioManager(fsConnect);
+
+            // Set - Act
+
+            double freq = 124.775d;
+
+            manager.SetCom1StandbyFrequencyInHz(freq);
+
+            //// Set - Assert
+            //manager.Update();
+            //Assert.That(manager.Com1StandbyFrequency, Is.EqualTo(freq));
+
+            //// Swap - Act
+            //manager.Com1Swap();
+
+            //// Swap - Assert
+            //manager.Update();
+            //Assert.That(manager.Com1ActiveFrequency, Is.EqualTo(freq));
+        }
     }
 }

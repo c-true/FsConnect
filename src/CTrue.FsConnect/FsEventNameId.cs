@@ -3957,6 +3957,22 @@ namespace CTrue.FsConnect
         /// Show or hide multi-player race results.
         /// </summary>
         ToggleRaceresultsWindow,
+        /// <summary>
+        /// Set COM1 Standby frequency.
+        /// </summary>
+        ComRadioSetHz,
+        /// <summary>
+        /// Set COM2 Standby frequency.
+        /// </summary>
+        Com2RadioSetHz,
+        /// <summary>
+        /// Set NAV1 Standby frequency.
+        /// </summary>
+        Nav1RadioSetHz,
+        /// <summary>
+        /// Set NAV2 Standby frequency.
+        /// </summary>
+        Nav2RadioSetHz,
     };
     
     /// <summary>
@@ -4952,6 +4968,10 @@ namespace CTrue.FsConnect
             "MULTIPLAYER_VOICE_CAPTURE_STOP",
             "MULTIPLAYER_BROADCAST_VOICE_",
             "TOGGLE_RACERESULTS_WINDOW",
+            "COM_RADIO_SET_HZ",
+            "COM2_RADIO_SET_HZ",
+            "NAV1_RADIO_SET_HZ",
+            "NAV2_RADIO_SET_HZ"
         };
         
         /// <summary>

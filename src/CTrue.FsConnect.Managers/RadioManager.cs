@@ -45,8 +45,11 @@ namespace CTrue.FsConnect.Managers
         /// <param name="frequency">The frequency, in MHz, e.g. 124.10</param>
         /// <remarks>
         /// Currently supports 0.25 MHz increments.
+        /// Range: 118.000 to 135.975Mhz
         /// </remarks>
         void SetCom1StandbyFrequency(double frequency);
+
+        void SetCom1StandbyFrequencyInHz(double frequency);
 
         /// <summary>
         /// Sets the COM2 standby frequency.
@@ -54,8 +57,11 @@ namespace CTrue.FsConnect.Managers
         /// <param name="frequency">The frequency, in MHz, e.g. 124.10</param>
         /// <remarks>
         /// Currently supports 0.25 MHz increments.
+        /// Range: 118.000 to 135.975Mhz
         /// </remarks>
         void SetCom2StandbyFrequency(double frequency);
+
+        void SetCom2StandbyFrequencyInHz(double frequency);
 
         /// <summary>
         /// Swaps COMS1 active and standby frequency.
@@ -75,9 +81,11 @@ namespace CTrue.FsConnect.Managers
         private AutoResetEvent _resetEvent = new AutoResetEvent(false);
         private int _groupId;
         private int _com1StbyRadioSetEventId;
+        private int _com1StbyRadioSetHzEventId;
         private int _com1StbySwapEventId;
 
         private int _com2StbyRadioSetEventId;
+        private int _com2StbyRadioSetHzEventId;
         private int _com2StbySwapEventId;
 
         private RadioManagerSimVars _radioManagerSimVars = new RadioManagerSimVars();
@@ -117,11 +125,17 @@ namespace CTrue.FsConnect.Managers
             _com1StbyRadioSetEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetEventId, FsEventNameId.ComStbyRadioSet);
 
+            _com1StbyRadioSetHzEventId = _fsConnect.GetNextId();
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetHzEventId, FsEventNameId.ComRadioSetHz);
+
             _com1StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbySwapEventId, FsEventNameId.ComStbyRadioSwitchTo);
 
             _com2StbyRadioSetEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetEventId, FsEventNameId.Com2StbyRadioSet);
+
+            _com2StbyRadioSetHzEventId = _fsConnect.GetNextId();
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetHzEventId, FsEventNameId.Com2RadioSetHz);
 
             _com2StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbySwapEventId, FsEventNameId.Com2RadioSwap);
@@ -159,14 +173,28 @@ namespace CTrue.FsConnect.Managers
         public void SetCom1StandbyFrequency(double frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com1StbyRadioSetEventId, freqBcd.BcdValue, _groupId);
+            _fsConnect.TransmitClientEvent(_com1StbyRadioSetEventId, freqBcd.Bcd16Value, _groupId);
+        }
+
+        /// <inheritdoc />
+        public void SetCom1StandbyFrequencyInHz(double frequency)
+        {
+            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
+            _fsConnect.TransmitClientEvent(_com1StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
         }
 
         /// <inheritdoc />
         public void SetCom2StandbyFrequency(double frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com2StbyRadioSetEventId, freqBcd.BcdValue, _groupId);
+            _fsConnect.TransmitClientEvent(_com2StbyRadioSetEventId, freqBcd.Bcd16Value, _groupId);
+        }
+
+        /// <inheritdoc />
+        public void SetCom2StandbyFrequencyInHz(double frequency)
+        {
+            FrequencyBcd freqBcd = new FrequencyBcd(frequency);
+            _fsConnect.TransmitClientEvent(_com2StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
         }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
