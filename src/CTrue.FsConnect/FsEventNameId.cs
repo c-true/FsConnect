@@ -4484,7 +4484,7 @@ namespace CTrue.FsConnect
             "AVIONICS_MASTER_SET",
             "TOGGLE_AVIONICS_MASTER",
             "COM_STBY_RADIO_SET",
-            "COM_STBY_RADIO_SWITCH_TO",
+            "COM_STBY_RADIO_SWAP",
             "COM_RADIO_FRACT_DEC_CARRY",
             "COM_RADIO_FRACT_INC_CARRY",
             "COM2_RADIO_WHOLE_DEC",
