@@ -13,127 +13,102 @@ namespace CTrue.FsConnect.Managers.Test
     [TestFixture(Explicit = true)]
     public class RadioManagerTests
     {
-        [Test]
-        public void SetCom1StandbyFrequencies()
+        private FsConnect _fsConnect;
+        private RadioManager _manager;
+
+        [SetUp]
+        public void SetUp()
         {
-            // Arrange
             AutoResetEvent resetEvent = new AutoResetEvent(false);
 
-            FsConnect fsConnect = new FsConnect();
-            fsConnect.ConnectionChanged += (sender, b) =>
+            _fsConnect = new FsConnect();
+            _fsConnect.ConnectionChanged += (sender, b) =>
             {
                 if (b) resetEvent.Set();
             };
-            fsConnect.FsError += (sender, args) =>
+            _fsConnect.FsError += (sender, args) =>
             {
                 Assert.Fail($"MSFS Error: {args.ExceptionDescription}");
             };
 
-            fsConnect.Connect("FsConnectManagersIntegrationTest", 0);
+            _fsConnect.Connect("RadioManagerIntegrationTest", 0);
 
             bool res = resetEvent.WaitOne(2000);
             if (!res) Assert.Fail("Not connected to MSFS within timeout");
 
-            RadioManager manager = new RadioManager(fsConnect);
-
-            // Set - Act
-
-            double freq = 124.75d;
-
-            manager.SetCom1StandbyFrequency(freq);
-
-            // Set - Assert
-            manager.Update();
-            Assert.That(manager.Com1StandbyFrequency, Is.EqualTo(freq));
-
-            // Swap - Act
-            manager.Com1Swap();
-
-            // Swap - Assert
-            manager.Update();
-            Assert.That(manager.Com1ActiveFrequency, Is.EqualTo(freq));
+            _manager = new RadioManager(_fsConnect);
         }
 
         [Test]
-        public void SetCom2StandbyFrequencies()
+        public void SetCom1StandbyFrequency()
         {
             // Arrange
-            AutoResetEvent resetEvent = new AutoResetEvent(false);
+            double freq = 124.774d;
 
-            FsConnect fsConnect = new FsConnect();
-            fsConnect.ConnectionChanged += (sender, b) =>
-            {
-                if (b) resetEvent.Set();
-            };
-            fsConnect.FsError += (sender, args) =>
-            {
-                Assert.Fail($"MSFS Error: {args.ExceptionDescription}");
-            };
+            // Act
+            _manager.SetCom1StandbyFrequency(freq);
 
-            fsConnect.Connect("FsConnectManagersIntegrationTest", 0);
-
-            bool res = resetEvent.WaitOne(2000);
-            if (!res) Assert.Fail("Not connected to MSFS within timeout");
-
-            RadioManager manager = new RadioManager(fsConnect);
-
-            // Set - Act
-
-            double freq = 118.10d;
-
-            manager.SetCom2StandbyFrequency(freq);
-
-            // Set - Assert
-            manager.Update();
-            Assert.That(manager.Com2StandbyFrequency, Is.EqualTo(freq).Within(0.01));
-
-            // Swap - Act
-            manager.Com2Swap();
-
-            // Swap - Assert
-            manager.Update();
-            Assert.That(manager.Com2ActiveFrequency, Is.EqualTo(freq).Within(0.01));
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Com1StandbyFrequency, Is.EqualTo(freq));
         }
 
         [Test]
-        public void SetCom1StandbyFrequenciesInHz()
+        public void SetCom1ActiveFrequency()
         {
             // Arrange
-            AutoResetEvent resetEvent = new AutoResetEvent(false);
+            double freq = 124.774d;
 
-            FsConnect fsConnect = new FsConnect();
-            fsConnect.ConnectionChanged += (sender, b) =>
-            {
-                if (b) resetEvent.Set();
-            };
-            fsConnect.FsError += (sender, args) =>
-            {
-                Assert.Fail($"MSFS Error: {args.ExceptionDescription}");
-            };
+            // Act
+            _manager.SetCom1ActiveFrequency(freq);
 
-            fsConnect.Connect("FsConnectManagersIntegrationTest", 0);
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Com1ActiveFrequency, Is.EqualTo(freq));
+        }
 
-            bool res = resetEvent.WaitOne(2000);
-            if (!res) Assert.Fail("Not connected to MSFS within timeout");
+        [Test]
+        public void SetCom2StandbyFrequency()
+        {
+            // Arrange
+            double freq = 124.774d;
 
-            RadioManager manager = new RadioManager(fsConnect);
+            // Act
+            _manager.SetCom2StandbyFrequency(freq);
 
-            // Set - Act
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Com2StandbyFrequency, Is.EqualTo(freq));
+        }
 
-            double freq = 124.775d;
+        [Test]
+        public void SetCom2ActiveFrequency()
+        {
+            // Arrange
+            double freq = 124.773d;
 
-            manager.SetCom1StandbyFrequencyInHz(freq);
+            // Act
+            _manager.SetCom2ActiveFrequency(freq);
 
-            //// Set - Assert
-            //manager.Update();
-            //Assert.That(manager.Com1StandbyFrequency, Is.EqualTo(freq));
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Com2ActiveFrequency, Is.EqualTo(freq));
+        }
 
-            //// Swap - Act
-            //manager.Com1Swap();
+        [Test]
+        public void SwapCom1()
+        {
+            // Arrange
+            double freq = 124.773d;
+            _manager.SetCom1StandbyFrequency(freq);
+            _manager.SetCom1ActiveFrequency(125.000d);
 
-            //// Swap - Assert
-            //manager.Update();
-            //Assert.That(manager.Com1ActiveFrequency, Is.EqualTo(freq));
+            // Act
+            _manager.Com1Swap();
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Com1ActiveFrequency, Is.EqualTo(freq));
         }
     }
 }

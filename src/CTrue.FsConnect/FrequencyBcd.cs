@@ -33,7 +33,14 @@ namespace CTrue.FsConnect
             _bcd32Value = BitConverter.ToUInt32(bytes, 0);
         }
 
-        public FrequencyBcd(uint bcd16Value)
+        public FrequencyBcd(uint bcd32Value)
+        {
+            _bcd32Value = bcd32Value;
+            var freqOutUint = Bcd.Bcd2Dec(_bcd32Value);
+            _value = (double)freqOutUint / 10000;
+        }
+
+        public FrequencyBcd(ushort bcd16Value)
         {
             _bcd16Value = bcd16Value;
             var freqOutUint = Bcd.Bcd2Dec(_bcd16Value);

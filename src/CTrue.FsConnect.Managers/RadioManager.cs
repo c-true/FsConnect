@@ -42,26 +42,38 @@ namespace CTrue.FsConnect.Managers
         /// <summary>
         /// Sets the COM1 standby frequency.
         /// </summary>
-        /// <param name="frequency">The frequency, in MHz, e.g. 124.10</param>
+        /// <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
         /// <remarks>
-        /// Currently supports 0.25 MHz increments.
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
         void SetCom1StandbyFrequency(double frequency);
 
-        void SetCom1StandbyFrequencyInHz(double frequency);
+        /// <summary>
+        /// Sets the COM1 active frequency.
+        /// </summary>
+        /// <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
+        /// <remarks>
+        /// Range: 118.000 to 135.975Mhz
+        /// </remarks>
+        void SetCom1ActiveFrequency(double frequency);
 
         /// <summary>
         /// Sets the COM2 standby frequency.
         /// </summary>
-        /// <param name="frequency">The frequency, in MHz, e.g. 124.10</param>
+        /// <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
         /// <remarks>
-        /// Currently supports 0.25 MHz increments.
         /// Range: 118.000 to 135.975Mhz
         /// </remarks>
         void SetCom2StandbyFrequency(double frequency);
 
-        void SetCom2StandbyFrequencyInHz(double frequency);
+        /// <summary>
+        /// Sets the COM2 active frequency.
+        /// </summary>
+        /// <param name="frequency">The frequency, in MHz, e.g. 124.10</param>
+        /// <remarks>
+        /// Range: 118.000 to 135.975Mhz
+        /// </remarks>
+        void SetCom2ActiveFrequency(double frequency);
 
         /// <summary>
         /// Swaps COMS1 active and standby frequency.
@@ -72,6 +84,14 @@ namespace CTrue.FsConnect.Managers
         /// Swaps COMS2 active and standby frequency.
         /// </summary>
         void Com2Swap();
+
+        /// <summary>
+        /// Request new radio data from MSFS.
+        /// </summary>
+        /// <remarks>
+        /// The call is blocked until an update is returned.
+        /// </remarks>
+        void Update();
     }
 
     /// <inheritdoc />
@@ -80,26 +100,35 @@ namespace CTrue.FsConnect.Managers
         private readonly IFsConnect _fsConnect;
         private AutoResetEvent _resetEvent = new AutoResetEvent(false);
         private int _groupId;
-        private int _com1StbyRadioSetEventId;
+
         private int _com1StbyRadioSetHzEventId;
+        private int _com1ActiveRadioSetHzEventId;
         private int _com1StbySwapEventId;
 
-        private int _com2StbyRadioSetEventId;
         private int _com2StbyRadioSetHzEventId;
+        private int _com2ActiveRadioSetHzEventId;
         private int _com2StbySwapEventId;
 
         private RadioManagerSimVars _radioManagerSimVars = new RadioManagerSimVars();
         private int _radioManagerSimVarsReqId;
         private int _radioManagerSimVarsDefId;
 
-        public double Com1ActiveFrequency {  get; private set; }
-
+        /// <inheritdoc />
         public double Com1StandbyFrequency { get; private set; }
 
-        public double Com2ActiveFrequency { get; private set; }
+        /// <inheritdoc />
+        public double Com1ActiveFrequency {  get; private set; }
 
+        /// <inheritdoc />
         public double Com2StandbyFrequency { get; private set; }
 
+        /// <inheritdoc />
+        public double Com2ActiveFrequency { get; private set; }
+
+        /// <summary>
+        /// Creates a new <see cref="RadioManager"/> instance.
+        /// </summary>
+        /// <param name="fsConnect"></param>
         public RadioManager(IFsConnect fsConnect)
         {
             _fsConnect = fsConnect;
@@ -107,11 +136,13 @@ namespace CTrue.FsConnect.Managers
             RegisterEvents();
         }
 
+        /// <inheritdoc />
         public void Com1Swap()
         {
             _fsConnect.TransmitClientEvent(_com1StbySwapEventId, 0, _groupId);
         }
 
+        /// <inheritdoc />
         public void Com2Swap()
         {
             _fsConnect.TransmitClientEvent(_com2StbySwapEventId, 0, _groupId);
@@ -122,20 +153,20 @@ namespace CTrue.FsConnect.Managers
             _fsConnect.FsDataReceived += OnFsDataReceived;
             _groupId = _fsConnect.GetNextId();
 
-            _com1StbyRadioSetEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetEventId, FsEventNameId.ComStbyRadioSet);
-
             _com1StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetHzEventId, FsEventNameId.ComRadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbyRadioSetHzEventId, FsEventNameId.ComStbyRadioSetHz);
+
+            _com1ActiveRadioSetHzEventId = _fsConnect.GetNextId();
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com1ActiveRadioSetHzEventId, FsEventNameId.ComRadioSetHz);
 
             _com1StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com1StbySwapEventId, FsEventNameId.ComStbyRadioSwitchTo);
 
-            _com2StbyRadioSetEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetEventId, FsEventNameId.Com2StbyRadioSet);
-
             _com2StbyRadioSetHzEventId = _fsConnect.GetNextId();
-            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetHzEventId, FsEventNameId.Com2RadioSetHz);
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbyRadioSetHzEventId, FsEventNameId.Com2StbyRadioSetHz);
+
+            _com2ActiveRadioSetHzEventId = _fsConnect.GetNextId();
+            _fsConnect.MapClientEventToSimEvent(_groupId, _com2ActiveRadioSetHzEventId, FsEventNameId.Com2RadioSetHz);
 
             _com2StbySwapEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_groupId, _com2StbySwapEventId, FsEventNameId.Com2RadioSwap);
@@ -155,6 +186,7 @@ namespace CTrue.FsConnect.Managers
             _resetEvent.Set();
         }
 
+        /// <inheritdoc />
         public void Update()
         {
             _fsConnect.RequestData(_radioManagerSimVarsReqId, _radioManagerSimVarsDefId);
@@ -163,8 +195,8 @@ namespace CTrue.FsConnect.Managers
             if(!resetRes)
                 throw new TimeoutException("Radio Manager data was not returned from MSFS within timeout");
 
-            Com1ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Com1ActiveFrequency).Value;
             Com1StandbyFrequency = new FrequencyBcd(_radioManagerSimVars.Com1StandbyFrequency).Value;
+            Com1ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Com1ActiveFrequency).Value;
             Com2ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Com2ActiveFrequency).Value;
             Com2StandbyFrequency = new FrequencyBcd(_radioManagerSimVars.Com2StandbyFrequency).Value;
         }
@@ -173,43 +205,43 @@ namespace CTrue.FsConnect.Managers
         public void SetCom1StandbyFrequency(double frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com1StbyRadioSetEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com1StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetCom1StandbyFrequencyInHz(double frequency)
+        public void SetCom1ActiveFrequency(double frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com1StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com1ActiveRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
         }
 
         /// <inheritdoc />
         public void SetCom2StandbyFrequency(double frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com2StbyRadioSetEventId, freqBcd.Bcd16Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com2StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
         }
 
         /// <inheritdoc />
-        public void SetCom2StandbyFrequencyInHz(double frequency)
+        public void SetCom2ActiveFrequency(double frequency)
         {
             FrequencyBcd freqBcd = new FrequencyBcd(frequency);
-            _fsConnect.TransmitClientEvent(_com2StbyRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
+            _fsConnect.TransmitClientEvent(_com2ActiveRadioSetHzEventId, freqBcd.Bcd32Value, _groupId);
         }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
         public struct RadioManagerSimVars
         {
-            [SimVar(NameId = FsSimVar.ComActiveFrequency, UnitId = FsUnit.FrequencyBcd16, Instance = 1)]
+            [SimVar(NameId = FsSimVar.ComActiveFrequency, UnitId = FsUnit.FrequencyBcd32, Instance = 1)]
             public uint Com1ActiveFrequency;
 
-            [SimVar(NameId = FsSimVar.ComStandbyFrequency, UnitId = FsUnit.FrequencyBcd16, Instance = 1)]
+            [SimVar(NameId = FsSimVar.ComStandbyFrequency, UnitId = FsUnit.FrequencyBcd32, Instance = 1)]
             public uint Com1StandbyFrequency;
             
-            [SimVar(NameId = FsSimVar.ComActiveFrequency, UnitId = FsUnit.FrequencyBcd16, Instance = 2)]
+            [SimVar(NameId = FsSimVar.ComActiveFrequency, UnitId = FsUnit.FrequencyBcd32, Instance = 2)]
             public uint Com2ActiveFrequency;
 
-            [SimVar(NameId = FsSimVar.ComStandbyFrequency, UnitId = FsUnit.FrequencyBcd16, Instance = 2)]
+            [SimVar(NameId = FsSimVar.ComStandbyFrequency, UnitId = FsUnit.FrequencyBcd32, Instance = 2)]
             public uint Com2StandbyFrequency;
 
         }

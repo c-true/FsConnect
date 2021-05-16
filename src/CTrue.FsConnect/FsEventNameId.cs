@@ -3973,6 +3973,22 @@ namespace CTrue.FsConnect
         /// Set NAV2 Standby frequency.
         /// </summary>
         Nav2RadioSetHz,
+        /// <summary>
+        /// Set COM1 Standby frequency.
+        /// </summary>
+        ComStbyRadioSetHz,
+        /// <summary>
+        /// Set COM2 Standby frequency.
+        /// </summary>
+        Com2StbyRadioSetHz,
+        /// <summary>
+        /// Set NAV1 Standby frequency.
+        /// </summary>
+        Nav1StbyRadioSetHz,
+        /// <summary>
+        /// Set NAV2 Standby frequency.
+        /// </summary>
+        Nav2StbyRadioSetHz,
     };
     
     /// <summary>
@@ -4971,7 +4987,11 @@ namespace CTrue.FsConnect
             "COM_RADIO_SET_HZ",
             "COM2_RADIO_SET_HZ",
             "NAV1_RADIO_SET_HZ",
-            "NAV2_RADIO_SET_HZ"
+            "NAV2_RADIO_SET_HZ",
+            "COM_STBY_RADIO_SET_HZ",
+            "COM2_STBY_RADIO_SET_HZ",
+            "NAV1_STBY_RADIO_SET_HZ",
+            "NAV2_STBY_RADIO_SET_HZ"
         };
         
         /// <summary>
