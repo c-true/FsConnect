@@ -77,6 +77,26 @@ namespace CTrue.FsConnect.Managers
         /// Creates an instance of the <see cref="AircraftManager{T}"/> class.
         /// </summary>
         /// <param name="fsConnect"></param>
+        public AircraftManager(IFsConnect fsConnect, int defineId)
+            : this(fsConnect, defineId, fsConnect.GetNextId())
+        {
+        }
+
+        /// <summary>
+        /// Creates an instance of the <see cref="AircraftManager{T}"/> class.
+        /// </summary>
+        /// <param name="fsConnect"></param>
+        /// <param name="defineId">The definition used when registering the aircraft information structure.</param>
+        /// <param name="requestId">The request Id to use when requesting data using the manager.</param>
+        public AircraftManager(IFsConnect fsConnect, int defineId, int requestId)
+        : this(fsConnect, (FsConnectEnum)defineId, (FsConnectEnum)requestId)
+        {
+        }
+
+        /// <summary>
+        /// Creates an instance of the <see cref="AircraftManager{T}"/> class.
+        /// </summary>
+        /// <param name="fsConnect"></param>
         /// <param name="defineId">The definition used when registering the aircraft information structure.</param>
         /// <param name="requestId">The request Id to use when requesting data using the manager.</param>
         public AircraftManager(IFsConnect fsConnect, Enum defineId, Enum requestId)

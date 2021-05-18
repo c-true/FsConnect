@@ -236,7 +236,7 @@ namespace CTrue.FsConnect
         /// <param name="defineId">The definition id to associated with the data definition.</param>
         /// <param name="radius">Radius in meters. Should be less that 2000000 (200km).</param>
         /// <param name="type"></param>
-        void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User);
+        void RequestData(int requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User);
 
         /// <summary>
         /// Updates a sim object in the flight simulator.
@@ -275,6 +275,14 @@ namespace CTrue.FsConnect
         /// <param name="dwData"></param>
         /// <param name="groupId"></param>
         void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId);
+
+        /// <summary>
+        /// Sends a client event to flight simulator.
+        /// </summary>
+        /// <param name="eventId"></param>
+        /// <param name="dwData"></param>
+        /// <param name="groupId"></param>
+        void TransmitClientEvent(int eventId, uint dwData, int groupId);
 
         /// <summary>
         /// Maps a client event to a sim event.

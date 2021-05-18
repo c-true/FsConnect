@@ -268,9 +268,9 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void RequestData(Enum requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
+        public void RequestData(int requestId, int defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
-            _simConnect?.RequestDataOnSimObjectType(requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
+            _simConnect?.RequestDataOnSimObjectType((FsConnectEnum)requestId, (FsConnectEnum)defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
         #endregion
@@ -339,6 +339,12 @@ namespace CTrue.FsConnect
         public void TransmitClientEvent(Enum eventId, uint dwData, Enum groupId)
         {
             _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, eventId, dwData, groupId, SIMCONNECT_EVENT_FLAG.DEFAULT);
+        }
+
+        /// <inheritdoc />
+        public void TransmitClientEvent(int eventId, uint dwData, int groupId)
+        {
+            _simConnect.TransmitClientEvent((uint)SIMCONNECT_SIMOBJECT_TYPE.USER, (FsConnectEnum)eventId, dwData, (FsConnectEnum)groupId, SIMCONNECT_EVENT_FLAG.DEFAULT);
         }
 
         /// <inheritdoc />
