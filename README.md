@@ -378,6 +378,19 @@ worldManager.SetTime(new DateTime(year, month, day, hour, minute, 0));
 
 ```
 
+### Radio Manager
+
+The radio manager currently supports setting and getting COM1 and COM2 standby and active frequencies.
+
+```csharp
+
+FsConnect fsConnect = new FsConnect();
+fsConnect.Connect("RadioManagerTest", 0);
+RadioManager radioManager = new RadioManager(_fsConnect);
+radioManager.SetCom1ActiveFrequency(freq);
+
+```
+
 ## Community
 
 * Have you find a bug? Do you have an idea for a new feature? ... [open an issue on GitHub](https://github.com/c-true/FsConnect/issues)
@@ -386,6 +399,10 @@ worldManager.SetTime(new DateTime(year, month, day, hour, minute, 0));
     * Or from your own fork
 
 ## Change log
+
+## 1.3.2
+
+* Added RadioManager, with support for setting and getting COM1 and COM2 standby and active frequencies.
 
 ## 1.3.1
 

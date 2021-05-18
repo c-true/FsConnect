@@ -110,5 +110,21 @@ namespace CTrue.FsConnect.Managers.Test
             _manager.Update();
             Assert.That(_manager.Com1ActiveFrequency, Is.EqualTo(freq));
         }
+
+        [Test]
+        public void SwapCom2()
+        {
+            // Arrange
+            double freq = 124.773d;
+            _manager.SetCom2StandbyFrequency(freq);
+            _manager.SetCom2ActiveFrequency(125.000d);
+
+            // Act
+            _manager.Com2Swap();
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Com2ActiveFrequency, Is.EqualTo(freq));
+        }
     }
 }
