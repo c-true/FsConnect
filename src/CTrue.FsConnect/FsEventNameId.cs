@@ -4990,8 +4990,8 @@ namespace CTrue.FsConnect
             "NAV2_RADIO_SET_HZ",
             "COM_STBY_RADIO_SET_HZ",
             "COM2_STBY_RADIO_SET_HZ",
-            "NAV1_STBY_RADIO_SET_HZ",
-            "NAV2_STBY_RADIO_SET_HZ"
+            "NAV1_STBY_SET_HZ",
+            "NAV2_STBY_SET_HZ"
         };
         
         /// <summary>
