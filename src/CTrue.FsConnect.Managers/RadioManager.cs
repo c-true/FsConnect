@@ -10,7 +10,12 @@ namespace CTrue.FsConnect.Managers
     /// The <see cref="IRadioManager"/> controls the navigation and communication radios in the current aircraft.
     /// </summary>
     /// <remarks>
-    /// Note: Currently only 2 decimal frequencies, e.g. 120.25 are supported, not 3 decimal frequencies such as 128.725
+    /// Supports:
+    /// - Get and set COM and NAV active and standby frequencies.
+    /// - Get and set transponder
+    ///
+    /// Usage:
+    /// Call <see cref="Update"/> to refresh properties with latest values from MSFS.
     /// </remarks>
     public interface IRadioManager
     {
