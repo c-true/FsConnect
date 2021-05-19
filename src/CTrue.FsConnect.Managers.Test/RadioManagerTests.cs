@@ -229,5 +229,19 @@ namespace CTrue.FsConnect.Managers.Test
         }
 
         #endregion
+
+        [Test]
+        public void TransponderCode()
+        {
+            // Arrange
+            uint code = 7700;
+
+            // Act
+            _manager.SetTransponderCode(code);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.TransponderCode, Is.EqualTo(code));
+        }
     }
 }

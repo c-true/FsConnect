@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading;
+using Microsoft.FlightSimulator.SimConnect;
 
 namespace CTrue.FsConnect.Managers
 {
@@ -114,6 +115,11 @@ namespace CTrue.FsConnect.Managers
         double Nav2StandbyFrequency { get; }
 
         /// <summary>
+        /// Gets the transponder code.
+        /// </summary>
+        uint TransponderCode { get; }
+
+        /// <summary>
         /// Sets the Nav1 standby frequency.
         /// </summary>
         /// <param name="frequency">The frequency, in MHz, e.g. 124.100</param>
@@ -162,6 +168,12 @@ namespace CTrue.FsConnect.Managers
         #endregion
 
         /// <summary>
+        /// Sets the transponder code.
+        /// </summary>
+        /// <param name="code"></param>
+        void SetTransponderCode(uint code);
+
+        /// <summary>
         /// Request new radio data from MSFS.
         /// </summary>
         /// <remarks>
@@ -192,6 +204,8 @@ namespace CTrue.FsConnect.Managers
         private int _nav2StbyRadioSetHzEventId;
         private int _nav2ActiveRadioSetHzEventId;
         private int _nav2StbySwapEventId;
+
+        private int _setTransponderCodeEventId;
 
         private RadioManagerSimVars _radioManagerSimVars = new RadioManagerSimVars();
         private int _radioManagerSimVarsReqId;
@@ -228,6 +242,8 @@ namespace CTrue.FsConnect.Managers
         public double Nav2ActiveFrequency { get; private set; }
 
         #endregion
+
+        public uint TransponderCode { get; private set; }
 
         /// <summary>
         /// Creates a new <see cref="RadioManager"/> instance.
@@ -289,6 +305,9 @@ namespace CTrue.FsConnect.Managers
 
             #endregion
 
+            _setTransponderCodeEventId = _fsConnect.GetNextId();
+            _fsConnect.MapClientEventToSimEvent(_groupId, _setTransponderCodeEventId, FsEventNameId.XpndrSet);
+
             _fsConnect.SetNotificationGroupPriority(_groupId);
 
             _radioManagerSimVarsReqId = _fsConnect.GetNextId();
@@ -322,6 +341,8 @@ namespace CTrue.FsConnect.Managers
             Nav1ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Nav1ActiveFrequency).Value;
             Nav2ActiveFrequency = new FrequencyBcd(_radioManagerSimVars.Nav2ActiveFrequency).Value;
             Nav2StandbyFrequency = new FrequencyBcd(_radioManagerSimVars.Nav2StandbyFrequency).Value;
+
+            TransponderCode = _radioManagerSimVars.TransponderCode;
         }
 
         /// <inheritdoc />
@@ -404,8 +425,15 @@ namespace CTrue.FsConnect.Managers
             _fsConnect.TransmitClientEvent(_nav2StbySwapEventId, 0, _groupId);
         }
 
+        /// <inheritdoc />
+        public void SetTransponderCode(uint code)
+        {
+            uint bcdCode = Bcd.Dec2Bcd(code);
+            _fsConnect.TransmitClientEvent(_setTransponderCodeEventId, bcdCode, _groupId);
+        }
+
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
-        public struct RadioManagerSimVars
+        internal struct RadioManagerSimVars
         {
             [SimVar(NameId = FsSimVar.ComActiveFrequency, UnitId = FsUnit.FrequencyBcd32, Instance = 1)]
             public uint Com1ActiveFrequency;
@@ -432,6 +460,8 @@ namespace CTrue.FsConnect.Managers
             [SimVar(NameId = FsSimVar.NavStandbyFrequency, UnitId = FsUnit.FrequencyBcd32, Instance = 2)]
             public uint Nav2StandbyFrequency;
 
+            [SimVar(NameId = FsSimVar.TransponderCode, UnitId = FsUnit.Enum, Instance = 1, DataType = SIMCONNECT_DATATYPE.INT64)]
+            public uint TransponderCode;
         }
     }
 }
