@@ -10,6 +10,10 @@ At the moment this project is intended as an easier to use wrapper than the curr
 
 > NOTE: **Expect breaking changes and infrequent updates.**
 
+## Build Status
+
+[![Build](https://github.com/c-true/FsConnect/actions/workflows/build.yml/badge.svg)](https://github.com/c-true/FsConnect/actions/workflows/build.yml)
+
 ## Additional information
 
 For more information about SimConnect and the Flight Simulator SDK see the [Microsoft Flight Simulator SDK site](
