@@ -18,9 +18,7 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Setup MSBuild path
-      uses: microsoft/setup-msbuild@v1.0.1
-      with:
-        vs-version: "[16.4,16.9)"
+      uses: microsoft/setup-msbuild@v1.0.2
     
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.2
