@@ -1,0 +1,30 @@
+
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AZURE_WEBAPP_NAME: src\CTrue.FsConnect.sln     # set this to your application's name
+  AZURE_WEBAPP_PACKAGE_PATH: 'published'      # set this to the path to your web app project, defaults to the repository root
+
+jobs:
+  build:
+    name: Build and deploy
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    
+    - name: Setup MSBuild path
+      uses: microsoft/setup-msbuild@v1.0.2
+    
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
+    
+    - name: Restore NuGet packages
+      run: nuget restore ${{ env.AZURE_WEBAPP_NAME }}
+
+    - name: Build
+      run: msbuild ${{ env.AZURE_WEBAPP_NAME }} /p:Configuration=Release
