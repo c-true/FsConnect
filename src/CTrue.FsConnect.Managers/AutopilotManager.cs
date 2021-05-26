@@ -14,20 +14,12 @@ namespace CTrue.FsConnect.Managers
     /// Usage:
     /// Call <see cref="Update"/> to refresh properties with latest values from MSFS.
     /// </remarks>
-    public interface IAutoPilotManager
+    public interface IAutoPilotManager : IFsConnectManager
     {
         /// <summary>
         /// Gets the current heading bug, in degrees.
         /// </summary>
         double HeadingBug { get; }
-
-        /// <summary>
-        /// Request new autopilot data from MSFS.
-        /// </summary>
-        /// <remarks>
-        /// The call is blocked until an update is returned.
-        /// </remarks>
-        void Update();
 
         /// <summary>
         /// Sets the autopilot heading bug, in degrees.
@@ -37,10 +29,8 @@ namespace CTrue.FsConnect.Managers
     }
 
     /// <inheritdoc />
-    public class AutopilotManager : IAutoPilotManager
+    public class AutopilotManager : FsConnectManager, IAutoPilotManager
     {
-        private readonly IFsConnect _fsConnect;
-        private AutoResetEvent _resetEvent = new AutoResetEvent(false);
         private int _eventGroupId;
         
         private AutopilotSimVars _autopilotSimVars = new AutopilotSimVars();
@@ -57,21 +47,17 @@ namespace CTrue.FsConnect.Managers
         /// </summary>
         /// <param name="fsConnect"></param>
         public AutopilotManager(IFsConnect fsConnect)
+            : base(fsConnect)
         {
-            _fsConnect = fsConnect;
-
-            _fsConnect.FsDataReceived += OnFsDataReceived;
-            RegisterSimVars();
-            RegisterEvents();
         }
 
-        private void RegisterSimVars()
+        protected override void RegisterSimVars()
         {
             _autoPilotManagerSimVarsReqId = _fsConnect.GetNextId();
             _autoPilotManagerSimVarsDefId = _fsConnect.RegisterDataDefinition<AutopilotSimVars>();
         }
 
-        private void RegisterEvents()
+        protected override void RegisterEvents()
         {
             _eventGroupId = _fsConnect.GetNextId();
             _headingBugSetEventId = _fsConnect.GetNextId();
@@ -80,7 +66,7 @@ namespace CTrue.FsConnect.Managers
             _fsConnect.SetNotificationGroupPriority(_eventGroupId);
         }
 
-        private void OnFsDataReceived(object sender, FsDataReceivedEventArgs e)
+        protected override void OnFsDataReceived(object sender, FsDataReceivedEventArgs e)
         {
             if (e.Data.Count == 0) return;
             if (!(e.Data[0] is AutopilotSimVars)) return;
@@ -90,13 +76,10 @@ namespace CTrue.FsConnect.Managers
         }
 
         /// <inheritdoc />
-        public void Update()
+        public override void Update()
         {
             _fsConnect.RequestData(_autoPilotManagerSimVarsReqId, _autoPilotManagerSimVarsDefId);
-            bool resetRes = _resetEvent.WaitOne(10000);
-
-            if (!resetRes)
-                throw new TimeoutException("Autopilot Manager data was not returned from MSFS within timeout");
+            WaitForUpdate();
 
             HeadingBug = _autopilotSimVars.HeadingBug;
         }

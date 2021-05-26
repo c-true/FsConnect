@@ -30,6 +30,7 @@ namespace CTrue.FsConnect.Managers.Test
             if (!res) Assert.Fail("Not connected to MSFS within timeout");
 
             _manager = new AutopilotManager(_fsConnect);
+            _manager.Initialize();
         }
 
         [Test]
