@@ -3957,6 +3957,38 @@ namespace CTrue.FsConnect
         /// Show or hide multi-player race results.
         /// </summary>
         ToggleRaceresultsWindow,
+        /// <summary>
+        /// Set COM1 Active frequency.
+        /// </summary>
+        ComRadioSetHz,
+        /// <summary>
+        /// Set COM2 Active frequency.
+        /// </summary>
+        Com2RadioSetHz,
+        /// <summary>
+        /// Set NAV1 Standby frequency.
+        /// </summary>
+        Nav1RadioSetHz,
+        /// <summary>
+        /// Set NAV2 Standby frequency.
+        /// </summary>
+        Nav2RadioSetHz,
+        /// <summary>
+        /// Set COM1 Standby frequency.
+        /// </summary>
+        ComStbyRadioSetHz,
+        /// <summary>
+        /// Set COM2 Standby frequency.
+        /// </summary>
+        Com2StbyRadioSetHz,
+        /// <summary>
+        /// Set NAV1 Standby frequency.
+        /// </summary>
+        Nav1StbyRadioSetHz,
+        /// <summary>
+        /// Set NAV2 Standby frequency.
+        /// </summary>
+        Nav2StbyRadioSetHz,
     };
     
     /// <summary>
@@ -4484,7 +4516,7 @@ namespace CTrue.FsConnect
             "AVIONICS_MASTER_SET",
             "TOGGLE_AVIONICS_MASTER",
             "COM_STBY_RADIO_SET",
-            "COM_STBY_RADIO_SWITCH_TO",
+            "COM_STBY_RADIO_SWAP",
             "COM_RADIO_FRACT_DEC_CARRY",
             "COM_RADIO_FRACT_INC_CARRY",
             "COM2_RADIO_WHOLE_DEC",
@@ -4952,6 +4984,14 @@ namespace CTrue.FsConnect
             "MULTIPLAYER_VOICE_CAPTURE_STOP",
             "MULTIPLAYER_BROADCAST_VOICE_",
             "TOGGLE_RACERESULTS_WINDOW",
+            "COM_RADIO_SET_HZ",
+            "COM2_RADIO_SET_HZ",
+            "NAV1_RADIO_SET_HZ",
+            "NAV2_RADIO_SET_HZ",
+            "COM_STBY_RADIO_SET_HZ",
+            "COM2_STBY_RADIO_SET_HZ",
+            "NAV1_STBY_SET_HZ",
+            "NAV2_STBY_SET_HZ"
         };
         
         /// <summary>
