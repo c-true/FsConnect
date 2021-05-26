@@ -11,7 +11,8 @@
         - Aircraft information
         - Retrieving sim objects
         - Setting world time
-        - Controlling COM radios
+        - Controlling COM and NAV radios
+        - Initial Autopilot manager
     </Description>
     <Authors>C-True</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
