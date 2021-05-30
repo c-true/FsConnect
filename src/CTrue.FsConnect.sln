@@ -22,7 +22,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tools", "Tools", "{FAD9C7D7
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTrue.FsConnect.FsEnumGenerator", "tools\CTrue.FsConnect.FsEnumGenerator\CTrue.FsConnect.FsEnumGenerator.csproj", "{F13D4437-D58A-4743-AE66-902BB6119F23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CTrue.FsConnect.Managers.Test", "CTrue.FsConnect.Managers.Test\CTrue.FsConnect.Managers.Test.csproj", "{BCEFF6D4-4016-4FF8-AB85-FC226D360C52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CTrue.FsConnect.Managers.Test", "CTrue.FsConnect.Managers.Test\CTrue.FsConnect.Managers.Test.csproj", "{BCEFF6D4-4016-4FF8-AB85-FC226D360C52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

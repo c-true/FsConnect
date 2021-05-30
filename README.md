@@ -392,8 +392,26 @@ FsConnect fsConnect = new FsConnect();
 fsConnect.Connect("RadioManagerTest", 0);
 RadioManager radioManager = new RadioManager(_fsConnect);
 radioManager.SetCom1ActiveFrequency(freq);
-
 ```
+
+Supports:
+- Setting and getting COM1 & COM2 standby and active frequencies
+- Setting and getting NAV1 & NAV2 standby and active frequencies
+- Setting and getting transponder code
+
+
+### Autopilot manager
+
+```csharp
+
+FsConnect fsConnect = new FsConnect();
+fsConnect.Connect("AutopilotManagerTest", 0);
+AutopilotManager autopilotManager = new AutopilotManager(_fsConnect);
+autopilotManager.SetHeadingBug(42);
+```
+
+Supports:
+- Getting and setting the heading bug.
 
 ## Community
 
@@ -403,6 +421,10 @@ radioManager.SetCom1ActiveFrequency(freq);
     * Or from your own fork
 
 ## Change log
+
+## 1.3.3
+
+* Added support for NAV frequencies, transponder and autopilot heading bug
 
 ## 1.3.2
 
