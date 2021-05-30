@@ -40,6 +40,17 @@ namespace CTrue.FsConnect.Managers.Test
         }
 
         [Test]
+        public void Update()
+        {
+            // Arrange
+            // Act
+            _manager.Update();
+
+            // Assert
+            Assert.That(_manager.Com1StandbyFrequency, Is.GreaterThan(118));
+        }
+
+        [Test]
         public void SetCom1StandbyFrequency()
         {
             // Arrange
@@ -125,6 +136,112 @@ namespace CTrue.FsConnect.Managers.Test
             // Assert
             _manager.Update();
             Assert.That(_manager.Com2ActiveFrequency, Is.EqualTo(freq));
+        }
+
+        #region NAV
+
+        [Test]
+        public void SetNav1StandbyFrequency()
+        {
+            // Arrange
+            double freq = 110.7;
+
+            // Act
+            _manager.SetNav1StandbyFrequency(freq);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Nav1StandbyFrequency, Is.EqualTo(freq));
+        }
+
+        [Test]
+        public void SetNav1ActiveFrequency()
+        {
+            // Arrange
+            double freq = 110.7;
+
+            // Act
+            _manager.SetNav1ActiveFrequency(freq);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Nav1ActiveFrequency, Is.EqualTo(freq));
+        }
+
+        [Test]
+        public void SetNav2StandbyFrequency()
+        {
+            // Arrange
+            double freq = 110.7;
+
+            // Act
+            _manager.SetNav2StandbyFrequency(freq);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Nav2StandbyFrequency, Is.EqualTo(freq));
+        }
+
+        [Test]
+        public void SetNav2ActiveFrequency()
+        {
+            // Arrange
+            double freq = 110.7;
+
+            // Act
+            _manager.SetNav2ActiveFrequency(freq);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Nav2ActiveFrequency, Is.EqualTo(freq));
+        }
+
+        [Test]
+        public void SwapNav1()
+        {
+            // Arrange
+            double freq = 110.7;
+            _manager.SetNav1StandbyFrequency(freq);
+            _manager.SetNav1ActiveFrequency(125.000d);
+
+            // Act
+            _manager.Nav1Swap();
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Nav1ActiveFrequency, Is.EqualTo(freq));
+        }
+
+        [Test]
+        public void SwapNav2()
+        {
+            // Arrange
+            double freq = 110.7;
+            _manager.SetNav2StandbyFrequency(freq);
+            _manager.SetNav2ActiveFrequency(125.000d);
+
+            // Act
+            _manager.Nav2Swap();
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Nav2ActiveFrequency, Is.EqualTo(freq));
+        }
+
+        #endregion
+
+        [Test]
+        public void TransponderCode()
+        {
+            // Arrange
+            uint code = 7700;
+
+            // Act
+            _manager.SetTransponderCode(code);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.TransponderCode, Is.EqualTo(code));
         }
     }
 }

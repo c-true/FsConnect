@@ -5,6 +5,9 @@ using Microsoft.FlightSimulator.SimConnect;
 
 namespace CTrue.FsConnect.Managers
 {
+    /// <summary>
+    /// Specifies how to request data from MSFS.
+    /// </summary>
     public enum RequestMethod
     {
         Poll,
@@ -26,6 +29,9 @@ namespace CTrue.FsConnect.Managers
     /// </remarks>
     public interface IAircraftManager<T> : IDisposable where T : struct
     {
+        /// <summary>
+        /// The <see cref="Updated"/> event is raised when the aircraft info is updated.
+        /// </summary>
         event EventHandler<AircraftInfoUpdatedEventArgs<T>> Updated;
 
         /// <summary>
