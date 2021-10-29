@@ -42,6 +42,8 @@ namespace CTrue.FsConnect.Managers.Test
 
             // Assert
             Assert.That(_manager.HeadingBug, Is.GreaterThan(0));
+            Assert.That(_manager.Altitude, Is.GreaterThan(0));
+            Assert.That(_manager.VerticalSpeed, Is.GreaterThan(0));
         }
 
         [Test]
@@ -56,6 +58,37 @@ namespace CTrue.FsConnect.Managers.Test
             // Assert
             _manager.Update();
             Assert.That(_manager.HeadingBug, Is.EqualTo(heading));
+        }
+
+
+        [Test]
+        public void SetAltitudeLock()
+        {
+            // Arrange
+            double altitude = 14000;
+
+            // Act
+            _manager.SetAltitude(altitude);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.Altitude, Is.EqualTo(altitude));
+        }
+
+
+
+        [Test]
+        public void SetVerticalSpeed()
+        {
+            // Arrange
+            double verticalSpeed = 800;
+
+            // Act
+            _manager.SetVerticalSpeed(verticalSpeed);
+
+            // Assert
+            _manager.Update();
+            Assert.That(_manager.VerticalSpeed, Is.EqualTo(verticalSpeed));
         }
     }
 }
