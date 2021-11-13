@@ -22,10 +22,29 @@ namespace CTrue.FsConnect.Managers
         double HeadingBug { get; }
 
         /// <summary>
+        /// Gets the current autopilot altitude, in feets.
+        /// </summary>
+        double Altitude { get; }
+
+        double VerticalSpeed { get; }
+
+        /// <summary>
         /// Sets the autopilot heading bug, in degrees.
         /// </summary>
         /// <param name="heading"></param>
         void SetHeadingBug(double heading);
+
+        /// <summary>
+        /// Sets the autopilot altitude, in degrees.
+        /// </summary>
+        /// <param name="altitude"></param>
+        void SetAltitude(double altitude);
+
+        /// <summary>
+        /// Sets the autopilot vertical speed, in feet per minute
+        /// </summary>
+        /// <param name="verticalSpeed"></param>
+        void SetVerticalSpeed(double verticalSpeed);
     }
 
     /// <inheritdoc />
@@ -38,9 +57,16 @@ namespace CTrue.FsConnect.Managers
         private int _autoPilotManagerSimVarsDefId;
 
         private int _headingBugSetEventId;
+        private int _altitudeSetEventId;
+        private int _verticalSpeedSetEventId;
 
         /// <inheritdoc />
         public double HeadingBug { get; private set; }
+
+        /// <inheritdoc />
+        public double Altitude { get; private set; }
+
+        public double VerticalSpeed { get; private set; }
 
         /// <summary>
         /// Creates a new <see cref="AutopilotManager"/> instance.
@@ -63,6 +89,13 @@ namespace CTrue.FsConnect.Managers
             _headingBugSetEventId = _fsConnect.GetNextId();
             _fsConnect.MapClientEventToSimEvent(_eventGroupId, _headingBugSetEventId, FsEventNameId.HeadingBugSet);
 
+            _altitudeSetEventId = _fsConnect.GetNextId();
+            _fsConnect.MapClientEventToSimEvent(_eventGroupId, _altitudeSetEventId, FsEventNameId.ApAltVarSetEnglish);
+
+            _verticalSpeedSetEventId = _fsConnect.GetNextId();
+            _fsConnect.MapClientEventToSimEvent(_eventGroupId, _verticalSpeedSetEventId, FsEventNameId.ApVsVarSetEnglish);
+
+
             _fsConnect.SetNotificationGroupPriority(_eventGroupId);
         }
 
@@ -82,6 +115,8 @@ namespace CTrue.FsConnect.Managers
             WaitForUpdate();
 
             HeadingBug = _autopilotSimVars.HeadingBug;
+            Altitude = _autopilotSimVars.Altitude;
+            VerticalSpeed = _autopilotSimVars.VerticalSpeed;
         }
 
         /// <inheritdoc />
@@ -90,11 +125,30 @@ namespace CTrue.FsConnect.Managers
             _fsConnect.TransmitClientEvent(_headingBugSetEventId, (uint)heading, _eventGroupId);
         }
 
+        /// <inheritdoc />
+        public void SetAltitude(double altitude)
+        {
+            _fsConnect.TransmitClientEvent(_altitudeSetEventId, (uint)altitude, _eventGroupId);
+        }
+
+        /// <inheritdoc />
+        public void SetVerticalSpeed(double verticalSpeed)
+        {
+            _fsConnect.TransmitClientEvent(_verticalSpeedSetEventId, (uint)verticalSpeed, _eventGroupId);
+        }
+
+
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Ansi, Pack = 1)]
         internal struct AutopilotSimVars
         {
             [SimVar(NameId = FsSimVar.AutopilotHeadingLockDir, UnitId = FsUnit.Degree)]
             public double HeadingBug;
+
+            [SimVar(NameId = FsSimVar.AutopilotAltitudeLockVar, UnitId = FsUnit.Feet)]
+            public double Altitude;
+
+            [SimVar(NameId = FsSimVar.AutopilotVerticalHoldVar, UnitId = FsUnit.FeetPerMinute)]
+            public double VerticalSpeed;
         }
     }
 }
