@@ -58,6 +58,11 @@ namespace CTrue.FsConnect
         event EventHandler Crashed;
 
         /// <summary>
+        /// 
+        /// </summary>
+        event EventHandler InputEventRaised;
+
+        /// <summary>
         /// Gets a boolean value indication whether a connection to Flight Simulator is established.
         /// </summary>
         bool Connected { get; }

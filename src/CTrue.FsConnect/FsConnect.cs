@@ -40,7 +40,26 @@ namespace CTrue.FsConnect
 
         enum GROUP_IDS
         {
-            GROUP_1 = 98,
+            GROUP_1 = 98
+        }
+
+        public enum GroupIds
+        {
+            JOYSTICK_EVENT_KEY_GROUP = 200,
+            INPUT_KEY_GROUP = 201,
+            JOYSTICK_EVENT_KEY_GROUP2 = 203,
+            INPUT_KEY_GROUP2 = 204
+        }
+
+        public enum EventIds
+        {
+            JOYSTICK_BUTTON1 = 300,
+            JOYSTICK_BUTTON2 = 301
+        }
+
+        public enum SimConnectEnums : uint
+        {
+            SIMCONNECT_UNUSED = 4294967295
         }
 
         #endregion
@@ -73,6 +92,9 @@ namespace CTrue.FsConnect
         public event EventHandler Crashed;
 
         /// <inheritdoc />
+        public event EventHandler InputEventRaised;
+
+        /// <inheritdoc />
         public bool Connected
         {
             get => _connectionInfo.Connected;
@@ -95,6 +117,14 @@ namespace CTrue.FsConnect
 
         /// <inheritdoc />
         public bool Paused => _paused;
+
+        /// <summary>
+        /// Experimental: Set this to set up an input event handler, raising the <see cref="InputEventRaised"/> event when triggered.
+        /// </summary>
+        /// <remarks>
+        /// Example: "joystick:1:button:0"
+        /// </remarks>
+        public string InputEventDefintion { get; set; } = string.Empty;
 
         /// <inheritdoc />
         public void Connect(string applicationName, uint configIndex = 0)
@@ -137,6 +167,29 @@ namespace CTrue.FsConnect
             _simConnect.MapClientEventToSimEvent(SimEvents.PauseSet, "PAUSE_SET");
         }
 
+        void RegisterInputEvent(Enum joystickButtonEventId, Enum joystickButtonEventGroup, Enum inputGroup, string inputDefinition)
+        {
+            // Setup client event
+            _simConnect.MapClientEventToSimEvent(joystickButtonEventId, null);
+            _simConnect.AddClientEventToNotificationGroup(joystickButtonEventGroup, joystickButtonEventId, false);
+            _simConnect.SetNotificationGroupPriority(joystickButtonEventGroup, 1);
+
+            // Setup input event mapping
+            _simConnect.MapInputEventToClientEvent(
+                inputGroup,
+                inputDefinition,
+                joystickButtonEventId,
+                1,
+                SimConnectEnums.SIMCONNECT_UNUSED,
+                0,
+                false
+            );
+
+            _simConnect.SetInputGroupPriority(inputGroup, 1);
+
+            Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", joystickButtonEventGroup, joystickButtonEventId, inputDefinition);
+        }
+
         /// <inheritdoc />
         public void Connect(string applicationName, string hostName, uint port, SimConnectProtocol protocol)
         {
@@ -163,6 +216,10 @@ namespace CTrue.FsConnect
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.ObjectAdded);
 
                 _simConnect.RemoveClientEvent(GROUP_IDS.GROUP_1, SimEvents.PauseSet);
+                
+                if(!string.IsNullOrEmpty(InputEventDefintion))
+                    _simConnect.RemoveClientEvent(GroupIds.INPUT_KEY_GROUP, EventIds.JOYSTICK_BUTTON1);
+
                 _simConnectReceiveThread.Abort();
                 _simConnectReceiveThread.Join();
 
@@ -379,6 +436,22 @@ namespace CTrue.FsConnect
             _connectionInfo.SimConnectBuild = $"{data.dwSimConnectBuildMajor}.{data.dwSimConnectBuildMinor}";
 
             Connected = true;
+
+            if(!string.IsNullOrEmpty(InputEventDefintion))
+            {
+                // Do this after getting the OnRecvOpen event, otherwise connection will fail.
+
+                uint joystickId = 1; // Look at the USB game controller app and determine other of joysticks
+                uint joystickButtonId = 0; // Use app and see which buttons are mapped to a button id
+                //string inputDefinition = $"joystick:{joystickId}:button:{joystickButtonId}";
+                RegisterInputEvent(EventIds.JOYSTICK_BUTTON1, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, InputEventDefintion);
+
+                // TODO later: Generalize concept around registering input events
+                //joystickId = 1;
+                //joystickButtonId = 1;
+                //inputDefinition = $"joystick:{joystickId}:button:{joystickButtonId}";
+                //RegisterInputEvent(EventIds.JOYSTICK_BUTTON2, GroupIds.JOYSTICK_EVENT_KEY_GROUP2, GroupIds.INPUT_KEY_GROUP2, inputDefinition);
+            }
         }
 
         private void SimConnect_OnRecvQuit(SimConnect sender, SIMCONNECT_RECV data)
@@ -389,7 +462,7 @@ namespace CTrue.FsConnect
 
         private void SimConnect_OnRecvEvent(SimConnect sender, SIMCONNECT_RECV_EVENT data)
         {
-            Log.Debug("OnRecvEvent (S: {Size}, V: {Version}, I: {Id}) {GroupId}, {EventId}, {Data}", data.dwSize, data.dwVersion, data.dwID, data.uGroupID, data.uEventID, data.dwData);
+            Log.Debug("OnRecvEvent ({Size}b/{Version}/{Id}) g:{GroupId}, e:{EventId}, d:{Data}", data.dwSize, data.dwVersion, data.dwID, data.uGroupID, data.uEventID, data.dwData);
 
             if (data.uEventID == (uint)SimEvents.EVENT_AIRCRAFT_LOAD)
             {
@@ -417,14 +490,20 @@ namespace CTrue.FsConnect
                 Log.Debug("ClientEvent: Paused: {Paused}", _paused);
                 PauseStateChanged?.Invoke(this, new PauseStateChangedEventArgs() { Paused = data.dwData == 1 });
             }
+            else if (data.uGroupID == (uint)GroupIds.JOYSTICK_EVENT_KEY_GROUP)
+            {
+                if (data.uEventID == (uint)EventIds.JOYSTICK_BUTTON1)
+                {
+                    Log.Information("ClientEvent: Input event 1 event: {dwData}", data.dwData);
+                    InputEventRaised?.Invoke(this, EventArgs.Empty);
+                }
+            }
         }
 
         private void SimConnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
         {
             Log.Warning("OnRecvException ({Size}b/{Version}/{Id}) Exception: {Exception}, SendId: {SendId}, Index: {Index}", data.dwSize, data.dwVersion, data.dwID, ((FsException)data.dwException).ToString(), data.dwSendID, data.dwIndex);
-
-            SIMCONNECT_EXCEPTION eException = (SIMCONNECT_EXCEPTION)data.dwException;
-
+           
             FsError?.Invoke(this, new FsErrorEventArgs()
             {
                 ExceptionCode = (FsException)data.dwException,
