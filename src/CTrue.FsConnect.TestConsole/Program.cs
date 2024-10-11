@@ -44,7 +44,7 @@ namespace CTrue.FsConnect.TestConsole
             {
                 _fsConnect = new FsConnect();
 
-                _fsConnect.InputEventDefintion = "joystick:1:button:0";
+                _fsConnect.InputEventDefintion = "joystick:0:button:0";
                 //_fsConnect.InputEventDefintion = "w";
 
                 _fsConnect.InputEventRaised += (sender, args) => { Console.WriteLine("Input event raised"); };

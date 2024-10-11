@@ -21,6 +21,8 @@ namespace CTrue.FsConnect
         private readonly FsConnectionInfo _connectionInfo = new FsConnectionInfo();
         private bool _paused = false;
         private int _nextId = (int)FsConnectEnum.Base;
+        
+        private Dictionary<uint, InputEventInfo> _inputEventInfoDictionary = new Dictionary<uint, InputEventInfo>();
 
         #region Simconnect structures
 
@@ -51,7 +53,7 @@ namespace CTrue.FsConnect
             INPUT_KEY_GROUP2 = 204
         }
 
-        public enum EventIds
+        public enum EventIds : uint
         {
             JOYSTICK_BUTTON1 = 300,
             JOYSTICK_BUTTON2 = 301
@@ -118,12 +120,7 @@ namespace CTrue.FsConnect
         /// <inheritdoc />
         public bool Paused => _paused;
 
-        /// <summary>
-        /// Experimental: Set this to set up an input event handler, raising the <see cref="InputEventRaised"/> event when triggered.
-        /// </summary>
-        /// <remarks>
-        /// Example: "joystick:1:button:0"
-        /// </remarks>
+        /// <inheritdoc />
         public string InputEventDefintion { get; set; } = string.Empty;
 
         /// <inheritdoc />
@@ -167,27 +164,29 @@ namespace CTrue.FsConnect
             _simConnect.MapClientEventToSimEvent(SimEvents.PauseSet, "PAUSE_SET");
         }
 
-        void RegisterInputEvent(Enum joystickButtonEventId, Enum joystickButtonEventGroup, Enum inputGroup, string inputDefinition)
+        public void RegisterInputEvent(InputEventInfo inputEventInfo)
         {
             // Setup client event
-            _simConnect.MapClientEventToSimEvent(joystickButtonEventId, null);
-            _simConnect.AddClientEventToNotificationGroup(joystickButtonEventGroup, joystickButtonEventId, false);
-            _simConnect.SetNotificationGroupPriority(joystickButtonEventGroup, 1);
+            _simConnect.MapClientEventToSimEvent(inputEventInfo.JoystickButtonEventId, null);
+            _simConnect.AddClientEventToNotificationGroup(inputEventInfo.JoystickButtonEventGroup, inputEventInfo.JoystickButtonEventId, false);
+            _simConnect.SetNotificationGroupPriority(inputEventInfo.JoystickButtonEventGroup, 1);
 
             // Setup input event mapping
             _simConnect.MapInputEventToClientEvent(
-                inputGroup,
-                inputDefinition,
-                joystickButtonEventId,
+                inputEventInfo.InputGroup,
+                inputEventInfo.InputDefinition,
+                inputEventInfo.JoystickButtonEventId,
                 1,
                 SimConnectEnums.SIMCONNECT_UNUSED,
                 0,
                 false
             );
 
-            _simConnect.SetInputGroupPriority(inputGroup, 1);
+            _simConnect.SetInputGroupPriority(inputEventInfo.InputGroup, 1);
 
-            Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", joystickButtonEventGroup, joystickButtonEventId, inputDefinition);
+            //_inputEventInfoDictionary.Add((uint)inputEventInfo.JoystickButtonEventGroup, inputEventInfo);
+
+            Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", inputEventInfo.JoystickButtonEventGroup, inputEventInfo.JoystickButtonEventId, inputEventInfo.InputDefinition);
         }
 
         /// <inheritdoc />
@@ -441,10 +440,9 @@ namespace CTrue.FsConnect
             {
                 // Do this after getting the OnRecvOpen event, otherwise connection will fail.
 
-                uint joystickId = 1; // Look at the USB game controller app and determine other of joysticks
-                uint joystickButtonId = 0; // Use app and see which buttons are mapped to a button id
-                //string inputDefinition = $"joystick:{joystickId}:button:{joystickButtonId}";
-                RegisterInputEvent(EventIds.JOYSTICK_BUTTON1, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, InputEventDefintion);
+                InputEventInfo iei = new InputEventInfo(EventIds.JOYSTICK_BUTTON1, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, InputEventDefintion,
+                    () => { Log.Information("Input event"); });
+                RegisterInputEvent(iei);
 
                 // TODO later: Generalize concept around registering input events
                 //joystickId = 1;
