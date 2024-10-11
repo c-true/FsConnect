@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net45</TargetFramework>
+		<TargetFramework>net481</TargetFramework>
 		<Product>Flight Simulator Connect</Product>
 		<Copyright />
 		<Description>
@@ -36,7 +36,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Serilog" Version="2.10.0" />
+		<PackageReference Include="Serilog" />
 	</ItemGroup>
 
 </Project>
