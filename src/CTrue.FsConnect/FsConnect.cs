@@ -184,7 +184,7 @@ namespace CTrue.FsConnect
 
             _simConnect.SetInputGroupPriority(inputEventInfo.InputGroup, 1);
 
-            //_inputEventInfoDictionary.Add((uint)inputEventInfo.JoystickButtonEventGroup, inputEventInfo);
+            _inputEventInfoDictionary.Add((uint)(object)inputEventInfo.JoystickButtonEventGroup, inputEventInfo);
 
             Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", inputEventInfo.JoystickButtonEventGroup, inputEventInfo.JoystickButtonEventId, inputEventInfo.InputDefinition);
         }
@@ -494,6 +494,14 @@ namespace CTrue.FsConnect
                 {
                     Log.Information("ClientEvent: Input event 1 event: {dwData}", data.dwData);
                     InputEventRaised?.Invoke(this, EventArgs.Empty);
+                }
+            }
+            else if (_inputEventInfoDictionary.TryGetValue(data.uGroupID, out var iei))
+            {
+                Log.Information("Handling input event: {uGroupID} / {uEventID}", data.uGroupID, data.uEventID);
+                if (data.uEventID == (uint)(object)iei.JoystickButtonEventId) ;
+                {
+                    iei.RaiseInputEvent();
                 }
             }
         }
