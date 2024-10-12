@@ -3,7 +3,7 @@
 	<PropertyGroup Label="Custom Variables">
 		<MajorVersion>1</MajorVersion>
 		<MinorVersion>3</MinorVersion>
-		<PatchLevel>4</PatchLevel>
+		<PatchLevel>5</PatchLevel>
 		<BuildCounter>0</BuildCounter>
 		<Tag>-alpha</Tag>
 		<GitCommitId></GitCommitId>

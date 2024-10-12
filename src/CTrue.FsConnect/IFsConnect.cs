@@ -58,11 +58,6 @@ namespace CTrue.FsConnect
         event EventHandler Crashed;
 
         /// <summary>
-        /// 
-        /// </summary>
-        event EventHandler InputEventRaised;
-
-        /// <summary>
         /// Gets a boolean value indication whether a connection to Flight Simulator is established.
         /// </summary>
         bool Connected { get; }
@@ -328,13 +323,9 @@ namespace CTrue.FsConnect
         int GetNextId();
 
         /// <summary>
-        /// Experimental: Set this to set up an input event handler, raising the <see cref="InputEventRaised"/> event when triggered.
+        /// Registers handling of an input event.
         /// </summary>
-        /// <remarks>
-        /// Example: "joystick:1:button:0"
-        /// </remarks>
-        string InputEventDefintion { get; set; }
-
+        /// <param name="inputEventInfo"></param>
         void RegisterInputEvent(InputEventInfo inputEventInfo);
     }
 }

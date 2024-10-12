@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net481</TargetFramework>
+		<TargetFramework>net461</TargetFramework>
 		<Product>Flight Simulator Connect</Product>
 		<Copyright />
 		<Description>
@@ -23,14 +23,14 @@
 
 	<ItemGroup>
 		<Reference Include="Microsoft.FlightSimulator.SimConnect">
-			<HintPath>..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
+			<HintPath>..\Dependencies\SimConnect\lib\net461\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
 		</Reference>
 	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\Dependencies\SimConnect\build\simconnect.dll" Visible="false" Pack="true" PackagePath="build" />
 		<None Include="..\Dependencies\SimConnect\build\CTrue.FsConnect.targets" Visible="false" Pack="true" PackagePath="build" />
-		<None Include="..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net45" />
+		<None Include="..\Dependencies\SimConnect\lib\net461\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net461" />
 		<None Include="..\..\README.md" Pack="true" PackagePath="$(PackageReadmeFile)" />
 		<None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
 	</ItemGroup>

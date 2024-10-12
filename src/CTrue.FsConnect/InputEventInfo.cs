@@ -4,17 +4,17 @@ namespace CTrue.FsConnect
 {
     public class InputEventInfo
     {
-        public Enum JoystickButtonEventId { get; }
-        public Enum JoystickButtonEventGroup { get; }
+        public Enum ClientEventId { get; }
+        public Enum NotificationGroupId { get; }
         public Enum InputGroup { get; }
         public string InputDefinition { get; }
 
         public InputEventRaised InputEventRaisedDelegate { get; }
 
-        public InputEventInfo(Enum joystickButtonEventId, Enum joystickButtonEventGroup, Enum inputGroup, string inputDefinition, InputEventRaised inputEventRaisedDelegate)
+        public InputEventInfo(Enum clientEventId, Enum notificationGroupId, Enum inputGroup, string inputDefinition, InputEventRaised inputEventRaisedDelegate)
         {
-            JoystickButtonEventId = joystickButtonEventId;
-            JoystickButtonEventGroup = joystickButtonEventGroup;
+            ClientEventId = clientEventId;
+            NotificationGroupId = notificationGroupId;
             InputGroup = inputGroup;
             InputDefinition = inputDefinition;
             InputEventRaisedDelegate = inputEventRaisedDelegate;

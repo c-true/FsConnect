@@ -13,20 +13,19 @@ namespace CTrue.FsConnect
     /// <inheritdoc />
     public class FsConnect : IFsConnect
     {
-        
         private SimConnect _simConnect = null;
 
-        private EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
+        private readonly EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
+        private readonly List<InputEventInfo> _inputEventInfoList = new List<InputEventInfo>();
+
         private Thread _simConnectReceiveThread = null;
         private readonly FsConnectionInfo _connectionInfo = new FsConnectionInfo();
         private bool _paused = false;
         private int _nextId = (int)FsConnectEnum.Base;
         
-        private Dictionary<uint, InputEventInfo> _inputEventInfoDictionary = new Dictionary<uint, InputEventInfo>();
-
         #region Simconnect structures
 
-        private enum SimEvents
+        private enum SimEvents : uint
         {
             EVENT_AIRCRAFT_LOAD,
             EVENT_FLIGHT_LOAD,
@@ -40,28 +39,9 @@ namespace CTrue.FsConnect
             SetText
         }
 
-        enum GROUP_IDS
+        enum GROUP_IDS : uint
         {
             GROUP_1 = 98
-        }
-
-        public enum GroupIds
-        {
-            JOYSTICK_EVENT_KEY_GROUP = 200,
-            INPUT_KEY_GROUP = 201,
-            JOYSTICK_EVENT_KEY_GROUP2 = 203,
-            INPUT_KEY_GROUP2 = 204
-        }
-
-        public enum EventIds : uint
-        {
-            JOYSTICK_BUTTON1 = 300,
-            JOYSTICK_BUTTON2 = 301
-        }
-
-        public enum SimConnectEnums : uint
-        {
-            SIMCONNECT_UNUSED = 4294967295
         }
 
         #endregion
@@ -94,9 +74,6 @@ namespace CTrue.FsConnect
         public event EventHandler Crashed;
 
         /// <inheritdoc />
-        public event EventHandler InputEventRaised;
-
-        /// <inheritdoc />
         public bool Connected
         {
             get => _connectionInfo.Connected;
@@ -119,9 +96,6 @@ namespace CTrue.FsConnect
 
         /// <inheritdoc />
         public bool Paused => _paused;
-
-        /// <inheritdoc />
-        public string InputEventDefintion { get; set; } = string.Empty;
 
         /// <inheritdoc />
         public void Connect(string applicationName, uint configIndex = 0)
@@ -164,29 +138,30 @@ namespace CTrue.FsConnect
             _simConnect.MapClientEventToSimEvent(SimEvents.PauseSet, "PAUSE_SET");
         }
 
+        /// <inheritdoc />
         public void RegisterInputEvent(InputEventInfo inputEventInfo)
         {
             // Setup client event
-            _simConnect.MapClientEventToSimEvent(inputEventInfo.JoystickButtonEventId, null);
-            _simConnect.AddClientEventToNotificationGroup(inputEventInfo.JoystickButtonEventGroup, inputEventInfo.JoystickButtonEventId, false);
-            _simConnect.SetNotificationGroupPriority(inputEventInfo.JoystickButtonEventGroup, 1);
+            _simConnect.MapClientEventToSimEvent(inputEventInfo.ClientEventId, null);
+            _simConnect.AddClientEventToNotificationGroup(inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, false);
+            _simConnect.SetNotificationGroupPriority(inputEventInfo.NotificationGroupId, 1);
 
             // Setup input event mapping
             _simConnect.MapInputEventToClientEvent(
                 inputEventInfo.InputGroup,
                 inputEventInfo.InputDefinition,
-                inputEventInfo.JoystickButtonEventId,
+                inputEventInfo.ClientEventId,
                 1,
-                SimConnectEnums.SIMCONNECT_UNUSED,
+                (FsConnectEnum)SimConnect.SIMCONNECT_UNUSED,
                 0,
                 false
             );
 
             _simConnect.SetInputGroupPriority(inputEventInfo.InputGroup, 1);
 
-            _inputEventInfoDictionary.Add((uint)(object)inputEventInfo.JoystickButtonEventGroup, inputEventInfo);
+            _inputEventInfoList.Add(inputEventInfo);
 
-            Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", inputEventInfo.JoystickButtonEventGroup, inputEventInfo.JoystickButtonEventId, inputEventInfo.InputDefinition);
+            Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, inputEventInfo.InputDefinition);
         }
 
         /// <inheritdoc />
@@ -206,6 +181,7 @@ namespace CTrue.FsConnect
 
             try
             {
+                Log.Debug("Disconnecting from Flight Simulator. Unsubscribing from events.");
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_AIRCRAFT_LOAD);
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_FLIGHT_LOAD);
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_PAUSED);
@@ -216,8 +192,11 @@ namespace CTrue.FsConnect
 
                 _simConnect.RemoveClientEvent(GROUP_IDS.GROUP_1, SimEvents.PauseSet);
                 
-                if(!string.IsNullOrEmpty(InputEventDefintion))
-                    _simConnect.RemoveClientEvent(GroupIds.INPUT_KEY_GROUP, EventIds.JOYSTICK_BUTTON1);
+                _inputEventInfoList.ForEach(iei =>
+                {
+                    _simConnect.RemoveClientEvent(iei.NotificationGroupId, iei.ClientEventId);
+                    _simConnect.RemoveInputEvent(iei.InputGroup, iei.InputDefinition);
+                });
 
                 _simConnectReceiveThread.Abort();
                 _simConnectReceiveThread.Join();
@@ -247,6 +226,8 @@ namespace CTrue.FsConnect
 
                 Connected = false;
             }
+
+            Log.Information("Disconnected from Flight Simulator");
         }
 
         #region RegisterDataDefinition
@@ -435,21 +416,6 @@ namespace CTrue.FsConnect
             _connectionInfo.SimConnectBuild = $"{data.dwSimConnectBuildMajor}.{data.dwSimConnectBuildMinor}";
 
             Connected = true;
-
-            if(!string.IsNullOrEmpty(InputEventDefintion))
-            {
-                // Do this after getting the OnRecvOpen event, otherwise connection will fail.
-
-                InputEventInfo iei = new InputEventInfo(EventIds.JOYSTICK_BUTTON1, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, InputEventDefintion,
-                    () => { Log.Information("Input event"); });
-                RegisterInputEvent(iei);
-
-                // TODO later: Generalize concept around registering input events
-                //joystickId = 1;
-                //joystickButtonId = 1;
-                //inputDefinition = $"joystick:{joystickId}:button:{joystickButtonId}";
-                //RegisterInputEvent(EventIds.JOYSTICK_BUTTON2, GroupIds.JOYSTICK_EVENT_KEY_GROUP2, GroupIds.INPUT_KEY_GROUP2, inputDefinition);
-            }
         }
 
         private void SimConnect_OnRecvQuit(SimConnect sender, SIMCONNECT_RECV data)
@@ -488,22 +454,19 @@ namespace CTrue.FsConnect
                 Log.Debug("ClientEvent: Paused: {Paused}", _paused);
                 PauseStateChanged?.Invoke(this, new PauseStateChangedEventArgs() { Paused = data.dwData == 1 });
             }
-            else if (data.uGroupID == (uint)GroupIds.JOYSTICK_EVENT_KEY_GROUP)
-            {
-                if (data.uEventID == (uint)EventIds.JOYSTICK_BUTTON1)
-                {
-                    Log.Information("ClientEvent: Input event 1 event: {dwData}", data.dwData);
-                    InputEventRaised?.Invoke(this, EventArgs.Empty);
-                }
-            }
-            else if (_inputEventInfoDictionary.TryGetValue(data.uGroupID, out var iei))
+            else if (GetInputEventHandler(data.uGroupID, data.uEventID, out var iei))
             {
                 Log.Information("Handling input event: {uGroupID} / {uEventID}", data.uGroupID, data.uEventID);
-                if (data.uEventID == (uint)(object)iei.JoystickButtonEventId) ;
-                {
-                    iei.RaiseInputEvent();
-                }
+                iei.RaiseInputEvent();
             }
+        }
+
+        private bool GetInputEventHandler(uint groupId, uint eventId, out InputEventInfo iei)
+        {
+            iei = _inputEventInfoList.FirstOrDefault(i =>
+                (uint)(object)i.NotificationGroupId == groupId && (uint)(object)i.ClientEventId == eventId);
+
+            return iei != null;
         }
 
         private void SimConnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
