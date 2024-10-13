@@ -326,6 +326,7 @@ namespace CTrue.FsConnect
         /// Registers handling of an input event.
         /// </summary>
         /// <param name="inputEventInfo"></param>
-        void RegisterInputEvent(InputEventInfo inputEventInfo);
+        /// <returns>Returns true if input event was registered, false if already registered.</returns>
+        bool RegisterInputEvent(InputEventInfo inputEventInfo);
     }
 }

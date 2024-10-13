@@ -139,8 +139,15 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
-        public void RegisterInputEvent(InputEventInfo inputEventInfo)
+        public bool RegisterInputEvent(InputEventInfo inputEventInfo)
         {
+            if (GetInputEventHandler((uint)(object)inputEventInfo.NotificationGroupId,
+                    (uint)(object)inputEventInfo.ClientEventId, out _))
+            {
+                Log.Warning("Input event already registered  g:{inputGroup} e:{inputEventId} '{inputDefinition}'", inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, inputEventInfo.InputDefinition);
+                return false;
+            }
+
             // Setup client event
             _simConnect.MapClientEventToSimEvent(inputEventInfo.ClientEventId, null);
             _simConnect.AddClientEventToNotificationGroup(inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, false);
@@ -162,6 +169,8 @@ namespace CTrue.FsConnect
             _inputEventInfoList.Add(inputEventInfo);
 
             Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, inputEventInfo.InputDefinition);
+
+            return true;
         }
 
         /// <inheritdoc />
