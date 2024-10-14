@@ -1,44 +1,42 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net45</TargetFramework>
-    <Company>C-True</Company>
-    <Product>Flight Simulator Connect</Product>
-    <Copyright />
-    <Description>An easy to use wrapper for SimConnect, for connection to Flight Simulator 2020.
-Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0.10.0 release.</Description>
-    <Authors>C-True</Authors>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
-    <PackageTags>msfs flight-simulator simconnect</PackageTags>
-    <Version>1.3.3</Version>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <PackageReleaseNotes>Added and updated some method signatures. * Added event ids for setting COM and NAV frequencies.</PackageReleaseNotes>
-    <AssemblyVersion>1.3.3.0</AssemblyVersion>
-    <FileVersion>1.3.3.0</FileVersion>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net461</TargetFramework>
+		<Product>Flight Simulator Connect</Product>
+		<Copyright />
+		<Description>
+			An easy to use wrapper for SimConnect, for connection to Flight Simulator 2020.
+			Contains SimConnect binaries, as distributed by the Flight Simulator 20202 SDK 0.10.0 release.
+		</Description>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+		<PackageTags>msfs flight-simulator simconnect</PackageTags>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<PackageReleaseNotes>Support for registering input events. * Updated SDK version to 0.24.3.0</PackageReleaseNotes>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <PlatformTarget>x64</PlatformTarget>
-  </PropertyGroup>
+	<PropertyGroup>
+		<PlatformTarget>x64</PlatformTarget>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="Microsoft.FlightSimulator.SimConnect">
-      <HintPath>..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
-    </Reference>
-  </ItemGroup>
+	<ItemGroup>
+		<Reference Include="Microsoft.FlightSimulator.SimConnect">
+			<HintPath>..\Dependencies\SimConnect\lib\net461\Microsoft.FlightSimulator.SimConnect.dll</HintPath>
+		</Reference>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\Dependencies\SimConnect\build\simconnect.dll" Visible="false" Pack="true" PackagePath="build" />
-    <None Include="..\Dependencies\SimConnect\build\CTrue.FsConnect.targets" Visible="false" Pack="true" PackagePath="build" />
-    <None Include="..\Dependencies\SimConnect\lib\net40\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net45" />
-    <None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\Dependencies\SimConnect\build\simconnect.dll" Visible="false" Pack="true" PackagePath="build" />
+		<None Include="..\Dependencies\SimConnect\build\CTrue.FsConnect.targets" Visible="false" Pack="true" PackagePath="build" />
+		<None Include="..\Dependencies\SimConnect\lib\net461\Microsoft.FlightSimulator.SimConnect.dll" Visible="false" Pack="true" PackagePath="lib\net461" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="$(PackageReadmeFile)" />
+		<None Include="licenses\LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Serilog" Version="2.10.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Serilog" />
+	</ItemGroup>
 
 </Project>

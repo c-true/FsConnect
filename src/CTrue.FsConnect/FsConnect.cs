@@ -13,18 +13,19 @@ namespace CTrue.FsConnect
     /// <inheritdoc />
     public class FsConnect : IFsConnect
     {
-        
         private SimConnect _simConnect = null;
 
-        private EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
+        private readonly EventWaitHandle _simConnectEventHandle = new EventWaitHandle(false, EventResetMode.AutoReset);
+        private readonly List<InputEventInfo> _inputEventInfoList = new List<InputEventInfo>();
+
         private Thread _simConnectReceiveThread = null;
         private readonly FsConnectionInfo _connectionInfo = new FsConnectionInfo();
         private bool _paused = false;
         private int _nextId = (int)FsConnectEnum.Base;
-
+        
         #region Simconnect structures
 
-        private enum SimEvents
+        private enum SimEvents : uint
         {
             EVENT_AIRCRAFT_LOAD,
             EVENT_FLIGHT_LOAD,
@@ -38,9 +39,9 @@ namespace CTrue.FsConnect
             SetText
         }
 
-        enum GROUP_IDS
+        enum GROUP_IDS : uint
         {
-            GROUP_1 = 98,
+            GROUP_1 = 98
         }
 
         #endregion
@@ -138,6 +139,41 @@ namespace CTrue.FsConnect
         }
 
         /// <inheritdoc />
+        public bool RegisterInputEvent(InputEventInfo inputEventInfo)
+        {
+            if (GetInputEventHandler((uint)(object)inputEventInfo.NotificationGroupId,
+                    (uint)(object)inputEventInfo.ClientEventId, out _))
+            {
+                Log.Warning("Input event already registered  g:{inputGroup} e:{inputEventId} '{inputDefinition}'", inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, inputEventInfo.InputDefinition);
+                return false;
+            }
+
+            // Setup client event
+            _simConnect.MapClientEventToSimEvent(inputEventInfo.ClientEventId, inputEventInfo.ClientEventName);
+            _simConnect.AddClientEventToNotificationGroup(inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, false);
+            _simConnect.SetNotificationGroupPriority(inputEventInfo.NotificationGroupId, 1);
+
+            // Setup input event mapping
+            _simConnect.MapInputEventToClientEvent(
+                inputEventInfo.InputGroup,
+                inputEventInfo.InputDefinition,
+                inputEventInfo.ClientEventId,
+                1,
+                (FsConnectEnum)SimConnect.SIMCONNECT_UNUSED,
+                0,
+                false
+            );
+
+            _simConnect.SetInputGroupPriority(inputEventInfo.InputGroup, 1);
+
+            _inputEventInfoList.Add(inputEventInfo);
+
+            Log.Information("Input event g:{inputGroup} e:{inputEventId} registration complete for '{inputDefinition}'", inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, inputEventInfo.InputDefinition);
+
+            return true;
+        }
+
+        /// <inheritdoc />
         public void Connect(string applicationName, string hostName, uint port, SimConnectProtocol protocol)
         {
             if (applicationName == null) throw new ArgumentNullException(nameof(applicationName));
@@ -154,6 +190,7 @@ namespace CTrue.FsConnect
 
             try
             {
+                Log.Debug("Disconnecting from Flight Simulator. Unsubscribing from events.");
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_AIRCRAFT_LOAD);
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_FLIGHT_LOAD);
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.EVENT_PAUSED);
@@ -163,6 +200,13 @@ namespace CTrue.FsConnect
                 _simConnect.UnsubscribeFromSystemEvent(SimEvents.ObjectAdded);
 
                 _simConnect.RemoveClientEvent(GROUP_IDS.GROUP_1, SimEvents.PauseSet);
+                
+                _inputEventInfoList.ForEach(iei =>
+                {
+                    _simConnect.RemoveClientEvent(iei.NotificationGroupId, iei.ClientEventId);
+                    _simConnect.RemoveInputEvent(iei.InputGroup, iei.InputDefinition);
+                });
+
                 _simConnectReceiveThread.Abort();
                 _simConnectReceiveThread.Join();
 
@@ -191,6 +235,8 @@ namespace CTrue.FsConnect
 
                 Connected = false;
             }
+
+            Log.Information("Disconnected from Flight Simulator");
         }
 
         #region RegisterDataDefinition
@@ -389,7 +435,7 @@ namespace CTrue.FsConnect
 
         private void SimConnect_OnRecvEvent(SimConnect sender, SIMCONNECT_RECV_EVENT data)
         {
-            Log.Debug("OnRecvEvent (S: {Size}, V: {Version}, I: {Id}) {GroupId}, {EventId}, {Data}", data.dwSize, data.dwVersion, data.dwID, data.uGroupID, data.uEventID, data.dwData);
+            Log.Debug("OnRecvEvent ({Size}b/{Version}/{Id}) g:{GroupId}, e:{EventId}, d:{Data}", data.dwSize, data.dwVersion, data.dwID, data.uGroupID, data.uEventID, data.dwData);
 
             if (data.uEventID == (uint)SimEvents.EVENT_AIRCRAFT_LOAD)
             {
@@ -417,14 +463,25 @@ namespace CTrue.FsConnect
                 Log.Debug("ClientEvent: Paused: {Paused}", _paused);
                 PauseStateChanged?.Invoke(this, new PauseStateChangedEventArgs() { Paused = data.dwData == 1 });
             }
+            else if (GetInputEventHandler(data.uGroupID, data.uEventID, out var iei))
+            {
+                Log.Information("Handling input event: {uGroupID} / {uEventID}", data.uGroupID, data.uEventID);
+                iei.RaiseInputEvent();
+            }
+        }
+
+        private bool GetInputEventHandler(uint groupId, uint eventId, out InputEventInfo iei)
+        {
+            iei = _inputEventInfoList.FirstOrDefault(i =>
+                (uint)(object)i.NotificationGroupId == groupId && (uint)(object)i.ClientEventId == eventId);
+
+            return iei != null;
         }
 
         private void SimConnect_OnRecvException(SimConnect sender, SIMCONNECT_RECV_EXCEPTION data)
         {
             Log.Warning("OnRecvException ({Size}b/{Version}/{Id}) Exception: {Exception}, SendId: {SendId}, Index: {Index}", data.dwSize, data.dwVersion, data.dwID, ((FsException)data.dwException).ToString(), data.dwSendID, data.dwIndex);
-
-            SIMCONNECT_EXCEPTION eException = (SIMCONNECT_EXCEPTION)data.dwException;
-
+           
             FsError?.Invoke(this, new FsErrorEventArgs()
             {
                 ExceptionCode = (FsException)data.dwException,

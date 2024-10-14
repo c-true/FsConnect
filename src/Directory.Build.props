@@ -1,0 +1,27 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<PropertyGroup Label="Custom Variables">
+		<MajorVersion>1</MajorVersion>
+		<MinorVersion>4</MinorVersion>
+		<PatchLevel>0</PatchLevel>
+		<BuildCounter>0</BuildCounter>
+		<Tag></Tag>
+		<GitCommitId></GitCommitId>
+		<RootFolder>$([System.IO.Path]::GetDirectoryName($([MSBuild]::GetPathOfFileAbove('.gitignore', '$(MSBuildThisFileDirectory)'))))</RootFolder>
+		<ArtifactsFolder>$(RootFolder)\artifacts</ArtifactsFolder>
+		<Zip>false</Zip>
+	</PropertyGroup>
+
+	<PropertyGroup Label="Package">
+		<Version>$(MajorVersion).$(MinorVersion).$(PatchLevel)$(Tag)</Version>
+		<AssemblyVersion>$(MajorVersion).$(MinorVersion).$(PatchLevel).$(BuildCounter)</AssemblyVersion>
+		<FileVersion>$(MajorVersion).$(MinorVersion).$(PatchLevel).$(BuildCounter)</FileVersion>
+		<InformationalVersion>$(MajorVersion).$(MinorVersion).$(PatchLevel).$(BuildCounter)$(Tag)+$(GitCommitId)</InformationalVersion>
+		<Copyright />
+		<Authors>C-True</Authors>
+		<Company>C-True</Company>
+		<RepositoryType>git</RepositoryType>
+		<RepositoryUrl>https://github.com/c-true/FsConnect</RepositoryUrl>
+	</PropertyGroup>
+
+</Project>

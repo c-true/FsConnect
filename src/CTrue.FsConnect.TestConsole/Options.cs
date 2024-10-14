@@ -16,5 +16,11 @@ namespace CTrue.FsConnect.TestConsole
 
         [Option('l', "loglevel", HelpText = "Specifies the log level.", Default = LogEventLevel.Warning)]
         public LogEventLevel LogLevel { get; set; }
+
+        [Option('j', "joystick",
+            HelpText =
+                "Provide the joystick id, the index in list of joysticks, to handle joystick events. (Use Setup USB Game Controllers app)",
+            Required = false, Default = 0)]
+        public uint JoystickId { get; set; }
     }
 }

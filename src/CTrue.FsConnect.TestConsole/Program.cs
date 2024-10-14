@@ -86,6 +86,7 @@ namespace CTrue.FsConnect.TestConsole
 
                 Console.WriteLine("Initializing data definitions");
                 InitializeDataDefinitions(_fsConnect);
+                InitializeInputEvents(_fsConnect, commandLineOptions.JoystickId);
 
                 _fsConnect.SetText("Test Console connected", 2);
 
@@ -136,6 +137,21 @@ namespace CTrue.FsConnect.TestConsole
             fsConnect.RegisterDataDefinition<PlanePosition>(Definitions.PlanePosition);
         }
 
+        private static void InitializeInputEvents(FsConnect fsConnect, uint joystickId)
+        {
+            // Use Set Up USB Game controller app in windows to determine order of USB joystick devices. Use the Properties view to determine button ids.
+            // Note that there may be a constraint in SimConnect for the number of buttons supported, all buttons in complex devices may not be mappable.
+            InputEventInfo iei = new InputEventInfo(EventIds.JOYSTICK_BUTTON1, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, GetjoystickButtonInputEventDefinition(joystickId, 0),
+                (_) => { Log.Information("Joystick button 1 clicked"); });
+
+            fsConnect.RegisterInputEvent(iei);
+
+            iei = new InputEventInfo(EventIds.JOYSTICK_BUTTON2, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, GetjoystickButtonInputEventDefinition(joystickId, 1),
+                (_) => { Log.Information("Joystick button 2 clicked"); });
+
+            fsConnect.RegisterInputEvent(iei);
+        }
+
         static void DisplayHelp<T>(ParserResult<T> result, IEnumerable<Error> errs)
         {
             HelpText helpText;
@@ -154,5 +170,24 @@ namespace CTrue.FsConnect.TestConsole
             }
             Console.WriteLine(helpText);
         }
+
+        private static string GetjoystickButtonInputEventDefinition(uint joystickId, uint buttonId)
+        {
+            return $"joystick:{joystickId}:button:{buttonId}";
+        }
+    }
+
+    public enum GroupIds : uint
+    {
+        JOYSTICK_EVENT_KEY_GROUP = 200,
+        INPUT_KEY_GROUP = 201,
+        JOYSTICK_EVENT_KEY_GROUP2 = 203,
+        INPUT_KEY_GROUP2 = 204
+    }
+
+    public enum EventIds : uint
+    {
+        JOYSTICK_BUTTON1 = 300,
+        JOYSTICK_BUTTON2 = 301
     }
 }

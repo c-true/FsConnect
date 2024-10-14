@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageVersion Include="Serilog" Version="2.10.0" />
+		<PackageVersion Include="Serilog.Sinks.Console" Version="3.1.1" />
+		<PackageVersion Include="CommandLineParser" Version="2.8.0" />
+		<PackageVersion Include="NUnit" Version="3.13.1" />
+		<PackageVersion Include="NUnit3TestAdapter" Version="3.17.0" />
+		<PackageVersion Include="Microsoft.NET.Test.Sdk" Version="16.9.1" />
+	</ItemGroup>
+</Project>

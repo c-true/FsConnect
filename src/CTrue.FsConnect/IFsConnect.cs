@@ -321,5 +321,12 @@ namespace CTrue.FsConnect
         /// </summary>
         /// <returns>Returns an int that can be used to identifying SimConnect artifacts, such as definitions and events.</returns>
         int GetNextId();
+
+        /// <summary>
+        /// Registers handling of an input event.
+        /// </summary>
+        /// <param name="inputEventInfo"></param>
+        /// <returns>Returns true if input event was registered, false if already registered.</returns>
+        bool RegisterInputEvent(InputEventInfo inputEventInfo);
     }
 }
