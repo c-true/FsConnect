@@ -202,10 +202,10 @@ namespace CTrue.FsConnect
         /// <param name="objectId"></param>
         /// <param name="period"></param>
         /// <param name="flags"></param>
-        /// <param name="interval"></param>
         /// <param name="origin"></param>
+        /// <param name="interval"></param>
         /// <param name="limit"></param>
-        void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit);
+        void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint origin, uint interval, uint limit);
 
         /// <summary>
         /// Requests data on a Sim object, periodically or/and when changed.
@@ -215,10 +215,10 @@ namespace CTrue.FsConnect
         /// <param name="objectId"></param>
         /// <param name="period"></param>
         /// <param name="flags"></param>
-        /// <param name="interval"></param>
         /// <param name="origin"></param>
+        /// <param name="interval"></param>
         /// <param name="limit"></param>
-        void RequestDataOnSimObject(Enum requestId, int defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit);
+        void RequestDataOnSimObject(Enum requestId, int defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint origin, uint interval, uint limit);
 
         /// <summary>
         /// Requests data from Flight Simulator.

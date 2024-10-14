@@ -296,21 +296,21 @@ namespace CTrue.FsConnect
         #region RequestData
 
         /// <inheritdoc />
-        public void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit)
+        public void RequestDataOnSimObject(Enum requestId, Enum defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint origin, uint interval, uint limit) 
         {
-            _simConnect?.RequestDataOnSimObject(requestId, defineId, objectId, (SIMCONNECT_PERIOD)period, (SIMCONNECT_DATA_REQUEST_FLAG)flags, interval, origin, limit);
+            _simConnect?.RequestDataOnSimObject(requestId, defineId, objectId, (SIMCONNECT_PERIOD)period, (SIMCONNECT_DATA_REQUEST_FLAG)flags, origin, interval, limit);
         }
 
         /// <inheritdoc />
-        public void RequestDataOnSimObject(Enum requestId, int defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint interval, uint origin, uint limit)
+        public void RequestDataOnSimObject(Enum requestId, int defineId, uint objectId, FsConnectPeriod period, FsConnectDRequestFlag flags, uint origin, uint interval, uint limit)
         {
-            _simConnect?.RequestDataOnSimObject(requestId, (FsConnectEnum)defineId, objectId, (SIMCONNECT_PERIOD)period, (SIMCONNECT_DATA_REQUEST_FLAG)flags, interval, origin, limit);
+            _simConnect?.RequestDataOnSimObject(requestId, (FsConnectEnum)defineId, objectId, (SIMCONNECT_PERIOD)period, (SIMCONNECT_DATA_REQUEST_FLAG)flags, origin, interval, limit);
         }
 
         /// <inheritdoc />
         public void RequestData(Enum requestId, Enum defineId, uint radius = 0, FsConnectSimobjectType type = FsConnectSimobjectType.User)
         {
-            _simConnect?.RequestDataOnSimObjectType( requestId, defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
+            _simConnect?.RequestDataOnSimObjectType(requestId, defineId, radius, (SIMCONNECT_SIMOBJECT_TYPE)type);
         }
 
         /// <inheritdoc />
