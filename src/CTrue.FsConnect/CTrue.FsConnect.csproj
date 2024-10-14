@@ -14,7 +14,7 @@
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 		<PackageTags>msfs flight-simulator simconnect</PackageTags>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<PackageReleaseNotes>Added and updated some method signatures. * Added event ids for setting COM and NAV frequencies.</PackageReleaseNotes>
+		<PackageReleaseNotes>Support for registering input events. * Updated SDK version to 0.24.3.0</PackageReleaseNotes>
 	</PropertyGroup>
 
 	<PropertyGroup>
