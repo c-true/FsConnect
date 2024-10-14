@@ -22,7 +22,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1.0.2
     
     - name: Create artifacts\packages folder
-      run: mk artifacts\packages
+      run: mkdir artifacts\packages
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
