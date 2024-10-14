@@ -142,12 +142,12 @@ namespace CTrue.FsConnect.TestConsole
             // Use Set Up USB Game controller app in windows to determine order of USB joystick devices. Use the Properties view to determine button ids.
             // Note that there may be a constraint in SimConnect for the number of buttons supported, all buttons in complex devices may not be mappable.
             InputEventInfo iei = new InputEventInfo(EventIds.JOYSTICK_BUTTON1, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, GetjoystickButtonInputEventDefinition(joystickId, 0),
-                () => { Log.Information("Joystick button 1 clicked"); });
+                (_) => { Log.Information("Joystick button 1 clicked"); });
 
             fsConnect.RegisterInputEvent(iei);
 
             iei = new InputEventInfo(EventIds.JOYSTICK_BUTTON2, GroupIds.JOYSTICK_EVENT_KEY_GROUP, GroupIds.INPUT_KEY_GROUP, GetjoystickButtonInputEventDefinition(joystickId, 1),
-                () => { Log.Information("Joystick button 2 clicked"); });
+                (_) => { Log.Information("Joystick button 2 clicked"); });
 
             fsConnect.RegisterInputEvent(iei);
         }

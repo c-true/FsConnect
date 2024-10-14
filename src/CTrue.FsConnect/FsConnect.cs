@@ -149,7 +149,7 @@ namespace CTrue.FsConnect
             }
 
             // Setup client event
-            _simConnect.MapClientEventToSimEvent(inputEventInfo.ClientEventId, null);
+            _simConnect.MapClientEventToSimEvent(inputEventInfo.ClientEventId, inputEventInfo.ClientEventName);
             _simConnect.AddClientEventToNotificationGroup(inputEventInfo.NotificationGroupId, inputEventInfo.ClientEventId, false);
             _simConnect.SetNotificationGroupPriority(inputEventInfo.NotificationGroupId, 1);
 

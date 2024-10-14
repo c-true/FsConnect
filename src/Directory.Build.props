@@ -2,10 +2,10 @@
 
 	<PropertyGroup Label="Custom Variables">
 		<MajorVersion>1</MajorVersion>
-		<MinorVersion>3</MinorVersion>
-		<PatchLevel>5</PatchLevel>
+		<MinorVersion>4</MinorVersion>
+		<PatchLevel>0</PatchLevel>
 		<BuildCounter>0</BuildCounter>
-		<Tag>-alpha</Tag>
+		<Tag></Tag>
 		<GitCommitId></GitCommitId>
 		<RootFolder>$([System.IO.Path]::GetDirectoryName($([MSBuild]::GetPathOfFileAbove('.gitignore', '$(MSBuildThisFileDirectory)'))))</RootFolder>
 		<ArtifactsFolder>$(RootFolder)\artifacts</ArtifactsFolder>
