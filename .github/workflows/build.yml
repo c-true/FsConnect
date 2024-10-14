@@ -21,6 +21,9 @@ jobs:
     - name: Setup MSBuild path
       uses: microsoft/setup-msbuild@v1.0.2
     
+    - name: Create artifacts\packages folder
+      uses: mk artifacts\packages
+
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
     
